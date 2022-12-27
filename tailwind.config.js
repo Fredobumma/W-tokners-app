@@ -9,6 +9,7 @@ module.exports = {
       desktop: "1280px",
     },
     extend: {
+      colors: { hovButton: "#035d2b", secondary: "#22A75D" },
       fontSize: {
         28: "28px",
         32: "32px",
@@ -16,6 +17,9 @@ module.exports = {
       },
       lineHeight: {
         54: "54px",
+      },
+      spacing: {
+        7.5: "30px",
       },
     },
   },
