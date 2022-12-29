@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: ["class", '[data-mode="dark"]'],
+  plugins: [],
   theme: {
     screens: {
       tab: "640px",
@@ -28,5 +30,4 @@ module.exports = {
       },
     },
   },
-  plugins: [],
 };
