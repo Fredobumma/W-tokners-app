@@ -15,3 +15,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.sprite {
+  background-image: url("common/images/sprite.png");
+  background-repeat: no-repeat;
+  display: block;
+}

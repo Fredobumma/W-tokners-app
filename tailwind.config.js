@@ -22,11 +22,19 @@ module.exports = {
         32: "32px",
         40: ["40px", "48px"],
       },
+      height: {
+        385: "385px",
+        420: "420px",
+      },
       lineHeight: {
         54: "54px",
       },
       spacing: {
         7.5: "30px",
+      },
+      width: {
+        236: "236px",
+        257: "257px",
       },
     },
   },
