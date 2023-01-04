@@ -56,11 +56,17 @@ const files = {
       viewBox: [0, 0, 375, 768],
       data: '<mask xmlns="http://www.w3.org/2000/svg" id="a" style="mask-type:alpha" width="375" height="768" x="0" y="0" maskUnits="userSpaceOnUse"><path fill="#171B29" fill-rule="evenodd" d="M320.703 712.07C350.69 712.07 375 736.325 375 766.246V712.07H320.703ZM374.972 768H375V766.246C375 766.833 374.991 767.418 374.972 768Z" clip-rule="evenodd"/><path fill="#171B29" fill-rule="evenodd" d="M54.2969 55.9302C24.3095 55.9302 0 31.6746 0 1.75391V55.9302H54.2969ZM0.0279188 0H0V1.75391C0 1.16704 0.00935793 0.582352 0.0279188 0Z" clip-rule="evenodd"/><path fill="#171B29" d="M0 55.9302H375V712.07H0V55.9302Z"/></mask><g xmlns="http://www.w3.org/2000/svg" mask="url(#a)"><path fill="url(#paint0_linear_20_193)" d="M-130.976 1199.91L639.024 1097.23L639.024 646.94L-130.976 947.106L-130.976 1199.91Z"/><path fill="url(#paint1_linear_20_193)" d="M637.136 553.375L-1.84473 803.583L-61.9286 561.843L-126.258 292.38L-126.258 200.257L-11.8272 252.974L637.009 33.583L637.136 553.375Z"/><path fill="#FFD100" d="M-140.412 957.31L110.408 854.845L639.024 1097.99L639.024 551.777L528.742 595.747L-127.093 291.192L-140.412 957.31Z"/><path fill="#E20613" d="M-152.717 195.99L724 601.7L724 -9.50532L-341.29 -483.286L-152.717 195.99Z"/><path fill="url(#paint2_linear_20_193)" d="M-126.502 291.192L-127.202 291.384L-127.202 859.255L529.563 595.512L-126.502 291.192Z"/><path fill="url(#paint3_linear_20_193)" d="M639.023 1097.99L639.023 646.94L110.592 854.812L639.023 1097.99Z"/><path fill="url(#paint4_linear_20_193)" d="M637.138 561.181L637.138 91.2541L48.3145 289.319L637.138 561.181Z"/></g><defs xmlns="http://www.w3.org/2000/svg"><linearGradient id="paint0_linear_20_193" x1="639.024" x2="16.694" y1="973.216" y2="973.216" gradientUnits="userSpaceOnUse"><stop stop-color="#2B3087"/><stop offset=".82" stop-color="#00B4EC"/></linearGradient><linearGradient id="paint1_linear_20_193" x1="637.137" x2="-128.391" y1="418.775" y2="418.775" gradientUnits="userSpaceOnUse"><stop stop-color="#2B3087"/><stop offset="1" stop-color="#00B4EC"/></linearGradient><linearGradient id="paint2_linear_20_193" x1="527.675" x2="-127.202" y1="547.481" y2="547.481" gradientUnits="userSpaceOnUse"><stop stop-color="#009540"/><stop offset="1" stop-color="#26A960"/></linearGradient><linearGradient id="paint3_linear_20_193" x1="110.592" x2="639.023" y1="872.467" y2="872.467" gradientUnits="userSpaceOnUse"><stop stop-color="#3FAE6C"/><stop offset="1" stop-color="#006633"/></linearGradient><linearGradient id="paint4_linear_20_193" x1="342.784" x2="342.784" y1="561.181" y2="91.254" gradientUnits="userSpaceOnUse"><stop stop-color="#164194"/><stop offset="1" stop-color="#005CA9"/></linearGradient></defs>',
     },
-    "learn-more-arrow": {
+    "green-arrow": {
       width: 16,
       height: 16,
       viewBox: [0, 0, 16, 16],
       data: '<path xmlns="http://www.w3.org/2000/svg" fill="#22A75D" fill-rule="evenodd" d="M8.70727 2.62615C8.31675 2.23562 7.68358 2.23562 7.29306 2.62615C6.90253 3.01667 6.90253 3.64983 7.29306 4.04036L10.2526 6.99992H3.3335C2.78121 6.99992 2.3335 7.44763 2.3335 7.99992C2.3335 8.5522 2.78121 8.99992 3.3335 8.99992H10.2526L7.29306 11.9595C6.90253 12.35 6.90253 12.9832 7.29306 13.3737C7.68358 13.7642 8.31675 13.7642 8.70727 13.3737L13.3736 8.70736L13.3739 8.70703M13.591 7.61714C13.5422 7.49919 13.4698 7.38869 13.3739 7.29281L8.70727 2.62615M13.3761 8.7049C13.5558 8.52411 13.6668 8.27498 13.6668 7.99992C13.6668 7.86433 13.6398 7.73504 13.591 7.61714" clip-rule="evenodd"/>',
+    },
+    "blue-arrow": {
+      width: 16,
+      height: 16,
+      viewBox: [0, 0, 16, 16],
+      data: '<path xmlns="http://www.w3.org/2000/svg" fill="#2278D4" fill-rule="evenodd" d="M8.70727 2.62615C8.31675 2.23562 7.68358 2.23562 7.29306 2.62615C6.90253 3.01667 6.90253 3.64983 7.29306 4.04036L10.2526 6.99992H3.3335C2.78121 6.99992 2.3335 7.44763 2.3335 7.99992C2.3335 8.5522 2.78121 8.99992 3.3335 8.99992H10.2526L7.29306 11.9595C6.90253 12.35 6.90253 12.9832 7.29306 13.3737C7.68358 13.7642 8.31675 13.7642 8.70727 13.3737L13.3736 8.70736L13.3739 8.70703M13.591 7.61714C13.5422 7.49919 13.4698 7.38869 13.3739 7.29281L8.70727 2.62615M13.3761 8.7049C13.5558 8.52411 13.6668 8.27498 13.6668 7.99992C13.6668 7.86433 13.6398 7.73504 13.591 7.61714" clip-rule="evenodd"/>',
     },
     "menu-open": {
       width: 15,
@@ -131,7 +137,8 @@ const files = {
   },
   allIds: [
     "presale-bg-2",
-    "learn-more-arrow",
+    "green-arrow",
+    "blue-arrow",
     "menu-open",
     "menu-closed",
     "logo",

@@ -12,8 +12,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        dark: "#0F1320",
         altButton: "#035d2b",
+        creatorsLink: "#22A75D",
+        dark: "#0F1320",
+        holdersLink: "#2278D4",
         light: "#fff",
         secondary: "#22A75D",
       },

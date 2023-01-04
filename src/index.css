@@ -22,3 +22,9 @@ code {
   background-repeat: no-repeat;
   display: block;
 }
+
+.link-arrow:active > .arrow,
+.link-arrow:focus > .arrow,
+.link-arrow:hover > .arrow {
+  margin-left: 4px;
+}
