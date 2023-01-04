@@ -3,12 +3,12 @@ import { SVGSource } from "../common/svg";
 import Switcher from "../common/switcher";
 // import Button from "../common/button";
 
-const Home = () => {
+const Home = ({ ...rest }) => {
   return (
     <React.Fragment>
       <SVGSource />
       <center>
-        <Switcher />
+        <Switcher {...rest} />
       </center>
     </React.Fragment>
   );
