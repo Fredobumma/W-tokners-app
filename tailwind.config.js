@@ -11,6 +11,7 @@ module.exports = {
       desktop: "1280px",
     },
     extend: {
+      borderRadius: { all: "25px" },
       colors: {
         altButton: "#035d2b",
         creatorsLink: "#22A75D",
@@ -20,8 +21,13 @@ module.exports = {
         secondary: "#22A75D",
         red: "#E20613",
         yellow: "#FFD100",
+        teamCard: "#0D0B16",
+        lightTeamCard: "#AFAFAF",
+        guideCard: "#171B29",
+        lightGuideCard: "#E2E2E2",
       },
       fontSize: {
+        15: ["15px", "34px"],
         26: ["26px", "36px"],
         28: "28px",
         32: "32px",
@@ -39,6 +45,10 @@ module.exports = {
       },
       spacing: {
         7.5: "30px",
+        38: "38px",
+        50: "50px",
+        55: "55px",
+        minmax: "min(4%, 40px)",
       },
       width: {
         22: "22.4px",

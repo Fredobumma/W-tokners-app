@@ -7,6 +7,7 @@ function App() {
   const [darkSide, setDarkSide] = useState(
     colorTheme === "bg-light" ? true : false
   );
+  const getTheme = colorTheme === "bg-dark";
 
   const toggleDarkMode = (checked) => {
     setTheme(colorTheme);
@@ -16,7 +17,7 @@ function App() {
   return (
     <React.Fragment>
       <main>
-        <Home checked={darkSide} onChange={toggleDarkMode} />
+        <Home theme={getTheme} checked={darkSide} onChange={toggleDarkMode} />
       </main>
     </React.Fragment>
   );

@@ -3,7 +3,7 @@ import { SVG, SVGSource } from "../common/svg";
 import Switcher from "../common/switcher";
 // import Button from "../common/button";
 
-const Home = ({ ...rest }) => {
+const Home = ({ theme, ...rest }) => {
   return (
     <React.Fragment>
       <SVGSource />
