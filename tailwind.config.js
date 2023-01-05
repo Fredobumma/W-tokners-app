@@ -26,6 +26,10 @@ module.exports = {
         guideCard: "#171B29",
         lightGuideCard: "#E2E2E2",
       },
+      content: { zero: "ol(li) '0'" },
+      fontFamily: {
+        target: ["Azo Sans", "sans-serif"],
+      },
       fontSize: {
         15: ["15px", "34px"],
         26: ["26px", "36px"],
