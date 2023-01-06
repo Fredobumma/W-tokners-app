@@ -26,7 +26,6 @@ module.exports = {
         guideCard: "#171B29",
         lightGuideCard: "#E2E2E2",
       },
-      content: { zero: "ol(li) '0'" },
       fontFamily: {
         target: ["Azo Sans", "sans-serif"],
       },
@@ -39,9 +38,11 @@ module.exports = {
       },
       height: {
         22: "22.4px",
+        50: "50px",
         82: "82px",
         385: "385px",
         420: "420px",
+        logo: "min(12%, 48px)",
       },
       lineHeight: {
         34: "34px",
@@ -52,13 +53,16 @@ module.exports = {
         38: "38px",
         50: "50px",
         55: "55px",
+        120: "120px",
         minmax: "min(4%, 40px)",
       },
       width: {
         22: "22.4px",
+        50: "50px",
         82: "82px",
         236: "236px",
         257: "257px",
+        logo: "min(12%, 48px)",
       },
     },
   },
