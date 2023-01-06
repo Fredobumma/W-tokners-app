@@ -16,7 +16,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <main>
+      <main className="mx-auto">
         <Home theme={getTheme} checked={darkSide} onChange={toggleDarkMode} />
       </main>
     </React.Fragment>
