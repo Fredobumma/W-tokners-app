@@ -9,6 +9,7 @@ module.exports = {
       bigTab: "768px",
       laptop: "1024px",
       desktop: "1280px",
+      widerScreen: "1440px",
     },
     extend: {
       borderRadius: { all: "25px" },
@@ -56,13 +57,14 @@ module.exports = {
         512: "512px",
       },
       spacing: {
-        7.5: "30px",
         30: "30px",
         38: "38px",
         45: "45px",
         50: "50px",
         55: "55px",
         60: "60px",
+        70: "70px",
+        88: "88px",
         100: "100px",
         120: "120px",
         minmax: "min(4%, 40px)",
