@@ -47,6 +47,10 @@ module.exports = {
         420: "420px",
         logo: "min(12%, 48px)",
       },
+      inset: {
+        minmax1: "min(45%, 195px)",
+        minmax2: "min(10%, 65px)",
+      },
       lineHeight: {
         34: "34px",
         54: "54px",
