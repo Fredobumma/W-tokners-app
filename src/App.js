@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Home from "./page-components/home";
 import useDarkSide from "./hooks/useDarkSide";
+import useWindowDimensions from "./hooks/useWindowDimensions";
 
 function App() {
+  const { width } = useWindowDimensions();
   const [colorTheme, setTheme] = useDarkSide();
   const [darkSide, setDarkSide] = useState(
     colorTheme === "bg-light" ? true : false
@@ -17,7 +19,12 @@ function App() {
   return (
     <React.Fragment>
       <main className="mx-auto">
-        <Home theme={getTheme} checked={darkSide} onChange={toggleDarkMode} />
+        <Home
+          screenWidth={width}
+          theme={getTheme}
+          checked={darkSide}
+          onChange={toggleDarkMode}
+        />
       </main>
     </React.Fragment>
   );
