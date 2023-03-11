@@ -20,4 +20,5 @@ const Home = ({ theme, screenWidth, ...rest }) => {
     </React.Fragment>
   );
 };
+
 export default Home;
