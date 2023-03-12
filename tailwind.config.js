@@ -81,6 +81,9 @@ module.exports = {
         minmax: "min(4%, 40px)",
         purchase: "min(10%, 30px)",
       },
+      textUnderlineOffset: {
+        3: "3px",
+      },
       width: {
         22: "22.4px",
         50: "50px",

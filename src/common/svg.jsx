@@ -176,17 +176,29 @@ const files = {
       viewBox: [0, 0, 960, 1087],
       data: '<path xmlns="http://www.w3.org/2000/svg" fill="white" d="M0 400C0 179.086 179.086 0 400 0H960V800H0V400Z"/><path xmlns="http://www.w3.org/2000/svg" fill="white" fill-rule="evenodd" d="M682 800C835.535 800 960 924.465 960 1078V800H682ZM959.857 1087H960V1078C960 1081.01 959.952 1084.01 959.857 1087Z" clip-rule="evenodd"/>',
     },
-    "creators-crown": {
+    "dark-creators-crown": {
       width: 120,
       height: 120,
       viewBox: [0, 0, 120, 120],
       data: '<g xmlns="http://www.w3.org/2000/svg" filter="url(#filter0_d_242_54)"><circle cx="60" cy="45" r="35" fill="#22A75D"/></g><g xmlns="http://www.w3.org/2000/svg" clip-path="url(#clip0_242_54)"><path fill="#191F30" d="M70.766 37.5659C70.4006 37.4137 69.9981 37.3737 69.6099 37.4509C69.2217 37.5282 68.8653 37.7193 68.586 37.9999L66 40.5859L61.414 35.9999C61.0389 35.6249 60.5303 35.4143 60 35.4143C59.4697 35.4143 58.9611 35.6249 58.586 35.9999L54 40.5859L51.414 37.9999C51.1343 37.7203 50.778 37.5298 50.3901 37.4527C50.0022 37.3756 49.6001 37.4152 49.2347 37.5665C48.8693 37.7179 48.557 37.9741 48.3372 38.303C48.1174 38.6318 48.0001 39.0184 48 39.4139V49.9999C48.0016 51.3255 48.5289 52.5963 49.4662 53.5337C50.4036 54.471 51.6744 54.9983 53 54.9999H67C68.3256 54.9983 69.5964 54.471 70.5338 53.5337C71.4711 52.5963 71.9984 51.3255 72 49.9999V39.4139C72.0001 39.0183 71.8829 38.6317 71.6633 38.3027C71.4436 37.9738 71.1314 37.7174 70.766 37.5659Z"/></g><defs xmlns="http://www.w3.org/2000/svg"><filter id="filter0_d_242_54" width="120" height="120" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="15"/><feGaussianBlur stdDeviation="12.5"/><feColorMatrix values="0 0 0 0 0.133333 0 0 0 0 0.654902 0 0 0 0 0.364706 0 0 0 0.25 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_242_54"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_242_54" result="shape"/></filter><clipPath id="clip0_242_54"><path fill="white" d="M0 0H24V24H0z" transform="translate(48 33)"/></clipPath></defs>',
     },
-    "folders-star": {
+    "dark-folders-star": {
       width: 120,
       height: 120,
       viewBox: [0, 0, 120, 120],
       data: '<g xmlns="http://www.w3.org/2000/svg" filter="url(#filter0_d_242_53)"><circle cx="60" cy="45" r="35" fill="#2278D4"/></g><g xmlns="http://www.w3.org/2000/svg" clip-path="url(#clip0_242_53)"><path fill="#191F30" d="M49.3267 45.4L52.8867 48L51.5347 52.187C51.3162 52.8363 51.3134 53.539 51.5268 54.19C51.7402 54.8411 52.1583 55.4058 52.7187 55.8C53.2696 56.2067 53.9371 56.4247 54.6219 56.4212C55.3066 56.4178 55.9719 56.1932 56.5187 55.781L59.9997 53.219L63.4817 55.778C64.0316 56.1824 64.6955 56.4021 65.3781 56.4054C66.0607 56.4087 66.7267 56.1955 67.2805 55.7965C67.8342 55.3974 68.2472 54.833 68.46 54.1844C68.6728 53.5359 68.6744 52.8365 68.4647 52.187L67.1127 48L70.6727 45.4C71.2218 44.9985 71.6301 44.4337 71.8391 43.7863C72.048 43.139 72.0471 42.4421 71.8364 41.7953C71.6257 41.1485 71.2159 40.5849 70.6657 40.1849C70.1155 39.7848 69.453 39.5689 68.7727 39.568H64.3997L63.0727 35.432C62.864 34.7809 62.454 34.213 61.9017 33.81C61.3494 33.4071 60.6834 33.1899 59.9997 33.1899C59.316 33.1899 58.65 33.4071 58.0977 33.81C57.5454 34.213 57.1354 34.7809 56.9267 35.432L55.5997 39.568H51.2307C50.5504 39.5689 49.8879 39.7848 49.3377 40.1849C48.7875 40.5849 48.3777 41.1485 48.167 41.7953C47.9563 42.4421 47.9554 43.139 48.1644 43.7863C48.3733 44.4337 48.7816 44.9985 49.3307 45.4H49.3267Z"/></g><defs xmlns="http://www.w3.org/2000/svg"><filter id="filter0_d_242_53" width="120" height="120" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="15"/><feGaussianBlur stdDeviation="12.5"/><feColorMatrix values="0 0 0 0 0.133333 0 0 0 0 0.470588 0 0 0 0 0.831373 0 0 0 0.25 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_242_53"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_242_53" result="shape"/></filter><clipPath id="clip0_242_53"><path fill="white" d="M0 0H24V24H0z" transform="translate(48 33)"/></clipPath></defs>',
+    },
+    "light-folders-star": {
+      width: 120,
+      height: 120,
+      viewBox: [0, 0, 120, 120],
+      data: '<g xmlns="http://www.w3.org/2000/svg" filter="url(#filter0_d_411_58)"><circle cx="60" cy="45" r="35" fill="#2278D4"/></g><g xmlns="http://www.w3.org/2000/svg" clip-path="url(#clip0_411_58)"><path fill="white" d="M49.3267 45.4L52.8867 48L51.5347 52.187C51.3162 52.8363 51.3134 53.539 51.5268 54.19C51.7402 54.8411 52.1583 55.4058 52.7187 55.8C53.2696 56.2067 53.9371 56.4247 54.6219 56.4212C55.3066 56.4178 55.9719 56.1932 56.5187 55.781L59.9997 53.219L63.4817 55.778C64.0316 56.1824 64.6955 56.4021 65.3781 56.4054C66.0607 56.4087 66.7267 56.1955 67.2805 55.7965C67.8342 55.3974 68.2472 54.833 68.46 54.1844C68.6728 53.5359 68.6744 52.8365 68.4647 52.187L67.1127 48L70.6727 45.4C71.2218 44.9985 71.6301 44.4337 71.8391 43.7863C72.048 43.139 72.0471 42.4421 71.8364 41.7953C71.6257 41.1485 71.2159 40.5849 70.6657 40.1849C70.1155 39.7848 69.453 39.5689 68.7727 39.568H64.3997L63.0727 35.432C62.864 34.7809 62.454 34.213 61.9017 33.81C61.3494 33.4071 60.6834 33.1899 59.9997 33.1899C59.316 33.1899 58.65 33.4071 58.0977 33.81C57.5454 34.213 57.1354 34.7809 56.9267 35.432L55.5997 39.568H51.2307C50.5504 39.5689 49.8879 39.7848 49.3377 40.1849C48.7875 40.5849 48.3777 41.1485 48.167 41.7953C47.9563 42.4421 47.9554 43.139 48.1644 43.7863C48.3733 44.4337 48.7816 44.9985 49.3307 45.4H49.3267Z"/></g><defs xmlns="http://www.w3.org/2000/svg"><filter id="filter0_d_411_58" width="120" height="120" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="15"/><feGaussianBlur stdDeviation="12.5"/><feColorMatrix values="0 0 0 0 0.133333 0 0 0 0 0.470588 0 0 0 0 0.831373 0 0 0 0.25 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_411_58"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_411_58" result="shape"/></filter><clipPath id="clip0_411_58"><path fill="white" d="M0 0H24V24H0z" transform="translate(48 33)"/></clipPath></defs>',
+    },
+    "light-creators-crown": {
+      width: 120,
+      height: 120,
+      viewBox: [0, 0, 120, 120],
+      data: '<g xmlns="http://www.w3.org/2000/svg" filter="url(#filter0_d_411_62)"><circle cx="60" cy="45" r="35" fill="#22A75D"/></g><g xmlns="http://www.w3.org/2000/svg" clip-path="url(#clip0_411_62)"><path fill="white" d="M70.766 37.5659C70.4006 37.4137 69.9981 37.3737 69.6099 37.4509C69.2217 37.5282 68.8653 37.7193 68.586 37.9999L66 40.5859L61.414 35.9999C61.0389 35.6249 60.5303 35.4143 60 35.4143C59.4697 35.4143 58.9611 35.6249 58.586 35.9999L54 40.5859L51.414 37.9999C51.1343 37.7203 50.778 37.5298 50.3901 37.4527C50.0022 37.3756 49.6001 37.4152 49.2347 37.5665C48.8693 37.7179 48.557 37.9741 48.3372 38.303C48.1174 38.6318 48.0001 39.0184 48 39.4139V49.9999C48.0016 51.3255 48.5289 52.5963 49.4662 53.5337C50.4036 54.471 51.6744 54.9983 53 54.9999H67C68.3256 54.9983 69.5964 54.471 70.5338 53.5337C71.4711 52.5963 71.9984 51.3255 72 49.9999V39.4139C72.0001 39.0183 71.8829 38.6317 71.6633 38.3027C71.4436 37.9738 71.1314 37.7174 70.766 37.5659V37.5659Z"/></g><defs xmlns="http://www.w3.org/2000/svg"><filter id="filter0_d_411_62" width="120" height="120" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="15"/><feGaussianBlur stdDeviation="12.5"/><feColorMatrix values="0 0 0 0 0.133333 0 0 0 0 0.654902 0 0 0 0 0.364706 0 0 0 0.25 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_411_62"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_411_62" result="shape"/></filter><clipPath id="clip0_411_62"><path fill="white" d="M0 0H24V24H0z" transform="translate(48 33)"/></clipPath></defs>',
     },
   },
   allIds: [
@@ -211,8 +223,10 @@ const files = {
     "goals-red",
     "goals-yellow",
     "services-bg-2",
-    "creators-crown",
-    "folders-star",
+    "light-folders-star",
+    "light-creators-crown",
+    "dark-creators-crown",
+    "dark-folders-star",
     "lightLogo",
     "darkLogo",
     "left-arrow",
