@@ -1,6 +1,7 @@
 import React from "react";
 import { SVGSource } from "../common/svg";
 import Switcher from "../common/switcher";
+// import Hero from "../common/block-components/block-hero";
 // import Features from "../common/block-components/block-features";
 // import Services from "../common/block-components/block-services";
 // import Objectives from "../common/block-components/block-objectives";
@@ -16,6 +17,7 @@ const Home = ({ theme, screenWidth, ...rest }) => {
       <center>
         <Switcher {...rest} />
       </center>
+      {/* <Hero /> */}
       {/* <Features theme={theme} /> */}
       {/* <Services /> */}
       {/* <Objectives /> */}
