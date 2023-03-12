@@ -1,6 +1,7 @@
 import React from "react";
 import { SVGSource } from "../common/svg";
 import Switcher from "../common/switcher";
+// import Objectives from "../common/block-components/block-objectives";
 // import Showcase from "../common/block-components/block-showcase";
 // import Presale from "../common/block-components/block-presale";
 // import PurchaseGuide from "../common/block-components/block-purchase";
@@ -13,6 +14,7 @@ const Home = ({ theme, screenWidth, ...rest }) => {
       <center>
         <Switcher {...rest} />
       </center>
+      {/* <Objectives /> */}
       {/* <Showcase screenWidth={screenWidth} /> */}
       {/* <Presale theme={theme} /> */}
       {/* <PurchaseGuide theme={theme} /> */}
