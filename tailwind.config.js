@@ -55,10 +55,16 @@ module.exports = {
         34: "34px",
         54: "54px",
       },
+      maxHeight: {
+        400: "400px",
+      },
       maxWidth: {
         270: "270px",
         400: "400px",
         512: "512px",
+      },
+      scale: {
+        115: "1.15",
       },
       spacing: {
         30: "30px",
@@ -71,6 +77,7 @@ module.exports = {
         88: "88px",
         100: "100px",
         120: "120px",
+        170: "170px",
         minmax: "min(4%, 40px)",
         purchase: "min(10%, 30px)",
       },
