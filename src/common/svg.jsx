@@ -110,17 +110,29 @@ const files = {
       viewBox: [0, 0, 16, 16],
       data: '<path xmlns="http://www.w3.org/2000/svg" fill="#2278D4" fill-rule="evenodd" d="M8.70727 2.62615C8.31675 2.23562 7.68358 2.23562 7.29306 2.62615C6.90253 3.01667 6.90253 3.64983 7.29306 4.04036L10.2526 6.99992H3.3335C2.78121 6.99992 2.3335 7.44763 2.3335 7.99992C2.3335 8.5522 2.78121 8.99992 3.3335 8.99992H10.2526L7.29306 11.9595C6.90253 12.35 6.90253 12.9832 7.29306 13.3737C7.68358 13.7642 8.31675 13.7642 8.70727 13.3737L13.3736 8.70736L13.3739 8.70703M13.591 7.61714C13.5422 7.49919 13.4698 7.38869 13.3739 7.29281L8.70727 2.62615M13.3761 8.7049C13.5558 8.52411 13.6668 8.27498 13.6668 7.99992C13.6668 7.86433 13.6398 7.73504 13.591 7.61714" clip-rule="evenodd"/>',
     },
-    "menu-open": {
+    "harmburger-menu": {
       width: 15,
       height: 15,
       viewBox: [0, 0, 15, 15],
       data: '<path xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.7275 1L0.999617 13.7279"/><path xmlns="http://www.w3.org/2000/svg" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1L13.7279 13.7279"/>',
     },
-    "menu-closed": {
+    "harmburger-closed": {
       width: 24,
       height: 24,
       viewBox: [0, 0, 24, 24],
       data: '<path xmlns="http://www.w3.org/2000/svg" fill="white" fill-rule="evenodd" d="M2 6C2 5.44772 2.44772 5 3 5H21C21.5523 5 22 5.44772 22 6C22 6.55228 21.5523 7 21 7H3C2.44772 7 2 6.55228 2 6ZM2 12C2 11.4477 2.44772 11 3 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H3C2.44772 13 2 12.5523 2 12ZM3 17C2.44772 17 2 17.4477 2 18C2 18.5523 2.44772 19 3 19H21C21.5523 19 22 18.5523 22 18C22 17.4477 21.5523 17 21 17H3Z" clip-rule="evenodd"/>',
+    },
+    "darkHarmburger-menu": {
+      width: 15,
+      height: 15,
+      viewBox: [0, 0, 15, 15],
+      data: '<path xmlns="http://www.w3.org/2000/svg" stroke="#0F1320" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.7275 1L0.999617 13.7279"/><path xmlns="http://www.w3.org/2000/svg" stroke="#0F1320" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1L13.7279 13.7279"/>',
+    },
+    "darkHarmburger-closed": {
+      width: 24,
+      height: 24,
+      viewBox: [0, 0, 24, 24],
+      data: '<path xmlns="http://www.w3.org/2000/svg" fill="#0F1320" fill-rule="evenodd" d="M2 6C2 5.44772 2.44772 5 3 5H21C21.5523 5 22 5.44772 22 6C22 6.55228 21.5523 7 21 7H3C2.44772 7 2 6.55228 2 6ZM2 12C2 11.4477 2.44772 11 3 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H3C2.44772 13 2 12.5523 2 12ZM3 17C2.44772 17 2 17.4477 2 18C2 18.5523 2.44772 19 3 19H21C21.5523 19 22 18.5523 22 18C22 17.4477 21.5523 17 21 17H3Z" clip-rule="evenodd"/>',
     },
     "purchase-icon-1": {
       width: 86,
@@ -205,8 +217,10 @@ const files = {
     "presale-bg-2",
     "green-arrow",
     "blue-arrow",
-    "menu-open",
-    "menu-closed",
+    "harmburger-menu",
+    "harmburger-closed",
+    "darkHarmburger-menu",
+    "darkHarmburger-closed",
     "logo",
     "github",
     "instagram",

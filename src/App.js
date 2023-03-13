@@ -6,6 +6,7 @@ import useWindowDimensions from "./hooks/useWindowDimensions";
 function App() {
   const { width } = useWindowDimensions();
   const [colorTheme, setTheme] = useDarkSide();
+  const [menu, setMenu] = useState(false);
   const [darkSide, setDarkSide] = useState(
     colorTheme === "bg-light" ? true : false
   );
@@ -16,13 +17,17 @@ function App() {
     setDarkSide(checked);
   };
 
+  const toggleMenu = () => setMenu(!menu);
+
   return (
     <React.Fragment>
-      <main className="mx-auto">
+      <main className="mx-auto h-screen">
         <Home
           screenWidth={width}
           theme={getTheme}
+          menu={menu}
           checked={darkSide}
+          toggleMenu={toggleMenu}
           onChange={toggleDarkMode}
         />
       </main>
