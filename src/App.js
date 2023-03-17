@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Home from "./page-components/home";
 import useDarkSide from "./hooks/useDarkSide";
 import useWindowDimensions from "./hooks/useWindowDimensions";
+import MenuBackDrop from "./common/block-components/menuBackDrop";
 
 function App() {
   const { width } = useWindowDimensions();
@@ -21,7 +22,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <main className="mx-auto h-screen">
+      <main className={`mx-auto h-screen ${menu && "relative"} laptop:static`}>
         <Home
           screenWidth={width}
           theme={getTheme}
@@ -30,6 +31,7 @@ function App() {
           toggleMenu={toggleMenu}
           onChange={toggleDarkMode}
         />
+        <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>
   );

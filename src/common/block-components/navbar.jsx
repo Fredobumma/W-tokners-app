@@ -35,7 +35,7 @@ const Navbar = ({ menu, theme, toggleMenu }) => {
           </div>
         </button>
         <div
-          className={`absolute bg-white h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-10 laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50 laptop:mt-3.5 laptop:pt-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
+          className={`absolute bg-white h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-10 laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50 laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
             !menu && "left-[200vw]"
           }`}
         >
