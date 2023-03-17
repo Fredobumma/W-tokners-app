@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { SVGSource } from "../common/svg";
-// import Switcher from "../common/switcher";
 // import Navbar from "./../common/block-components/navbar";
 // import Hero from "../common/block-components/block-hero";
 // import Features from "../common/block-components/block-features";
@@ -11,22 +10,21 @@ import { SVGSource } from "../common/svg";
 // import PurchaseGuide from "../common/block-components/block-purchase";
 // import Footer from "../common/block-components/block-footer";
 
-const Home = ({ menu, theme, screenWidth, toggleMenu, ...rest }) => {
+const GuestHome = ({ menu, theme, toggleMenu }) => {
   return (
-    <React.Fragment>
+    <Fragment>
       <SVGSource />
-      <center>{/* <Switcher {...rest} /> */}</center>
       {/* <Navbar menu={menu} theme={theme} toggleMenu={toggleMenu} /> */}
       {/* <Hero /> */}
       {/* <Features theme={theme} /> */}
       {/* <Services /> */}
       {/* <Objectives /> */}
-      {/* <Showcase screenWidth={screenWidth} /> */}
+      {/* <Showcase /> */}
       {/* <Presale theme={theme} /> */}
       {/* <PurchaseGuide theme={theme} /> */}
       {/* <Footer theme={theme} /> */}
-    </React.Fragment>
+    </Fragment>
   );
 };
 
-export default Home;
+export default GuestHome;

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import Home from "./page-components/home";
 import useDarkSide from "./hooks/useDarkSide";
-import useWindowDimensions from "./hooks/useWindowDimensions";
+// import useWindowDimensions from "./hooks/useWindowDimensions";
+import GuestHome from "./page-components/guestHome";
+import UsersHome from "./page-components/usersHome";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
+import Switcher from "./common/switcher";
 
 function App() {
-  const { width } = useWindowDimensions();
+  // const { width } = useWindowDimensions();
   const [colorTheme, setTheme] = useDarkSide();
   const [menu, setMenu] = useState(false);
   const [darkSide, setDarkSide] = useState(
@@ -23,14 +25,11 @@ function App() {
   return (
     <React.Fragment>
       <main className={`mx-auto h-screen ${menu && "relative"} laptop:static`}>
-        <Home
-          screenWidth={width}
-          theme={getTheme}
-          menu={menu}
-          checked={darkSide}
-          toggleMenu={toggleMenu}
-          onChange={toggleDarkMode}
-        />
+        <center>
+          <Switcher checked={darkSide} onChange={toggleDarkMode} />
+        </center>
+        <GuestHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
+        <UsersHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>
