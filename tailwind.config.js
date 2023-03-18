@@ -36,6 +36,7 @@ module.exports = {
         28: "28px",
         32: "32px",
         40: ["40px", "48px"],
+        minmax48: "min(12vw, 48px)",
       },
       height: {
         22: "22.4px",
