@@ -8,10 +8,10 @@ import Switcher from "./common/switcher";
 
 function App() {
   // const { width } = useWindowDimensions();
-  const [colorTheme, setTheme] = useDarkSide();
   const [menu, setMenu] = useState(false);
+  const [colorTheme, setTheme] = useDarkSide();
   const [darkSide, setDarkSide] = useState(
-    colorTheme === "bg-light" ? true : false
+    colorTheme === "bg-light" ? false : true
   );
   const getTheme = colorTheme === "bg-dark";
 
