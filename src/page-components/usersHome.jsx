@@ -8,7 +8,7 @@ const UsersHome = ({ menu, theme, toggleMenu }) => {
     <Fragment>
       <SVGSource />
       {/* <Navbar menu={menu} theme={theme} toggleMenu={toggleMenu} /> */}
-      <Hero />
+      <Hero theme={theme} />
     </Fragment>
   );
 };
