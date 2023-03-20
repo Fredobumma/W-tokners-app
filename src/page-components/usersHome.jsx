@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { SVGSource } from "../common/svg";
 // import Navbar from "./../common/block-components/navbar";
 // import Hero from "../common/block-components/block-auth-hero";
+// import Objectives from "../common/block-components/block-auth-objectives";
 
 const UsersHome = ({ menu, theme, toggleMenu }) => {
   return (
@@ -9,6 +10,7 @@ const UsersHome = ({ menu, theme, toggleMenu }) => {
       <SVGSource />
       {/* <Navbar menu={menu} theme={theme} toggleMenu={toggleMenu} /> */}
       {/* <Hero theme={theme} /> */}
+      {/* <Objectives theme={theme} /> */}
     </Fragment>
   );
 };
