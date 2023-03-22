@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
+import Switcher from "./common/switcher";
 import GuestHome from "./page-components/guestHome";
 import UsersHome from "./page-components/usersHome";
+import Team from "./page-components/team";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
-import Switcher from "./common/switcher";
 
 function App() {
   // const { width } = useWindowDimensions();
@@ -30,6 +31,7 @@ function App() {
         </center>
         <GuestHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <UsersHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
+        <Team theme={getTheme} />
         <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>

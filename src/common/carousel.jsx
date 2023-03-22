@@ -2,7 +2,7 @@ import React from "react";
 import { useSnapCarousel } from "react-snap-carousel";
 import { SVG } from "./svg";
 
-const Carousel = ({ theme }) => {
+const Carousel = ({ theme, children }) => {
   const {
     pages,
     activePageIndex,
@@ -15,7 +15,36 @@ const Carousel = ({ theme }) => {
 
   return (
     <>
-      <ul className="flex overflow-x-auto snap-mandatory" ref={scrollRef}>
+      <div className="flex justify-between mb-10">
+        <h1 className="font-bold text-32 leading-10 tab:text-40 desktop:text-5xl desktop:leading-54">
+          Our Team
+        </h1>
+        <div className="flex justify-center mr-12 space-x-2" aria-hidden>
+          <button
+            className={`hidden py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
+              activePageIndex <= 0 &&
+              "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
+            }`}
+            onClick={() => prev()}
+          >
+            <SVG id={`${theme ? "dark-left-arrow" : "left-arrow"}`} />
+          </button>
+          <button
+            className={`hidden py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
+              activePageIndex === pages.length - 1 &&
+              "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
+            }`}
+            onClick={() => next()}
+          >
+            <SVG id={theme ? "dark-right-arrow" : "right-arrow"} />
+          </button>
+        </div>
+      </div>
+
+      <ul
+        className="flex gap-2.5 overflow-x-auto pb-5 pr-5 bigTab:pr-8 laptop:pr-16 snap-mandatory laptop:gap-5"
+        ref={scrollRef}
+      >
         {/*  LIST OF ITEMS TO BE RENDERED
         {Array.from({ length: 5 }).map((_, i) => (
           <li
@@ -25,42 +54,24 @@ const Carousel = ({ theme }) => {
             <img src="" alt={`Item ${i}`} />
           </li>
         ))} */}
+        {children}
       </ul>
-      <div className="flex justify-center space-x mt-2" aria-hidden>
-        <button
-          className={`hidden py-2 px-4 mx-2 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
-            activePageIndex <= 0 &&
-            "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
-          }`}
-          onClick={() => prev()}
-        >
-          <SVG id={`${theme ? "dark-left-arrow" : "left-arrow"}`} />
-        </button>
-        <ol className="flex flex-wrap gap-x-2.5 gap-y-5 items-center justify-center mt-30 laptop:hidden">
-          {pages.map((_, i) => (
-            <li
-              key={i}
-              className={`cursor-pointer inline-block rounded-all ${
-                theme ? "bg-dark border-dark" : "bg-light border-light"
-              } ${
-                i === activePageIndex
-                  ? "p-1"
-                  : "bg-transparent border-[1px] h-fit p-[1px]"
-              }`}
-              onClick={() => goTo(i)}
-            ></li>
-          ))}
-        </ol>
-        <button
-          className={`hidden py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
-            activePageIndex === pages.length - 1 &&
-            "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
-          }`}
-          onClick={() => next()}
-        >
-          <SVG id={theme ? "dark-right-arrow" : "right-arrow"} />
-        </button>
-      </div>
+
+      <ol className="flex flex-wrap gap-x-2.5 gap-y-5 items-center justify-center mt-30 laptop:hidden">
+        {pages.map((_, i) => (
+          <li
+            key={i}
+            className={`cursor-pointer inline-block rounded-all ${
+              theme ? "bg-dark border-dark" : "bg-light border-light"
+            } ${
+              i === activePageIndex
+                ? "p-1"
+                : "bg-transparent border-[1px] h-fit p-[1px]"
+            }`}
+            onClick={() => goTo(i)}
+          ></li>
+        ))}
+      </ol>
     </>
   );
 };
