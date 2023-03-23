@@ -5,6 +5,7 @@ import Switcher from "./common/switcher";
 import GuestHome from "./page-components/guestHome";
 import UsersHome from "./page-components/usersHome";
 import Team from "./page-components/team";
+import Login from "./page-components/login";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <GuestHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <UsersHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <Team theme={getTheme} />
+        <Login theme={getTheme} />
         <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>

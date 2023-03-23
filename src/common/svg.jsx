@@ -56,6 +56,24 @@ const files = {
       viewBox: [0, 0, 50, 50],
       data: '<circle xmlns="http://www.w3.org/2000/svg" cx="25" cy="25" r="24" stroke="white" stroke-width="2" opacity=".05"/><path xmlns="http://www.w3.org/2000/svg" fill="white" d="M34.1668 17.5001C33.3688 18.063 32.4853 18.4935 31.5502 18.7751C31.0483 18.198 30.3813 17.789 29.6394 17.6034C28.8974 17.4177 28.1164 17.4644 27.4019 17.7371C26.6874 18.0098 26.0739 18.4954 25.6443 19.1282C25.2148 19.7609 24.9899 20.5104 25.0002 21.2751V22.1084C23.5357 22.1464 22.0846 21.8216 20.776 21.163C19.4674 20.5043 18.3421 19.5323 17.5002 18.3334C17.5002 18.3334 14.1668 25.8334 21.6668 29.1667C19.9506 30.3317 17.9061 30.9159 15.8335 30.8334C23.3335 35.0001 32.5002 30.8334 32.5002 21.2501C32.4994 21.018 32.4771 20.7864 32.4335 20.5584C33.284 19.7197 33.8842 18.6607 34.1668 17.5001Z"/>',
     },
+    username: {
+      width: 20,
+      height: 20,
+      viewBox: [0, 0, 24, 24],
+      data: '<g xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />',
+    },
+    email: {
+      width: 20,
+      height: 20,
+      viewBox: [0, 0, 24, 24],
+      data: '<g xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />',
+    },
+    password: {
+      width: 20,
+      height: 20,
+      viewBox: [0, 0, 24, 24],
+      data: '<g xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />',
+    },
     "my-logo": {
       width: 20,
       height: 20,
@@ -263,6 +281,9 @@ const files = {
     "my-logo",
     "dark-oleg-logo",
     "oleg-logo",
+    "username",
+    "email",
+    "password",
   ],
 };
 

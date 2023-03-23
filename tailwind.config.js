@@ -12,6 +12,15 @@ module.exports = {
       widerScreen: "1440px",
     },
     extend: {
+      animation: {
+        "switch-gradient": "switch 2.5s ease-in-out infinite",
+      },
+      backgroundImage: {
+        form: "linear-gradient(90deg, #FFD100, #22A75D, #2278D4, #E20613)",
+      },
+      backgroundSize: {
+        "400%": "400% 400%",
+      },
       borderRadius: { all: "25px" },
       colors: {
         altButton: "#035d2b",
@@ -52,6 +61,16 @@ module.exports = {
       inset: {
         minmax1: "min(45%, 195px)",
         minmax2: "min(10%, 65px)",
+      },
+      keyframes: {
+        switch: {
+          "0%, 100%": {
+            "background-position": "0% 50%",
+          },
+          "50%": {
+            "background-position": "100% 50%",
+          },
+        },
       },
       lineHeight: {
         34: "34px",
