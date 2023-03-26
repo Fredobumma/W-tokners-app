@@ -5,6 +5,7 @@ import Switcher from "./common/switcher";
 import GuestHome from "./page-components/guestHome";
 import UsersHome from "./page-components/usersHome";
 import Team from "./page-components/team";
+import Register from "./page-components/register";
 import Login from "./page-components/login";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
 
@@ -33,6 +34,7 @@ function App() {
         <GuestHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <UsersHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <Team theme={getTheme} />
+        <Register theme={getTheme} />
         <Login theme={getTheme} />
         <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
