@@ -7,6 +7,7 @@ import UsersHome from "./page-components/usersHome";
 import Team from "./page-components/team";
 import Register from "./page-components/register";
 import Login from "./page-components/login";
+import RecoverPassword from "./page-components/recoverPassword";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Team theme={getTheme} />
         <Register theme={getTheme} />
         <Login theme={getTheme} />
+        {/* <RecoverPassword theme={getTheme} /> */}
         <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>
