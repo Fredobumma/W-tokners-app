@@ -7,8 +7,9 @@ import UsersHome from "./page-components/usersHome";
 import Team from "./page-components/team";
 import Register from "./page-components/register";
 import Login from "./page-components/login";
-import RecoverPassword from "./page-components/recoverPassword";
+// import RecoverPassword from "./page-components/recoverPassword";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
+import Tokens from "./page-components/tokens";
 
 function App() {
   // const { width } = useWindowDimensions();
@@ -38,6 +39,7 @@ function App() {
         <Register theme={getTheme} />
         <Login theme={getTheme} />
         {/* <RecoverPassword theme={getTheme} /> */}
+        <Tokens theme={getTheme} />
         <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>
