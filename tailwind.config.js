@@ -2,7 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: ["class", '[data-mode="dark"]'],
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
   theme: {
     screens: {
       tab: "640px",
@@ -87,6 +87,9 @@ module.exports = {
         700: "700px",
         800: "800px",
         1024: "1024px",
+      },
+      minWidth: {
+        250: "250px",
       },
       rotate: {
         360: "360deg",
