@@ -108,6 +108,7 @@ module.exports = {
         88: "88px",
         100: "100px",
         120: "120px",
+        150: "150px",
         170: "170px",
         minmax: "min(4%, 40px)",
         purchase: "min(10%, 30px)",
