@@ -4,6 +4,7 @@ import useDarkSide from "./hooks/useDarkSide";
 import Switcher from "./common/switcher";
 import GuestHome from "./page-components/guestHome";
 import UsersHome from "./page-components/usersHome";
+import JoinWhitelist from "./page-components/joinWhitelist";
 import Team from "./page-components/team";
 import Register from "./page-components/register";
 import Login from "./page-components/login";
@@ -36,6 +37,7 @@ function App() {
         </center>
         <GuestHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <UsersHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
+        <JoinWhitelist theme={getTheme} />
         <Team theme={getTheme} />
         <Register theme={getTheme} />
         <Login theme={getTheme} />
