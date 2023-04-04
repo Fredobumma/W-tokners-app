@@ -1,15 +1,16 @@
 import React from "react";
 import { SVG } from "../svg";
 import Button from "./../button";
+import Switcher from "../switcher";
 
-const Navbar = ({ menu, theme, toggleMenu }) => {
+const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
   return (
     <nav className="laptop:-mx-30">
       <div className="relative flex items-center justify-between pt-2.5 laptop:justify-start laptop:static">
         <span className="inline max-h-[33px] max-w-[207px] mr-30 laptop:m-0">
           <SVG id="namedLogo" height="100%" width="100%" />
         </span>
-        <button className="group z-20 laptop:hidden" onClick={toggleMenu}>
+        <button className="group z-[100] laptop:hidden" onClick={toggleMenu}>
           <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
             <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
               <div
@@ -31,7 +32,7 @@ const Navbar = ({ menu, theme, toggleMenu }) => {
           </div>
         </button>
         <div
-          className={`absolute h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-10 laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50 laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
+          className={`absolute h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50 laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
             !menu && "left-[200vw]"
           } ${(theme && "bg-white") || "bg-dark"}`}
         >
@@ -50,15 +51,14 @@ const Navbar = ({ menu, theme, toggleMenu }) => {
             </li>
             <li>
               <a href="/" className="group overflow-hidden relative">
-                Connect wallet
+                Join Whitelist
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
               </a>
             </li>
             <li>
-              <a href="/" className="group overflow-hidden relative">
-                Lightpaper
-                <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-              </a>
+              <span className="inline-block laptop:ml-3">
+                <Switcher checked={checked} onChange={toggleMode} />
+              </span>
             </li>
           </ul>
           <div className="flex flex-col w-fit gap-2.5 mt-70 mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 desktop:gap-30">

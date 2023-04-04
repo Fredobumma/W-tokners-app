@@ -16,7 +16,7 @@ const Executives = ({ theme }) => {
           <span className="block mb-50 ml-5 text-left text-sm bigTab:ml-0 bigTab:mb-55">
             CEO and Co founder
           </span>
-          <span className="sprite brad bg-[-272px_-5px] h-385 w-236 tab:bg-[-5px_-5px] tab:h-420 tab:w-257"></span>
+          <span className="bg-sprite bg-no-repeat block brad bg-[-272px_-5px] h-385 w-236 tab:bg-[-5px_-5px] tab:h-420 tab:w-257"></span>
         </li>
         <li
           className={`${
@@ -29,8 +29,8 @@ const Executives = ({ theme }) => {
           <span className="block mb-50 ml-5 text-left text-sm bigTab:ml-0 bigTab:mb-55">
             CTO and Co founder
           </span>
-          <span className="sprite lee bg-[-2861px_-5px] h-385 relative w-236 z-20 tab:bg-[-2594px_-5px] tab:h-420 tab:w-257"></span>
-          <span className="sprite team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
+          <span className="bg-sprite bg-no-repeat block lee bg-[-2861px_-5px] h-385 relative w-236 z-20 tab:bg-[-2594px_-5px] tab:h-420 tab:w-257"></span>
+          <span className="bg-sprite bg-no-repeat block team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
         </li>
         <li
           className={`${
@@ -43,7 +43,7 @@ const Executives = ({ theme }) => {
           <span className="block mb-50 ml-5 text-left text-sm bigTab:ml-0 bigTab:mb-55">
             Head of Development
           </span>
-          <span className="sprite shan bg-[-4047px_-815px] h-385 w-236 tab:bg-[-3780px_-815px] tab:h-420 tab:w-257"></span>
+          <span className="bg-sprite bg-no-repeat block shan bg-[-4047px_-815px] h-385 w-236 tab:bg-[-3780px_-815px] tab:h-420 tab:w-257"></span>
         </li>
         <li
           className={`${
@@ -56,8 +56,8 @@ const Executives = ({ theme }) => {
           <span className="block mb-50 ml-5 text-left text-sm bigTab:ml-0 bigTab:mb-55">
             Head of marketing
           </span>
-          <span className="sprite lopez bg-[-272px_-400px] h-385 relative w-236 z-20 tab:bg-[-3128px_-400px] tab:h-420 tab:w-257"></span>
-          <span className="sprite team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
+          <span className="bg-sprite bg-no-repeat block lopez bg-[-272px_-400px] h-385 relative w-236 z-20 tab:bg-[-3128px_-400px] tab:h-420 tab:w-257"></span>
+          <span className="bg-sprite bg-no-repeat block team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
         </li>
         <li
           className={`${
@@ -70,7 +70,7 @@ const Executives = ({ theme }) => {
           <span className="block mb-50 ml-5 text-left text-sm bigTab:ml-0 bigTab:mb-55">
             HR manager
           </span>
-          <span className="sprite stephanie bg-[-4157px_-1210px] h-385 w-236 tab:bg-[-4157px_-1605px] tab:h-420 tab:w-257"></span>
+          <span className="bg-sprite bg-no-repeat block stephanie bg-[-4157px_-1210px] h-385 w-236 tab:bg-[-4157px_-1605px] tab:h-420 tab:w-257"></span>
         </li>
         <li
           className={`${
@@ -83,8 +83,8 @@ const Executives = ({ theme }) => {
           <span className="block mb-50 ml-5 text-left text-sm bigTab:ml-0 bigTab:mb-55">
             Community manager
           </span>
-          <span className="brightness-90 contrast-150 grayscale sprite lily bg-[-3107px_-5px] h-385 relative w-236 z-20 tab:bg-[-2861px_-400px] tab:h-420 tab:w-257"></span>
-          <span className="sprite team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
+          <span className="brightness-90 contrast-150 grayscale bg-sprite bg-no-repeat block lily bg-[-3107px_-5px] h-385 relative w-236 z-20 tab:bg-[-2861px_-400px] tab:h-420 tab:w-257"></span>
+          <span className="bg-sprite bg-no-repeat block team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
         </li>
       </Carousel>
     </section>

@@ -6,7 +6,6 @@ import Objectives from "../common/block-components/block-objectives";
 import Showcase from "../common/block-components/block-showcase";
 import Presale from "../common/block-components/block-presale";
 import PurchaseGuide from "../common/block-components/block-purchase";
-import Footer from "../common/block-components/block-footer";
 
 const GuestHome = ({ theme }) => {
   return (
@@ -18,7 +17,6 @@ const GuestHome = ({ theme }) => {
       <Showcase />
       <Presale theme={theme} />
       <PurchaseGuide theme={theme} />
-      <Footer theme={theme} />
     </Fragment>
   );
 };

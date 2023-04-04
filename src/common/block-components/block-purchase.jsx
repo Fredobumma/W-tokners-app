@@ -11,7 +11,7 @@ const PurchaseGuide = ({ theme }) => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } font-bold h-max max-w-400 mx-0 px-purchase py-50 relative rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30`}
+          } h-max max-w-400 mx-0 px-purchase py-50 relative rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30 laptop:font-bold`}
         >
           <p
             className={`${
@@ -28,7 +28,7 @@ const PurchaseGuide = ({ theme }) => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } font-bold h-max max-w-400 px-purchase py-50 relative rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30 laptop:mt-60`}
+          } h-max max-w-400 px-purchase py-50 relative rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30 laptop:font-bold laptop:mt-60`}
         >
           <span className="absolute top-[-16%] h-60 inset-x-0 mx-auto rotate-90 w-60 z-10 bigTab:top-[-20%] bigTab:h-86 bigTab:w-86 laptop:h-60 laptop:left-[-106%] laptop:rotate-0 laptop:top-[23%] laptop:w-60 desktop:h-86 desktop:left-[-105%] desktop:w-86">
             <SVG
@@ -59,7 +59,7 @@ const PurchaseGuide = ({ theme }) => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } font-bold h-max max-w-400 px-purchase py-50 rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30`}
+          } h-max max-w-400 px-purchase py-50 rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30 laptop:font-bold`}
         >
           <p
             className={`opacity-${

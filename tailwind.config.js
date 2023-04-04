@@ -16,6 +16,7 @@ module.exports = {
         "switch-gradient": "switch 2.5s ease-in-out infinite",
       },
       backgroundImage: {
+        sprite: `url("common/images/sprite.png")`,
         form: "linear-gradient(90deg, #FFD100, #22A75D, #2278D4, #E20613)",
       },
       backgroundSize: {

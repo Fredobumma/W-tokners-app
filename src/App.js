@@ -3,7 +3,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import { SVGSource } from "./common/svg";
-import Switcher from "./common/switcher";
 import Navbar from "./common/block-components/navbar";
 import GuestHome from "./page-components/guestHome";
 import UsersHome from "./page-components/usersHome";
@@ -14,10 +13,10 @@ import Register from "./page-components/register";
 import Login from "./page-components/login";
 import Profile from "./page-components/profile";
 import RecoverPassword from "./page-components/recoverPassword";
-import TokensList from "./common/block-components/block-tokensList";
 import SavedTokens from "./common/block-components/block-savedTokens";
 import TokenDetails from "./common/block-components/block-token-details";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
+import Footer from "./common/block-components/block-footer";
 
 function App() {
   // const { width } = useWindowDimensions();
@@ -33,53 +32,59 @@ function App() {
     setDarkSide(checked);
   };
 
-  const toggleMenu = () => setMenu(!menu);
+  const toggleMenu = () => {
+    const { classList } = document.body;
+    if (!menu) classList.add("overflow-y-hidden");
+    else classList.remove("overflow-y-hidden");
 
-  // ROUTING
+    setMenu(!menu);
+  };
+
+  // <===== ROUTING IMPLEMENTATION =====>
   const router = createBrowserRouter([
-    { path: "/", element: <GuestHome /> || <UsersHome /> },
-    { path: "/team", element: <Team /> },
+    {
+      path: "/",
+      element: <GuestHome theme={getTheme} /> || <UsersHome theme={getTheme} />,
+    },
+    { path: "/team", element: <Team theme={getTheme} /> },
     {
       path: "/tokens",
-      element: <Tokens />,
       children: [
         {
-          path: "/tokens",
-          element: <TokensList />,
-          children: [{ path: ":tokenId", element: <TokenDetails /> }],
+          index: true,
+          element: <Tokens theme={getTheme} />,
         },
         {
-          path: "/tokens/saved",
-          element: <SavedTokens />,
+          path: "saved",
+          element: <SavedTokens theme={getTheme} />,
           children: [{ path: ":tokenId", element: <TokenDetails /> }],
         },
+        { path: ":tokenId", element: <TokenDetails /> },
       ],
     },
-    { path: "/join-whitelist", element: <JoinWhitelist /> },
-    { path: "/register", element: <Register /> },
-    { path: "/login", element: <Login /> },
-    { path: "/profile", element: <Profile /> },
-    { path: "/recover-password", element: <RecoverPassword /> },
+    { path: "/join-whitelist", element: <JoinWhitelist theme={getTheme} /> },
+    { path: "/register", element: <Register theme={getTheme} /> },
+    { path: "/login", element: <Login theme={getTheme} /> },
+    { path: "/profile", element: <Profile theme={getTheme} /> },
+    {
+      path: "/recover-password",
+      element: <RecoverPassword theme={getTheme} />,
+    },
   ]);
 
   return (
     <React.Fragment>
       <SVGSource />
       <main className={`mx-auto h-screen ${menu && "relative"} laptop:static`}>
-        <Navbar theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
+        <Navbar
+          menu={menu}
+          theme={getTheme}
+          checked={darkSide}
+          toggleMenu={toggleMenu}
+          toggleMode={toggleDarkMode}
+        />
         <RouterProvider router={router} />
-        <center>
-          {/* <Switcher checked={darkSide} onChange={toggleDarkMode} /> */}
-        </center>
-        {/* <GuestHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} /> */}
-        {/* <UsersHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} /> */}
-        {/* <JoinWhitelist theme={getTheme} /> */}
-        {/* <Team theme={getTheme} /> */}
-        {/* <Register theme={getTheme} /> */}
-        {/* <Login theme={getTheme} /> */}
-        {/* <Profile theme={getTheme} /> */}
-        {/* <RecoverPassword theme={getTheme} /> */}
-        {/* <Tokens theme={getTheme} /> */}
+        <Footer theme={getTheme} />
         <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>

@@ -9,31 +9,9 @@
 
 @font-face {
   font-family: "Azo Sans";
-  src: url("services/fonts/AzoSansRegular.ttf");
-  src: url("services/fonts/AzoSansThin.ttf") format("truetype"),
-    url("services/fonts/AzoSansThin.woff") format("woff"),
-    url("services/fonts/AzoSansThinItalic.ttf") format("truetype"),
-    url("services/fonts/AzoSansThinItalic.woff") format("woff"),
-    url("services/fonts/AzoSansLight.ttf") format("truetype"),
-    url("services/fonts/AzoSansLight.woff") format("woff"),
-    url("services/fonts/AzoSansLightItalic.ttf") format("truetype"),
-    url("services/fonts/AzoSansLightItalic.woff") format("woff"),
-    url("services/fonts/AzoSansRegular.ttf") format("truetype"),
-    url("services/fonts/AzoSansRegular.woff") format("woff"),
-    url("services/fonts/AzoSansItalic.ttf") format("truetype"),
-    url("services/fonts/AzoSansItalic.woff") format("woff"),
-    url("services/fonts/AzoSansMedium.ttf") format("truetype"),
-    url("services/fonts/AzoSansMedium.woff") format("woff"),
-    url("services/fonts/AzoSansMediumItalic.ttf") format("truetype"),
-    url("services/fonts/AzoSansMediumItalic.woff") format("woff"),
-    url("services/fonts/AzoSansBold.ttf") format("truetype"),
-    url("services/fonts/AzoSansBold.woff") format("woff"),
-    url("services/fonts/AzoSansBoldItalic.ttf") format("truetype"),
-    url("services/fonts/AzoSansBoldItalic.woff") format("woff"),
-    url("services/fonts/AzoSansBlack.ttf") format("truetype"),
-    url("services/fonts/AzoSansBlack.woff") format("woff"),
-    url("services/fonts/AzoSansBlackItalic.ttf") format("truetype"),
-    url("services/fonts/AzoSansBlackItalic.woff") format("woff");
+  src: url("services/fonts/AzoSansBold.ttf");
+  src: url("services/fonts/AzoSansBold.ttf") format("truetype"),
+    url("services/fonts/AzoSansBold.woff") format("woff");
 }
 
 @import "tailwindcss/base";
@@ -69,16 +47,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.sprite {
-  background-image: url("common/images/sprite.png");
-  background-repeat: no-repeat;
-  display: block;
-}
-
-.link-arrow:active > .arrow,
-.link-arrow:focus > .arrow,
-.link-arrow:hover > .arrow {
-  margin-left: 4px;
 }

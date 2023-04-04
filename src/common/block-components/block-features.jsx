@@ -27,10 +27,10 @@ const Features = ({ theme }) => {
           </p>
           <a
             href="#login"
-            className="inline-flex font-bold gap-1.5 items-center link-arrow text-sm text-creatorsLink transition underline underline-offset-2"
+            className="inline-flex font-bold gap-1.5 group items-center text-sm text-creatorsLink transition underline underline-offset-2"
           >
             Learn More
-            <span className="arrow">
+            <span className="group-active:ml-1 group-focus:ml-1 group-hover:ml-1 transform transition-all duration-300">
               <SVG id="green-arrow" />
             </span>
           </a>
@@ -59,10 +59,10 @@ const Features = ({ theme }) => {
           </p>
           <a
             href="#login"
-            className="inline-flex font-bold gap-1.5 items-center link-arrow text-sm text-holdersLink transition underline underline-offset-2"
+            className="inline-flex font-bold gap-1.5 group items-center text-sm text-holdersLink transition underline underline-offset-2"
           >
             Learn More
-            <span className="arrow">
+            <span className="group-active:ml-1 group-focus:ml-1 group-hover:ml-1 transform transition-all duration-300">
               <SVG id="blue-arrow" />
             </span>
           </a>

@@ -4,7 +4,7 @@ import { SVG } from "../svg";
 const Footer = ({ theme }) => {
   return (
     <footer className="py-10 bigTab:py-20 laptop:py-36">
-      <ul className="font-bold gap-x-20 hidden mb-120 laptop:inline-flex">
+      <ul className="font-bold gap-x-20 hidden mb-120 laptop:flex laptop:justify-center">
         <li>
           <a
             href="#login"
@@ -51,22 +51,46 @@ const Footer = ({ theme }) => {
         </span>
         <div className="flex gap-x-2.5 justify-center">
           <span className="h-logo w-logo laptop:h-50 laptop:w-50">
-            <SVG id="twitter" height="100%" width="100%" />
+            <SVG
+              id={theme ? "darktwitter" : "twitter"}
+              height="100%"
+              width="100%"
+            />
           </span>
           <span className="h-logo w-logo laptop:h-50 laptop:w-50">
-            <SVG id="telegram" height="100%" width="100%" />
+            <SVG
+              id={theme ? "darktelegram" : "telegram"}
+              height="100%"
+              width="100%"
+            />
           </span>
           <span className="h-logo w-logo laptop:h-50 laptop:w-50">
-            <SVG id="instagram" height="100%" width="100%" />
+            <SVG
+              id={theme ? "darkinstagram" : "instagram"}
+              height="100%"
+              width="100%"
+            />
           </span>
           <span className="h-logo w-logo laptop:h-50 laptop:w-50">
-            <SVG id="medium" height="100%" width="100%" />
+            <SVG
+              id={theme ? "darkmedium" : "medium"}
+              height="100%"
+              width="100%"
+            />
           </span>
           <span className="h-logo w-logo laptop:h-50 laptop:w-50">
-            <SVG id="github" height="100%" width="100%" />
+            <SVG
+              id={theme ? "darkgithub" : "github"}
+              height="100%"
+              width="100%"
+            />
           </span>
           <span className="h-logo w-logo laptop:h-50 laptop:w-50">
-            <SVG id="reddit" height="100%" width="100%" />
+            <SVG
+              id={theme ? "darkreddit" : "reddit"}
+              height="100%"
+              width="100%"
+            />
           </span>
         </div>
         <div className="flex flex-col gap-y-2.5 items-center bigTab:gap-y-4 laptop:items-end">
@@ -74,11 +98,11 @@ const Footer = ({ theme }) => {
             &copy; 2023 Tokners. All rights reserved.
           </p>
           <p className="flex gap-x-1 items-center text-xs underline underline-offset-2">
-            <SVG id={theme ? "my-logo-dark" : "my-logo"} />
+            <SVG id="my-logo" />
             Built by Manfred Obumma
           </p>
           <p className="flex gap-x-1 items-center text-xs underline underline-offset-2">
-            <SVG id={theme ? "dark-oleg-logo" : "oleg-logo"} />
+            <SVG id="oleg-logo" />
             Design by Oleg Kulik
           </p>
         </div>

@@ -7,7 +7,7 @@ const Presale = ({ theme }) => {
       <h2 className="font-bold text-32 text-center leading-10 mb-4 tab:text-40 bigTab:mb-5 desktop:mb-10 desktop:text-5xl desktop:leading-54">
         Presale Details
       </h2>
-      <div className="overflow-x-scroll">
+      <div className="overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all">
         <div className="gap-x-2.5 grid grid-cols-3 max-w-[1220px] mb-4 mx-auto w-[250vw] text-center widerScreen:gap-x-5 widerScreen:max-w-[1580px]">
           <div
             className={`${
