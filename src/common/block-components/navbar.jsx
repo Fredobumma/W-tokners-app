@@ -7,11 +7,7 @@ const Navbar = ({ menu, theme, toggleMenu }) => {
     <nav className="laptop:-mx-30">
       <div className="relative flex items-center justify-between pt-2.5 laptop:justify-start laptop:static">
         <span className="inline max-h-[33px] max-w-[207px] mr-30 laptop:m-0">
-          <SVG
-            id={theme ? "darkLogo" : "lightLogo"}
-            height="100%"
-            width="100%"
-          />
+          <SVG id="namedLogo" height="100%" width="100%" />
         </span>
         <button className="group z-20 laptop:hidden" onClick={toggleMenu}>
           <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">

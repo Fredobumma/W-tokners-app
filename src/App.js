@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
+import { SVGSource } from "./common/svg";
 import Switcher from "./common/switcher";
+import Navbar from "./common/block-components/navbar";
 import GuestHome from "./page-components/guestHome";
 import UsersHome from "./page-components/usersHome";
 import Team from "./page-components/team";
@@ -24,7 +26,7 @@ function App() {
   const [darkSide, setDarkSide] = useState(
     colorTheme === "bg-light" ? false : true
   );
-  // const getTheme = colorTheme === "bg-dark";
+  const getTheme = colorTheme === "bg-dark";
 
   const toggleDarkMode = (checked) => {
     setTheme(colorTheme);
@@ -34,7 +36,6 @@ function App() {
   const toggleMenu = () => setMenu(!menu);
 
   // ROUTING
-  // TODO: here
   const router = createBrowserRouter([
     { path: "/", element: <GuestHome /> || <UsersHome /> },
     { path: "/team", element: <Team /> },
@@ -63,10 +64,12 @@ function App() {
 
   return (
     <React.Fragment>
+      <SVGSource />
       <main className={`mx-auto h-screen ${menu && "relative"} laptop:static`}>
+        <Navbar theme={getTheme} menu={menu} toggleMenu={toggleMenu} />
         <RouterProvider router={router} />
         <center>
-          <Switcher checked={darkSide} onChange={toggleDarkMode} />
+          {/* <Switcher checked={darkSide} onChange={toggleDarkMode} /> */}
         </center>
         {/* <GuestHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} /> */}
         {/* <UsersHome theme={getTheme} menu={menu} toggleMenu={toggleMenu} /> */}
