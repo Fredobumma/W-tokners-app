@@ -5,38 +5,26 @@ const Footer = ({ theme }) => {
   return (
     <footer className="py-10 bigTab:py-20 laptop:py-36">
       <ul className="font-bold gap-x-20 hidden mb-120 laptop:flex laptop:justify-center">
-        <li>
-          <a
-            href="#login"
-            className="active:rotate-3 focus:rotate-3 hover:rotate-3  underline underline-offset-2"
-          >
+        <li className="active:rotate-3 focus:rotate-3 hover:rotate-3">
+          <a href="#login" className="outline-0 underline underline-offset-2">
             OUR TEAM
           </a>
         </li>
         <li>/</li>
-        <li>
-          <a
-            href="#login"
-            className="active:rotate-3 focus:rotate-3 hover:rotate-3 underline underline-offset-2"
-          >
+        <li className="active:rotate-3 focus:rotate-3 hover:rotate-3">
+          <a href="#login" className="outline-0 underline underline-offset-2">
             TOKENS
           </a>
         </li>
         <li>/</li>
-        <li>
-          <a
-            href="#login"
-            className="active:rotate-3 focus:rotate-3 hover:rotate-3 underline underline-offset-2"
-          >
+        <li className="active:rotate-3 focus:rotate-3 hover:rotate-3">
+          <a href="#login" className="outline-0 underline underline-offset-2">
             CONNECT WALLET
           </a>
         </li>
         <li>/</li>
-        <li>
-          <a
-            href="#login"
-            className="active:rotate-3 focus:rotate-3 hover:rotate-3 underline underline-offset-2"
-          >
+        <li className="active:rotate-3 focus:rotate-3 hover:rotate-3">
+          <a href="#login" className="outline-0 underline underline-offset-2">
             LIGHTPAPER
           </a>
         </li>

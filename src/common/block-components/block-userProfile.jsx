@@ -44,7 +44,7 @@ const UserProfile = ({ theme }) => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:altButton bg-secondary focus:bg-altButton hover:bg-altButton mt-3 px-30 py-3.5"
+                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300"
               />
             </div>
             <div className="tab:flex tab:justify-around">
@@ -69,7 +69,7 @@ const UserProfile = ({ theme }) => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:altButton bg-secondary focus:bg-altButton hover:bg-altButton mt-3 px-30 py-3.5"
+                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300"
               />
             </div>
             <div className="tab:flex tab:justify-around">
@@ -94,7 +94,7 @@ const UserProfile = ({ theme }) => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:altButton bg-secondary focus:bg-altButton hover:bg-altButton mt-3 px-30 py-3.5"
+                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300"
               />
             </div>
           </form>
@@ -136,7 +136,7 @@ const UserProfile = ({ theme }) => {
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <label htmlFor="date">Country</label>
               <select
-                className={`border-b-2 bg-transparent h-10 px-2 text-sm w-full focus:outline-0 tab:w-3/4 ${
+                className={`border-b-2 bg-transparent h-10 px-2 text-sm w-full tab:w-3/4 ${
                   theme ? "border-light" : "border-dark"
                 }`}
                 name="pets"
@@ -227,7 +227,7 @@ const UserProfile = ({ theme }) => {
             </span>
             <Button
               label="Save"
-              extraStyles="active:altButton bg-secondary focus:bg-altButton hover:bg-altButton ml-auto mt-3 px-30 py-3.5 w-fit"
+              extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 ml-auto mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300 w-fit"
             />
           </form>
         </div>

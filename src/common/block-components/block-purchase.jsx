@@ -20,7 +20,7 @@ const PurchaseGuide = ({ theme }) => {
           >
             01
           </p>
-          <p className="leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
+          <p className="font-bold leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
             First Connect your Metamask or TrustWallet to the "Connect Wallet"
             on the Homepage.
           </p>
@@ -44,7 +44,7 @@ const PurchaseGuide = ({ theme }) => {
           >
             02
           </p>
-          <p className="leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
+          <p className="font-bold leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
             Then send minimum of 0.1 BNB or maximum of 10 BNB to the Presale
             wallet.
           </p>
@@ -68,7 +68,7 @@ const PurchaseGuide = ({ theme }) => {
           >
             03
           </p>
-          <p className="leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
+          <p className="font-bold leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
             Then after you will received your $WNTR to your address within
             24hours.
           </p>

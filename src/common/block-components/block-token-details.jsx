@@ -17,7 +17,7 @@ const TokenDetails = ({ theme }) => {
             </h3>
             <button
               type="button"
-              className="inline-flex items-center ml-auto p-1.5 rounded-all text-sm hover:bg-gray-200 hover:text-gray-900"
+              className="inline-flex items-center ml-auto p-1.5 rounded-all text-sm hover:bg-gray-200 hover:text-gray-900 transform-gpu transform transition-all duration-300"
               data-modal-hide="defaultModal"
             >
               <span className="w-5">&#10006;</span>
@@ -118,7 +118,7 @@ const TokenDetails = ({ theme }) => {
                   <span className="font-normal opacity-70 text-sm">Rank:</span>{" "}
                   1
                 </p>
-                <button className="cursor-pointer hover:scale-110 laptop:mr-0">
+                <button className="cursor-pointer hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300">
                   <SVG id="reset" />
                 </button>
               </div>

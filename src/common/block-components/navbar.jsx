@@ -7,9 +7,12 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
   return (
     <nav className="laptop:-mx-30">
       <div className="relative flex items-center justify-between pt-2.5 laptop:justify-start laptop:static">
-        <span className="inline max-h-[33px] max-w-[207px] mr-30 laptop:m-0">
+        <a
+          href="/"
+          className="outline-0 max-h-[33px] max-w-[207px] mr-30 laptop:m-0"
+        >
           <SVG id="namedLogo" height="100%" width="100%" />
-        </span>
+        </a>
         <button className="group z-[100] laptop:hidden" onClick={toggleMenu}>
           <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
             <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
@@ -38,19 +41,19 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
         >
           <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30 laptop:inline-flex">
             <li>
-              <a href="/" className="group overflow-hidden relative">
+              <a href="/" className="outline-0 group overflow-hidden relative">
                 Our team
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
               </a>
             </li>
             <li>
-              <a href="/" className="group overflow-hidden relative">
+              <a href="/" className="outline-0 group overflow-hidden relative">
                 Tokens
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
               </a>
             </li>
             <li>
-              <a href="/" className="group overflow-hidden relative">
+              <a href="/" className="outline-0 group overflow-hidden relative">
                 Join Whitelist
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
               </a>

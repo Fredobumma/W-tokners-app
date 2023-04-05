@@ -82,7 +82,7 @@ const TokensList = ({ theme }) => {
               </span>
             </span>
           </div>
-          <button className="cursor-pointer mr-2 hover:scale-110 laptop:mr-0">
+          <button className="cursor-pointer mr-2 hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300">
             <SVG id="reset" />
           </button>
         </div>

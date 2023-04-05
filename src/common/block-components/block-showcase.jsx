@@ -66,7 +66,7 @@ const Showcase = () => {
           </p>
           <Button
             label="Read More"
-            extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3"
+            extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transform-gpu transform transition-all duration-300"
           />
         </div>
         <picture className="justify-self-end bigTab:justify-self-auto">

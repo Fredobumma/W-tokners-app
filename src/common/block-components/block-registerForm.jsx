@@ -22,7 +22,7 @@ const RegisterForm = ({ theme }) => {
           </p>
           <Button
             label="Login"
-            extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary mt-5 px-10 py-3"
+            extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary mt-5 px-10 py-3 transform-gpu transform transition-all duration-300"
           />
         </div>
         <div className="relative max-w-full">
@@ -94,7 +94,7 @@ const RegisterForm = ({ theme }) => {
               <div>
                 <Button
                   label="Submit"
-                  extraStyles="active:altButton bg-secondary focus:bg-altButton hover:bg-altButton mt-3 px-30 py-3.5"
+                  extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300"
                 />
               </div>
             </form>

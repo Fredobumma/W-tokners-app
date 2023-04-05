@@ -16,15 +16,20 @@ module.exports = {
         "switch-gradient": "switch 2.5s ease-in-out infinite",
       },
       backgroundImage: {
-        sprite: `url("common/images/sprite.png")`,
+        sprite: "url('/src/common/images/sprite.png')",
         form: "linear-gradient(90deg, #FFD100, #22A75D, #2278D4, #E20613)",
       },
       backgroundSize: {
         "400%": "400% 400%",
       },
       borderRadius: { all: "25px" },
+      dropShadow: {
+        button: [
+          "0 20px 13px rgba(34, 167, 93, 0.1)",
+          "0 10px 8px rgba(34, 167, 93, 0.2)",
+        ],
+      },
       colors: {
-        altButton: "#035d2b",
         creatorsLink: "#22A75D",
         dark: "#0F1320",
         holdersLink: "#2278D4",

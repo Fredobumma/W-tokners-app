@@ -24,7 +24,7 @@ const Hero = () => {
           </p>
           <Button
             label="Learn More"
-            extraStyles="active:altButton bg-secondary focus:bg-altButton hover:bg-altButton px-30 py-3.5"
+            extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 px-30 py-3.5 drop-shadow-button transform-gpu transform transition-all duration-300"
           />
         </div>
         <div className="-mt-20 tab:mt-5 laptop:mt-0">
@@ -42,7 +42,7 @@ const Hero = () => {
             />
             <source srcSet={pngImage_1x} type="image/png" />
             <img
-              className="object-stretch scale-x-[1.11] w-full tab:-ml-100 tab:overflow-y-visible tab:scale-150 laptop:max-h-full laptop:-ml-0 laptop:scale-[1.3]"
+              className="relative object-stretch scale-x-[1.11] w-full z-[-10] tab:-ml-100 tab:overflow-y-visible tab:scale-150 laptop:max-h-full laptop:-ml-0 laptop:scale-[1.3]"
               src={pngImage_2x}
               alt="Background"
             />

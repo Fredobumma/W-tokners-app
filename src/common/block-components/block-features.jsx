@@ -8,7 +8,7 @@ const Features = ({ theme }) => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-full mx-auto px-purchase pt-30 pb-10 relative rounded-all tab:px-10 bigTab:max-w-[90%] bigTab:px-50 laptop:max-w-full laptop:px-30 laptop:py-60 desktop:px-50 widerScreen:px-70`}
+          } h-max max-w-full mx-auto px-purchase pt-30 pb-10 rounded-all tab:px-10 bigTab:max-w-[90%] bigTab:px-50 laptop:max-w-full laptop:px-30 laptop:py-60 desktop:px-50 widerScreen:px-70`}
         >
           <span className="inline-block -ml-6 -mb-9 laptop:-mb-5">
             <SVG id={theme ? "light-creators-crown" : "dark-creators-crown"} />
@@ -27,7 +27,7 @@ const Features = ({ theme }) => {
           </p>
           <a
             href="#login"
-            className="inline-flex font-bold gap-1.5 group items-center text-sm text-creatorsLink transition underline underline-offset-2"
+            className="inline-flex font-bold gap-1.5 group items-center outline-0 text-sm text-creatorsLink transition underline underline-offset-2"
           >
             Learn More
             <span className="group-active:ml-1 group-focus:ml-1 group-hover:ml-1 transform transition-all duration-300">
@@ -38,7 +38,7 @@ const Features = ({ theme }) => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-full mx-auto px-purchase pt-30 pb-10 relative rounded-all tab:px-10 bigTab:max-w-[90%] bigTab:px-50 laptop:max-w-full laptop:mt-24 laptop:px-30 laptop:py-60 desktop:px-50 widerScreen:px-70`}
+          } h-max max-w-full mx-auto px-purchase pt-30 pb-10 rounded-all tab:px-10 bigTab:max-w-[90%] bigTab:px-50 laptop:max-w-full laptop:mt-24 laptop:px-30 laptop:py-60 desktop:px-50 widerScreen:px-70`}
         >
           <span className="inline-block -ml-6 -mb-9 laptop:-mb-5">
             <SVG id={theme ? "light-folders-star" : "dark-folders-star"} />
@@ -59,7 +59,7 @@ const Features = ({ theme }) => {
           </p>
           <a
             href="#login"
-            className="inline-flex font-bold gap-1.5 group items-center text-sm text-holdersLink transition underline underline-offset-2"
+            className="inline-flex font-bold gap-1.5 group items-center outline-0 text-sm text-holdersLink transition underline underline-offset-2"
           >
             Learn More
             <span className="group-active:ml-1 group-focus:ml-1 group-hover:ml-1 transform transition-all duration-300">

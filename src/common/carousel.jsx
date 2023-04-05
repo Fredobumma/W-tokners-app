@@ -21,28 +21,28 @@ const Carousel = ({ theme, children }) => {
         </h1>
         <div className="flex justify-center mr-12 space-x-2" aria-hidden>
           <button
-            className={`hidden py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
+            className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
               activePageIndex <= 0 &&
               "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
             }`}
             onClick={() => prev()}
           >
-            <SVG id={`${theme ? "dark-left-arrow" : "left-arrow"}`} />
+            <SVG id="left-arrow" />
           </button>
           <button
-            className={`hidden py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
+            className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
               activePageIndex === pages.length - 1 &&
               "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
             }`}
             onClick={() => next()}
           >
-            <SVG id={theme ? "dark-right-arrow" : "right-arrow"} />
+            <SVG id="right-arrow" />
           </button>
         </div>
       </div>
 
       <ul
-        className="flex gap-2.5 overflow-x-auto pb-5 pr-5 bigTab:pr-8 laptop:pr-16 snap-mandatory laptop:gap-5"
+        className="flex gap-2.5 overflow-x-auto pb-5 pr-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all bigTab:pr-8 laptop:pr-16 snap-mandatory laptop:gap-5"
         ref={scrollRef}
       >
         {/*  LIST OF ITEMS TO BE RENDERED

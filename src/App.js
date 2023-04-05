@@ -75,7 +75,7 @@ function App() {
   return (
     <React.Fragment>
       <SVGSource />
-      <main className={`mx-auto h-screen ${menu && "relative"} laptop:static`}>
+      <main className={`h-screen ${menu && "relative"} laptop:static`}>
         <Navbar
           menu={menu}
           theme={getTheme}
