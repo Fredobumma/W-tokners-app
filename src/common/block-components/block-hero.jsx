@@ -7,7 +7,7 @@ import webpImage_1x from "../images/hero-img-1.webp";
 
 const Hero = ({ theme }) => {
   return (
-    <section className="py-10 relative laptop:py-20">
+    <section className="pt-120 relative laptop:py-20">
       <div
         className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
           theme ? "bg-aside" : "bg-darkAside"
@@ -15,7 +15,11 @@ const Hero = ({ theme }) => {
       ></div>
       <div className="grid gap-y-2.5 bigTab:gap-y-5 laptop:gap-x-5 laptop:grid-cols-2">
         <div className="max-w-[600px] my-auto tab:px-30 bigTab:px-50 laptop:px-5">
-          <p className="font-bold mb-2.5 text-blue-600 text-sm bigTab:text-base">
+          <p
+            className={`bg-clip-text font-bold leading-6 mb-2.5 text-sm text-transparent bigTab:text-base ${
+              theme ? "bg-hero" : "bg-darkHero"
+            }`}
+          >
             At Tokners we are
           </p>
           <h1 className="font-bold text-32 leading-10 tab:text-40 desktop:text-5xl desktop:leading-54">

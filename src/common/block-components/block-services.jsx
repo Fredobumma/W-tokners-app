@@ -3,33 +3,36 @@ import pngImage_2x from "../images/services-bg.png";
 import pngImage_1x from "../images/services-bg-1.png";
 import webpImage_2x from "../images/services-bg.webp";
 import webpImage_1x from "../images/services-bg-1.webp";
+import { SVG } from "../svg";
 
-const Services = () => {
+const Services = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
-      <div className="grid items-center laptop:grid-cols-2">
-        <div>
-          <picture>
-            <source
-              srcSet={webpImage_2x}
-              media="(min-width: 768px)"
-              type="image/webp"
-            />
-            <source srcSet={webpImage_1x} type="image/webp" />
-            <source
-              srcSet={pngImage_2x}
-              media="(min-width: 768px)"
-              type="image/png"
-            />
-            <source srcSet={pngImage_1x} type="image/png" />
-            <img
-              className="max-h-400 object-stretch scale-x-115 w-full tab:scale-x-110 laptop:max-h-full laptop:-ml-10 laptop:scale-x-110"
-              src={pngImage_2x}
-              alt="Background"
-            />
-          </picture>
-        </div>
-        <div className="h-max py-70 laptop:p-0 laptop:pl-10 widerScreen:self-end widerScreen:pb-24">
+    <section className="py-5 laptop:py-0">
+      <div className="grid items-center laptop:grid-cols-2 desktop:h-auto">
+        <picture>
+          <source
+            srcSet={webpImage_2x}
+            media="(min-width: 768px)"
+            type="image/webp"
+          />
+          <source srcSet={webpImage_1x} type="image/webp" />
+          <source
+            srcSet={pngImage_2x}
+            media="(min-width: 768px)"
+            type="image/png"
+          />
+          <source srcSet={pngImage_1x} type="image/png" />
+          <img
+            className="max-h-400 object-stretch scale-x-115 w-full tab:scale-x-110 laptop:min-h-[420px] laptop:-ml-12 laptop:scale-110 desktop:min-h-auto desktop:-ml-60 desktop:scale-x-110 widerScreen:-ml-16"
+            src={pngImage_2x}
+            alt="Background"
+          />
+        </picture>
+        <div
+          className={`h-auto max-h-full overflow-y-auto -mx-5 px-5 py-70 rounded-tr-[150px] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all tab:rounded-tr-[40%] bigTab:-mx-8 bigTab:px-8 bigTab:rounded-tr-[50%] laptop:max-h-[420px] laptop:min-h-[420px] laptop:-mr-16 laptop:pl-120 laptop:rounded-tl-[50%] laptop:rounded-tr-none laptop:scale-y-110 desktop:min-h-auto desktop:pl-170 widerScreen:self-end widerScreen:pb-24 ${
+            theme ? "bg-dark text-white" : "bg-light text-dark"
+          }`}
+        >
           <h2 className="font-bold leading-10 mb-30 text-32 tab:text-40 desktop:text-5xl desktop:leading-54">
             What makes us different?
           </h2>

@@ -19,32 +19,43 @@ import MenuBackDrop from "./common/block-components/menuBackDrop";
 import Footer from "./common/block-components/block-footer";
 
 function App() {
-  // const { width } = useWindowDimensions();
-  const [menu, setMenu] = useState(false);
   const [colorTheme, setTheme] = useDarkSide();
   const [darkSide, setDarkSide] = useState(
     colorTheme === "bg-light" ? false : true
   );
   const getTheme = colorTheme === "bg-dark";
+  // const { width } = useWindowDimensions();
+  const [menu, setMenu] = useState(false);
+  const [collapseInfo, setCollapseInfo] = useState(true);
 
+  // <===== SWITCH THEME =====>
   const toggleDarkMode = (checked) => {
     setTheme(colorTheme);
     setDarkSide(checked);
   };
 
+  // <===== TOGGLE MENU =====>
   const toggleMenu = () => {
-    const { classList } = document.body;
-    if (!menu) classList.add("overflow-y-hidden");
-    else classList.remove("overflow-y-hidden");
-
+    const { classList } = window.document.documentElement;
+    classList.toggle("overflow-y-hidden");
     setMenu(!menu);
+  };
+
+  const toggleInfo = () => {
+    setCollapseInfo(!collapseInfo);
   };
 
   // <===== ROUTING IMPLEMENTATION =====>
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <GuestHome theme={getTheme} /> || <UsersHome theme={getTheme} />,
+      element: (
+        <GuestHome
+          theme={getTheme}
+          collapseInfo={collapseInfo}
+          toggleInfo={toggleInfo}
+        />
+      ) || <UsersHome theme={getTheme} />,
     },
     { path: "/team", element: <Team theme={getTheme} /> },
     {
@@ -91,7 +102,7 @@ function App() {
           checked={darkSide}
           toggleMode={toggleDarkMode}
         />
-        <MenuBackDrop menu={menu} />
+        <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
       </main>
     </React.Fragment>
   );

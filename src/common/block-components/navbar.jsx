@@ -6,7 +6,7 @@ import Switcher from "../switcher";
 const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
   return (
     <nav
-      className={`fixed inset-x-0 max-w-[1600px] pb-5 px-5 w-full z-[80] tab:px-30 laptop:mx-auto ${
+      className={`fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30 laptop:mx-auto ${
         theme ? "bg-light" : "bg-dark"
       }`}
     >

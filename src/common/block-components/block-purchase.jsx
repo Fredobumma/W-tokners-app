@@ -3,7 +3,7 @@ import { SVG } from "../svg";
 
 const PurchaseGuide = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="pb-5 pt-2.5 tab:py-20 laptop:py-0">
       <h2 className="font-bold text-32 text-center leading-10 mb-5 tab:text-40 bigTab:mb-50 desktop:text-5xl desktop:leading-54">
         How to buy
       </h2>

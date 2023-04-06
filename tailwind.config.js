@@ -17,18 +17,25 @@ module.exports = {
       },
       backgroundImage: {
         aside:
-          "linear-gradient(135deg, rgba(226,6,19,1) 0%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
+          "linear-gradient(135deg, rgba(226,6,19,0.4) 0%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
         darkAside:
-          "linear-gradient(135deg, rgba(226,6,19,1) 0%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
+          "linear-gradient(135deg, rgba(226,6,19,0.7) 0%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
+        darkHero:
+          "linear-gradient(0deg, rgba(43,48,135,1) 0%, rgba(0,180,236,1) 30%)",
         darkNav:
-          "linear-gradient(135deg, rgba(226,6,19,1) 20%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
+          "linear-gradient(135deg, rgba(226,6,19,0.7) 20%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
         "darkNav-xl":
-          "linear-gradient(135deg, rgba(226,6,19,1) 5%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
+          "linear-gradient(135deg, rgba(226,6,19,0.7) 5%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
+        darkShowcase:
+          "linear-gradient(0deg, rgba(15,19,32,0.7) 0%, rgba(255,255,255,0) 30%)",
         form: "linear-gradient(90deg, #FFD100, #22A75D, #2278D4, #E20613)",
-        nav: "linear-gradient(135deg, rgba(226,6,19,1) 20%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
-        sprite: "url('/src/common/images/sprite.png')",
+        hero: "linear-gradient(0deg, rgba(43,48,135,1) 0%, rgba(0,180,236,1) 90%)",
+        nav: "linear-gradient(135deg, rgba(226,6,19,0.4) 20%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.05) 62%, rgba(255,255,255,1) 67%)",
         "nav-xl":
-          "linear-gradient(135deg, rgba(226,6,19,1) 5%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
+          "linear-gradient(135deg, rgba(226,6,19,0.4) 5%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
+        showcase:
+          "linear-gradient(0deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 30%)",
+        sprite: "url('/src/common/images/sprite.png')",
       },
       backgroundSize: {
         "400%": "400% 400%",
@@ -104,6 +111,7 @@ module.exports = {
         700: "700px",
         800: "800px",
         1024: "1024px",
+        1600: "1600px",
       },
       minWidth: {
         250: "250px",

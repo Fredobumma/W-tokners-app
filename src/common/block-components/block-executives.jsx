@@ -9,7 +9,7 @@ const Executives = ({ theme }) => {
           theme ? "bg-aside" : "bg-darkAside"
         }`}
       ></div>{" "}
-      <Carousel theme={theme}>
+      <Carousel>
         <li
           className={`${
             (theme && "bg-lightTeamCard") || "bg-teamCard"

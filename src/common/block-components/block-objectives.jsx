@@ -1,10 +1,18 @@
 import React from "react";
 import { SVG } from "../svg";
 
-const Objectives = () => {
+const Objectives = ({ theme }) => {
   return (
-    <aside className="py-10 laptop:py-20">
-      <div className="grid gap-10 tab:justify-center bigTab:gap-20 laptop:gap-12 laptop:grid-cols-4">
+    <aside
+      className={`py-50 laptop:max-w-1600 laptop:-ml-16 laptop:py-0 laptop:relative laptop:w-screen laptop:z-[-20] ${
+        theme ? "laptop:bg-dark" : "laptop:bg-light"
+      }`}
+    >
+      <div
+        className={`grid gap-10 tab:justify-center bigTab:gap-20 laptop:gap-12 laptop:grid-cols-4 laptop:h-full laptop:px-16 laptop:py-170 laptop:relative laptop:rounded-tr-[25%] laptop:w-full laptop:z-[-20] ${
+          theme ? "laptop:bg-light" : "laptop:bg-dark"
+        }`}
+      >
         <div>
           <span className="flex gap-x-2.5 mb-30 bigTab:mb-50">
             <span className="flex h-82 items-center justify-center relative w-82">

@@ -3,11 +3,22 @@ import { SVG } from "../svg";
 
 const Presale = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
-      <h2 className="font-bold text-32 text-center leading-10 mb-4 tab:text-40 bigTab:mb-5 desktop:mb-10 desktop:text-5xl desktop:leading-54">
+    <section className="py-120 relative bigTab:py-[150px] laptop:pt-[250px] widerScreen:pt-[300px]">
+      <span className="absolute h-full inset-0 -ml-5 w-screen z-[-20] bigTab:-ml-8 laptop:hidden">
+        <SVG id="presale-bg-2" height="100%" width="100%" aspectRatio="none" />
+      </span>
+      <span className="hidden inset-0 w-screen z-[-20] laptop:absolute laptop:block laptop:-ml-16 laptop:h-[85%] widerScreen:max-w-1600">
+        <SVG
+          id={theme ? "presale-bg" : "darkPresale-bg"}
+          height="100%"
+          width="100%"
+          aspectRatio="none"
+        />
+      </span>
+      <h2 className="font-bold leading-10 mb-30 text-32 text-center text-white tab:text-40 bigTab:mb-5 desktop:mb-10 desktop:text-5xl desktop:leading-54">
         Presale Details
       </h2>
-      <div className="overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all">
+      <div className="-ml-5 overflow-x-scroll px-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all w-screen bigTab:-ml-8 bigTab:px-8 laptop:ml-0 laptop:px-0 laptop:w-full desktop:-ml-16 desktop:w-screen widerScreen:-ml-0 widerScreen:w-full">
         <div className="gap-x-2.5 grid grid-cols-3 max-w-[1220px] mb-4 mx-auto w-[250vw] text-center widerScreen:gap-x-5 widerScreen:max-w-[1580px]">
           <div
             className={`${
@@ -45,7 +56,7 @@ const Presale = ({ theme }) => {
           >
             <span className="flex h-82 items-center justify-center relative w-82">
               <span className="absolute font-bold text-26 text-dark z-10">
-                01
+                02
               </span>
               <span className="absolute top-[-11%]">
                 <SVG id="goals-blue" />
@@ -74,7 +85,7 @@ const Presale = ({ theme }) => {
           >
             <span className="flex h-82 items-center justify-center relative w-82">
               <span className="absolute font-bold text-26 text-dark z-10">
-                01
+                03
               </span>
               <span className="absolute top-[-11%]">
                 <SVG id="goals-yellow" />
