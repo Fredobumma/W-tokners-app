@@ -84,8 +84,12 @@ function App() {
           toggleMode={toggleDarkMode}
         />
         <RouterProvider router={router} />
-        <Footer theme={getTheme} />
-        <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
+        <Footer
+          theme={getTheme}
+          checked={darkSide}
+          toggleMode={toggleDarkMode}
+        />
+        <MenuBackDrop menu={menu} />
       </main>
     </React.Fragment>
   );

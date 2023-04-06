@@ -29,7 +29,7 @@ const Services = () => {
             />
           </picture>
         </div>
-        <div className="h-max py-70 laptop:p-0 laptop:pl-10 widerScreen:pb-170">
+        <div className="h-max py-70 laptop:p-0 laptop:pl-10 widerScreen:self-end widerScreen:pb-24">
           <h2 className="font-bold leading-10 mb-30 text-32 tab:text-40 desktop:text-5xl desktop:leading-54">
             What makes us different?
           </h2>

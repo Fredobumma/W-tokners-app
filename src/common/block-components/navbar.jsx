@@ -41,19 +41,28 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
         >
           <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30 laptop:inline-flex">
             <li>
-              <a href="/" className="outline-0 group overflow-hidden relative">
+              <a
+                href="/team"
+                className="outline-0 group overflow-hidden relative"
+              >
                 Our team
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
               </a>
             </li>
             <li>
-              <a href="/" className="outline-0 group overflow-hidden relative">
+              <a
+                href="/tokens"
+                className="outline-0 group overflow-hidden relative"
+              >
                 Tokens
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
               </a>
             </li>
             <li>
-              <a href="/" className="outline-0 group overflow-hidden relative">
+              <a
+                href="/join-whitelist"
+                className="outline-0 group overflow-hidden relative"
+              >
                 Join Whitelist
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
               </a>
@@ -64,7 +73,7 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
               </span>
             </li>
           </ul>
-          <div className="flex flex-col w-fit gap-2.5 mt-70 mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 desktop:gap-30">
+          <div className="flex flex-col w-fit gap-2.5 mt-70 mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30">
             <Button
               label="Sign In"
               extraStyles="active:bg-secondary bg-transparent py-3 focus:bg-secondary hover:bg-secondary focus:px-10 hover:px-10 transition-all duration-300 laptop:px-2.5 desktop:px-0"
@@ -73,6 +82,18 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
               label="Sign Up"
               extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
             />
+            {/* <a
+              href="/profile"
+              className="flex font-bold gap-2.5 items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
+              rel="noopener noreferrer"
+            >
+              UserName
+              <SVG id="profile" />
+            </a>
+            <Button
+              label="Log Out"
+              extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
+            /> */}
           </div>
         </div>
       </div>
