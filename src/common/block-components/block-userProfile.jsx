@@ -4,7 +4,12 @@ import Button from "../button";
 
 const UserProfile = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="py-10 relative laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>{" "}
       <h1 className="font-bold text-28 leading-54 mb-10 mx-5 tab:mb-10 tab:mx-10 tab:text-32 bigTab:mx-60 laptop:mb-60 desktop:mb-20 desktop:text-4xl">
         Profile Settings
       </h1>

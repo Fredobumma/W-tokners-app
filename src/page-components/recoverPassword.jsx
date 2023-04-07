@@ -4,7 +4,12 @@ import Button from "./../common/button";
 
 const RecoverPassword = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="py-10 relative laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>{" "}
       <div className="flex flex-col gap-10 max-w-512 mx-auto tab:max-w-640 bigTab:gap-50 bigTab:max-w-700 laptop:gap-0 laptop:max-w-1024">
         <div
           className={`px-8 py-12 rounded-all self-end text-center w-full z-10 laptop:mr-10 laptop:-mt-120 laptop:order-2 laptop:w-5/12 desktop:mr-50 ${

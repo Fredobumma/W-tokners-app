@@ -3,7 +3,12 @@ import { SVG } from "../svg";
 
 const TokensList = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="py-10 relative laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>{" "}
       <form className="flex flex-col gap-5 px-5 py-5 bigTab:px-10 laptop:flex-row laptop:gap-50 laptop:items-center laptop:justify-between laptop:py-30 laptop:px-30 desktop:gap-24 desktop:px-60">
         <div
           className={`flex border-b-2 items-center py-1 px-2 laptop:w-1/3 border-${
@@ -87,7 +92,6 @@ const TokensList = ({ theme }) => {
           </button>
         </div>
       </form>
-
       <div className="border-t mt-5 overflow-x-auto pb-5 pt-5 rounded-all scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all shadow-xl">
         <table className="text-left text-sm w-full">
           <thead className="text-xs uppercase">

@@ -4,7 +4,12 @@ import { SVG } from "../svg";
 
 const Footer = ({ theme, checked, toggleMode }) => {
   return (
-    <footer className="py-10 bigTab:py-20 laptop:py-36">
+    <footer className="py-10 relative bigTab:pt-20 laptop:pt-36">
+      <div
+        className={`absolute blur-[100px] h-60 inset-0 w-full z-[-10] tab:left-1/3 laptop:right-[60%] ${
+          theme ? "bg-nav laptop:bg-nav-xl" : "bg-darkNav laptop:bg-darkNav-xl"
+        }`}
+      ></div>
       <ul className="font-bold gap-x-20 hidden mb-120 laptop:flex laptop:justify-center">
         <li className="active:rotate-3 focus:rotate-3 hover:rotate-3">
           <a href="/team" className="outline-0 underline underline-offset-2">

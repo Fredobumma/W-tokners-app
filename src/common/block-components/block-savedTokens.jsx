@@ -1,9 +1,14 @@
 import React from "react";
 import { SVG } from "../svg";
 
-const SavedTokens = () => {
+const SavedTokens = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="py-10 relative laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>{" "}
       <div className="mt-70 text-right">
         <button className="cursor-pointer mr-2 hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300">
           <SVG id="reset" />

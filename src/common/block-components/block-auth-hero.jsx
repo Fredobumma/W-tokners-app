@@ -4,9 +4,14 @@ import pngImage_1x from "../images/wallet-hero-img-1.png";
 import webpImage_2x from "../images/wallet-hero-img.webp";
 import webpImage_1x from "../images/wallet-hero-img-1.webp";
 
-const Hero = () => {
+const Hero = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="py-10 relative laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>{" "}
       <div>
         <h3 className="font-bold leading-10 max-w-400 text-32 text-left">
           Tknrs Tokenomics and Token Distribution

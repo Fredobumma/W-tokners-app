@@ -10,7 +10,7 @@ import PurchaseGuide from "../common/block-components/block-purchase";
 const GuestHome = ({ theme }) => {
   return (
     <Fragment>
-      <Hero />
+      <Hero theme={theme} />
       <Features theme={theme} />
       <Services />
       <Objectives />

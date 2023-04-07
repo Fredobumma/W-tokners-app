@@ -57,9 +57,11 @@ function App() {
         {
           path: "saved",
           element: <SavedTokens theme={getTheme} />,
-          children: [{ path: ":tokenId", element: <TokenDetails /> }],
+          children: [
+            { path: ":tokenId", element: <TokenDetails theme={getTheme} /> },
+          ],
         },
-        { path: ":tokenId", element: <TokenDetails /> },
+        { path: ":tokenId", element: <TokenDetails theme={getTheme} /> },
       ],
     },
     { path: "/join-whitelist", element: <JoinWhitelist theme={getTheme} /> },
@@ -75,14 +77,14 @@ function App() {
   return (
     <React.Fragment>
       <SVGSource />
-      <main className={`h-screen ${menu && "relative"} laptop:static`}>
-        <Navbar
-          menu={menu}
-          theme={getTheme}
-          checked={darkSide}
-          toggleMenu={toggleMenu}
-          toggleMode={toggleDarkMode}
-        />
+      <Navbar
+        menu={menu}
+        theme={getTheme}
+        checked={darkSide}
+        toggleMenu={toggleMenu}
+        toggleMode={toggleDarkMode}
+      />
+      <main className="relative">
         <RouterProvider router={router} />
         <Footer
           theme={getTheme}

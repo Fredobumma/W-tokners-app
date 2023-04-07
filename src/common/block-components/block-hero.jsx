@@ -5,9 +5,14 @@ import pngImage_1x from "../images/hero-img-1.png";
 import webpImage_2x from "../images/hero-img.webp";
 import webpImage_1x from "../images/hero-img-1.webp";
 
-const Hero = () => {
+const Hero = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="py-10 relative laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>
       <div className="grid gap-y-2.5 bigTab:gap-y-5 laptop:gap-x-5 laptop:grid-cols-2">
         <div className="max-w-[600px] my-auto tab:px-30 bigTab:px-50 laptop:px-5">
           <p className="font-bold mb-2.5 text-blue-600 text-sm bigTab:text-base">

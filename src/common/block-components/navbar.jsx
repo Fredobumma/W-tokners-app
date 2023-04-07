@@ -5,8 +5,19 @@ import Switcher from "../switcher";
 
 const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
   return (
-    <nav className="laptop:-mx-30">
-      <div className="relative flex items-center justify-between pt-2.5 laptop:justify-start laptop:static">
+    <nav
+      className={`fixed inset-x-0 max-w-[1600px] pb-5 px-5 w-full z-[80] tab:px-30 laptop:mx-auto ${
+        theme ? "bg-light" : "bg-dark"
+      }`}
+    >
+      <div className="relative flex items-center justify-between pt-5 laptop:justify-start laptop:pt-2.5 laptop:static">
+        <div
+          className={`absolute blur-[100px] h-86 inset-0 w-full z-[-10] tab:left-1/3 laptop:left-[60%] ${
+            theme
+              ? "bg-nav laptop:bg-nav-xl"
+              : "bg-darkNav laptop:bg-darkNav-xl"
+          }`}
+        ></div>
         <a
           href="/"
           className="outline-0 max-h-[33px] max-w-[207px] mr-30 laptop:m-0"

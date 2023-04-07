@@ -7,7 +7,12 @@ import { SVG } from "../svg";
 
 const TokenDetails = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="py-10 relative laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>{" "}
       <div className="relative">
         <div className="absolute h-max left-0 max-w-2xl mx-auto overflow-x-hidden overflow-y-auto right-0 rounded-all shadow-xl top-0 w-full z-50 bigTab:mt-20 laptop:mt-60 desktop:mt-10">
           <div className="flex border-b items-start p-4 px-6 rounded-t">

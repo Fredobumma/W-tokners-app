@@ -3,7 +3,12 @@ import Carousel from "./../carousel";
 
 const Executives = ({ theme }) => {
   return (
-    <section className="-mr-5 py-10 bigTab:-mr-8 laptop:-mr-16 laptop:py-20">
+    <section className="-mr-5 py-10 relative bigTab:-mr-8 laptop:-mr-16 laptop:py-20">
+      <div
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+          theme ? "bg-aside" : "bg-darkAside"
+        }`}
+      ></div>{" "}
       <Carousel theme={theme}>
         <li
           className={`${

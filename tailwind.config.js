@@ -16,8 +16,19 @@ module.exports = {
         "switch-gradient": "switch 2.5s ease-in-out infinite",
       },
       backgroundImage: {
-        sprite: "url('/src/common/images/sprite.png')",
+        aside:
+          "linear-gradient(135deg, rgba(226,6,19,1) 0%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
+        darkAside:
+          "linear-gradient(135deg, rgba(226,6,19,1) 0%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
+        darkNav:
+          "linear-gradient(135deg, rgba(226,6,19,1) 20%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
+        "darkNav-xl":
+          "linear-gradient(135deg, rgba(226,6,19,1) 5%, rgba(15,19,32,1) 16%, rgba(15,19,32,1) 44%, rgba(37,99,235,0.2) 62%, rgba(15,19,32,1) 67%)",
         form: "linear-gradient(90deg, #FFD100, #22A75D, #2278D4, #E20613)",
+        nav: "linear-gradient(135deg, rgba(226,6,19,1) 20%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
+        sprite: "url('/src/common/images/sprite.png')",
+        "nav-xl":
+          "linear-gradient(135deg, rgba(226,6,19,1) 5%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
       },
       backgroundSize: {
         "400%": "400% 400%",
