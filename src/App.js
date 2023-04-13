@@ -49,13 +49,13 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (
+      element: <UsersHome theme={getTheme} /> || (
         <GuestHome
           theme={getTheme}
           collapseInfo={collapseInfo}
           toggleInfo={toggleInfo}
         />
-      ) || <UsersHome theme={getTheme} />,
+      ),
     },
     { path: "/team", element: <Team theme={getTheme} /> },
     {
@@ -95,7 +95,7 @@ function App() {
         toggleMenu={toggleMenu}
         toggleMode={toggleDarkMode}
       />
-      <main className="relative">
+      <main className="pt-120px relative">
         <RouterProvider router={router} />
         <Footer
           theme={getTheme}

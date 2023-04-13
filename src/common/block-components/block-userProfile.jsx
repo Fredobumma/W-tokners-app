@@ -4,28 +4,28 @@ import Button from "../button";
 
 const UserProfile = ({ theme }) => {
   return (
-    <section className="py-10 relative laptop:py-20">
+    <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
       <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
           theme ? "bg-aside" : "bg-darkAside"
         }`}
       ></div>{" "}
-      <h1 className="font-bold text-28 leading-54 mb-10 mx-5 tab:mb-10 tab:mx-10 tab:text-32 bigTab:mx-60 laptop:mb-60 desktop:mb-20 desktop:text-4xl">
+      <h1 className="font-bold text-28 leading-54 mb-10 mx-5 tab:mb-10 tab:mx-10 tab:text-32 bigTab:mx-60px laptop:mb-60px desktop:mb-20 desktop:text-4xl">
         Profile Settings
       </h1>
       <div className="relative max-w-full">
         <div
-          className={`relative rounded-all py-60 shadow-lg laptop:py-24 ${
+          className={`relative rounded-all py-60px shadow-lg laptop:py-24 ${
             theme ? "bg-dark text-light" : "bg-white text-dark"
           }`}
         >
-          <div className="mb-10 px-30 tab:px-50 bigTab:px-70 laptop:px-100">
+          <div className="mb-10 px-30px tab:px-50px bigTab:px-70px laptop:px-100px">
             <h2 className="font-bold leading-10 text-xl">
               Profile Login Information
             </h2>
             <p className="text-sm">Update your login information.</p>
           </div>
-          <form className="border-b grid gap-30 pb-10 px-30 tab:pb-60 tab:px-50 bigTab:px-70 laptop:pb-20 laptop:px-100">
+          <form className="border-b grid gap-30px pb-10 px-30px tab:pb-60px tab:px-50px bigTab:px-70px laptop:pb-20 laptop:px-100px">
             <div className="tab:flex tab:justify-around">
               <span
                 className={`flex border-b-2 gap-3 items-center tab:w-3/5 ${
@@ -49,7 +49,7 @@ const UserProfile = ({ theme }) => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300"
+                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
               />
             </div>
             <div className="tab:flex tab:justify-around">
@@ -74,7 +74,7 @@ const UserProfile = ({ theme }) => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300"
+                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
               />
             </div>
             <div className="tab:flex tab:justify-around">
@@ -99,17 +99,17 @@ const UserProfile = ({ theme }) => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300"
+                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
               />
             </div>
           </form>
-          <div className="mb-10 mt-60 px-30 tab:px-50 bigTab:px-70 laptop:mt-24 laptop:px-100">
+          <div className="mb-10 mt-60px px-30px tab:px-50px bigTab:px-70px laptop:mt-24 laptop:px-100px">
             <h2 className="font-bold leading-10 text-xl">
               Profile Personal Information - Optional
             </h2>
             <p className="text-sm">Tell us more about yourself.</p>
           </div>
-          <form className="border-b grid gap-30 pb-10 px-30 tab:px-70 bigTab:px-24 laptop:pb-60 laptop:px-150 desktop:px-170">
+          <form className="border-b grid gap-30px pb-10 px-30px tab:px-70px bigTab:px-24 laptop:pb-60px laptop:px-150px desktop:px-170px">
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <label htmlFor="fullname">Full Name</label>
               <input
@@ -232,7 +232,7 @@ const UserProfile = ({ theme }) => {
             </span>
             <Button
               label="Save"
-              extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 ml-auto mt-3 px-30 py-3.5 transform-gpu transform transition-all duration-300 w-fit"
+              extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 ml-auto mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 w-fit"
             />
           </form>
         </div>

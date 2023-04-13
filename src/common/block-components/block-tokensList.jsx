@@ -3,13 +3,13 @@ import { SVG } from "../svg";
 
 const TokensList = ({ theme }) => {
   return (
-    <section className="py-10 relative laptop:py-20">
+    <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
       <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
           theme ? "bg-aside" : "bg-darkAside"
         }`}
       ></div>{" "}
-      <form className="flex flex-col gap-5 px-5 py-5 bigTab:px-10 laptop:flex-row laptop:gap-50 laptop:items-center laptop:justify-between laptop:py-30 laptop:px-30 desktop:gap-24 desktop:px-60">
+      <form className="flex flex-col gap-5 px-5 py-5 bigTab:px-10 laptop:flex-row laptop:gap-50px laptop:items-center laptop:justify-between laptop:py-30px laptop:px-30px desktop:gap-24 desktop:px-60px">
         <div
           className={`flex border-b-2 items-center py-1 px-2 laptop:w-1/3 border-${
             theme ? "dark" : "light"
@@ -27,7 +27,7 @@ const TokensList = ({ theme }) => {
             <SVG id="search-icon" />
           </button>
         </div>
-        <div className="flex flex-wrap gap-5 items-center justify-between tab:flex-nowrap tab:gap-50 laptop:grow laptop:mt-1">
+        <div className="flex flex-wrap gap-5 items-center justify-between tab:flex-nowrap tab:gap-50px laptop:grow laptop:mt-1">
           <div className="flex gap-3 grow tab:grow-0">
             <label htmlFor="search-currency">Currency:</label>
             <input
@@ -310,14 +310,14 @@ const TokensList = ({ theme }) => {
           </tbody>
         </table>
         <nav
-          className="flex gap-30 items-center justify-between pl-3.5 pt-4 w-full"
+          className="flex gap-30px items-center justify-between pl-3.5 pt-4 w-full"
           aria-label="Table navigation"
         >
           <span className="text-sm">
             Showing <span className="font-bold">1-10</span> of{" "}
             <span className="font-bold"> 1000</span>
           </span>
-          <div className="flex gap-30 pr-3" aria-hidden>
+          <div className="flex gap-30px pr-3" aria-hidden>
             <button className="box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300">
               <SVG id="left-arrow" width="100%" height="100%" />
             </button>

@@ -4,19 +4,19 @@ import { SVG } from "../svg";
 const PurchaseGuide = ({ theme }) => {
   return (
     <section className="pb-5 pt-2.5 tab:py-20 laptop:py-0">
-      <h2 className="font-bold text-32 text-center leading-10 mb-5 tab:text-40 bigTab:mb-50 desktop:text-5xl desktop:leading-54">
+      <h2 className="font-bold text-32 text-center leading-10 mb-5 tab:text-40 bigTab:mb-50px desktop:text-5xl desktop:leading-54">
         How to buy
       </h2>
       <div className="grid gap-y-2.5 justify-items-center mx-auto bigTab:gap-y-5 bigTab:max-w-512 bigTab:justify-items-stretch laptop:gap-x-5 laptop:grid-cols-3 laptop:max-w-none">
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-400 mx-0 px-purchase py-50 relative rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30 laptop:font-bold`}
+          } h-max max-w-400 mx-0 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold`}
         >
           <p
             className={`${
               theme ? "opacity-50" : "opacity-30"
-            } leading-6 mb-5 text-xs bigTab:mb-45`}
+            } leading-6 mb-5 text-xs bigTab:mb-45px`}
           >
             01
           </p>
@@ -28,7 +28,7 @@ const PurchaseGuide = ({ theme }) => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-400 px-purchase py-50 relative rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30 laptop:font-bold laptop:mt-60`}
+          } h-max max-w-400 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold laptop:mt-60`}
         >
           <span className="absolute top-[-16%] h-60 inset-x-0 mx-auto rotate-90 w-60 z-10 bigTab:top-[-20%] bigTab:h-86 bigTab:w-86 laptop:h-60 laptop:left-[-106%] laptop:rotate-0 laptop:top-[23%] laptop:w-60 desktop:h-86 desktop:left-[-105%] desktop:w-86">
             <SVG
@@ -40,7 +40,7 @@ const PurchaseGuide = ({ theme }) => {
           <p
             className={`opacity-${
               theme ? "50" : "30"
-            } leading-6 mb-5 text-xs bigTab:mb-45`}
+            } leading-6 mb-5 text-xs bigTab:mb-45px`}
           >
             02
           </p>
@@ -59,12 +59,12 @@ const PurchaseGuide = ({ theme }) => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-400 px-purchase py-50 rounded-all bigTab:max-w-512 bigTab:pb-100 bigTab:pt-30 laptop:font-bold`}
+          } h-max max-w-400 px-purchase py-50px rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold`}
         >
           <p
             className={`opacity-${
               theme ? "50" : "30"
-            } leading-6 mb-5 text-xs bigTab:mb-45`}
+            } leading-6 mb-5 text-xs bigTab:mb-45px`}
           >
             03
           </p>

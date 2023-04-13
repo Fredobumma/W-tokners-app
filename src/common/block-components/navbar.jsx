@@ -6,13 +6,13 @@ import Switcher from "../switcher";
 const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
   return (
     <nav
-      className={`fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30 laptop:mx-auto ${
+      className={`fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30px laptop:mx-auto ${
         theme ? "bg-light" : "bg-dark"
       }`}
     >
       <div className="relative flex items-center justify-between pt-5 laptop:justify-start laptop:pt-2.5 laptop:static">
         <div
-          className={`absolute blur-[100px] h-86 inset-0 w-full z-[-10] tab:left-1/3 laptop:left-[60%] ${
+          className={`absolute blur-[100px] h-86 inset-0 w-full -z-10 tab:left-1/3 laptop:left-[60%] ${
             theme
               ? "bg-nav laptop:bg-nav-xl"
               : "bg-darkNav laptop:bg-darkNav-xl"
@@ -20,7 +20,7 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
         ></div>
         <a
           href="/"
-          className="outline-0 max-h-[33px] max-w-[207px] mr-30 laptop:m-0"
+          className="outline-0 max-h-[33px] max-w-[207px] mr-30px laptop:m-0"
         >
           <SVG id="namedLogo" height="100%" width="100%" />
         </a>
@@ -46,11 +46,11 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
           </div>
         </button>
         <div
-          className={`absolute h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50 laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
+          className={`absolute h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
             !menu && "left-[200vw]"
           } ${(theme && "bg-white") || "bg-dark"}`}
         >
-          <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30 laptop:inline-flex">
+          <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30px laptop:inline-flex">
             <li>
               <a
                 href="/team"
@@ -84,7 +84,7 @@ const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
               </span>
             </li>
           </ul>
-          <div className="flex flex-col w-fit gap-2.5 mt-70 mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30">
+          <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
             <Button
               label="Sign In"
               extraStyles="active:bg-secondary bg-transparent py-3 focus:bg-secondary hover:bg-secondary focus:px-10 hover:px-10 transition-all duration-300 laptop:px-2.5 desktop:px-0"

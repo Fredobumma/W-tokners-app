@@ -2,7 +2,7 @@ import React from "react";
 import { useSnapCarousel } from "react-snap-carousel";
 import { SVG } from "./svg";
 
-const Carousel = ({ theme, children }) => {
+const TeamCarousel = ({ theme, children }) => {
   const {
     pages,
     activePageIndex,
@@ -12,6 +12,7 @@ const Carousel = ({ theme, children }) => {
     prev,
     goTo,
   } = useSnapCarousel();
+  console.log(pages);
 
   return (
     <>
@@ -42,7 +43,7 @@ const Carousel = ({ theme, children }) => {
       </div>
 
       <ul
-        className="flex gap-2.5 overflow-x-auto pb-5 pr-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all bigTab:pr-8 laptop:pr-16 snap-mandatory laptop:gap-5"
+        className="flex gap-2.5 overflow-x-auto pb-5 pr-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all snap-mandatory bigTab:pr-8 laptop:pr-16 laptop:gap-5"
         ref={scrollRef}
       >
         {/*  LIST OF ITEMS TO BE RENDERED
@@ -57,7 +58,7 @@ const Carousel = ({ theme, children }) => {
         {children}
       </ul>
 
-      <ol className="flex flex-wrap gap-x-2.5 gap-y-5 items-center justify-center mt-30 laptop:hidden">
+      <ol className="flex flex-wrap gap-x-2.5 gap-y-5 items-center justify-center mt-30px laptop:hidden">
         {pages.map((_, i) => (
           <li
             key={i}
@@ -76,4 +77,4 @@ const Carousel = ({ theme, children }) => {
   );
 };
 
-export default Carousel;
+export default TeamCarousel;

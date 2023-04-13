@@ -6,9 +6,9 @@ import webpImage_1x from "../images/wallet-hero-img-1.webp";
 
 const Hero = ({ theme }) => {
   return (
-    <section className="py-10 relative laptop:py-20">
+    <section className="relative tab:py-10 laptop:py-20">
       <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full z-[-20] tab:left-1/3 laptop:left-[60%] ${
+        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
           theme ? "bg-aside" : "bg-darkAside"
         }`}
       ></div>{" "}
@@ -29,7 +29,7 @@ const Hero = ({ theme }) => {
             </p>
           </div>
         </div>
-        <div className="grid justify-items-center max-w-400 mx-auto tab:max-w-700 laptop:gap-10 laptop:grid-cols-3 laptop:max-w-full desktop:gap-60 desktop:mt-10">
+        <div className="grid justify-items-center max-w-400 mx-auto tab:max-w-700 laptop:gap-10 laptop:grid-cols-3 laptop:max-w-full desktop:gap-60px desktop:mt-10">
           <div className="justify-self-end laptop:justify-self-start">
             <p className="font-bold text-sm desktop:text-xl desktop:leading-54">
               Premined Tokens
@@ -41,7 +41,7 @@ const Hero = ({ theme }) => {
               Tknrs Tokens
             </p>
           </div>
-          <div className="justify-self-start mb-55 mt-5 tab:mb-88 tab:mt-10 laptop:justify-self-end laptop:m-0 laptop:order-1 laptop:self-end desktop:-mb-30">
+          <div className="justify-self-start mb-55px mt-5 tab:mb-88px tab:mt-10 laptop:justify-self-end laptop:m-0 laptop:order-1 laptop:self-end desktop:-mb-30">
             <p className="font-bold text-sm desktop:text-xl desktop:leading-54">
               Daily Token Distribution
             </p>

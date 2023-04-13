@@ -3,7 +3,7 @@ import { SVG } from "../svg";
 
 const Objectives = ({ theme }) => {
   return (
-    <section className="py-10 laptop:py-20">
+    <section className="pb-2.5 pt-50px tab:pb-5 tab:pt-10 bigTab:pb-30px bigTab:pt-60px laptop:pb-0 laptop:pt-100px">
       <div className="flex flex-wrap justify-center gap-2.5 laptop:gap-5">
         <span
           className={`${
@@ -20,7 +20,7 @@ const Objectives = ({ theme }) => {
               Year 1
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="font-bold text-sm -mb-2 mt-2.5 bigTab:leading-5 bigTab:text-lg bigTab:-mb-3 bigTab:mt-1.5">
               Day 1 - Day 90
             </span>
@@ -47,7 +47,7 @@ const Objectives = ({ theme }) => {
               Year 1
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="font-bold text-sm -mb-2 mt-2.5 bigTab:leading-5 bigTab:text-lg bigTab:-mb-3 bigTab:mt-1.5">
               Day 90 - Day 365
             </span>
@@ -74,7 +74,7 @@ const Objectives = ({ theme }) => {
               Year 2
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="-mb-2 mt-2 opacity-70 text-15 bigTab:leading-34 bigTab:mt-5 bigTab:text-xl">
               4M Tokens/Day
             </span>
@@ -98,7 +98,7 @@ const Objectives = ({ theme }) => {
               Year 3
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="-mb-2 mt-2 opacity-70 text-15 bigTab:leading-34 bigTab:mt-5 bigTab:text-xl">
               3M Tokens/Day
             </span>
@@ -122,7 +122,7 @@ const Objectives = ({ theme }) => {
               Year 4
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="-mb-2 mt-2 opacity-70 text-15 bigTab:leading-34 bigTab:mt-5 bigTab:text-xl">
               2M Tokens/Day
             </span>
@@ -146,7 +146,7 @@ const Objectives = ({ theme }) => {
               Year 5
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="-mb-2 mt-2 opacity-70 text-15 bigTab:leading-34 bigTab:mt-5 bigTab:text-xl">
               1M Tokens/Day
             </span>
@@ -170,7 +170,7 @@ const Objectives = ({ theme }) => {
               Year 6
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="-mb-2 mt-2 opacity-70 text-15 bigTab:leading-34 bigTab:mt-5 bigTab:text-xl">
               1M Tokens/Day
             </span>
@@ -194,7 +194,7 @@ const Objectives = ({ theme }) => {
               Year 7
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="-mb-2 mt-2 opacity-70 text-15 bigTab:leading-34 bigTab:mt-5 bigTab:text-xl">
               1M Tokens/Day
             </span>
@@ -218,7 +218,7 @@ const Objectives = ({ theme }) => {
               Year 8
             </span>
           </span>
-          <span className="flex flex-col bigTab:ml-38 bigTab:mr-2">
+          <span className="flex flex-col bigTab:ml-38px bigTab:mr-2">
             <span className="-mb-2 mt-2 opacity-70 text-15 bigTab:leading-34 bigTab:mt-5 bigTab:text-xl">
               1M Tokens/Day
             </span>

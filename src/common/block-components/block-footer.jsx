@@ -4,13 +4,13 @@ import { SVG } from "../svg";
 
 const Footer = ({ theme, checked, toggleMode }) => {
   return (
-    <footer className="py-10 relative bigTab:pt-20 laptop:pt-36">
+    <footer className="py-10 relative bigTab:pt-20 bigTab:pb-50px laptop:pt-52 laptop:pb-70px">
       <div
-        className={`absolute blur-[100px] h-60 inset-0 w-full z-[-10] tab:left-1/3 laptop:right-[60%] ${
+        className={`absolute blur-[100px] h-60 inset-0 w-full -z-10 tab:left-1/3 laptop:right-[60%] ${
           theme ? "bg-nav laptop:bg-nav-xl" : "bg-darkNav laptop:bg-darkNav-xl"
         }`}
       ></div>
-      <ul className="font-bold gap-x-20 hidden mb-120 laptop:flex laptop:justify-center">
+      <ul className="font-bold gap-x-20 hidden mb-120px laptop:flex laptop:justify-center">
         <li className="active:rotate-3 focus:rotate-3 hover:rotate-3">
           <a href="/team" className="outline-0 underline underline-offset-2">
             OUR TEAM
@@ -54,7 +54,7 @@ const Footer = ({ theme, checked, toggleMode }) => {
             />
           </a>
           <a
-            href="t.me/Fredquinnbee"
+            href="https://t.me/Fredquinnbee"
             className="h-logo w-logo laptop:h-50 laptop:w-50"
             target="_blank"
             rel="noopener noreferrer"
@@ -90,7 +90,7 @@ const Footer = ({ theme, checked, toggleMode }) => {
             />
           </a>
           <a
-            href="github.com/fredobumma"
+            href="https://github.com/Fredobumma"
             className="h-logo w-logo laptop:h-50 laptop:w-50"
             target="_blank"
             rel="noopener noreferrer"
