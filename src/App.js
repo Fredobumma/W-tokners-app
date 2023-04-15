@@ -1,5 +1,12 @@
+"use-client";
+
 import React, { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
+import { ErrorBoundary } from "react-error-boundary";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import { SVGSource } from "./common/svg";
@@ -15,6 +22,7 @@ import Profile from "./page-components/profile";
 import RecoverPassword from "./page-components/recoverPassword";
 import SavedTokens from "./common/block-components/block-savedTokens";
 import TokenDetails from "./common/block-components/block-token-details";
+import NotFound from "./page-components/notFound";
 import MenuBackDrop from "./common/block-components/menuBackDrop";
 import Footer from "./common/block-components/block-footer";
 
@@ -83,27 +91,38 @@ function App() {
       path: "/recover-password",
       element: <RecoverPassword theme={getTheme} />,
     },
+    { path: "/not-found", element: <NotFound theme={getTheme} /> },
+    { path: "*", element: <Navigate to="/not-found" /> },
   ]);
 
   return (
     <React.Fragment>
-      <SVGSource />
-      <Navbar
-        menu={menu}
-        theme={getTheme}
-        checked={darkSide}
-        toggleMenu={toggleMenu}
-        toggleMode={toggleDarkMode}
-      />
-      <main className="pt-120px relative">
-        <RouterProvider router={router} />
-        <Footer
+      <ErrorBoundary
+        fallback={
+          <p className="mt-10 text-center">
+            Error loading page!!! Please check or update your browser, if error
+            persists contact support: fredobumma@gmail.com{" "}
+          </p>
+        }
+      >
+        <SVGSource />
+        <Navbar
+          menu={menu}
           theme={getTheme}
           checked={darkSide}
+          toggleMenu={toggleMenu}
           toggleMode={toggleDarkMode}
         />
-        <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
-      </main>
+        <main className="pt-120px relative">
+          <RouterProvider router={router} />
+          <Footer
+            theme={getTheme}
+            checked={darkSide}
+            toggleMode={toggleDarkMode}
+          />
+          <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
+        </main>
+      </ErrorBoundary>
     </React.Fragment>
   );
 }

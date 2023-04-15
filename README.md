@@ -5,7 +5,7 @@ This is a fully operational application with the sole aim of registering user(s)
 # Currently under development...
 
 <!-- TODO: -->
-<!-- No.1 => Fix layout issues  -->
+<!-- No.1 => Fix layout issues (done) -->
 <!-- No.2 => Connect to firebase (my backend) -->
 <!-- No.3 => Implement authentication and authorization -->
 <!-- No.4 => Protect routes -->

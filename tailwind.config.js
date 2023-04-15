@@ -33,6 +33,8 @@ module.exports = {
         nav: "linear-gradient(135deg, rgba(226,6,19,0.4) 20%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.05) 62%, rgba(255,255,255,1) 67%)",
         "nav-xl":
           "linear-gradient(135deg, rgba(226,6,19,0.4) 5%, rgba(255,255,255,1) 16%, rgba(255,255,255,1) 44%, rgba(37,99,235,0.2) 62%, rgba(255,255,255,1) 67%)",
+        ouwee:
+          "linear-gradient(90deg, rgba(22,65,148,1) 0%, rgba(255,209,0,1) 20%, rgba(63,174,108,1) 40%, rgba(22,65,148,1) 60%, rgba(226,6,19,1) 80%)",
         showcase:
           "linear-gradient(0deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 30%)",
         sprite: "url('/src/common/images/sprite.png')",
