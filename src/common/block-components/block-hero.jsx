@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import Button from "../button";
 import pngImage_2x from "../images/hero-img.png";
 import pngImage_1x from "../images/hero-img-1.png";
 import webpImage_2x from "../images/hero-img.webp";
 import webpImage_1x from "../images/hero-img-1.webp";
 
-const Hero = ({ theme }) => {
+const Hero = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="relative laptop:pb-20 laptop:pt-30">
       <div

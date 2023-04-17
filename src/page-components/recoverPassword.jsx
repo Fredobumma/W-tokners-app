@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../context/themeContext";
 import { SVG } from "../common/svg";
 import Button from "./../common/button";
 
-const RecoverPassword = ({ theme }) => {
+const RecoverPassword = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">
       <div

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import PresaleCarousel from "../presaleCarousel";
 import { SVG } from "../svg";
 
-const Presale = ({ theme }) => {
+const Presale = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="py-130px relative bigTab:py-150px laptop:pt-[250px] laptop:pb-120px widerScreen:pt-[300px]">
       <span className="absolute h-full inset-0 -ml-5 w-screen -z-20 bigTab:-ml-8 laptop:hidden">

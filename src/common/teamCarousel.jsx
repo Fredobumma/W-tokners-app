@@ -12,7 +12,6 @@ const TeamCarousel = ({ theme, children }) => {
     prev,
     goTo,
   } = useSnapCarousel();
-  console.log(pages);
 
   return (
     <>

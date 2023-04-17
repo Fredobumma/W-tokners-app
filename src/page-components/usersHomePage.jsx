@@ -3,14 +3,14 @@ import Hero from "../common/block-components/block-auth-hero";
 import Objectives from "../common/block-components/block-auth-objectives";
 import Services from "../common/block-components/block-auth-services";
 
-const UsersHome = ({ theme }) => {
+const UsersHomePage = () => {
   return (
     <Fragment>
-      <Hero theme={theme} />
-      <Objectives theme={theme} />
-      <Services theme={theme} />
+      <Hero />
+      <Objectives />
+      <Services />
     </Fragment>
   );
 };
 
-export default UsersHome;
+export default UsersHomePage;

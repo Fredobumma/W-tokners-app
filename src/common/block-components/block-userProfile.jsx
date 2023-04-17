@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 import Button from "../button";
 
-const UserProfile = ({ theme }) => {
+const UserProfile = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
       <div

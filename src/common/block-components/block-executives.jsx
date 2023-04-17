@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import TeamCarousel from "../teamCarousel";
 
-const Executives = ({ theme }) => {
+const Executives = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="-mr-5 py-10 relative bigTab:-mr-8 tab:py-60px laptop:-mr-16 laptop:pb-0 laptop:pt-20">
       <div

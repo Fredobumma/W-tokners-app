@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import RegisterForm from "../common/block-components/block-registerForm";
 
-const Register = ({ theme }) => {
+const Register = () => {
   return (
     <Fragment>
-      <RegisterForm theme={theme} />
+      <RegisterForm />
     </Fragment>
   );
 };

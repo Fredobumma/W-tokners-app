@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
-const PurchaseGuide = ({ theme }) => {
+const PurchaseGuide = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="pb-5 pt-2.5 tab:py-20 laptop:py-0">
       <h2 className="font-bold text-32 text-center leading-10 mb-5 tab:text-40 bigTab:mb-50px desktop:text-5xl desktop:leading-54">

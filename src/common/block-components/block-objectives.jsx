@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
-const Objectives = ({ theme }) => {
+const Objectives = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <aside
       className={`py-70px laptop:max-w-1600 laptop:-ml-16 laptop:py-0 laptop:w-screen ${

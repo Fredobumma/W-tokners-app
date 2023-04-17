@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
+import Switcher from "../switcher";
 import { SVG } from "../svg";
 import Button from "./../button";
-import Switcher from "../switcher";
 
-const Navbar = ({ menu, theme, checked, toggleMenu, toggleMode }) => {
+const Navbar = ({ menu, toggleMenu }) => {
+  const { theme, checked, toggleMode } = useContext(ThemeContext);
+
   return (
     <nav
       className={`fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30px laptop:mx-auto ${

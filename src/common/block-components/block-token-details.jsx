@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import TradeViewChart from "react-crypto-chart";
+import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
-const TokenDetails = ({ theme }) => {
+const TokenDetails = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="py-10 relative laptop:py-20">
       <div

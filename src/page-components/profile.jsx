@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import UserProfile from "./../common/block-components/block-userProfile";
 
-const Profile = ({ theme }) => {
+const Profile = () => {
   return (
     <Fragment>
-      <UserProfile theme={theme} />
+      <UserProfile />
     </Fragment>
   );
 };

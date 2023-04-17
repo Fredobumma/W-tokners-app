@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SVG } from "../svg";
+import ThemeContext from "../../context/themeContext";
+import Button from "../button";
 import pngImage_2x from "../images/showcase-bg.png";
 import pngImage_1x from "../images/showcase-bg-1.png";
 import webpImage_2x from "../images/showcase-bg.webp";
 import webpImage_1x from "../images/showcase-bg-1.webp";
-import Button from "../button";
 
-const Showcase = ({ theme, collapse, toggle }) => {
+const Showcase = ({ collapse, toggle }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="pb-10 tab:pt-30px tab:pb-60px bigTab:pt-60px bigTab:pb-[80px] laptop:py-0">
       <div className="grid gap-y-70 bigTab:grid-cols-2 bigTab:gap-x-10">

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
-const Services = ({ theme }) => {
+const Services = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="py-130px relative bigTab:py-150px laptop:-mb-72 laptop:pb-72 laptop:pt-120px desktop:-mb-[488px] desktop:-mt-5 desktop:pt-[220px] desktop:pb-[480px] widerScreen:-mt-30px">
       <span className="absolute h-full inset-0 -ml-5 w-screen -z-20 bigTab:-ml-8 laptop:hidden">

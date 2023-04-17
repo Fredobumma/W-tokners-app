@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
-const Objectives = ({ theme }) => {
+const Objectives = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="pb-2.5 pt-50px tab:pb-5 tab:pt-10 bigTab:pb-30px bigTab:pt-60px laptop:pb-0 laptop:pt-100px">
       <div className="flex flex-wrap justify-center gap-2.5 laptop:gap-5">

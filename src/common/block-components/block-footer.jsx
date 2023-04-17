@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import Switcher from "../switcher";
 import { SVG } from "../svg";
 
-const Footer = ({ theme, checked, toggleMode }) => {
+const Footer = () => {
+  const { theme, checked, toggleMode } = useContext(ThemeContext);
+
   return (
     <footer className="py-10 relative bigTab:pt-20 bigTab:pb-50px laptop:pt-52 laptop:pb-70px">
       <div

@@ -3,10 +3,10 @@ import TokensList from "../common/block-components/block-tokensList";
 // import SavedTokens from "../common/block-components/block-savedTokens";
 // import TokenDetails from "./../common/block-components/block-token-details";
 
-const Tokens = ({ theme }) => {
+const Tokens = () => {
   return (
     <Fragment>
-      <TokensList theme={theme} />
+      <TokensList />
       {/* <SavedTokens /> */}
       {/* <TokenDetails theme={theme} /> */}
     </Fragment>

@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import Executives from "./../common/block-components/block-executives";
 
-const Team = ({ theme }) => {
+const Team = () => {
   return (
     <Fragment>
-      <Executives theme={theme} />
+      <Executives />
     </Fragment>
   );
 };

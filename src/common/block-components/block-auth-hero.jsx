@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import pngImage_2x from "../images/wallet-hero-img.png";
 import pngImage_1x from "../images/wallet-hero-img-1.png";
 import webpImage_2x from "../images/wallet-hero-img.webp";
 import webpImage_1x from "../images/wallet-hero-img-1.webp";
 
-const Hero = ({ theme }) => {
+const Hero = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section className="relative tab:py-10 laptop:py-20">
       <div

@@ -7,12 +7,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import ThemeContext from "./context/themeContext";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import { SVGSource } from "./common/svg";
 import Navbar from "./common/block-components/navbar";
-import GuestHome from "./page-components/guestHome";
-import UsersHome from "./page-components/usersHome";
+import GuestHomePage from "./page-components/guestHomePage";
+import UsersHomePage from "./page-components/usersHomePage";
 import Team from "./page-components/team";
 import Tokens from "./page-components/tokens";
 import JoinWhitelist from "./page-components/joinWhitelist";
@@ -32,12 +33,12 @@ function App() {
     colorTheme === "bg-light" ? false : true
   );
   const getTheme = colorTheme === "bg-dark";
-  // const { width } = useWindowDimensions();
   const [menu, setMenu] = useState(false);
   const [collapseInfo, setCollapseInfo] = useState(true);
+  // const { width } = useWindowDimensions();
 
   // <===== SWITCH THEME =====>
-  const toggleDarkMode = (checked) => {
+  const toggleMode = (checked) => {
     setTheme(colorTheme);
     setDarkSide(checked);
   };
@@ -57,41 +58,35 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <UsersHome theme={getTheme} /> || (
-        <GuestHome
-          theme={getTheme}
-          collapseInfo={collapseInfo}
-          toggleInfo={toggleInfo}
-        />
+      element: <UsersHomePage /> || (
+        <GuestHomePage collapseInfo={collapseInfo} toggleInfo={toggleInfo} />
       ),
     },
-    { path: "/team", element: <Team theme={getTheme} /> },
+    { path: "/team", element: <Team /> },
     {
       path: "/tokens",
       children: [
         {
           index: true,
-          element: <Tokens theme={getTheme} />,
+          element: <Tokens />,
         },
         {
           path: "saved",
-          element: <SavedTokens theme={getTheme} />,
-          children: [
-            { path: ":tokenId", element: <TokenDetails theme={getTheme} /> },
-          ],
+          element: <SavedTokens />,
+          children: [{ path: ":tokenId", element: <TokenDetails /> }],
         },
-        { path: ":tokenId", element: <TokenDetails theme={getTheme} /> },
+        { path: ":tokenId", element: <TokenDetails /> },
       ],
     },
-    { path: "/join-whitelist", element: <JoinWhitelist theme={getTheme} /> },
-    { path: "/register", element: <Register theme={getTheme} /> },
-    { path: "/login", element: <Login theme={getTheme} /> },
-    { path: "/profile", element: <Profile theme={getTheme} /> },
+    { path: "/join-whitelist", element: <JoinWhitelist /> },
+    { path: "/register", element: <Register /> },
+    { path: "/login", element: <Login /> },
+    { path: "/profile", element: <Profile /> },
     {
       path: "/recover-password",
-      element: <RecoverPassword theme={getTheme} />,
+      element: <RecoverPassword />,
     },
-    { path: "/not-found", element: <NotFound theme={getTheme} /> },
+    { path: "/not-found", element: <NotFound /> },
     { path: "*", element: <Navigate to="/not-found" /> },
   ]);
 
@@ -105,23 +100,21 @@ function App() {
           </p>
         }
       >
-        <SVGSource />
-        <Navbar
-          menu={menu}
-          theme={getTheme}
-          checked={darkSide}
-          toggleMenu={toggleMenu}
-          toggleMode={toggleDarkMode}
-        />
-        <main className="pt-120px relative">
-          <RouterProvider router={router} />
-          <Footer
-            theme={getTheme}
-            checked={darkSide}
-            toggleMode={toggleDarkMode}
-          />
-          <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
-        </main>
+        <ThemeContext.Provider
+          value={{
+            theme: getTheme,
+            checked: darkSide,
+            toggleMode: toggleMode,
+          }}
+        >
+          <SVGSource />
+          <Navbar menu={menu} toggleMenu={toggleMenu} />
+          <main className="pt-120px relative">
+            <RouterProvider router={router} />
+            <Footer />
+            <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
+          </main>
+        </ThemeContext.Provider>
       </ErrorBoundary>
     </React.Fragment>
   );

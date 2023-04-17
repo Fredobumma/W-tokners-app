@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../../context/themeContext";
 import pngImage_2x from "../images/services-bg.png";
 import pngImage_1x from "../images/services-bg-1.png";
 import webpImage_2x from "../images/services-bg.webp";
 import webpImage_1x from "../images/services-bg-1.webp";
 
-const Services = ({ theme }) => {
+const Services = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <section>
       <div className="grid items-center laptop:grid-cols-2 desktop:h-auto">
