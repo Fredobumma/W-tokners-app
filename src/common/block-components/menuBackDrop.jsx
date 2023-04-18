@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import MenuContext from "../../context/menuContext";
 
-const MenuBackDrop = ({ menu, toggleMenu }) => {
+const MenuBackDrop = () => {
+  const { menu, toggleMenu } = useContext(MenuContext);
+
   return (
     <>
       {menu && (

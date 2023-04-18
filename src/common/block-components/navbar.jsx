@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
+import MenuContext from "../../context/menuContext";
 import Switcher from "../switcher";
 import { SVG } from "../svg";
 import Button from "./../button";
 
-const Navbar = ({ menu, toggleMenu }) => {
+const Navbar = () => {
   const { theme, checked, toggleMode } = useContext(ThemeContext);
+  const { menu, toggleMenu } = useContext(MenuContext);
 
   return (
     <nav

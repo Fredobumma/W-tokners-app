@@ -1,6 +1,6 @@
 "use-client";
 
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 import ThemeContext from "./context/themeContext";
+import MenuContext from "./context/menuContext";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import { SVGSource } from "./common/svg";
@@ -91,7 +92,7 @@ function App() {
   ]);
 
   return (
-    <React.Fragment>
+    <Fragment>
       <ErrorBoundary
         fallback={
           <p className="mt-10 text-center">
@@ -107,16 +108,18 @@ function App() {
             toggleMode: toggleMode,
           }}
         >
-          <SVGSource />
-          <Navbar menu={menu} toggleMenu={toggleMenu} />
-          <main className="pt-120px relative">
-            <RouterProvider router={router} />
-            <Footer />
-            <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
-          </main>
+          <MenuContext.Provider value={{ menu: menu, toggleMenu: toggleMenu }}>
+            <SVGSource />
+            <Navbar />
+            <main className="pt-120px relative">
+              <RouterProvider router={router} />
+              <Footer />
+              <MenuBackDrop />
+            </main>
+          </MenuContext.Provider>
         </ThemeContext.Provider>
       </ErrorBoundary>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
