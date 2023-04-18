@@ -12,7 +12,7 @@ const Showcase = ({ collapse, toggle }) => {
 
   return (
     <section className="pb-10 tab:pt-30px tab:pb-60px bigTab:pt-60px bigTab:pb-[80px] laptop:py-0">
-      <div className="grid gap-y-70 bigTab:grid-cols-2 bigTab:gap-x-10">
+      <div className="grid gap-y-70px bigTab:grid-cols-2 bigTab:gap-x-10">
         <div className="order-last bigTab:order-first">
           <h2 className="flex flex-col font-bold gap-y-2.5 text-32 leading-10 mb-30px tab:text-40 laptop:flex-row laptop:gap-x-6 laptop:items-center desktop:mb-10 desktop:text-5xl desktop:leading-54">
             <SVG id="logo" />

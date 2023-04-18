@@ -13,8 +13,7 @@ import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import { SVGSource } from "./common/svg";
 import Navbar from "./common/block-components/navbar";
-import GuestHomePage from "./page-components/guestHomePage";
-import UsersHomePage from "./page-components/usersHomePage";
+import HomePage from "./page-components/homePage";
 import Team from "./page-components/team";
 import Tokens from "./page-components/tokens";
 import JoinWhitelist from "./page-components/joinWhitelist";
@@ -51,6 +50,7 @@ function App() {
     setMenu(!menu);
   };
 
+  // <===== TOGGLE READ MORE IN GUEST HOMEPAGE =====>
   const toggleInfo = () => {
     setCollapseInfo(!collapseInfo);
   };
@@ -59,9 +59,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <UsersHomePage /> || (
-        <GuestHomePage collapseInfo={collapseInfo} toggleInfo={toggleInfo} />
-      ),
+      element: <HomePage collapseInfo={collapseInfo} toggleInfo={toggleInfo} />,
     },
     { path: "/team", element: <Team /> },
     {
