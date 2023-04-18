@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 import { SVG } from "../svg";
 import ThemeContext from "../../context/themeContext";
+import CollapseInfoContext from "../../context/collapseInfoContext";
 import Button from "../button";
 import pngImage_2x from "../images/showcase-bg.png";
 import pngImage_1x from "../images/showcase-bg-1.png";
 import webpImage_2x from "../images/showcase-bg.webp";
 import webpImage_1x from "../images/showcase-bg-1.webp";
 
-const Showcase = ({ collapse, toggle }) => {
+const Showcase = () => {
   const { theme } = useContext(ThemeContext);
+  const { collapse, toggle } = useContext(CollapseInfoContext);
 
   return (
     <section className="pb-10 tab:pt-30px tab:pb-60px bigTab:pt-60px bigTab:pb-[80px] laptop:py-0">

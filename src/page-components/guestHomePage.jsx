@@ -7,14 +7,14 @@ import Showcase from "../common/block-components/block-showcase";
 import Presale from "../common/block-components/block-presale";
 import PurchaseGuide from "../common/block-components/block-purchase";
 
-const GuestHomePage = ({ collapseInfo, toggleInfo }) => {
+const GuestHomePage = () => {
   return (
     <Fragment>
       <Hero />
       <Features />
       <Services />
       <Objectives />
-      <Showcase collapse={collapseInfo} toggle={toggleInfo} />
+      <Showcase />
       <Presale />
       <PurchaseGuide />
     </Fragment>

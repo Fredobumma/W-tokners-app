@@ -9,6 +9,7 @@ import {
 import { ErrorBoundary } from "react-error-boundary";
 import ThemeContext from "./context/themeContext";
 import MenuContext from "./context/menuContext";
+import CollapseInfoContext from "./context/collapseInfoContext";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import { SVGSource } from "./common/svg";
@@ -59,7 +60,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage collapseInfo={collapseInfo} toggleInfo={toggleInfo} />,
+      element: <HomePage />,
     },
     { path: "/team", element: <Team /> },
     {
@@ -110,7 +111,11 @@ function App() {
             <SVGSource />
             <Navbar />
             <main className="pt-120px relative">
-              <RouterProvider router={router} />
+              <CollapseInfoContext.Provider
+                value={{ collapse: collapseInfo, toggle: toggleInfo }}
+              >
+                <RouterProvider router={router} />
+              </CollapseInfoContext.Provider>
               <Footer />
               <MenuBackDrop />
             </main>
