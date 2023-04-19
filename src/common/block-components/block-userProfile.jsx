@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
+import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Input, { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
@@ -7,6 +8,8 @@ import Button from "../button";
 
 const UserProfile = () => {
   const { theme } = useContext(ThemeContext);
+  const validator = useContext(ValidatorContext);
+  const form = new validator();
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
@@ -130,7 +133,6 @@ const UserProfile = () => {
               <SelectOptions
                 label="Country"
                 id="country"
-                name="country"
                 option1={{ value: "", content: "--Please choose an option--" }}
                 option2={{ value: "United States" }}
                 option3={{ value: "United Kingdom" }}

@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import ThemeContext from "../context/themeContext";
 
-const SelectOptions = ({ label, id, error, options }) => {
+const SelectOptions = ({ label, id, ...rest }) => {
   const { theme } = useContext(ThemeContext);
+  const options = Object.values(rest);
 
   return (
     <>

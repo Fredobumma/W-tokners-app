@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
+import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Input from "./../input";
 import Button from "./../button";
 
 const RegisterForm = () => {
   const { theme } = useContext(ThemeContext);
+  const validator = useContext(ValidatorContext);
+  const form = new validator();
 
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">

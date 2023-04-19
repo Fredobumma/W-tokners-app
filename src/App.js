@@ -9,9 +9,11 @@ import {
 import { ErrorBoundary } from "react-error-boundary";
 import ThemeContext from "./context/themeContext";
 import MenuContext from "./context/menuContext";
+import ValidatorContext from "./context/validatorContext";
 import CollapseInfoContext from "./context/collapseInfoContext";
 import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
+import FormValidator from "./utilities/formValidator";
 import { SVGSource } from "./common/svg";
 import Navbar from "./common/block-components/navbar";
 import HomePage from "./page-components/homePage";
@@ -92,6 +94,7 @@ function App() {
 
   return (
     <Fragment>
+      {/* // <===== ERROR BOUNDARY WITH FALLBACK MESSAGE =====> */}
       <ErrorBoundary
         fallback={
           <p className="mt-10 text-center">
@@ -109,13 +112,18 @@ function App() {
         >
           <MenuContext.Provider value={{ menu: menu, toggleMenu: toggleMenu }}>
             <SVGSource />
+            {/* // <===== APP NAVBAR  =====> */}
             <Navbar />
             <main className="pt-120px relative">
-              <CollapseInfoContext.Provider
-                value={{ collapse: collapseInfo, toggle: toggleInfo }}
-              >
-                <RouterProvider router={router} />
-              </CollapseInfoContext.Provider>
+              <ValidatorContext.Provider value={FormValidator}>
+                <CollapseInfoContext.Provider
+                  value={{ collapse: collapseInfo, toggle: toggleInfo }}
+                >
+                  {/* // <===== PROVIDING ROUTES AND APP PAGES =====> */}
+                  <RouterProvider router={router} />
+                </CollapseInfoContext.Provider>
+              </ValidatorContext.Provider>
+              {/* // <===== APP FOOTER  =====> */}
               <Footer />
               <MenuBackDrop />
             </main>

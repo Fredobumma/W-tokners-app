@@ -2,7 +2,7 @@ import Joi from "joi-browser";
 import Input, { DateInput, SecondaryInput } from "../common/input";
 import SelectOptions from "../common/selectOptions";
 
-function Form(obj, setObj, schema, doSubmit) {
+function FormValidator(obj, setObj, schema, doSubmit) {
   this.renderInput = (id, name, type, placeholder, autoComplete, autoFocus) => {
     return (
       <Input
@@ -133,4 +133,4 @@ function Form(obj, setObj, schema, doSubmit) {
   }
 }
 
-export default Form;
+export default FormValidator;
