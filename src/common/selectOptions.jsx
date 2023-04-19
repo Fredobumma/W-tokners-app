@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
 import ThemeContext from "../context/themeContext";
 
-const SelectOptions = ({ label, id, name, ...rest }) => {
+const SelectOptions = ({ label, id, error, options }) => {
   const { theme } = useContext(ThemeContext);
-  const options = Object.values(rest);
 
   return (
     <>
       <label htmlFor={id}>{label}</label>
       <select
         id={id}
-        name={name}
         className={`border-b-2 bg-transparent h-10 px-2 text-sm w-full tab:w-3/4 ${
           theme ? "border-light" : "border-dark"
         }`}

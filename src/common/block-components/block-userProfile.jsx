@@ -124,7 +124,6 @@ const UserProfile = () => {
                 name="date"
                 type="date"
                 placeholder="Date of Birth"
-                extraClasses="bg-white text-dark focus:outline-none"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
