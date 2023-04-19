@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ThemeContext from "../context/themeContext";
 import { SVG } from "../common/svg";
+import Input from "../common/input";
 import Button from "./../common/button";
 
 const RecoverPassword = () => {
@@ -49,15 +50,13 @@ const RecoverPassword = () => {
                 <label htmlFor="email">
                   <SVG id="email" />
                 </label>
-                <input
+                <Input
                   autoComplete="off"
                   id="email"
                   name="email"
                   type="email"
-                  className={`font-bold bg-transparent h-10 w-full placeholder:font-normal focus:outline-none ${
-                    theme ? "text-light" : "text-dark placeholder:text-gray-500"
-                  }`}
                   placeholder="Email address"
+                  autoFocus
                 />
               </span>
               <div>

@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
+import Input, { DateInput, SecondaryInput } from "../input";
+import SelectOptions from "../selectOptions";
 import Button from "../button";
 
 const UserProfile = () => {
@@ -38,16 +40,13 @@ const UserProfile = () => {
                 <label htmlFor="username">
                   <SVG id="username" />
                 </label>
-                <input
-                  autoFocus
+                <Input
                   autoComplete="off"
                   id="username"
                   name="username"
                   type="text"
-                  className={`font-bold bg-transparent h-10 w-full placeholder:font-normal focus:outline-none ${
-                    theme ? "text-light" : "text-dark placeholder:text-gray-500"
-                  }`}
                   placeholder="Username"
+                  autoFocus
                 />
               </span>
               <Button
@@ -64,14 +63,11 @@ const UserProfile = () => {
                 <label htmlFor="email">
                   <SVG id="email" />
                 </label>
-                <input
+                <Input
                   autoComplete="off"
                   id="email"
                   name="email"
                   type="email"
-                  className={`font-bold bg-transparent h-10 w-full placeholder:font-normal focus:outline-none ${
-                    theme ? "text-light" : "text-dark placeholder:text-gray-500"
-                  }`}
                   placeholder="Email address"
                 />
               </span>
@@ -89,14 +85,11 @@ const UserProfile = () => {
                 <label htmlFor="password">
                   <SVG id="password" />
                 </label>
-                <input
+                <Input
                   autoComplete="off"
                   id="password"
                   name="password"
                   type="password"
-                  className={`font-bold bg-transparent h-10 w-full placeholder:font-normal focus:outline-none ${
-                    theme ? "text-light" : "text-dark placeholder:text-gray-500"
-                  }`}
                   placeholder="Password"
                 />
               </span>
@@ -114,122 +107,77 @@ const UserProfile = () => {
           </div>
           <form className="border-b grid gap-30px pb-10 px-30px tab:px-70px bigTab:px-24 laptop:pb-60px laptop:px-150px desktop:px-170px">
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <label htmlFor="fullname">Full Name</label>
-              <input
+              <SecondaryInput
+                label="Full Name"
                 autoComplete="off"
                 id="fullname"
                 name="fullname"
                 type="text"
-                className={`border-b-2 font-bold bg-transparent h-10 px-2 text-sm placeholder:font-normal focus:outline-none tab:w-3/4 ${
-                  theme
-                    ? "border-light text-light"
-                    : "border-dark text-dark placeholder:text-gray-500"
-                }`}
                 placeholder="Firstname Lastname"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <label htmlFor="date">Date of Birth</label>
-              <input
+              <DateInput
+                label="Date of Birth"
                 autoComplete="off"
                 id="date"
                 name="date"
                 type="date"
-                className={`border-b-2 bg-white h-10 px-2 text-dark text-sm w-full focus:outline-none tab:w-3/4 ${
-                  theme ? "border-light" : "border-dark"
-                }`}
                 placeholder="Date of Birth"
+                extraClasses="bg-white text-dark focus:outline-none"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <label htmlFor="date">Country</label>
-              <select
-                className={`border-b-2 bg-transparent h-10 px-2 text-sm w-full tab:w-3/4 ${
-                  theme ? "border-light" : "border-dark"
-                }`}
-                name="pets"
-                id="pet-select"
-              >
-                <option className="text-dark" value="">
-                  --Please choose an option--
-                </option>
-                <option className="text-dark" value="dog">
-                  United States
-                </option>
-                <option className="text-dark" value="cat">
-                  United Kingdom
-                </option>
-                <option className="text-dark" value="hamster">
-                  Canada
-                </option>
-                <option className="text-dark" value="parrot">
-                  China
-                </option>
-                <option className="text-dark" value="spider">
-                  Australia
-                </option>
-                <option className="text-dark" value="goldfish">
-                  Argentina
-                </option>
-              </select>
+              <SelectOptions
+                label="Country"
+                id="country"
+                name="country"
+                option1={{ value: "", content: "--Please choose an option--" }}
+                option2={{ value: "United States" }}
+                option3={{ value: "United Kingdom" }}
+                option4={{ value: "Canada" }}
+                option5={{ value: "China" }}
+                option6={{ value: "Australia" }}
+                option7={{ value: "Argentina" }}
+              />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <label htmlFor="street">Street Address</label>
-              <input
+              <SecondaryInput
+                label="Street Address"
                 autoComplete="off"
                 id="street"
                 name="street"
                 type="text"
-                className={`border-b-2 font-bold bg-transparent h-10 px-2 text-sm placeholder:font-normal focus:outline-none tab:w-3/4 ${
-                  theme
-                    ? "border-light text-light"
-                    : "border-dark text-dark placeholder:text-gray-500"
-                }`}
                 placeholder="Enter your street address"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <label htmlFor="city">City</label>
-              <input
+              <SecondaryInput
+                label="City"
                 autoComplete="off"
                 id="city"
                 name="city"
                 type="text"
-                className={`border-b-2 font-bold bg-transparent h-10 px-2 text-sm placeholder:font-normal focus:outline-none tab:w-3/4 ${
-                  theme
-                    ? "border-light text-light"
-                    : "border-dark text-dark placeholder:text-gray-500"
-                }`}
                 placeholder="Enter your city"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <label htmlFor="state">State / Province</label>
-              <input
+              <SecondaryInput
+                label="State / Province"
                 autoComplete="off"
                 id="state"
                 name="state"
                 type="text"
-                className={`border-b-2 font-bold bg-transparent h-10 px-2 text-sm placeholder:font-normal focus:outline-none tab:w-3/4 ${
-                  theme
-                    ? "border-light text-light"
-                    : "border-dark text-dark placeholder:text-gray-500"
-                }`}
                 placeholder="Enter your state / province"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <label htmlFor="zipcode">ZIP / Postal Code</label>
-              <input
+              <SecondaryInput
+                label="ZIP / Postal Code"
                 autoComplete="off"
                 id="zipcode"
                 name="zipcode"
                 type="text"
-                className={`border-b-2 font-bold bg-transparent h-10 px-2 text-sm placeholder:font-normal focus:outline-none tab:w-3/4 ${
-                  theme
-                    ? "border-light text-light"
-                    : "border-dark text-dark placeholder:text-gray-500"
-                }`}
                 placeholder="000000"
               />
             </span>

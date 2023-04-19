@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
+import Input from "./../input";
 import Button from "./../button";
 
 const LoginForm = () => {
@@ -49,15 +50,13 @@ const LoginForm = () => {
                 <label htmlFor="email">
                   <SVG id="email" />
                 </label>
-                <input
+                <Input
                   autoComplete="off"
                   id="email"
                   name="email"
                   type="email"
-                  className={`font-bold bg-transparent h-10 w-full placeholder:font-normal focus:outline-none ${
-                    theme ? "text-light" : "text-dark placeholder:text-gray-500"
-                  }`}
                   placeholder="Email address"
+                  autoFocus
                 />
               </span>
               <span
@@ -68,14 +67,11 @@ const LoginForm = () => {
                 <label htmlFor="password">
                   <SVG id="password" />
                 </label>
-                <input
+                <Input
                   autoComplete="off"
                   id="password"
                   name="password"
                   type="password"
-                  className={`font-bold bg-transparent h-10 w-full placeholder:font-normal focus:outline-none ${
-                    theme ? "text-light" : "text-dark placeholder:text-gray-500"
-                  }`}
                   placeholder="Password"
                 />
               </span>
