@@ -1,14 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import Joi from "joi-browser";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
-import Input from "./../input";
 import Button from "./../button";
 
 const LoginForm = () => {
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
-  const form = new validator();
+
+  const [state, setState] = useState({
+    data: { email: "", password: "" },
+    errors: {},
+  });
+
+  const schema = {
+    email: Joi.string().email().min(5).max(60).required().label("E-mail"),
+    password: Joi.string()
+      .regex(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+      .min(8)
+      .max(30)
+      .required()
+      .label("Password"),
+  };
+
+  const doSubmit = () => console.log("logged in the user");
+
+  const form = new validator(state, setState, schema, doSubmit);
 
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">
@@ -44,39 +62,42 @@ const LoginForm = () => {
               theme ? "bg-dark" : "bg-white"
             }`}
           >
-            <form className="grid gap-30px px-30px tab:px-50px bigTab:px-70px laptop:px-100px">
+            <form
+              onSubmit={form.handleSubmit}
+              className="grid gap-30px px-30px tab:px-50px bigTab:px-70px laptop:px-100px"
+            >
               <span
-                className={`flex border-b-2 gap-3 items-center ${
+                className={`flex border-b-2 gap-2 items-center ${
                   theme ? "border-light" : "border-dark"
                 }`}
               >
                 <label htmlFor="email">
                   <SVG id="email" />
                 </label>
-                <Input
-                  autoComplete="off"
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Email address"
-                  autoFocus
-                />
+                {form.renderInput(
+                  "email",
+                  "email",
+                  "email",
+                  "E-mail address",
+                  "email",
+                  "on"
+                )}
               </span>
               <span
-                className={`flex border-b-2 gap-3 items-center ${
+                className={`flex border-b-2 gap-2 items-center ${
                   theme ? "border-light" : "border-dark"
                 }`}
               >
                 <label htmlFor="password">
                   <SVG id="password" />
                 </label>
-                <Input
-                  autoComplete="off"
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
+                {form.renderInput(
+                  "password",
+                  "password",
+                  "password",
+                  "Password",
+                  "current-password"
+                )}
               </span>
               <div>
                 <Button

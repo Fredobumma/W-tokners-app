@@ -8,7 +8,7 @@ const Input = ({ error, ...rest }) => {
     <>
       <input
         {...rest}
-        className={`font-bold bg-transparent h-10 w-full placeholder:font-normal focus:outline-none ${
+        className={`font-bold bg-transparent h-10 pl-2 w-full placeholder:font-normal focus:outline-none ${
           theme ? "text-light" : "text-dark placeholder:text-gray-500"
         }`}
       />

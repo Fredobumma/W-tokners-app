@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ThemeContext from "../context/themeContext";
 
-const SelectOptions = ({ label, id, ...rest }) => {
+const SelectOptions = ({ label, id, autoComplete, ...rest }) => {
   const { theme } = useContext(ThemeContext);
   const options = Object.values(rest);
 
@@ -10,6 +10,7 @@ const SelectOptions = ({ label, id, ...rest }) => {
       <label htmlFor={id}>{label}</label>
       <select
         id={id}
+        autoComplete={autoComplete}
         className={`border-b-2 bg-transparent h-10 px-2 text-sm w-full tab:w-3/4 ${
           theme ? "border-light" : "border-dark"
         }`}

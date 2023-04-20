@@ -2,7 +2,10 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: ["class", '[data-mode="dark"]'],
-  plugins: [require("tailwind-scrollbar")({ nocompatible: true })],
+  plugins: [
+    require("tailwind-scrollbar")({ nocompatible: true }),
+    require("autoprefixer"),
+  ],
   theme: {
     screens: {
       tab: "640px",

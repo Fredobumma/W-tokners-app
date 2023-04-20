@@ -1,14 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import Joi from "joi-browser";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Button from "./../button";
-import Input from "./../input";
 
 const WhitelistForm = () => {
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
-  const form = new validator();
+
+  const [state, setState] = useState({ data: { email: "" }, errors: {} });
+
+  const schema = {
+    email: Joi.string().email().min(5).max(60).required().label("E-mail"),
+  };
+
+  const doSubmit = () => console.log("registered for whitelist");
+
+  const form = new validator(state, setState, schema, doSubmit);
 
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">
@@ -45,23 +54,26 @@ const WhitelistForm = () => {
               theme ? "bg-dark" : "bg-white"
             }`}
           >
-            <form className="grid gap-30px px-30px tab:px-50px bigTab:px-70px laptop:px-100px">
+            <form
+              onSubmit={form.handleSubmit}
+              className="grid gap-30px px-30px tab:px-50px bigTab:px-70px laptop:px-100px"
+            >
               <span
-                className={`flex border-b-2 gap-3 items-center ${
+                className={`flex border-b-2 gap-2 items-center ${
                   theme ? "border-light" : "border-dark"
                 }`}
               >
                 <label htmlFor="email">
                   <SVG id="email" />
                 </label>
-                <Input
-                  autoComplete="off"
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Email address"
-                  autoFocus
-                />
+                {form.renderInput(
+                  "email",
+                  "email",
+                  "email",
+                  "E-mail address",
+                  "email",
+                  "on"
+                )}
               </span>
               <div>
                 <Button

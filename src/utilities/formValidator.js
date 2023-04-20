@@ -90,11 +90,10 @@ function FormValidator(obj, setObj, schema, doSubmit) {
   this.handleSubmit = function handleSubmit(e) {
     e.preventDefault();
 
-    const errors = validate() || {};
+    const { errors = validate() || {} } = obj;
+    setObj(obj);
 
-    setObj({ errors });
     if (Object.keys(errors).length) return;
-
     return doSubmit();
   };
 

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
-import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Input, { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
@@ -8,8 +7,6 @@ import Button from "../button";
 
 const UserProfile = () => {
   const { theme } = useContext(ThemeContext);
-  const validator = useContext(ValidatorContext);
-  const form = new validator();
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
@@ -36,7 +33,7 @@ const UserProfile = () => {
           <form className="border-b grid gap-30px pb-10 px-30px tab:pb-60px tab:px-50px bigTab:px-70px laptop:pb-20 laptop:px-100px">
             <div className="tab:flex tab:justify-around">
               <span
-                className={`flex border-b-2 gap-3 items-center tab:w-3/5 ${
+                className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
                   theme ? "border-light" : "border-dark"
                 }`}
               >
@@ -44,7 +41,7 @@ const UserProfile = () => {
                   <SVG id="username" />
                 </label>
                 <Input
-                  autoComplete="off"
+                  autoComplete="username"
                   id="username"
                   name="username"
                   type="text"
@@ -59,7 +56,7 @@ const UserProfile = () => {
             </div>
             <div className="tab:flex tab:justify-around">
               <span
-                className={`flex border-b-2 gap-3 items-center tab:w-3/5 ${
+                className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
                   theme ? "border-light" : "border-dark"
                 }`}
               >
@@ -67,7 +64,7 @@ const UserProfile = () => {
                   <SVG id="email" />
                 </label>
                 <Input
-                  autoComplete="off"
+                  autoComplete="email"
                   id="email"
                   name="email"
                   type="email"
@@ -81,7 +78,7 @@ const UserProfile = () => {
             </div>
             <div className="tab:flex tab:justify-around">
               <span
-                className={`flex border-b-2 gap-3 items-center tab:w-3/5 ${
+                className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
                   theme ? "border-light" : "border-dark"
                 }`}
               >
@@ -89,7 +86,7 @@ const UserProfile = () => {
                   <SVG id="password" />
                 </label>
                 <Input
-                  autoComplete="off"
+                  autoComplete="current-password"
                   id="password"
                   name="password"
                   type="password"
@@ -112,27 +109,33 @@ const UserProfile = () => {
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <SecondaryInput
                 label="Full Name"
-                autoComplete="off"
+                autoComplete="name"
                 id="fullname"
                 name="fullname"
                 type="text"
                 placeholder="Firstname Lastname"
+                minLength="3"
+                maxLength="30"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <DateInput
                 label="Date of Birth"
-                autoComplete="off"
+                autoComplete="bday"
                 id="date"
                 name="date"
                 type="date"
                 placeholder="Date of Birth"
+                min=""
+                max=""
+                // TODO:
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <SelectOptions
                 label="Country"
                 id="country"
+                autoComplete="country-name"
                 option1={{ value: "", content: "--Please choose an option--" }}
                 option2={{ value: "United States" }}
                 option3={{ value: "United Kingdom" }}
@@ -145,41 +148,46 @@ const UserProfile = () => {
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <SecondaryInput
                 label="Street Address"
-                autoComplete="off"
+                autoComplete="street-address"
                 id="street"
                 name="street"
                 type="text"
                 placeholder="Enter your street address"
+                maxLength="100"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <SecondaryInput
                 label="City"
-                autoComplete="off"
+                autoComplete="on"
                 id="city"
                 name="city"
                 type="text"
                 placeholder="Enter your city"
+                maxLength="30"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <SecondaryInput
                 label="State / Province"
-                autoComplete="off"
+                autoComplete="on"
                 id="state"
                 name="state"
                 type="text"
                 placeholder="Enter your state / province"
+                maxLength="30"
               />
             </span>
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <SecondaryInput
                 label="ZIP / Postal Code"
-                autoComplete="off"
+                autoComplete="postal-code"
                 id="zipcode"
                 name="zipcode"
-                type="text"
+                type="number"
                 placeholder="000000"
+                minLength="4"
+                maxLength="15"
               />
             </span>
             <Button
