@@ -1,14 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import {
-  collection,
+  getFirestore,
   getDoc,
   setDoc,
   doc,
-  addDoc,
-  getDocs,
   deleteDoc,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -37,24 +34,18 @@ const firebaseConfig = {
   measurementId: REACT_APP_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
+// <--------- Initialize Firebase --------->
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+/* const analytics = getAnalytics(app); */
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-const addData = (document, data) => addDoc(collection(db, document), data);
-
+// <--------- C-R-U-D Operations --------->
 const setData = (document, _id, data) =>
   setDoc(doc(db, document, _id), data, { merge: true });
 
 const getData = (document, _id) => getDoc(doc(db, document, _id));
 
-const getAllData = (document) =>
-  getDocs(collection(db, document)).forEach((_doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    // console.log(doc.id, " => ", doc.data());
-  });
-
 const deleteData = (document, _id) => deleteDoc(doc(db, document, _id));
 
-export { auth, addData, setData, getData, getAllData, deleteData };
+export { auth, getData, setData, deleteData };

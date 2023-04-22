@@ -3,7 +3,15 @@ import Input, { DateInput, SecondaryInput } from "../common/input";
 import SelectOptions from "../common/selectOptions";
 
 function FormValidator(obj, setObj, schema, doSubmit) {
-  this.renderInput = (id, name, type, placeholder, autoComplete, autoFocus) => {
+  this.renderInput = (
+    id,
+    name,
+    type,
+    placeholder,
+    autoComplete,
+    autoFocus,
+    maxLength
+  ) => {
     return (
       <Input
         id={id}
@@ -14,6 +22,7 @@ function FormValidator(obj, setObj, schema, doSubmit) {
         placeholder={placeholder}
         autoComplete={autoComplete}
         autoFocus={autoFocus}
+        maxLength={maxLength}
         onChange={handleChange}
       />
     );
@@ -87,14 +96,15 @@ function FormValidator(obj, setObj, schema, doSubmit) {
     );
   };
 
-  this.handleSubmit = function handleSubmit(e) {
+  this.handleSubmit = (e) => {
     e.preventDefault();
 
-    const { errors = validate() || {} } = obj;
+    let { errors } = obj;
+    errors = validate() || {};
     setObj(obj);
 
     if (Object.keys(errors).length) return;
-    return doSubmit();
+    doSubmit();
   };
 
   function validateProperty(id, value) {

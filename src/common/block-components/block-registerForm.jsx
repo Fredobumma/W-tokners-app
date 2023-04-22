@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import Joi from "joi-browser";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
+import { loginWithJwt, signUp } from "../../services/authService";
 import { SVG } from "../svg";
 import Button from "./../button";
 
@@ -15,17 +16,27 @@ const RegisterForm = () => {
   });
 
   const schema = {
-    username: Joi.string().min(8).max(30).required().label("Username"),
-    email: Joi.string().email().min(5).max(60).required().label("E-mail"),
+    username: Joi.string().min(5).max(30).required().label("Username"),
+    email: Joi.string().email().min(5).max(50).required().label("E-mail"),
     password: Joi.string()
       .regex(new RegExp("^[a-zA-Z0-9]{3,30}$"))
       .min(8)
-      .max(30)
+      .max(40)
       .required()
       .label("Password"),
   };
 
-  const doSubmit = () => console.log("registered the user");
+  const doSubmit = async () => {
+    const { email, password } = state.data;
+
+    try {
+      const { user } = await signUp(email, password);
+      loginWithJwt(user.accessToken);
+      window.location = "/";
+    } catch (error) {
+      console.log(error.code);
+    }
+  };
 
   const form = new validator(state, setState, schema, doSubmit);
 
@@ -81,7 +92,8 @@ const RegisterForm = () => {
                   "text",
                   "Username",
                   "username",
-                  "on"
+                  "on",
+                  "20"
                 )}
               </span>
               <span
@@ -97,7 +109,9 @@ const RegisterForm = () => {
                   "email",
                   "email",
                   "E-mail address",
-                  "email"
+                  "email",
+                  "",
+                  "40"
                 )}
               </span>
               <span
@@ -113,7 +127,9 @@ const RegisterForm = () => {
                   "password",
                   "password",
                   "Password",
-                  "new-password"
+                  "new-password",
+                  "",
+                  "30"
                 )}
               </span>
               <div>

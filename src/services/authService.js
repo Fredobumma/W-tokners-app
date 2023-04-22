@@ -1,26 +1,35 @@
 import {
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  onAuthStateChanged,
+  // GoogleAuthProvider,
+  // onAuthStateChanged,
   signInWithEmailAndPassword,
-  signInWithPopup,
+  // signInWithPopup,
 } from "firebase/auth";
 import { auth } from "./httpService";
 
-const provider = new GoogleAuthProvider();
+const tokenKey = "token";
 
-const token = async () => await auth.currentUser.getIdToken(true);
+// const provider = new GoogleAuthProvider();
+
+const getJwt = () => localStorage.getItem(tokenKey);
+
+const loginWithJwt = (value) => localStorage.setItem(tokenKey, value);
+
+const logoutJwt = () => localStorage.removeItem(tokenKey);
+
+// const token = () => auth.currentUser.getIdToken(true);
 
 const signUp = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password);
 
-const signIn = () => signInWithEmailAndPassword(auth, email, password);
+const signIn = (email, password) =>
+  signInWithEmailAndPassword(auth, email, password);
 
-const onAuthChange = onAuthStateChanged(auth, (user) => user);
+// const onAuthChange = onAuthStateChanged(auth, (user) => user);
 
-const result = await signInWithPopup(auth, provider);
-const credential = GoogleAuthProvider.credentialFromResult(result);
+// const result = signInWithPopup(auth, provider);
+// const credential = GoogleAuthProvider.credentialFromResult(result);
 // console.log(credential);
 // console.log(result.user);
 
-export { token, signUp, signIn, onAuthChange, credential, result };
+export { getJwt, loginWithJwt, logoutJwt, signUp, signIn };
