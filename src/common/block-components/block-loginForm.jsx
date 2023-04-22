@@ -4,6 +4,7 @@ import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Button from "./../button";
+import { loginWithJwt, signIn } from "../../services/authService";
 
 const LoginForm = () => {
   const { theme } = useContext(ThemeContext);
@@ -24,7 +25,17 @@ const LoginForm = () => {
       .label("Password"),
   };
 
-  const doSubmit = () => console.log("logged in the user");
+  const doSubmit = async () => {
+    const { email, password } = state.data;
+
+    try {
+      const { user } = await signIn(email, password);
+      loginWithJwt(user.accessToken);
+      window.location = "/"; // TODO:
+    } catch (error) {
+      console.log(error.code);
+    }
+  };
 
   const form = new validator(state, setState, schema, doSubmit);
 
