@@ -104,7 +104,7 @@ function FormValidator(obj, setObj, schema, doSubmit) {
     setObj(obj);
 
     if (Object.keys(errors).length) return;
-    doSubmit();
+    doSubmit(e);
   };
 
   function validateProperty(id, value) {

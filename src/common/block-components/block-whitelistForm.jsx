@@ -1,9 +1,16 @@
 import React, { useContext, useState } from "react";
 import Joi from "joi-browser";
+import jwtDecode from "jwt-decode";
+import { getJwt } from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Button from "./../button";
+import { setData } from "../../services/httpService";
+import { getData } from "../../services/httpService";
+
+const documentName = "whitelisted";
+const token = getJwt();
 
 const WhitelistForm = () => {
   const { theme } = useContext(ThemeContext);
@@ -15,7 +22,27 @@ const WhitelistForm = () => {
     email: Joi.string().email().min(5).max(60).required().label("E-mail"),
   };
 
-  const doSubmit = () => console.log("registered for whitelist");
+  const doSubmit = async (e) => {
+    const { value } = e.target[0];
+    const { email: userEmail } = jwtDecode(token);
+
+    if (value !== userEmail)
+      return (state.errors.email = "Input currently signed in E-mail");
+
+    try {
+      const { _document: dataExists } = await getData(documentName, userEmail);
+
+      if (dataExists) return console.log("Already whitelisted");
+
+      await setData(documentName, userEmail, {
+        email: userEmail,
+        isWhiteListed: true,
+      });
+      // TODO: SHOW ERROR, SEND EMAIL AND NOTIFY USER ("AN EMAIL WOULD BE SENT TO VERIFY THAT YOU'RE SHORTLISTED")
+    } catch (error) {
+      console.log(error.code);
+    }
+  };
 
   const form = new validator(state, setState, schema, doSubmit);
 
