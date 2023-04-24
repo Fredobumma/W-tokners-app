@@ -1,8 +1,9 @@
 import {
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
   // GoogleAuthProvider,
   // onAuthStateChanged,
-  signInWithEmailAndPassword,
   // signInWithPopup,
 } from "firebase/auth";
 import { auth } from "./httpService";
@@ -25,6 +26,8 @@ const signUp = (email, password) =>
 const signIn = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
 
+const passwordRecovery = (email) => sendPasswordResetEmail(auth, email);
+
 // const onAuthChange = onAuthStateChanged(auth, (user) => user);
 
 // const result = signInWithPopup(auth, provider);
@@ -32,4 +35,4 @@ const signIn = (email, password) =>
 // console.log(credential);
 // console.log(result.user);
 
-export { getJwt, loginWithJwt, logoutJwt, signUp, signIn };
+export { getJwt, loginWithJwt, logoutJwt, signUp, signIn, passwordRecovery };

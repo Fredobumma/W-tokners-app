@@ -4,6 +4,7 @@ import ThemeContext from "../context/themeContext";
 import ValidatorContext from "../context/validatorContext";
 import { SVG } from "../common/svg";
 import Button from "./../common/button";
+import { passwordRecovery } from "../services/authService";
 
 const RecoverPassword = () => {
   const { theme } = useContext(ThemeContext);
@@ -15,7 +16,15 @@ const RecoverPassword = () => {
     email: Joi.string().email().min(5).max(60).required().label("E-mail"),
   };
 
-  const doSubmit = () => console.log("Check your email to reset password");
+  const doSubmit = async (e) => {
+    const { value: inputEmail } = e.target[0];
+
+    try {
+      await passwordRecovery(inputEmail);
+    } catch (error) {
+      console.log(error.code);
+    }
+  };
 
   const form = new validator(state, setState, schema, doSubmit);
 
