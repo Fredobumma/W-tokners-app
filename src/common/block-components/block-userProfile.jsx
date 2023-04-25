@@ -1,14 +1,21 @@
 import React, { useContext, useState } from "react";
 import Joi from "joi-browser";
 import jwtDecode from "jwt-decode";
-import { getData, setData } from "../../services/httpService";
-import { getJwt, signIn, updateUser } from "../../services/authService";
+import { deleteData, getData, setData } from "../../services/httpService";
+import {
+  getJwt,
+  loginWithJwt,
+  signIn,
+  updateEmail,
+  updateUser,
+} from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Input, { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
 import Button from "../button";
+import { mapToStateObj } from "./../../utilities/mapObject";
 
 const documentName = "users";
 const token = getJwt();
@@ -24,7 +31,7 @@ const UserProfile = () => {
   const { email: userEmail } = jwtDecode(token);
 
   const schema = {
-    username: Joi.string().min(5).max(30).required().label("Username"),
+    username: Joi.string().min(4).max(30).required().label("Username"),
     email: Joi.string().email().min(5).max(50).required().label("E-mail"),
     password: Joi.string()
       .regex(new RegExp("^[a-zA-Z0-9]{3,30}$"))
@@ -39,36 +46,63 @@ const UserProfile = () => {
   const handleUsernameUpdate = async (e) => {
     e.preventDefault();
     const { username } = state.data;
-    if (!username) return;
+    if (!username || Object.keys(state.errors).length) return;
 
     try {
-      const password = await getPasssword();
-      if (!password) throw new Error();
+      const { password } = await getDataObj();
+      if (!password.stringValue) throw new Error();
 
-      const { user } = await signIn(userEmail, password);
+      const { user } = await signIn(userEmail, password.stringValue);
       await updateUser(user, { displayName: username });
-      await setData("users", userEmail, { username });
+      await setData(documentName, userEmail, { username });
+      loginWithJwt(user.accessToken);
 
       e.target.form[0].value = "";
+      state.data.username = "";
+      setState(state);
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
     }
   };
 
-  const getPasssword = async () => {
+  const handleEmailUpdate = async (e) => {
+    e.preventDefault();
+    const { email } = state.data;
+    if (!email || Object.keys(state.errors).length) return;
+
+    try {
+      const obj = await getDataObj();
+      const { password } = obj;
+      if (!password.stringValue) throw new Error();
+
+      const { user } = await signIn(userEmail, password.stringValue);
+      await updateEmail(user, email);
+      await deleteData(documentName, userEmail);
+
+      obj.email.stringValue = email;
+      await setData(documentName, email, mapToStateObj(obj));
+      loginWithJwt(user.accessToken);
+
+      e.target.form[2].value = "";
+      state.data.email = "";
+      setState(state);
+    } catch (error) {
+      console.log(error.code || "An unknown error occurred");
+    }
+  };
+
+  const getDataObj = async () => {
     try {
       const {
         _document: {
           data: {
             value: {
-              mapValue: {
-                fields: { password },
-              },
+              mapValue: { fields },
             },
           },
         },
       } = await getData(documentName, userEmail);
-      return password.stringValue;
+      return fields;
     } catch (error) {
       return error.code;
     }
@@ -118,8 +152,8 @@ const UserProfile = () => {
               </span>
               <Button
                 label="Update"
-                onClick={handleUsernameUpdate}
                 extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
+                onClick={handleUsernameUpdate}
               />
             </div>
             <div className="tab:flex tab:justify-around">
@@ -131,17 +165,20 @@ const UserProfile = () => {
                 <label htmlFor="email">
                   <SVG id="email" />
                 </label>
-                <Input
-                  autoComplete="email"
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Email address"
-                />
+                {form.renderInput(
+                  "email",
+                  "email",
+                  "email",
+                  "E-mail address",
+                  "email",
+                  "",
+                  "40"
+                )}
               </span>
               <Button
                 label="Update"
                 extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
+                onClick={handleEmailUpdate}
               />
             </div>
             <div className="tab:flex tab:justify-around">

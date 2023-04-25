@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   updateProfile,
+  updateEmail,
   // GoogleAuthProvider,
   // onAuthStateChanged,
   // signInWithPopup,
@@ -46,5 +47,6 @@ export {
   signUp,
   signIn,
   updateUser,
+  updateEmail,
   passwordRecovery,
 };
