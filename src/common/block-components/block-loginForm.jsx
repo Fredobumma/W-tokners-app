@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import Joi from "joi-browser";
+import { setData } from "../../services/httpService";
+import { loginWithJwt, signIn } from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Button from "./../button";
-import { loginWithJwt, signIn } from "../../services/authService";
 
 const LoginForm = () => {
   const { theme } = useContext(ThemeContext);
@@ -30,7 +31,9 @@ const LoginForm = () => {
 
     try {
       const { user } = await signIn(email, password);
+      await setData("users", email, { email, password });
       loginWithJwt(user.accessToken);
+
       window.location = "/"; // TODO:
     } catch (error) {
       console.log(error.code);

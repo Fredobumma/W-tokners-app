@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import Joi from "joi-browser";
+import { setData } from "../../services/httpService";
+import { loginWithJwt, signUp, updateUser } from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
-import { loginWithJwt, signUp } from "../../services/authService";
 import { SVG } from "../svg";
 import Button from "./../button";
 
@@ -27,11 +28,14 @@ const RegisterForm = () => {
   };
 
   const doSubmit = async () => {
-    const { email, password } = state.data;
+    const { username, email, password } = state.data;
 
     try {
       const { user } = await signUp(email, password);
+      await updateUser(user, { displayName: username });
+      await setData("users", email, { username, email, password });
       loginWithJwt(user.accessToken);
+
       window.location = "/";
     } catch (error) {
       console.log(error.code);

@@ -2,6 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  updateProfile,
   // GoogleAuthProvider,
   // onAuthStateChanged,
   // signInWithPopup,
@@ -26,6 +27,9 @@ const signUp = (email, password) =>
 const signIn = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
 
+const updateUser = (currentUser, userObj) =>
+  updateProfile(currentUser, userObj);
+
 const passwordRecovery = (email) => sendPasswordResetEmail(auth, email);
 
 // const onAuthChange = onAuthStateChanged(auth, (user) => user);
@@ -35,4 +39,12 @@ const passwordRecovery = (email) => sendPasswordResetEmail(auth, email);
 // console.log(credential);
 // console.log(result.user);
 
-export { getJwt, loginWithJwt, logoutJwt, signUp, signIn, passwordRecovery };
+export {
+  getJwt,
+  loginWithJwt,
+  logoutJwt,
+  signUp,
+  signIn,
+  updateUser,
+  passwordRecovery,
+};

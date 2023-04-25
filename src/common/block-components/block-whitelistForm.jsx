@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import Joi from "joi-browser";
 import jwtDecode from "jwt-decode";
+import { getData, setData } from "../../services/httpService";
 import { getJwt } from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Button from "./../button";
-import { setData } from "../../services/httpService";
-import { getData } from "../../services/httpService";
 
 const documentName = "whitelisted";
 const token = getJwt();

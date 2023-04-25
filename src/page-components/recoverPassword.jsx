@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import Joi from "joi-browser";
+import { passwordRecovery } from "../services/authService";
 import ThemeContext from "../context/themeContext";
 import ValidatorContext from "../context/validatorContext";
 import { SVG } from "../common/svg";
 import Button from "./../common/button";
-import { passwordRecovery } from "../services/authService";
 
 const RecoverPassword = () => {
   const { theme } = useContext(ThemeContext);
