@@ -35,7 +35,7 @@ const WhitelistForm = () => {
 
       await setData(documentName, userEmail, {
         email: userEmail,
-        isWhiteListed: true,
+        email_whitelisted: true,
       });
       // TODO: SHOW ERROR, SEND EMAIL AND NOTIFY USER ("AN EMAIL WOULD BE SENT TO VERIFY THAT YOU'RE SHORTLISTED")
     } catch (error) {

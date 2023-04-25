@@ -1,12 +1,78 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import Joi from "joi-browser";
+import jwtDecode from "jwt-decode";
+import { getData, setData } from "../../services/httpService";
+import { getJwt, signIn, updateUser } from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
+import ValidatorContext from "../../context/validatorContext";
 import { SVG } from "../svg";
 import Input, { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
 import Button from "../button";
 
+const documentName = "users";
+const token = getJwt();
+
 const UserProfile = () => {
   const { theme } = useContext(ThemeContext);
+  const validator = useContext(ValidatorContext);
+
+  const [state, setState] = useState({
+    data: { username: "", email: "", password: "" },
+    errors: {},
+  });
+  const { email: userEmail } = jwtDecode(token);
+
+  const schema = {
+    username: Joi.string().min(5).max(30).required().label("Username"),
+    email: Joi.string().email().min(5).max(50).required().label("E-mail"),
+    password: Joi.string()
+      .regex(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+      .min(8)
+      .max(40)
+      .required()
+      .label("Password"),
+  };
+
+  const form = new validator(state, setState, schema);
+
+  const handleUsernameUpdate = async (e) => {
+    e.preventDefault();
+    const { username } = state.data;
+    if (!username) return;
+
+    try {
+      const password = await getPasssword();
+      if (!password) throw new Error();
+
+      const { user } = await signIn(userEmail, password);
+      await updateUser(user, { displayName: username });
+      await setData("users", userEmail, { username });
+
+      e.target.form[0].value = "";
+    } catch (error) {
+      console.log(error.code || "An unknown error occurred");
+    }
+  };
+
+  const getPasssword = async () => {
+    try {
+      const {
+        _document: {
+          data: {
+            value: {
+              mapValue: {
+                fields: { password },
+              },
+            },
+          },
+        },
+      } = await getData(documentName, userEmail);
+      return password.stringValue;
+    } catch (error) {
+      return error.code;
+    }
+  };
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
@@ -40,17 +106,19 @@ const UserProfile = () => {
                 <label htmlFor="username">
                   <SVG id="username" />
                 </label>
-                <Input
-                  autoComplete="username"
-                  id="username"
-                  name="username"
-                  type="text"
-                  placeholder="Username"
-                  autoFocus
-                />
+                {form.renderInput(
+                  "username",
+                  "username",
+                  "text",
+                  "Username",
+                  "username",
+                  "on",
+                  "20"
+                )}
               </span>
               <Button
                 label="Update"
+                onClick={handleUsernameUpdate}
                 extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
               />
             </div>

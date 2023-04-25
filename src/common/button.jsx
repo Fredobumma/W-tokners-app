@@ -1,8 +1,11 @@
 import React from "react";
 
-const Button = ({ label, extraStyles }) => {
+const Button = ({ label, extraStyles, ...rest }) => {
   return (
-    <button className={`font-bold rounded-[52px] text-sm ${extraStyles}`}>
+    <button
+      {...rest}
+      className={`font-bold rounded-[52px] text-sm ${extraStyles}`}
+    >
       {label}
     </button>
   );
