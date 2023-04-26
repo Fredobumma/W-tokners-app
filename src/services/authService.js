@@ -4,6 +4,7 @@ import {
   sendPasswordResetEmail,
   updateProfile,
   updateEmail,
+  updatePassword,
   // GoogleAuthProvider,
   // onAuthStateChanged,
   // signInWithPopup,
@@ -48,5 +49,6 @@ export {
   signIn,
   updateUser,
   updateEmail,
+  updatePassword,
   passwordRecovery,
 };

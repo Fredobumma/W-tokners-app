@@ -7,15 +7,16 @@ import {
   loginWithJwt,
   signIn,
   updateEmail,
+  updatePassword,
   updateUser,
 } from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
+import { mapToState } from "./../../utilities/mapObject";
 import { SVG } from "../svg";
-import Input, { DateInput, SecondaryInput } from "../input";
+import { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
 import Button from "../button";
-import { mapToStateObj } from "./../../utilities/mapObject";
 
 const documentName = "users";
 const token = getJwt();
@@ -50,9 +51,8 @@ const UserProfile = () => {
 
     try {
       const { password } = await getDataObj();
-      if (!password.stringValue) throw new Error();
-
       const { user } = await signIn(userEmail, password.stringValue);
+
       await updateUser(user, { displayName: username });
       await setData(documentName, userEmail, { username });
       loginWithJwt(user.accessToken);
@@ -73,18 +73,38 @@ const UserProfile = () => {
     try {
       const obj = await getDataObj();
       const { password } = obj;
-      if (!password.stringValue) throw new Error();
-
       const { user } = await signIn(userEmail, password.stringValue);
+
       await updateEmail(user, email);
       await deleteData(documentName, userEmail);
 
       obj.email.stringValue = email;
-      await setData(documentName, email, mapToStateObj(obj));
+      await setData(documentName, email, mapToState(obj));
       loginWithJwt(user.accessToken);
 
       e.target.form[2].value = "";
       state.data.email = "";
+      setState(state);
+    } catch (error) {
+      console.log(error.code || "An unknown error occurred");
+    }
+  };
+
+  const handlePasswordUpdate = async (e) => {
+    e.preventDefault();
+    const { password: newPassword } = state.data;
+    if (!newPassword || Object.keys(state.errors).length) return;
+
+    try {
+      const { password } = await getDataObj();
+      const { user } = await signIn(userEmail, password.stringValue);
+
+      await updatePassword(user, newPassword);
+      await setData(documentName, userEmail, { password: newPassword });
+      loginWithJwt(user.accessToken);
+
+      e.target.form[4].value = "";
+      state.data.password = "";
       setState(state);
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
@@ -190,17 +210,20 @@ const UserProfile = () => {
                 <label htmlFor="password">
                   <SVG id="password" />
                 </label>
-                <Input
-                  autoComplete="current-password"
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                />
+                {form.renderInput(
+                  "password",
+                  "password",
+                  "password",
+                  "Password",
+                  "new-password",
+                  "",
+                  "30"
+                )}
               </span>
               <Button
                 label="Update"
                 extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
+                onClick={handlePasswordUpdate}
               />
             </div>
           </form>
