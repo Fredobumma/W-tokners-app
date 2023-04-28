@@ -101,7 +101,7 @@ function FormValidator(obj, setObj, schema, doSubmit) {
 
     let { errors } = obj;
     errors = validate() || {};
-    setObj(obj);
+    setObj({ ...obj });
 
     if (Object.keys(errors).length) return;
     doSubmit(e);

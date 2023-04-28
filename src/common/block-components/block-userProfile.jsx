@@ -25,7 +25,7 @@ const UserProfile = () => {
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
 
-  const [loginInfo, setLoginInfo] = useState({
+  const [login, setlogin] = useState({
     data: { username: "", email: "", password: "" },
     errors: {},
   });
@@ -35,20 +35,13 @@ const UserProfile = () => {
   const schema = {
     username: Joi.string().min(4).max(30).required().label("Username"),
     email: Joi.string().email().min(5).max(50).required().label("E-mail"),
-    password: Joi.string()
-      .regex(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-      .min(8)
-      .max(40)
-      .required()
-      .label("Password"),
+    password: Joi.string().min(8).max(40).required().label("Password"),
   };
-
-  const form = new validator(loginInfo, setLoginInfo, schema);
 
   const handleUsernameUpdate = async (e) => {
     e.preventDefault();
-    const { username } = loginInfo.data;
-    if (!username || Object.keys(loginInfo.errors).length) return;
+    const { username } = login.data;
+    if (!username || Object.keys(login.errors).length) return;
 
     try {
       const { password } = userData;
@@ -59,9 +52,8 @@ const UserProfile = () => {
       await setData(documentName, userEmail, { username });
       loginWithJwt(user.accessToken);
 
-      e.target.form[0].value = "";
-      loginInfo.data.username = "";
-      setLoginInfo(loginInfo);
+      login.data.username = "";
+      setlogin({ ...login });
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
     }
@@ -69,8 +61,8 @@ const UserProfile = () => {
 
   const handleEmailUpdate = async (e) => {
     e.preventDefault();
-    const { email } = loginInfo.data;
-    if (!email || Object.keys(loginInfo.errors).length) return;
+    const { email } = login.data;
+    if (!email || Object.keys(login.errors).length) return;
 
     try {
       const { password } = userData;
@@ -84,9 +76,8 @@ const UserProfile = () => {
       await setData(documentName, email, userData);
       loginWithJwt(user.accessToken);
 
-      e.target.form[2].value = "";
-      loginInfo.data.email = "";
-      setLoginInfo(loginInfo);
+      login.data.email = "";
+      setlogin({ ...login });
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
     }
@@ -94,8 +85,8 @@ const UserProfile = () => {
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
-    const { password: newPassword } = loginInfo.data;
-    if (!newPassword || Object.keys(loginInfo.errors).length) return;
+    const { password: newPassword } = login.data;
+    if (!newPassword || Object.keys(login.errors).length) return;
 
     try {
       const { password } = userData;
@@ -106,9 +97,8 @@ const UserProfile = () => {
       await setData(documentName, userEmail, { password: newPassword });
       loginWithJwt(user.accessToken);
 
-      e.target.form[4].value = "";
-      loginInfo.data.password = "";
-      setLoginInfo(loginInfo);
+      login.data.password = "";
+      setlogin({ ...login });
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
     }
@@ -126,15 +116,18 @@ const UserProfile = () => {
       "state",
       "zipCode",
     ];
-    let { personalInfo } = userData;
-    personalInfo = prop.reduce((a, b, i) => {
-      return { ...a, [b]: _.startCase(e.target[i].value) || personalInfo[b] };
+    const personalInfo = prop.reduce((a, b, i) => {
+      return {
+        ...a,
+        [b]: _.startCase(e.target[i].value) || userData.personalInfo[b],
+      };
     }, {});
 
     try {
       await setData(documentName, userEmail, { personalInfo });
-      setUserData(userData);
-      window.location.reload();
+
+      prop.forEach((_el, i) => (e.target[i].value = ""));
+      setUserData({ personalInfo });
     } catch (error) {
       console.log(error.code);
     }
@@ -157,8 +150,17 @@ const UserProfile = () => {
     }
   }, [getUserData]);
 
+  const form = new validator(login, setlogin, schema);
+  const errors = Object.entries(login.errors)
+    .filter((el) => !el[1].includes("is not allowed to be empty"))
+    .reduce((a, b) => {
+      return { ...a, [b[0]]: b[1] };
+    }, {});
+  const data = (prop) => login.data[prop] === "";
+
   const { fullName, dob, country, street, city, state, zipCode } =
     userData.personalInfo || {};
+
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
       <div
@@ -183,6 +185,9 @@ const UserProfile = () => {
           </div>
           <form className="border-b grid gap-30px pb-10 px-30px tab:pb-60px tab:px-50px bigTab:px-70px laptop:pb-20 laptop:px-100px">
             <div className="tab:flex tab:justify-around">
+              {errors["username"] && (
+                <span className="text-red text-xs">{errors["username"]}</span>
+              )}
               <span
                 className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
                   theme ? "border-light" : "border-dark"
@@ -203,11 +208,17 @@ const UserProfile = () => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
+                extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
+                  (errors["username"] || data("username")) &&
+                  `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
+                }`}
                 onClick={handleUsernameUpdate}
               />
             </div>
             <div className="tab:flex tab:justify-around">
+              {errors["email"] && (
+                <span className="text-red text-xs">{errors["email"]}</span>
+              )}
               <span
                 className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
                   theme ? "border-light" : "border-dark"
@@ -228,11 +239,17 @@ const UserProfile = () => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
+                extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
+                  (errors["email"] || data("email")) &&
+                  `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
+                }`}
                 onClick={handleEmailUpdate}
               />
             </div>
             <div className="tab:flex tab:justify-around">
+              {errors["password"] && (
+                <span className="text-red text-xs">{errors["password"]}</span>
+              )}
               <span
                 className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
                   theme ? "border-light" : "border-dark"
@@ -253,7 +270,10 @@ const UserProfile = () => {
               </span>
               <Button
                 label="Update"
-                extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
+                extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
+                  (errors["password"] || data("password")) &&
+                  `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
+                }`}
                 onClick={handlePasswordUpdate}
               />
             </div>

@@ -19,12 +19,7 @@ const RegisterForm = () => {
   const schema = {
     username: Joi.string().min(5).max(30).required().label("Username"),
     email: Joi.string().email().min(5).max(50).required().label("E-mail"),
-    password: Joi.string()
-      .regex(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-      .min(8)
-      .max(40)
-      .required()
-      .label("Password"),
+    password: Joi.string().min(8).max(40).required().label("Password"),
   };
 
   const doSubmit = async () => {
@@ -43,6 +38,8 @@ const RegisterForm = () => {
   };
 
   const form = new validator(state, setState, schema, doSubmit);
+  const data = Object.values(state.data).filter((el) => el === "").length;
+  const error = Object.values(state.errors);
 
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">
@@ -82,6 +79,9 @@ const RegisterForm = () => {
               onSubmit={form.handleSubmit}
               className="grid gap-30px px-30px tab:px-50px bigTab:px-70px laptop:px-100px"
             >
+              {error[0] && (
+                <span className="text-center text-red text-xs">{error[0]}</span>
+              )}
               <span
                 className={`flex border-b-2 gap-2 items-center ${
                   theme ? "border-light" : "border-dark"
@@ -139,7 +139,10 @@ const RegisterForm = () => {
               <div>
                 <Button
                   label="Submit"
-                  extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300"
+                  extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
+                    (error[0] || data) &&
+                    `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
+                  }`}
                 />
               </div>
             </form>
