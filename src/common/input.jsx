@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import ThemeContext from "../context/themeContext";
 
 const Input = ({ error, ...rest }) => {
@@ -37,15 +37,19 @@ export const SecondaryInput = ({ label, id, error, ...rest }) => {
 
 export const DateInput = ({ label, id, error, ...rest }) => {
   const { theme } = useContext(ThemeContext);
+  const ref = useRef();
 
   return (
     <>
       <label htmlFor={id}>{label}</label>
       <input
+        ref={ref}
         id={id}
         {...rest}
+        onFocus={() => (ref.current.type = "date")}
+        onBlur={() => (ref.current.type = "text")}
         className={`bg-white border-b-2 h-10 px-2 text-dark text-sm w-full tab:w-3/4 focus:outline-none ${
-          theme ? "border-light" : "border-dark"
+          theme ? "border-light" : "border-dark placeholder:text-gray-500"
         }`}
       />
     </>

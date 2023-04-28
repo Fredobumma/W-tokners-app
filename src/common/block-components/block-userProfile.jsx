@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import Joi from "joi-browser";
 import jwtDecode from "jwt-decode";
+import _ from "lodash";
 import { deleteData, getData, setData } from "../../services/httpService";
 import {
   getJwt,
@@ -12,7 +13,6 @@ import {
 } from "../../services/authService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
-import { mapToState } from "./../../utilities/mapObject";
 import { SVG } from "../svg";
 import { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
@@ -25,10 +25,11 @@ const UserProfile = () => {
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
 
-  const [state, setState] = useState({
+  const [loginInfo, setLoginInfo] = useState({
     data: { username: "", email: "", password: "" },
     errors: {},
   });
+  const [userData, setUserData] = useState({});
   const { email: userEmail } = jwtDecode(token);
 
   const schema = {
@@ -42,24 +43,25 @@ const UserProfile = () => {
       .label("Password"),
   };
 
-  const form = new validator(state, setState, schema);
+  const form = new validator(loginInfo, setLoginInfo, schema);
 
   const handleUsernameUpdate = async (e) => {
     e.preventDefault();
-    const { username } = state.data;
-    if (!username || Object.keys(state.errors).length) return;
+    const { username } = loginInfo.data;
+    if (!username || Object.keys(loginInfo.errors).length) return;
 
     try {
-      const { password } = await getDataObj();
-      const { user } = await signIn(userEmail, password.stringValue);
+      const { password } = userData;
+      if (!password) throw new Error();
 
+      const { user } = await signIn(userEmail, password);
       await updateUser(user, { displayName: username });
       await setData(documentName, userEmail, { username });
       loginWithJwt(user.accessToken);
 
       e.target.form[0].value = "";
-      state.data.username = "";
-      setState(state);
+      loginInfo.data.username = "";
+      setLoginInfo(loginInfo);
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
     }
@@ -67,24 +69,24 @@ const UserProfile = () => {
 
   const handleEmailUpdate = async (e) => {
     e.preventDefault();
-    const { email } = state.data;
-    if (!email || Object.keys(state.errors).length) return;
+    const { email } = loginInfo.data;
+    if (!email || Object.keys(loginInfo.errors).length) return;
 
     try {
-      const obj = await getDataObj();
-      const { password } = obj;
-      const { user } = await signIn(userEmail, password.stringValue);
+      const { password } = userData;
+      if (!password) throw new Error();
 
+      const { user } = await signIn(userEmail, password);
       await updateEmail(user, email);
       await deleteData(documentName, userEmail);
 
-      obj.email.stringValue = email;
-      await setData(documentName, email, mapToState(obj));
+      userData.email = email;
+      await setData(documentName, email, userData);
       loginWithJwt(user.accessToken);
 
       e.target.form[2].value = "";
-      state.data.email = "";
-      setState(state);
+      loginInfo.data.email = "";
+      setLoginInfo(loginInfo);
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
     }
@@ -92,42 +94,71 @@ const UserProfile = () => {
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
-    const { password: newPassword } = state.data;
-    if (!newPassword || Object.keys(state.errors).length) return;
+    const { password: newPassword } = loginInfo.data;
+    if (!newPassword || Object.keys(loginInfo.errors).length) return;
 
     try {
-      const { password } = await getDataObj();
-      const { user } = await signIn(userEmail, password.stringValue);
+      const { password } = userData;
+      if (!password) throw new Error();
 
+      const { user } = await signIn(userEmail, password);
       await updatePassword(user, newPassword);
       await setData(documentName, userEmail, { password: newPassword });
       loginWithJwt(user.accessToken);
 
       e.target.form[4].value = "";
-      state.data.password = "";
-      setState(state);
+      loginInfo.data.password = "";
+      setLoginInfo(loginInfo);
     } catch (error) {
       console.log(error.code || "An unknown error occurred");
     }
   };
 
-  const getDataObj = async () => {
+  const handlePersonalData = async (e) => {
+    e.preventDefault();
+
+    const prop = [
+      "fullName",
+      "dob",
+      "country",
+      "street",
+      "city",
+      "state",
+      "zipCode",
+    ];
+    let { personalInfo } = userData;
+    personalInfo = prop.reduce((a, b, i) => {
+      return { ...a, [b]: _.startCase(e.target[i].value) || personalInfo[b] };
+    }, {});
+
     try {
-      const {
-        _document: {
-          data: {
-            value: {
-              mapValue: { fields },
-            },
-          },
-        },
-      } = await getData(documentName, userEmail);
-      return fields;
+      await setData(documentName, userEmail, { personalInfo });
+      setUserData(userData);
+      window.location.reload();
     } catch (error) {
-      return error.code;
+      console.log(error.code);
     }
   };
 
+  const getUserData = useCallback(async () => {
+    const obj = await getData(documentName, userEmail);
+    return obj;
+  }, [userEmail]);
+
+  useEffect(() => {
+    try {
+      const data = async () => {
+        const obj = await getUserData();
+        if (obj.exists()) setUserData({ ...obj.data() });
+      };
+      data();
+    } catch (error) {
+      console.log(error.code);
+    }
+  }, [getUserData]);
+
+  const { fullName, dob, country, street, city, state, zipCode } =
+    userData.personalInfo || {};
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
       <div
@@ -233,7 +264,10 @@ const UserProfile = () => {
             </h2>
             <p className="text-sm">Tell us more about yourself.</p>
           </div>
-          <form className="border-b grid gap-30px pb-10 px-30px tab:px-70px bigTab:px-24 laptop:pb-60px laptop:px-150px desktop:px-170px">
+          <form
+            onSubmit={handlePersonalData}
+            className="border-b grid gap-30px pb-10 px-30px tab:px-70px bigTab:px-24 laptop:pb-60px laptop:px-150px desktop:px-170px"
+          >
             <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
               <SecondaryInput
                 label="Full Name"
@@ -241,8 +275,8 @@ const UserProfile = () => {
                 id="fullname"
                 name="fullname"
                 type="text"
-                placeholder="Firstname Lastname"
-                minLength="3"
+                placeholder={fullName || "Firstname Lastname"}
+                minLength="4"
                 maxLength="30"
               />
             </span>
@@ -252,8 +286,8 @@ const UserProfile = () => {
                 autoComplete="bday"
                 id="date"
                 name="date"
-                type="date"
-                placeholder="Date of Birth"
+                type="text"
+                placeholder={dob || "mm/dd/yyyy"}
                 min=""
                 max=""
                 // TODO:
@@ -264,7 +298,10 @@ const UserProfile = () => {
                 label="Country"
                 id="country"
                 autoComplete="country-name"
-                option1={{ value: "", content: "--Please choose an option--" }}
+                option1={{
+                  value: "",
+                  content: country || "--Please choose an option--",
+                }}
                 option2={{ value: "United States" }}
                 option3={{ value: "United Kingdom" }}
                 option4={{ value: "Canada" }}
@@ -280,7 +317,8 @@ const UserProfile = () => {
                 id="street"
                 name="street"
                 type="text"
-                placeholder="Enter your street address"
+                placeholder={street || "Enter your street address"}
+                minLength="5"
                 maxLength="100"
               />
             </span>
@@ -291,7 +329,8 @@ const UserProfile = () => {
                 id="city"
                 name="city"
                 type="text"
-                placeholder="Enter your city"
+                placeholder={city || "Enter your city"}
+                minLength="3"
                 maxLength="30"
               />
             </span>
@@ -302,7 +341,8 @@ const UserProfile = () => {
                 id="state"
                 name="state"
                 type="text"
-                placeholder="Enter your state / province"
+                placeholder={state || "Enter your state / province"}
+                minLength="3"
                 maxLength="30"
               />
             </span>
@@ -313,7 +353,7 @@ const UserProfile = () => {
                 id="zipcode"
                 name="zipcode"
                 type="number"
-                placeholder="000000"
+                placeholder={zipCode || "000000"}
                 minLength="4"
                 maxLength="15"
               />
