@@ -1,12 +1,15 @@
 "use-client";
 
-import React, { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import jwtDecode from "jwt-decode";
+import { tracker } from "./services/trackService";
+import { getJwt } from "./services/authService";
 import ThemeContext from "./context/themeContext";
 import MenuContext from "./context/menuContext";
 import ValidatorContext from "./context/validatorContext";
@@ -92,6 +95,13 @@ function App() {
     { path: "*", element: <Navigate to="/not-found" /> },
   ]);
 
+  useEffect(() => {
+    tracker.start();
+
+    const { email } = jwtDecode(getJwt());
+    tracker.setUserID(email);
+  }, []);
+
   return (
     <Fragment>
       {/* // <===== ERROR BOUNDARY WITH FALLBACK MESSAGE =====> */}
@@ -107,10 +117,10 @@ function App() {
           value={{
             theme: getTheme,
             checked: darkSide,
-            toggleMode: toggleMode,
+            toggleMode,
           }}
         >
-          <MenuContext.Provider value={{ menu: menu, toggleMenu: toggleMenu }}>
+          <MenuContext.Provider value={{ menu, toggleMenu }}>
             <SVGSource />
             {/* // <===== APP NAVBAR  =====> */}
             <Navbar />

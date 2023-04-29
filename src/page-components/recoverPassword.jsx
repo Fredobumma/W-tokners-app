@@ -1,8 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Joi from "joi-browser";
 import { passwordRecovery } from "../services/authService";
+import logger from "../services/logService";
 import ThemeContext from "../context/themeContext";
 import ValidatorContext from "../context/validatorContext";
+import { clearError, mapErrorTo } from "../utilities/helper";
 import { SVG } from "../common/svg";
 import Button from "./../common/button";
 
@@ -17,18 +19,24 @@ const RecoverPassword = () => {
   };
 
   const doSubmit = async (e) => {
+    const obj = { ...state };
     const { value: inputEmail } = e.target[0];
 
     try {
       await passwordRecovery(inputEmail);
     } catch (error) {
-      console.log(error.code);
+      obj.errors.generic = mapErrorTo(error.code);
+      setState({ ...obj });
+      logger.log(error);
+
+      clearError(obj, setState);
     }
   };
 
   const form = new validator(state, setState, schema, doSubmit);
   const data = Object.values(state.data).filter((el) => el === "").length;
   const error = Object.values(state.errors);
+  const checkError = !state.errors.generic && error[0];
 
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">
@@ -92,7 +100,7 @@ const RecoverPassword = () => {
                 <Button
                   label="Submit"
                   extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
-                    (error[0] || data) &&
+                    (checkError || data) &&
                     `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
                   }`}
                 />

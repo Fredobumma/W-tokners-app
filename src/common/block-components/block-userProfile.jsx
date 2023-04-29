@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import Joi from "joi-browser";
 import jwtDecode from "jwt-decode";
 import _ from "lodash";
@@ -11,37 +11,41 @@ import {
   updatePassword,
   updateUser,
 } from "../../services/authService";
+import logger from "./../../services/logService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
+import { clearError, mapErrorTo } from "../../utilities/helper";
 import { SVG } from "../svg";
 import { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
 import Button from "../button";
 
 const documentName = "users";
-const token = getJwt();
 
 const UserProfile = () => {
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
 
-  const [login, setlogin] = useState({
+  const [login, setLogin] = useState({
     data: { username: "", email: "", password: "" },
     errors: {},
   });
   const [userData, setUserData] = useState({});
-  const { email: userEmail } = jwtDecode(token);
+
+  const { email: userEmail } = jwtDecode(getJwt());
 
   const schema = {
-    username: Joi.string().min(4).max(30).required().label("Username"),
+    username: Joi.string().min(3).max(30).required().label("Username"),
     email: Joi.string().email().min(5).max(50).required().label("E-mail"),
     password: Joi.string().min(8).max(40).required().label("Password"),
   };
 
   const handleUsernameUpdate = async (e) => {
     e.preventDefault();
-    const { username } = login.data;
-    if (!username || Object.keys(login.errors).length) return;
+    const obj = { ...login };
+    const { username } = obj.data;
+
+    if (!username || Object.keys(obj.errors).length) return;
 
     try {
       const { password } = userData;
@@ -52,17 +56,24 @@ const UserProfile = () => {
       await setData(documentName, userEmail, { username });
       loginWithJwt(user.accessToken);
 
-      login.data.username = "";
-      setlogin({ ...login });
+      obj.data.username = "";
+      setLogin({ ...obj });
     } catch (error) {
-      console.log(error.code || "An unknown error occurred");
+      obj.errors.generic = mapErrorTo(error.code);
+      setLogin({ ...obj });
+      logger.log(error);
+
+      clearError(obj, setLogin);
     }
   };
 
   const handleEmailUpdate = async (e) => {
     e.preventDefault();
-    const { email } = login.data;
-    if (!email || Object.keys(login.errors).length) return;
+    const obj = { ...login };
+    const userObj = { ...userData };
+    const { email } = obj.data;
+
+    if (!email || Object.keys(obj.errors).length) return;
 
     try {
       const { password } = userData;
@@ -71,22 +82,26 @@ const UserProfile = () => {
       const { user } = await signIn(userEmail, password);
       await updateEmail(user, email);
       await deleteData(documentName, userEmail);
-
-      userData.email = email;
-      await setData(documentName, email, userData);
+      await setData(documentName, email, { ...userObj, email });
       loginWithJwt(user.accessToken);
 
-      login.data.email = "";
-      setlogin({ ...login });
+      obj.data.email = "";
+      setLogin({ ...obj });
     } catch (error) {
-      console.log(error.code || "An unknown error occurred");
+      obj.errors.generic = mapErrorTo(error.code);
+      setLogin({ ...obj });
+      logger.log(error);
+
+      clearError(obj, setLogin);
     }
   };
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
-    const { password: newPassword } = login.data;
-    if (!newPassword || Object.keys(login.errors).length) return;
+    const obj = { ...login };
+    const { password: newPassword } = obj.data;
+
+    if (!newPassword || Object.keys(obj.errors).length) return;
 
     try {
       const { password } = userData;
@@ -97,16 +112,23 @@ const UserProfile = () => {
       await setData(documentName, userEmail, { password: newPassword });
       loginWithJwt(user.accessToken);
 
-      login.data.password = "";
-      setlogin({ ...login });
+      obj.data.password = "";
+      setLogin({ ...obj });
     } catch (error) {
-      console.log(error.code || "An unknown error occurred");
+      obj.errors.generic = mapErrorTo(error.code);
+      setLogin({ ...obj });
+      logger.log(error);
+
+      clearError(obj, setLogin);
     }
   };
 
   const handlePersonalData = async (e) => {
     e.preventDefault();
 
+    if (!userData.personalInfo) throw new Error();
+
+    const obj = { ...login };
     const prop = [
       "fullName",
       "dob",
@@ -119,7 +141,7 @@ const UserProfile = () => {
     const personalInfo = prop.reduce((a, b, i) => {
       return {
         ...a,
-        [b]: _.startCase(e.target[i].value) || userData.personalInfo[b],
+        [b]: _.capitalize(e.target[i].value) || userData.personalInfo[b],
       };
     }, {});
 
@@ -127,9 +149,13 @@ const UserProfile = () => {
       await setData(documentName, userEmail, { personalInfo });
 
       prop.forEach((_el, i) => (e.target[i].value = ""));
-      setUserData({ personalInfo });
+      setUserData({ ...userData, personalInfo });
     } catch (error) {
-      console.log(error.code);
+      obj.errors.generic = mapErrorTo(error.code);
+      setLogin({ ...obj });
+      logger.log(error);
+
+      clearError(obj, setLogin);
     }
   };
 
@@ -139,18 +165,23 @@ const UserProfile = () => {
   }, [userEmail]);
 
   useEffect(() => {
+    const obj = { ...login };
     try {
       const data = async () => {
-        const obj = await getUserData();
-        if (obj.exists()) setUserData({ ...obj.data() });
+        const userObj = await getUserData();
+        if (userObj.exists()) setUserData({ ...userObj.data() });
       };
       data();
     } catch (error) {
-      console.log(error.code);
+      obj.errors.generic = mapErrorTo(error.code);
+      setLogin({ ...obj });
+      logger.log(error);
+
+      clearError(obj, setLogin);
     }
   }, [getUserData]);
 
-  const form = new validator(login, setlogin, schema);
+  const form = new validator(login, setLogin, schema);
   const errors = Object.entries(login.errors)
     .filter((el) => !el[1].includes("is not allowed to be empty"))
     .reduce((a, b) => {
@@ -184,6 +215,11 @@ const UserProfile = () => {
             <p className="text-sm">Update your login information.</p>
           </div>
           <form className="border-b grid gap-30px pb-10 px-30px tab:pb-60px tab:px-50px bigTab:px-70px laptop:pb-20 laptop:px-100px">
+            {errors.generic && (
+              <span className="text-center text-red text-xs">
+                {errors.generic}
+              </span>
+            )}
             <div className="tab:flex tab:justify-around">
               {errors["username"] && (
                 <span className="text-red text-xs">{errors["username"]}</span>
@@ -382,6 +418,11 @@ const UserProfile = () => {
               label="Save"
               extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 ml-auto mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 w-fit"
             />
+            {errors.generic && (
+              <span className="text-center text-red text-xs">
+                {errors.generic}
+              </span>
+            )}
           </form>
         </div>
       </div>

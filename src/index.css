@@ -1,17 +1,17 @@
 @font-face {
   font-family: "Century Gothic";
-  src: url("services/fonts/GOTHIC.ttf");
-  src: url("services/fonts/GOTHIC.ttf") format("truetype"),
-    url("services/fonts/GOTHIC.woff") format("woff"),
-    url("services/fonts/GOTHICB.ttf") format("truetype"),
-    url("services/fonts/GOTHICB.woff") format("woff");
+  src: url("services/fontService/GOTHIC.ttf");
+  src: url("services/fontService/GOTHIC.ttf") format("truetype"),
+    url("services/fontService/GOTHIC.woff") format("woff"),
+    url("services/fontService/GOTHICB.ttf") format("truetype"),
+    url("services/fontService/GOTHICB.woff") format("woff");
 }
 
 @font-face {
   font-family: "Azo Sans";
-  src: url("services/fonts/AzoSansBold.ttf");
-  src: url("services/fonts/AzoSansBold.ttf") format("truetype"),
-    url("services/fonts/AzoSansBold.woff") format("woff");
+  src: url("services/fontService/AzoSansBold.ttf");
+  src: url("services/fontService/AzoSansBold.ttf") format("truetype"),
+    url("services/fontService/AzoSansBold.woff") format("woff");
 }
 
 @import "tailwindcss/base";

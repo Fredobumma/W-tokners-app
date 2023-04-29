@@ -1,9 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Joi from "joi-browser";
 import { setData } from "../../services/httpService";
 import { loginWithJwt, signIn } from "../../services/authService";
+import logger from "./../../services/logService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
+import { clearError, mapErrorTo } from "../../utilities/helper";
 import { SVG } from "../svg";
 import Button from "./../button";
 
@@ -22,7 +24,8 @@ const LoginForm = () => {
   };
 
   const doSubmit = async () => {
-    const { email, password } = state.data;
+    const obj = { ...state };
+    const { email, password } = obj.data;
 
     try {
       const { user } = await signIn(email, password);
@@ -31,13 +34,18 @@ const LoginForm = () => {
 
       window.location = "/"; // TODO:
     } catch (error) {
-      console.log(error.code);
+      obj.errors.generic = mapErrorTo(error.code);
+      setState({ ...obj });
+      logger.log(error);
+
+      clearError(obj, setState);
     }
   };
 
   const form = new validator(state, setState, schema, doSubmit);
   const data = Object.values(state.data).filter((el) => el === "").length;
   const error = Object.values(state.errors);
+  const checkError = !state.errors.generic && error[0];
 
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">
@@ -117,7 +125,7 @@ const LoginForm = () => {
                 <Button
                   label="Submit"
                   extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
-                    (error[0] || data) &&
+                    (checkError || data) &&
                     `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
                   }`}
                 />
