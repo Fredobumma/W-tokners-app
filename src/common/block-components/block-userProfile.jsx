@@ -45,7 +45,7 @@ const UserProfile = () => {
     const obj = { ...login };
     const { username } = obj.data;
 
-    if (!username || Object.keys(obj.errors).length) return;
+    if (!username || obj.errors.username) return;
 
     try {
       const { password } = userData;
@@ -73,7 +73,7 @@ const UserProfile = () => {
     const userObj = { ...userData };
     const { email } = obj.data;
 
-    if (!email || Object.keys(obj.errors).length) return;
+    if (!email || obj.errors.email) return;
 
     try {
       const { password } = userData;
@@ -101,7 +101,7 @@ const UserProfile = () => {
     const obj = { ...login };
     const { password: newPassword } = obj.data;
 
-    if (!newPassword || Object.keys(obj.errors).length) return;
+    if (!newPassword || obj.errors.password) return;
 
     try {
       const { password } = userData;
@@ -126,8 +126,6 @@ const UserProfile = () => {
   const handlePersonalData = async (e) => {
     e.preventDefault();
 
-    if (!userData.personalInfo) throw new Error();
-
     const obj = { ...login };
     const prop = [
       "fullName",
@@ -141,9 +139,13 @@ const UserProfile = () => {
     const personalInfo = prop.reduce((a, b, i) => {
       return {
         ...a,
-        [b]: _.capitalize(e.target[i].value) || userData.personalInfo[b],
+        [b]:
+          _.capitalize(e.target[i].value) ||
+          (userData.personalInfo && userData.personalInfo[b]),
       };
     }, {});
+
+    if (Object.values(personalInfo).every((el) => !el)) return;
 
     try {
       await setData(documentName, userEmail, { personalInfo });
@@ -220,28 +222,30 @@ const UserProfile = () => {
                 {errors.generic}
               </span>
             )}
-            <div className="tab:flex tab:justify-around">
-              {errors["username"] && (
-                <span className="text-red text-xs">{errors["username"]}</span>
-              )}
-              <span
-                className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
-                  theme ? "border-light" : "border-dark"
-                }`}
-              >
-                <label htmlFor="username">
-                  <SVG id="username" />
-                </label>
-                {form.renderInput(
-                  "username",
-                  "username",
-                  "text",
-                  "Username",
-                  "username",
-                  "on",
-                  "20"
+            <div className="tab:flex tab:items-end tab:justify-around">
+              <div className="tab:w-3/5">
+                {errors["username"] && (
+                  <span className="text-red text-xs">{errors["username"]}</span>
                 )}
-              </span>
+                <span
+                  className={`flex border-b-2 gap-2 items-center mt-2.5 ${
+                    theme ? "border-light" : "border-dark"
+                  }`}
+                >
+                  <label htmlFor="username">
+                    <SVG id="username" />
+                  </label>
+                  {form.renderInput(
+                    "username",
+                    "username",
+                    "text",
+                    "Username",
+                    "username",
+                    "on",
+                    "20"
+                  )}
+                </span>
+              </div>
               <Button
                 label="Update"
                 extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
@@ -251,28 +255,30 @@ const UserProfile = () => {
                 onClick={handleUsernameUpdate}
               />
             </div>
-            <div className="tab:flex tab:justify-around">
-              {errors["email"] && (
-                <span className="text-red text-xs">{errors["email"]}</span>
-              )}
-              <span
-                className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
-                  theme ? "border-light" : "border-dark"
-                }`}
-              >
-                <label htmlFor="email">
-                  <SVG id="email" />
-                </label>
-                {form.renderInput(
-                  "email",
-                  "email",
-                  "email",
-                  "E-mail address",
-                  "email",
-                  "",
-                  "40"
+            <div className="tab:flex tab:items-end tab:justify-around">
+              <div className="tab:w-3/5">
+                {errors["email"] && (
+                  <span className="text-red text-xs">{errors["email"]}</span>
                 )}
-              </span>
+                <span
+                  className={`flex border-b-2 gap-2 items-center mt-2.5 ${
+                    theme ? "border-light" : "border-dark"
+                  }`}
+                >
+                  <label htmlFor="email">
+                    <SVG id="email" />
+                  </label>
+                  {form.renderInput(
+                    "email",
+                    "email",
+                    "email",
+                    "E-mail address",
+                    "email",
+                    "",
+                    "40"
+                  )}
+                </span>
+              </div>
               <Button
                 label="Update"
                 extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
@@ -282,28 +288,30 @@ const UserProfile = () => {
                 onClick={handleEmailUpdate}
               />
             </div>
-            <div className="tab:flex tab:justify-around">
-              {errors["password"] && (
-                <span className="text-red text-xs">{errors["password"]}</span>
-              )}
-              <span
-                className={`flex border-b-2 gap-2 items-center tab:w-3/5 ${
-                  theme ? "border-light" : "border-dark"
-                }`}
-              >
-                <label htmlFor="password">
-                  <SVG id="password" />
-                </label>
-                {form.renderInput(
-                  "password",
-                  "password",
-                  "password",
-                  "Password",
-                  "new-password",
-                  "",
-                  "30"
+            <div className="tab:flex tab:items-end tab:justify-around">
+              <div className="tab:w-3/5">
+                {errors["password"] && (
+                  <span className="text-red text-xs">{errors["password"]}</span>
                 )}
-              </span>
+                <span
+                  className={`flex border-b-2 gap-2 items-center mt-2.5 ${
+                    theme ? "border-light" : "border-dark"
+                  }`}
+                >
+                  <label htmlFor="password">
+                    <SVG id="password" />
+                  </label>
+                  {form.renderInput(
+                    "password",
+                    "password",
+                    "password",
+                    "Password",
+                    "new-password",
+                    "",
+                    "30"
+                  )}
+                </span>
+              </div>
               <Button
                 label="Update"
                 extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${

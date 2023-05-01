@@ -1,7 +1,7 @@
-import React, { useContext, useRef } from "react";
+import { useContext, useRef } from "react";
 import ThemeContext from "../context/themeContext";
 
-const Input = ({ error, ...rest }) => {
+const Input = ({ ...rest }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -16,7 +16,7 @@ const Input = ({ error, ...rest }) => {
   );
 };
 
-export const SecondaryInput = ({ label, id, error, ...rest }) => {
+export const SecondaryInput = ({ label, id, ...rest }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -35,7 +35,7 @@ export const SecondaryInput = ({ label, id, error, ...rest }) => {
   );
 };
 
-export const DateInput = ({ label, id, error, ...rest }) => {
+export const DateInput = ({ label, id, ...rest }) => {
   const { theme } = useContext(ThemeContext);
   const ref = useRef();
 
@@ -48,7 +48,7 @@ export const DateInput = ({ label, id, error, ...rest }) => {
         {...rest}
         onFocus={() => (ref.current.type = "date")}
         onBlur={() => (ref.current.type = "text")}
-        className={`bg-white border-b-2 h-10 px-2 text-dark text-sm w-full tab:w-3/4 focus:outline-none ${
+        className={`bg-white border-b-2 font-bold h-10 placeholder:font-normal px-2 text-dark text-sm w-full tab:w-3/4 focus:outline-none ${
           theme ? "border-light" : "border-dark placeholder:text-gray-500"
         }`}
       />

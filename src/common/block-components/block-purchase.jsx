@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
@@ -31,7 +31,7 @@ const PurchaseGuide = () => {
         <div
           className={`${
             theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-400 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold laptop:mt-60`}
+          } h-max max-w-400 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold laptop:mt-60px`}
         >
           <span className="absolute top-[-16%] h-60 inset-x-0 mx-auto rotate-90 w-60 z-10 bigTab:top-[-20%] bigTab:h-86 bigTab:w-86 laptop:h-60 laptop:left-[-106%] laptop:rotate-0 laptop:top-[23%] laptop:w-60 desktop:h-86 desktop:left-[-105%] desktop:w-86">
             <SVG
