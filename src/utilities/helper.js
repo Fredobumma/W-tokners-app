@@ -8,7 +8,7 @@ function mapErrorTo(str) {
 function clearNotify(obj, setState) {
   setTimeout(() => {
     delete obj.errors.generic;
-    delete obj.errors.success;
+    delete obj.success;
 
     setState({ ...obj });
   }, 3000);

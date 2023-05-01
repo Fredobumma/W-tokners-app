@@ -16,7 +16,11 @@ const WhitelistForm = () => {
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
 
-  const [state, setState] = useState({ data: { email: "" }, errors: {} });
+  const [state, setState] = useState({
+    data: { email: "" },
+    errors: {},
+    success: "",
+  });
 
   const schema = {
     email: Joi.string().email().min(5).max(60).required().label("E-mail"),
@@ -41,6 +45,12 @@ const WhitelistForm = () => {
       }
 
       await setData(documentName, userEmail, { whitelisted: true });
+
+      obj.success = "Successfully shortlisted for W-Token";
+      obj.data.email = "";
+      setState({ ...obj });
+
+      clearNotify(obj, setState);
       // TODO: SHOW ERROR, SEND EMAIL AND NOTIFY USER ("AN EMAIL WOULD BE SENT TO VERIFY THAT YOU'RE SHORTLISTED")
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
@@ -55,6 +65,7 @@ const WhitelistForm = () => {
   const data = Object.values(state.data).filter((el) => el === "").length;
   const error = Object.values(state.errors);
   const checkError = !state.errors.generic && error[0];
+  const { success } = state;
 
   return (
     <section className="pb-20 pt-10 relative tab:pb-120px tab:pt-60px bigTab:pb-20 laptop:pb-0 laptop:pt-20">
@@ -97,6 +108,11 @@ const WhitelistForm = () => {
             >
               {error[0] && (
                 <span className="text-center text-red text-xs">{error[0]}</span>
+              )}
+              {success && (
+                <span className="font-bold text-center text-green-600 text-xs">
+                  {success}
+                </span>
               )}
               <span
                 className={`flex border-b-2 gap-2 items-center ${

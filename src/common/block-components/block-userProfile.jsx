@@ -29,6 +29,7 @@ const UserProfile = () => {
   const [login, setLogin] = useState({
     data: { username: "", email: "", password: "" },
     errors: {},
+    success: "",
   });
   const [userData, setUserData] = useState({});
 
@@ -56,8 +57,11 @@ const UserProfile = () => {
       await setData(documentName, userEmail, { username });
       loginWithJwt(user.accessToken);
 
+      obj.success = `Updated your "Username" sucessfully`;
       obj.data.username = "";
       setLogin({ ...obj });
+
+      clearNotify(obj, setLogin);
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
       setLogin({ ...obj });
@@ -85,8 +89,11 @@ const UserProfile = () => {
       await setData(documentName, email, { ...userObj, email });
       loginWithJwt(user.accessToken);
 
+      obj.success = `Updated your "E-mail Address" successfully`;
       obj.data.email = "";
       setLogin({ ...obj });
+
+      clearNotify(obj, setLogin);
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
       setLogin({ ...obj });
@@ -112,8 +119,11 @@ const UserProfile = () => {
       await setData(documentName, userEmail, { password: newPassword });
       loginWithJwt(user.accessToken);
 
+      obj.success = `Updated your "Password" successfully`;
       obj.data.password = "";
       setLogin({ ...obj });
+
+      clearNotify(obj, setLogin);
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
       setLogin({ ...obj });
@@ -191,6 +201,7 @@ const UserProfile = () => {
       return { ...a, [b[0]]: b[1] };
     }, {});
   const data = (prop) => login.data[prop] === "";
+  const { success } = login;
 
   const { fullName, dob, country, street, city, state, zipCode } =
     userData.personalInfo || {};
@@ -223,10 +234,15 @@ const UserProfile = () => {
                 {errors.generic}
               </span>
             )}
+            {success && (
+              <span className="font-bold text-center text-green-600 text-xs">
+                {success}
+              </span>
+            )}
             <div className="tab:flex tab:items-end tab:justify-around">
               <div className="tab:w-3/5">
-                {errors["username"] && (
-                  <span className="text-red text-xs">{errors["username"]}</span>
+                {errors.username && (
+                  <span className="text-red text-xs">{errors.username}</span>
                 )}
                 <span
                   className={`flex border-b-2 gap-2 items-center mt-2.5 ${
@@ -250,7 +266,7 @@ const UserProfile = () => {
               <Button
                 label="Update"
                 extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
-                  (errors["username"] || data("username")) &&
+                  (errors.username || data("username")) &&
                   `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
                 }`}
                 onClick={handleUsernameUpdate}
@@ -258,8 +274,8 @@ const UserProfile = () => {
             </div>
             <div className="tab:flex tab:items-end tab:justify-around">
               <div className="tab:w-3/5">
-                {errors["email"] && (
-                  <span className="text-red text-xs">{errors["email"]}</span>
+                {errors.email && (
+                  <span className="text-red text-xs">{errors.email}</span>
                 )}
                 <span
                   className={`flex border-b-2 gap-2 items-center mt-2.5 ${
@@ -283,7 +299,7 @@ const UserProfile = () => {
               <Button
                 label="Update"
                 extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
-                  (errors["email"] || data("email")) &&
+                  (errors.email || data("email")) &&
                   `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
                 }`}
                 onClick={handleEmailUpdate}
@@ -291,8 +307,8 @@ const UserProfile = () => {
             </div>
             <div className="tab:flex tab:items-end tab:justify-around">
               <div className="tab:w-3/5">
-                {errors["password"] && (
-                  <span className="text-red text-xs">{errors["password"]}</span>
+                {errors.password && (
+                  <span className="text-red text-xs">{errors.password}</span>
                 )}
                 <span
                   className={`flex border-b-2 gap-2 items-center mt-2.5 ${
@@ -316,7 +332,7 @@ const UserProfile = () => {
               <Button
                 label="Update"
                 extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
-                  (errors["password"] || data("password")) &&
+                  (errors.password || data("password")) &&
                   `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
                 }`}
                 onClick={handlePasswordUpdate}
@@ -430,6 +446,11 @@ const UserProfile = () => {
             {errors.generic && (
               <span className="text-center text-red text-xs">
                 {errors.generic}
+              </span>
+            )}
+            {success && (
+              <span className="font-bold text-center text-green-600 text-xs">
+                {success}
               </span>
             )}
           </form>
