@@ -14,7 +14,7 @@ import {
 import logger from "./../../services/logService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
-import { clearError, mapErrorTo } from "../../utilities/helper";
+import { clearNotify, mapErrorTo } from "../../utilities/helper";
 import { SVG } from "../svg";
 import { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
@@ -63,7 +63,7 @@ const UserProfile = () => {
       setLogin({ ...obj });
       logger.log(error);
 
-      clearError(obj, setLogin);
+      clearNotify(obj, setLogin);
     }
   };
 
@@ -92,7 +92,7 @@ const UserProfile = () => {
       setLogin({ ...obj });
       logger.log(error);
 
-      clearError(obj, setLogin);
+      clearNotify(obj, setLogin);
     }
   };
 
@@ -119,7 +119,7 @@ const UserProfile = () => {
       setLogin({ ...obj });
       logger.log(error);
 
-      clearError(obj, setLogin);
+      clearNotify(obj, setLogin);
     }
   };
 
@@ -137,6 +137,7 @@ const UserProfile = () => {
       "zipCode",
     ];
     const personalInfo = prop.reduce((a, b, i) => {
+      console.log(userData.personalInfo?.[b]);
       return {
         ...a,
         [b]:
@@ -157,7 +158,7 @@ const UserProfile = () => {
       setLogin({ ...obj });
       logger.log(error);
 
-      clearError(obj, setLogin);
+      clearNotify(obj, setLogin);
     }
   };
 
@@ -179,7 +180,7 @@ const UserProfile = () => {
       setLogin({ ...obj });
       logger.log(error);
 
-      clearError(obj, setLogin);
+      clearNotify(obj, setLogin);
     }
   }, [getUserData]);
 

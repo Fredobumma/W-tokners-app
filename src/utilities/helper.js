@@ -5,12 +5,14 @@ function mapErrorTo(str) {
   return _.capitalize(str.replace("auth/", "").replaceAll("-", " "));
 }
 
-function clearError(obj, setState) {
+function clearNotify(obj, setState) {
   setTimeout(() => {
     delete obj.errors.generic;
+    delete obj.errors.success;
+
     setState({ ...obj });
   }, 3000);
   clearTimeout();
 }
 
-export { mapErrorTo, clearError };
+export { mapErrorTo, clearNotify };

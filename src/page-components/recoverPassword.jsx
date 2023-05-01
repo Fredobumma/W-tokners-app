@@ -4,7 +4,7 @@ import { passwordRecovery } from "../services/authService";
 import logger from "../services/logService";
 import ThemeContext from "../context/themeContext";
 import ValidatorContext from "../context/validatorContext";
-import { clearError, mapErrorTo } from "../utilities/helper";
+import { clearNotify, mapErrorTo } from "../utilities/helper";
 import { SVG } from "../common/svg";
 import Button from "./../common/button";
 
@@ -29,7 +29,7 @@ const RecoverPassword = () => {
       setState({ ...obj });
       logger.log(error);
 
-      clearError(obj, setState);
+      clearNotify(obj, setState);
     }
   };
 

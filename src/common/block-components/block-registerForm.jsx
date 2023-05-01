@@ -5,7 +5,7 @@ import { loginWithJwt, signUp, updateUser } from "../../services/authService";
 import logger from "../../services/logService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
-import { clearError, mapErrorTo } from "../../utilities/helper";
+import { clearNotify, mapErrorTo } from "../../utilities/helper";
 import { SVG } from "../svg";
 import Button from "./../button";
 
@@ -33,14 +33,14 @@ const RegisterForm = () => {
       await setData("users", email, { username, email, password });
       loginWithJwt(user.accessToken);
 
-      window.location = "/";
+      window.location = location.state?.from || "/";
     } catch (error) {
       const obj = { ...state };
       obj.errors.generic = mapErrorTo(error.code);
       setState({ ...obj });
       logger.log(error);
 
-      clearError(obj, setState);
+      clearNotify(obj, setState);
     }
   };
 

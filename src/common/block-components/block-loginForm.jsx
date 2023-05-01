@@ -1,15 +1,17 @@
 import { useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Joi from "joi-browser";
 import { setData } from "../../services/httpService";
 import { loginWithJwt, signIn } from "../../services/authService";
 import logger from "./../../services/logService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
-import { clearError, mapErrorTo } from "../../utilities/helper";
+import { clearNotify, mapErrorTo } from "../../utilities/helper";
 import { SVG } from "../svg";
 import Button from "./../button";
 
 const LoginForm = () => {
+  const location = useLocation();
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
 
@@ -32,13 +34,13 @@ const LoginForm = () => {
       await setData("users", email, { email, password });
       loginWithJwt(user.accessToken);
 
-      window.location = "/"; // TODO:
+      window.location = location.state?.from || "/";
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
       setState({ ...obj });
       logger.log(error);
 
-      clearError(obj, setState);
+      clearNotify(obj, setState);
     }
   };
 

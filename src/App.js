@@ -18,6 +18,7 @@ import useDarkSide from "./hooks/useDarkSide";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import FormValidator from "./utilities/formValidator";
 import { SVGSource } from "./common/svg";
+import RequireAuth from "./common/auth";
 import Navbar from "./common/block-components/navbar";
 import HomePage from "./page-components/homePage";
 import Team from "./page-components/team";
@@ -65,7 +66,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage />,
+      element: <HomePage user={getJwt()} />,
     },
     { path: "/team", element: <Team /> },
     {
@@ -83,10 +84,24 @@ function App() {
         { path: ":tokenId", element: <TokenDetails /> },
       ],
     },
-    { path: "/join-whitelist", element: <JoinWhitelist /> },
+    {
+      path: "/join-whitelist",
+      element: (
+        <RequireAuth>
+          <JoinWhitelist />
+        </RequireAuth>
+      ),
+    },
     { path: "/register", element: <Register /> },
     { path: "/login", element: <Login /> },
-    { path: "/profile", element: <Profile /> },
+    {
+      path: "/profile",
+      element: (
+        <RequireAuth>
+          <Profile />
+        </RequireAuth>
+      ),
+    },
     {
       path: "/recover-password",
       element: <RecoverPassword />,
@@ -98,7 +113,7 @@ function App() {
   useEffect(() => {
     tracker.start();
 
-    const { email } = jwtDecode(getJwt());
+    const { email } = getJwt() ? jwtDecode(getJwt()) : {};
     tracker.setUserID(email);
   }, []);
 
