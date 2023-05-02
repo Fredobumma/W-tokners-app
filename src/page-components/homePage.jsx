@@ -1,8 +1,11 @@
-import React from "react";
+import { useContext } from "react";
+import AuthContext from "../context/authContext";
 import UsersHomePage from "./usersHomePage";
 import GuestHomePage from "./guestHomePage";
 
-const HomePage = ({ user }) => {
+const HomePage = () => {
+  const { user } = useContext(AuthContext);
+
   return user ? <UsersHomePage /> : <GuestHomePage />;
 };
 

@@ -11,6 +11,7 @@ import jwtDecode from "jwt-decode";
 import { tracker } from "./services/trackService";
 import { getJwt } from "./services/authService";
 import ThemeContext from "./context/themeContext";
+import AuthContext from "./context/authContext";
 import MenuContext from "./context/menuContext";
 import ValidatorContext from "./context/validatorContext";
 import CollapseInfoContext from "./context/collapseInfoContext";
@@ -36,10 +37,8 @@ import Footer from "./common/block-components/block-footer";
 
 function App() {
   const [colorTheme, setTheme] = useDarkSide();
-  const [darkSide, setDarkSide] = useState(
-    colorTheme === "bg-light" ? false : true
-  );
   const getTheme = colorTheme === "bg-dark";
+  const [darkSide, setDarkSide] = useState(Boolean(colorTheme !== "bg-light"));
   const [menu, setMenu] = useState(false);
   const [collapseInfo, setCollapseInfo] = useState(true);
   // const { width } = useWindowDimensions();
@@ -66,7 +65,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage user={getJwt()} />,
+      element: <HomePage />,
     },
     { path: "/team", element: <Team /> },
     {
@@ -135,24 +134,30 @@ function App() {
             toggleMode,
           }}
         >
-          <MenuContext.Provider value={{ menu, toggleMenu }}>
-            <SVGSource />
-            {/* // <===== APP NAVBAR  =====> */}
-            <Navbar />
-            <main className="pt-120px relative">
-              <ValidatorContext.Provider value={FormValidator}>
-                <CollapseInfoContext.Provider
-                  value={{ collapse: collapseInfo, toggle: toggleInfo }}
-                >
-                  {/* // <===== PROVIDING ROUTES AND APP PAGES =====> */}
-                  <RouterProvider router={router} />
-                </CollapseInfoContext.Provider>
-              </ValidatorContext.Provider>
-              {/* // <===== APP FOOTER  =====> */}
-              <Footer />
-              <MenuBackDrop />
-            </main>
-          </MenuContext.Provider>
+          <AuthContext.Provider value={{ user: getJwt() }}>
+            <MenuContext.Provider value={{ menu, toggleMenu }}>
+              <SVGSource />
+              {/* // <===== APP NAVBAR  =====> */}
+              <Navbar />
+              {/* // <===== APP NAVBAR  =====> */}
+              <main className="pt-120px relative">
+                <ValidatorContext.Provider value={FormValidator}>
+                  <CollapseInfoContext.Provider
+                    value={{ collapse: collapseInfo, toggle: toggleInfo }}
+                  >
+                    {/* // <===== PROVIDING ROUTES AND APP PAGES =====> */}
+                    <RouterProvider router={router} />
+                    {/* // <===== PROVIDING ROUTES AND APP PAGES =====> */}
+                  </CollapseInfoContext.Provider>
+                </ValidatorContext.Provider>
+                {/* // <===== APP FOOTER  =====> */}
+                <Footer />
+                {/* // <===== APP FOOTER  =====> */}
+
+                <MenuBackDrop />
+              </main>
+            </MenuContext.Provider>
+          </AuthContext.Provider>
         </ThemeContext.Provider>
       </ErrorBoundary>
     </Fragment>

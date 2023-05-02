@@ -1,5 +1,7 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+// import { Link } from "react-router-dom";
 import ThemeContext from "../../context/themeContext";
+// import AuthContext from "../../context/authContext";
 import MenuContext from "../../context/menuContext";
 import Switcher from "../switcher";
 import { SVG } from "../svg";
@@ -7,6 +9,7 @@ import Button from "./../button";
 
 const Navbar = () => {
   const { theme, checked, toggleMode } = useContext(ThemeContext);
+  // const { user } = useContext(AuthContext);
   const { menu, toggleMenu } = useContext(MenuContext);
 
   return (
@@ -89,6 +92,21 @@ const Navbar = () => {
               </span>
             </li>
           </ul>
+          {/* <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
+            <Link
+              to="/profile"
+              className="flex font-bold gap-2.5 items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
+              rel="noopener noreferrer"
+            >
+              UserName
+              <SVG id="profile" />
+            </Link>
+            <Button
+              label="Log Out"
+              extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
+            />
+          </div> */}
+
           <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
             <Button
               label="Sign In"
@@ -98,18 +116,6 @@ const Navbar = () => {
               label="Sign Up"
               extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
             />
-            {/* <a
-              href="/profile"
-              className="flex font-bold gap-2.5 items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
-              rel="noopener noreferrer"
-            >
-              UserName
-              <SVG id="profile" />
-            </a>
-            <Button
-              label="Log Out"
-              extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
-            /> */}
           </div>
         </div>
       </div>
