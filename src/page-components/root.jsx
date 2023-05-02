@@ -71,7 +71,7 @@ const Root = () => {
                 </CollapseInfoContext.Provider>
               </ValidatorContext.Provider>
               <Footer /> {/* Static Footer */}
-              <MenuBackDrop />
+              <MenuBackDrop /> {/* Menu Background */}
             </main>
           </MenuContext.Provider>
         </AuthContext.Provider>
