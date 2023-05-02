@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SVG } from "../svg";
 import ThemeContext from "../../context/themeContext";
 import CollapseInfoContext from "../../context/collapseInfoContext";
-import Button from "../button";
+import { NavButton } from "../button";
 import pngImage_2x from "../images/showcase-bg.png";
 import pngImage_1x from "../images/showcase-bg-1.png";
 import webpImage_2x from "../images/showcase-bg.webp";
@@ -77,7 +77,8 @@ const Showcase = () => {
               would people like you on the money, and you would own it because
               it would make the most sense in the world.
             </p>
-            <Button
+            <NavButton
+              to="login"
               label="Know More"
               extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transform-gpu transform transition-all duration-300"
             />

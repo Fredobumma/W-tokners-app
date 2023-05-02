@@ -1,4 +1,4 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Button = ({ label, extraStyles, ...rest }) => {
   return (
@@ -11,4 +11,16 @@ const Button = ({ label, extraStyles, ...rest }) => {
   );
 };
 
+const NavButton = ({ label, extraStyles, ...rest }) => {
+  return (
+    <NavLink
+      {...rest}
+      className={`inline-block cursor-pointer font-bold rounded-[52px] text-sm ${extraStyles}`}
+    >
+      {label}
+    </NavLink>
+  );
+};
+
 export default Button;
+export { NavButton };

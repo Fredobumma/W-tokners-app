@@ -1,16 +1,16 @@
 import { useContext } from "react";
-// import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ThemeContext from "../../context/themeContext";
-// import AuthContext from "../../context/authContext";
 import MenuContext from "../../context/menuContext";
+import AuthContext from "../../context/authContext";
 import Switcher from "../switcher";
 import { SVG } from "../svg";
-import Button from "./../button";
+import { NavButton } from "./../button";
 
 const Navbar = () => {
   const { theme, checked, toggleMode } = useContext(ThemeContext);
-  // const { user } = useContext(AuthContext);
   const { menu, toggleMenu } = useContext(MenuContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <nav
@@ -26,12 +26,12 @@ const Navbar = () => {
               : "bg-darkNav laptop:bg-darkNav-xl"
           }`}
         ></div>
-        <a
-          href="/"
+        <NavLink
+          to="/"
           className="outline-0 max-h-[33px] max-w-[207px] mr-30px laptop:m-0"
         >
           <SVG id="namedLogo" height="100%" width="100%" />
-        </a>
+        </NavLink>
         <button className="group z-[100] laptop:hidden" onClick={toggleMenu}>
           <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
             <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
@@ -60,31 +60,31 @@ const Navbar = () => {
         >
           <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30px laptop:inline-flex">
             <li>
-              <a
-                href="/team"
+              <NavLink
+                to="/team"
                 className="outline-0 group overflow-hidden relative"
               >
                 Our team
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="/tokens"
+              <NavLink
+                to="/tokens"
                 className="outline-0 group overflow-hidden relative"
               >
                 Tokens
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a
-                href="/join-whitelist"
+              <NavLink
+                to="/join-whitelist"
                 className="outline-0 group overflow-hidden relative"
               >
                 Join Whitelist
                 <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-              </a>
+              </NavLink>
             </li>
             <li>
               <span className="inline-block laptop:ml-3">
@@ -92,31 +92,35 @@ const Navbar = () => {
               </span>
             </li>
           </ul>
-          {/* <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
-            <Link
-              to="/profile"
-              className="flex font-bold gap-2.5 items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
-              rel="noopener noreferrer"
-            >
-              UserName
-              <SVG id="profile" />
-            </Link>
-            <Button
-              label="Log Out"
-              extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
-            />
-          </div> */}
-
-          <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
-            <Button
-              label="Sign In"
-              extraStyles="active:bg-secondary bg-transparent py-3 focus:bg-secondary hover:bg-secondary focus:px-10 hover:px-10 transition-all duration-300 laptop:px-2.5 desktop:px-0"
-            />
-            <Button
-              label="Sign Up"
-              extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
-            />
-          </div>
+          {user ? (
+            <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
+              <NavLink
+                to="/profile"
+                className="flex font-bold gap-2.5 items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
+                rel="noopener noreferrer"
+              >
+                UserName
+                <SVG id="profile" />
+              </NavLink>
+              <NavButton
+                label="Log Out"
+                extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
+              />
+            </div>
+          ) : (
+            <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
+              <NavButton
+                to="/login"
+                label="Sign In"
+                extraStyles="active:bg-secondary bg-transparent py-3 focus:bg-secondary hover:bg-secondary focus:px-10 hover:px-10 transition-all duration-300 laptop:px-2.5 desktop:px-0"
+              />
+              <NavButton
+                to="/register"
+                label="Sign Up"
+                extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
+              />
+            </div>
+          )}
         </div>
       </div>
     </nav>

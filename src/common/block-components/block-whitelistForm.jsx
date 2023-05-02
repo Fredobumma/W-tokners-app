@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Joi from "joi-browser";
 import jwtDecode from "jwt-decode";
 import { getData, setData } from "../../services/httpService";
@@ -8,11 +9,12 @@ import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
 import { clearNotify, mapErrorTo } from "../../utilities/helper";
 import { SVG } from "../svg";
-import Button from "./../button";
+import Button, { NavButton } from "./../button";
 
 const documentName = "users";
 
 const WhitelistForm = () => {
+  const location = useLocation();
   const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
 
@@ -90,7 +92,8 @@ const WhitelistForm = () => {
           <p className="decoration-inherit font-bold text-xs leading-5 underline underline-offset-4 bigTab:leading-5 desktop:leading-54 desktop:text-sm">
             Go back ?
           </p>
-          <Button
+          <NavButton
+            to={location.state?.from || "/"}
             label="Back"
             extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary mt-5 px-10 py-3 transform-gpu transform transition-all duration-300"
           />

@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
-import Button from "../button";
+import { NavButton } from "../button";
 import pngImage_2x from "../images/hero-img.png";
 import pngImage_1x from "../images/hero-img-1.png";
 import webpImage_2x from "../images/hero-img.webp";
@@ -34,7 +34,8 @@ const Hero = () => {
             creating a profile with media content posted as Non fungible Tokens
             that can be owned and traded on the Tknrs network
           </p>
-          <Button
+          <NavButton
+            to="/login"
             label="Learn More"
             extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 px-30px py-3.5 drop-shadow-button transform-gpu transform transition-all duration-300"
           />
