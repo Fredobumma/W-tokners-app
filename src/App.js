@@ -20,6 +20,7 @@ import Profile from "./page-components/profile";
 import RecoverPassword from "./page-components/recoverPassword";
 import SavedTokens from "./common/block-components/block-savedTokens";
 import TokenDetails from "./common/block-components/block-token-details";
+import LogOut from "./page-components/logOut";
 import NotFound from "./page-components/notFound";
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
           path: "/recover-password",
           element: <RecoverPassword />,
         },
+        { path: "/logging-out", element: <LogOut /> },
         { path: "/not-found", element: <NotFound /> },
         { path: "*", element: <Navigate to="/not-found" /> },
       ],

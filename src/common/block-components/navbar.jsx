@@ -103,6 +103,7 @@ const Navbar = () => {
                 <SVG id="profile" />
               </NavLink>
               <NavButton
+                to="/logging-out"
                 label="Log Out"
                 extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
               />
