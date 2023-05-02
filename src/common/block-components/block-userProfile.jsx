@@ -147,12 +147,9 @@ const UserProfile = () => {
       "zipCode",
     ];
     const personalInfo = prop.reduce((a, b, i) => {
-      console.log(userData.personalInfo?.[b]);
       return {
         ...a,
-        [b]:
-          _.capitalize(e.target[i].value) ||
-          (userData.personalInfo && userData.personalInfo[b]),
+        [b]: _.capitalize(e.target[i].value) || userData.personalInfo?.[b],
       };
     }, {});
 

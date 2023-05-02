@@ -60,19 +60,19 @@ const Root = () => {
       >
         <AuthContext.Provider value={{ user: getJwt() }}>
           <MenuContext.Provider value={{ menu, toggleMenu }}>
-            <ValidatorContext.Provider value={FormValidator}>
-              <CollapseInfoContext.Provider
-                value={{ collapse: collapseInfo, toggle: toggleInfo }}
-              >
-                <SVGSource />
-                <Navbar />
-                <main className="pt-120px relative">
-                  <Outlet />
-                  <Footer />
-                </main>
-                <MenuBackDrop />
-              </CollapseInfoContext.Provider>
-            </ValidatorContext.Provider>
+            <SVGSource />
+            <Navbar /> {/* Static Navbar */}
+            <main className="pt-120px relative">
+              <ValidatorContext.Provider value={FormValidator}>
+                <CollapseInfoContext.Provider
+                  value={{ collapse: collapseInfo, toggle: toggleInfo }}
+                >
+                  <Outlet /> {/*  App Outlet */}
+                </CollapseInfoContext.Provider>
+              </ValidatorContext.Provider>
+              <Footer /> {/* Static Footer */}
+              <MenuBackDrop />
+            </main>
           </MenuContext.Provider>
         </AuthContext.Provider>
       </ThemeContext.Provider>
