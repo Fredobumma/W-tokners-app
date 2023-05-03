@@ -1,4 +1,3 @@
-import React from "react";
 import { useSnapCarousel } from "react-snap-carousel";
 import { SVG } from "./svg";
 

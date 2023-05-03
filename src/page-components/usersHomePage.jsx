@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import Hero from "../common/block-components/block-auth-hero";
 import Objectives from "../common/block-components/block-auth-objectives";
 import Services from "../common/block-components/block-auth-services";

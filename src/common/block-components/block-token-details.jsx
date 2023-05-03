@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import TradeViewChart from "react-crypto-chart";
 import ThemeContext from "../../context/themeContext";

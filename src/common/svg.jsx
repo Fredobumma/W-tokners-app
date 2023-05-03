@@ -378,7 +378,7 @@ function SVG(props) {
   );
 }
 
-function SVGSource(_props) {
+function SVGSource() {
   return (
     <SVG isHidden={true}>
       <defs>

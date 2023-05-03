@@ -1,4 +1,3 @@
-import React from "react";
 import { useSnapCarousel } from "react-snap-carousel";
 
 const PresaleCarousel = ({ children }) => {

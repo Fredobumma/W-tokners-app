@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import WhitelistForm from "../common/block-components/block-whitelistForm";
 
 const JoinWhitelist = () => {

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ThemeContext from "../../context/themeContext";
 import pngImage_2x from "../images/services-bg.png";
 import pngImage_1x from "../images/services-bg-1.png";

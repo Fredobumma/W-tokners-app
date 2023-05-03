@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import UserProfile from "./../common/block-components/block-userProfile";
 
 const Profile = () => {
