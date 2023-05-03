@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const {
   REACT_APP_TOKENS_API_URL,
   REACT_APP_TOKENS_API_KEY,
@@ -9,12 +11,6 @@ const options = {
   url: REACT_APP_TOKENS_API_URL,
   params: {
     referenceCurrencyUuid: "yhjMzLPhuIDl",
-    timePeriod: "24h",
-    "tiers[0]": "1",
-    orderBy: "marketCap",
-    orderDirection: "desc",
-    limit: "100",
-    offset: "0",
   },
   headers: {
     "X-RapidAPI-Key": REACT_APP_TOKENS_API_KEY,
@@ -23,7 +19,32 @@ const options = {
 };
 
 function getTokens() {
-  return options;
+  const { params } = options;
+  params.timePeriod = "24h";
+  params["tiers[0]"] = "1";
+  params.orderBy = "marketCap";
+  params.orderDirection = "desc";
+  params.limit = "100";
+  params.offset = "0";
+
+  return axios.request(options);
 }
 
-export { getTokens };
+function getToken(tokenRef) {
+  const { url, params } = options;
+  options.url = url.replace("/coins", `/coin/${tokenRef}`);
+  params.timePeriod = "24h";
+
+  console.log("here", options.url);
+  return axios.request(options);
+}
+
+function getTokenOHLC(tokenRef) {
+  const { url, params } = options;
+  options.url = url.replace("/coins", `/coin/${tokenRef}/ohlc`);
+  params.interval = "day";
+
+  return axios.request(options);
+}
+
+export { getTokens, getToken, getTokenOHLC };

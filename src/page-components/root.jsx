@@ -47,7 +47,7 @@ const Root = () => {
 
     const { email } = getJwt() ? jwtDecode(getJwt()) : {};
     tracker.setUserID(email);
-  }, []);
+  }, [window.location.pathname]);
 
   return (
     <Fragment>

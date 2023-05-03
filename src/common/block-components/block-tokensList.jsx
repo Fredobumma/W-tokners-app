@@ -1,11 +1,37 @@
-import { useContext, useEffect } from "react";
-import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { getTokens } from "../../services/tokenService";
 import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
 const TokensList = () => {
+  const [tokens, setTokens] = useState([]);
   const { theme } = useContext(ThemeContext);
+  console.log(tokens);
+
+  useEffect(() => {
+    const tokensData = async () => {
+      try {
+        const { data } = await getTokens();
+        const tokens = data?.data.coins;
+        setTokens(tokens);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+
+    // const tokenData = async () => {
+    //   try {
+    //     const data = await getToken("Qwsogvtv82FCd");
+    //     const tokens = data?.data.coins;
+    //     setTokens([...tokens]);
+    //   } catch (error) {
+    //     console.error(error.message);
+    //   }
+    // };
+
+    tokensData();
+    // tokenData();
+  }, []);
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
@@ -114,7 +140,7 @@ const TokensList = () => {
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
-                Total Volume
+                24h Volume
               </th>
               <th scope="col" className="px-6 py-3">
                 Market Cap Change
@@ -122,196 +148,28 @@ const TokensList = () => {
             </tr>
           </thead>
           <tbody>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
+            {tokens.map((token, i) => (
+              <tr
+                key={i}
+                className={`border-b cursor-pointer ${
+                  theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
+                }`}
               >
-                Apple MacBook Pro 17"
-              </th>
-              <td className="px-6 py-4">Silver</td>
-              <td className="px-6 py-4">Laptop</td>
-              <td className="px-6 py-4">$2999</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                Microsoft Surface Pro
-              </th>
-              <td className="px-6 py-4">White</td>
-              <td className="px-6 py-4">Laptop PC</td>
-              <td className="px-6 py-4">$1999</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                Magic Mouse 2
-              </th>
-              <td className="px-6 py-4">Black</td>
-              <td className="px-6 py-4">Accessories</td>
-              <td className="px-6 py-4">$99</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                Apple Watch
-              </th>
-              <td className="px-6 py-4">Black</td>
-              <td className="px-6 py-4">Watches</td>
-              <td className="px-6 py-4">$199</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                Apple iMac
-              </th>
-              <td className="px-6 py-4">Silver</td>
-              <td className="px-6 py-4">PC</td>
-              <td className="px-6 py-4">$2999</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                Apple AirPods
-              </th>
-              <td className="px-6 py-4">White</td>
-              <td className="px-6 py-4">Accessories</td>
-              <td className="px-6 py-4">$399</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                iPad Pro
-              </th>
-              <td className="px-6 py-4">Gold</td>
-              <td className="px-6 py-4">Tablet</td>
-              <td className="px-6 py-4">$699</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                Magic Keyboard
-              </th>
-              <td className="px-6 py-4">Black</td>
-              <td className="px-6 py-4">Accessories</td>
-              <td className="px-6 py-4">$99</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="px-6 py-4 font-normal whitespace-nowrap"
-              >
-                Smart Folio iPad Air
-              </th>
-              <td className="px-6 py-4">Blue</td>
-              <td className="px-6 py-4">Accessories</td>
-              <td className="px-6 py-4">$79</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
-            <tr
-              className={`border-b cursor-pointer ${
-                theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-              }`}
-            >
-              <td className="p-4 w-4">
-                <SVG id="star" />
-              </td>
-              <th
-                scope="row"
-                className="font-normal px-6 py-4 whitespace-nowrap"
-              >
-                AirTag
-              </th>
-              <td className="px-6 py-4">Silver</td>
-              <td className="px-6 py-4">Accessories</td>
-              <td className="px-6 py-4">$29</td>
-              <td className="px-6 py-4">Edit</td>
-            </tr>
+                <td className="p-4 w-4">
+                  <SVG id="star" />
+                </td>
+                <th
+                  scope="row"
+                  className="px-6 py-4 font-normal whitespace-nowrap"
+                >
+                  {token.symbol}
+                </th>
+                <td className="px-6 py-4">{token.name}</td>
+                <td className="px-6 py-4">{token.price}</td>
+                <td className="px-6 py-4">{token["24hVolume"]}</td>
+                <td className="px-6 py-4">{token.marketCap}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <nav
