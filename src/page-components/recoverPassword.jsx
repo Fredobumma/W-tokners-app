@@ -4,7 +4,7 @@ import { passwordRecovery } from "../services/authService";
 import logger from "../services/logService";
 import ThemeContext from "../context/themeContext";
 import ValidatorContext from "../context/validatorContext";
-import { clearNotify, mapErrorTo } from "../utilities/helper";
+import { clearNotify, mapErrorTo } from "../utilities/helpers";
 import { SVG } from "../common/svg";
 import Button, { NavButton } from "./../common/button";
 

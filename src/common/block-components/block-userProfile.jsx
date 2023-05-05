@@ -14,7 +14,7 @@ import {
 import logger from "./../../services/logService";
 import ThemeContext from "../../context/themeContext";
 import ValidatorContext from "../../context/validatorContext";
-import { clearNotify, mapErrorTo } from "../../utilities/helper";
+import { clearNotify, mapErrorTo } from "../../utilities/helpers";
 import { SVG } from "../svg";
 import { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";

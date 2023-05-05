@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { getTokens } from "../../services/tokenService";
 import ThemeContext from "../../context/themeContext";
+import { numberFormat, twoDecimals } from "../../utilities/helpers";
 import { SVG } from "../svg";
 
 const TokensList = () => {
@@ -71,6 +72,7 @@ const TokensList = () => {
                   ? "border-dark text-dark placeholder:text-gray-500"
                   : "border-light text-light"
               }`}
+              maxLength="3"
             />
             <button className="rotate-90">
               <SVG id="submit-icon" />
@@ -143,7 +145,7 @@ const TokensList = () => {
                 24h Volume
               </th>
               <th scope="col" className="px-6 py-3">
-                Market Cap Change
+                Market Cap
               </th>
             </tr>
           </thead>
@@ -160,14 +162,21 @@ const TokensList = () => {
                 </td>
                 <th
                   scope="row"
+                  style={{ backgroundColor: token.color }}
                   className="px-6 py-4 font-normal whitespace-nowrap"
                 >
                   {token.symbol}
                 </th>
-                <td className="px-6 py-4">{token.name}</td>
-                <td className="px-6 py-4">{token.price}</td>
-                <td className="px-6 py-4">{token["24hVolume"]}</td>
-                <td className="px-6 py-4">{token.marketCap}</td>
+                <td style={{ color: token.color }} className="px-6 py-4">
+                  {token.name}
+                </td>
+                <td className="px-6 py-4">
+                  {numberFormat(twoDecimals(token.price))}
+                </td>
+                <td className="px-6 py-4">
+                  {numberFormat(token["24hVolume"])}
+                </td>
+                <td className="px-6 py-4">{numberFormat(token.marketCap)}</td>
               </tr>
             ))}
           </tbody>
