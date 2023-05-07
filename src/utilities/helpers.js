@@ -33,4 +33,11 @@ function twoDecimals(n) {
   return Math.round(n * div) / div;
 }
 
-export { mapErrorTo, clearNotify, numberFormat, twoDecimals };
+function match(value, query) {
+  return (
+    value.toUpperCase().startsWith(query.toUpperCase()) ||
+    value.toUpperCase().includes(query.toUpperCase())
+  );
+}
+
+export { mapErrorTo, clearNotify, numberFormat, twoDecimals, match };

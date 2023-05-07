@@ -2,22 +2,33 @@ import { useContext, useEffect, useState } from "react";
 import { getTokens } from "../../services/tokenService";
 import ThemeContext from "../../context/themeContext";
 import { paginate } from "../../utilities/paginate";
-import { numberFormat, twoDecimals } from "../../utilities/helpers";
+import { match, numberFormat, twoDecimals } from "../../utilities/helpers";
 import { SVG } from "../svg";
 
 const TokensList = () => {
-  const [{ pageSize, currentPage }, setState] = useState({
+  const [{ pageSize, currentPage, searchQuery }, setState] = useState({
     pageSize: 10,
     currentPage: 1,
+    searchQuery: "",
   });
   const [tokens, setTokens] = useState([]);
   const { theme } = useContext(ThemeContext);
-  console.log(tokens);
 
-  const pageCount = Math.ceil(tokens.length / pageSize);
-  const showingTokens = paginate(tokens, currentPage, pageSize);
+  const filtered = tokens.filter(
+    (t) => match(t.name, searchQuery) || match(t.symbol, searchQuery)
+  );
+  const showingTokens = paginate(filtered, currentPage, pageSize);
+  const pageCount = Math.ceil(filtered.length / pageSize);
   const start = showingTokens.length ? (currentPage - 1) * pageSize + 1 : 0;
   const end = (currentPage - 1) * pageSize + showingTokens.length;
+
+  const handleSearch = (e) => {
+    setState((prev) => ({
+      ...prev,
+      currentPage: 1,
+      searchQuery: e.target.value,
+    }));
+  };
 
   const handlePageChange = (page) => {
     if (page > pageCount || page < 1) return;
@@ -70,8 +81,9 @@ const TokensList = () => {
             className={`bg-transparent font-bold mr-3 outline-0 w-full placeholder:font-normal ${
               theme ? "text-dark placeholder:text-gray-500" : "text-light"
             }`}
+            onChange={handleSearch}
           />
-          <button className="cursor-pointer">
+          <button onClick={(e) => e.preventDefault()}>
             <SVG id="search-icon" />
           </button>
         </div>
@@ -136,7 +148,7 @@ const TokensList = () => {
               </span>
             </span>
           </div>
-          <button className="cursor-pointer mr-2 hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300">
+          <button className="mr-2 hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300">
             <SVG id="reset" />
           </button>
         </div>
@@ -206,7 +218,7 @@ const TokensList = () => {
             <span className="font-bold">
               {start}-{end}
             </span>{" "}
-            of <span className="font-bold">{tokens.length}</span>
+            of <span className="font-bold">{filtered.length}</span>
           </span>
           <div className="flex gap-30px pr-3" aria-hidden>
             <button
