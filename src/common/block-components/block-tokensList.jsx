@@ -1,13 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 import { getTokens } from "../../services/tokenService";
 import ThemeContext from "../../context/themeContext";
+import { paginate } from "../../utilities/paginate";
 import { numberFormat, twoDecimals } from "../../utilities/helpers";
 import { SVG } from "../svg";
 
 const TokensList = () => {
+  const [{ pageSize, currentPage }, setState] = useState({
+    pageSize: 10,
+    currentPage: 1,
+  });
   const [tokens, setTokens] = useState([]);
   const { theme } = useContext(ThemeContext);
   console.log(tokens);
+
+  const pageCount = Math.ceil(tokens.length / pageSize);
+  const showingTokens = paginate(tokens, currentPage, pageSize);
+  const start = showingTokens.length ? (currentPage - 1) * pageSize + 1 : 0;
+  const end = (currentPage - 1) * pageSize + showingTokens.length;
+
+  const handlePageChange = (page) => {
+    if (page > pageCount || page < 1) return;
+
+    setState((prev) => ({ ...prev, currentPage: page }));
+  };
 
   useEffect(() => {
     const tokensData = async () => {
@@ -150,7 +166,7 @@ const TokensList = () => {
             </tr>
           </thead>
           <tbody>
-            {tokens.map((token, i) => (
+            {showingTokens.map((token, i) => (
               <tr
                 key={i}
                 className={`border-b cursor-pointer ${
@@ -186,14 +202,27 @@ const TokensList = () => {
           aria-label="Table navigation"
         >
           <span className="text-sm">
-            Showing <span className="font-bold">1-10</span> of{" "}
-            <span className="font-bold"> 1000</span>
+            Showing{" "}
+            <span className="font-bold">
+              {start}-{end}
+            </span>{" "}
+            of <span className="font-bold">{tokens.length}</span>
           </span>
           <div className="flex gap-30px pr-3" aria-hidden>
-            <button className="box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              className={`box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 ${
+                currentPage <= 1 && "cursor-not-allowed opacity-30"
+              }`}
+            >
               <SVG id="left-arrow" width="100%" height="100%" />
             </button>
-            <button className="box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300">
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              className={`box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 ${
+                currentPage >= pageCount && "cursor-not-allowed opacity-30"
+              }`}
+            >
               <SVG id="right-arrow" width="100%" height="100%" />
             </button>
           </div>

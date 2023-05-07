@@ -194,9 +194,7 @@ const UserProfile = () => {
   const form = new validator(login, setLogin, schema);
   const errors = Object.entries(login.errors)
     .filter((el) => !el[1].includes("is not allowed to be empty"))
-    .reduce((a, b) => {
-      return { ...a, [b[0]]: b[1] };
-    }, {});
+    .reduce((a, b) => ({ ...a, [b[0]]: b[1] }), {});
   const data = (prop) => login.data[prop] === "";
   const { success } = login;
 
