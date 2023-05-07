@@ -17,34 +17,47 @@ const options = {
     "X-RapidAPI-Host": REACT_APP_TOKENS_API_HOST,
   },
 };
+const { params, url } = options;
 
 function getTokens() {
-  const { params } = options;
-  params.timePeriod = "24h";
-  params["tiers[0]"] = "1";
-  params.orderBy = "marketCap";
-  params.orderDirection = "desc";
-  params.limit = "100";
-  params.offset = "0";
+  const obj = {
+    url: `${url}/coins`,
+    params: {
+      ...params,
+      timePeriod: "24h",
+      "tiers[0]": "1",
+      orderBy: "marketCap",
+      orderDirection: "desc",
+      limit: "100",
+      offset: "0",
+    },
+  };
 
-  return axios.request(options);
+  return axios.request({ ...options, ...obj });
 }
 
 function getToken(tokenRef) {
-  const { url, params } = options;
-  options.url = url.replace("/coins", `/coin/${tokenRef}`);
-  params.timePeriod = "24h";
+  const obj = {
+    url: `${url}/coin/${tokenRef}`,
+    params: {
+      ...params,
+      timePeriod: "24h",
+    },
+  };
 
-  console.log("here", options.url);
-  return axios.request(options);
+  return axios.request({ ...options, ...obj });
 }
 
 function getTokenOHLC(tokenRef) {
-  const { url, params } = options;
-  options.url = url.replace("/coins", `/coin/${tokenRef}/ohlc`);
-  params.interval = "day";
+  const obj = {
+    url: `${url}/coin/${tokenRef}/ohlc`,
+    params: {
+      ...params,
+      interval: "day",
+    },
+  };
 
-  return axios.request(options);
+  return axios.request({ ...options, ...obj });
 }
 
 export { getTokens, getToken, getTokenOHLC };
