@@ -146,12 +146,13 @@ const UserProfile = () => {
       "state",
       "zipCode",
     ];
-    const personalInfo = prop.reduce((a, b, i) => {
-      return {
+    const personalInfo = prop.reduce(
+      (a, b, i) => ({
         ...a,
         [b]: _.capitalize(e.target[i].value) || userData.personalInfo?.[b],
-      };
-    }, {});
+      }),
+      {}
+    );
 
     if (Object.values(personalInfo).every((el) => !el)) return;
 

@@ -15,15 +15,15 @@ function clearNotify(obj, setState) {
   clearTimeout();
 }
 
-function numberFormat(num, currency) {
-  const digits = num.length > 5 && !num.includes(".") ? 0 : 2;
+function numberFormat(amount, currency) {
+  amount = String(twoDecimals(amount));
+  const digits = amount.length > 8 && amount[1] !== "." ? 0 : 10;
 
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: currency || "usd",
-    minimumFractionDigits: digits,
-    maximumFractionDigits: 10,
-  }).format(num);
+    currency,
+    maximumFractionDigits: digits,
+  }).format(amount);
 }
 
 function twoDecimals(n) {
@@ -34,10 +34,9 @@ function twoDecimals(n) {
 }
 
 function match(value, query) {
-  return (
-    value.toUpperCase().startsWith(query.toUpperCase()) ||
-    value.toUpperCase().includes(query.toUpperCase())
-  );
+  value = value.toUpperCase();
+  query = query.toUpperCase();
+  return value.startsWith(query) || value.includes(query);
 }
 
-export { mapErrorTo, clearNotify, numberFormat, twoDecimals, match };
+export { mapErrorTo, clearNotify, numberFormat, match };

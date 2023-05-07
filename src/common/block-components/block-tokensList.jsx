@@ -1,16 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { getTokens } from "../../services/tokenService";
+import { convert } from "../../services/currencyService";
 import ThemeContext from "../../context/themeContext";
 import { paginate } from "../../utilities/paginate";
-import { match, numberFormat, twoDecimals } from "../../utilities/helpers";
+import { match, numberFormat } from "../../utilities/helpers";
 import { SVG } from "../svg";
 
 const TokensList = () => {
-  const [{ pageSize, currentPage, searchQuery }, setState] = useState({
-    pageSize: 10,
-    currentPage: 1,
-    searchQuery: "",
-  });
+  const [{ currency, pageSize, currentPage, searchQuery, usdRate }, setState] =
+    useState({
+      currency: "eur",
+      pageSize: 10,
+      currentPage: 1,
+      searchQuery: "",
+      usdRate: 1,
+    });
   const [tokens, setTokens] = useState([]);
   const { theme } = useContext(ThemeContext);
 
@@ -40,10 +44,13 @@ const TokensList = () => {
     const tokensData = async () => {
       try {
         const { data } = await getTokens();
+        const usdRate = await convert(currency);
         const tokens = data?.data.coins;
-        setTokens(tokens);
+
+        setTokens([...tokens]);
+        setState((prev) => ({ ...prev, usdRate }));
       } catch (error) {
-        console.error(error.message);
+        console.log(error.message);
       }
     };
 
@@ -199,12 +206,14 @@ const TokensList = () => {
                   {token.name}
                 </td>
                 <td className="px-6 py-4">
-                  {numberFormat(twoDecimals(token.price))}
+                  {numberFormat(token.price * usdRate, currency)}
                 </td>
                 <td className="px-6 py-4">
-                  {numberFormat(token["24hVolume"])}
+                  {numberFormat(token["24hVolume"] * usdRate, currency)}
                 </td>
-                <td className="px-6 py-4">{numberFormat(token.marketCap)}</td>
+                <td className="px-6 py-4">
+                  {numberFormat(token.marketCap * usdRate, currency)}
+                </td>
               </tr>
             ))}
           </tbody>

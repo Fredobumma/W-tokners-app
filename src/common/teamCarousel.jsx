@@ -22,7 +22,7 @@ const TeamCarousel = ({ theme, children }) => {
           <button
             className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
               activePageIndex <= 0 &&
-              "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
+              "cursor-not-allowed active:rotate-360 focus:rotate-360 hover:rotate-0 opacity-30"
             }`}
             onClick={() => prev()}
           >
@@ -31,7 +31,7 @@ const TeamCarousel = ({ theme, children }) => {
           <button
             className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
               activePageIndex === pages.length - 1 &&
-              "opacity-30 active:rotate-360 focus:rotate-360 hover:rotate-0"
+              "cursor-not-allowed active:rotate-360 focus:rotate-360 hover:rotate-0 opacity-30"
             }`}
             onClick={() => next()}
           >
