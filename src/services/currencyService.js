@@ -1,15 +1,15 @@
 import axios from "axios";
 
-const { REACT_APP_TOKENS_API_KEY, REACT_APP_CONVERTER_API_URL } = process.env;
+const { REACT_APP_TOKENS_API_KEY, REACT_APP_CONVERTER_API_HOST } = process.env;
 const options = {
   method: "GET",
-  url: `https://${REACT_APP_CONVERTER_API_URL}/convert`,
+  url: `https://${REACT_APP_CONVERTER_API_HOST}/convert`,
   params: {
     from: "USD",
   },
   headers: {
     "X-RapidAPI-Key": REACT_APP_TOKENS_API_KEY,
-    "X-RapidAPI-Host": REACT_APP_CONVERTER_API_URL,
+    "X-RapidAPI-Host": REACT_APP_CONVERTER_API_HOST,
   },
 };
 
@@ -22,7 +22,7 @@ async function convert(currency) {
   };
 
   const { data } = await axios.request({ ...options, params: obj });
-  return data?.meta?.rates.from;
+  return data?.meta?.rates.from || 0;
 }
 
 export { convert };

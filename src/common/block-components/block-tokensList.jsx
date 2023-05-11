@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { getTokens } from "../../services/tokenService";
 import { convert } from "../../services/currencyService";
 import ThemeContext from "../../context/themeContext";
@@ -9,7 +9,7 @@ import { SVG } from "../svg";
 const TokensList = () => {
   const [{ currency, pageSize, currentPage, searchQuery, usdRate }, setState] =
     useState({
-      currency: "eur",
+      currency: "usd",
       pageSize: 10,
       currentPage: 1,
       searchQuery: "",
@@ -17,6 +17,7 @@ const TokensList = () => {
     });
   const [tokens, setTokens] = useState([]);
   const { theme } = useContext(ThemeContext);
+  const currencyRef = useRef(null);
 
   const filtered = tokens.filter(
     (t) => match(t.name, searchQuery) || match(t.symbol, searchQuery)
@@ -32,6 +33,13 @@ const TokensList = () => {
       currentPage: 1,
       searchQuery: e.target.value,
     }));
+  };
+
+  const handleCurrencyChange = (e) => {
+    e.preventDefault();
+    const currency = currencyRef.current.value;
+
+    setState((prev) => ({ ...prev, currency }));
   };
 
   const handlePageChange = (page) => {
@@ -66,7 +74,7 @@ const TokensList = () => {
 
     tokensData();
     // tokenData();
-  }, []);
+  }, [currency]);
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
@@ -98,10 +106,11 @@ const TokensList = () => {
           <div className="flex gap-3 grow tab:grow-0">
             <label htmlFor="search-currency">Currency:</label>
             <input
+              ref={currencyRef}
               type="search"
               name="search-currency"
               id="search-currency"
-              placeholder="usd"
+              placeholder={currency}
               className={`bg-transparent border-b-2 font-bold max-w-[60px] outline-0 pl-1 placeholder:font-normal ${
                 theme
                   ? "border-dark text-dark placeholder:text-gray-500"
@@ -109,7 +118,7 @@ const TokensList = () => {
               }`}
               maxLength="3"
             />
-            <button className="rotate-90">
+            <button className="rotate-90" onClick={handleCurrencyChange}>
               <SVG id="submit-icon" />
             </button>
           </div>
