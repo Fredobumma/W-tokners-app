@@ -17,7 +17,7 @@ function clearNotify(obj, setState) {
 
 function numberFormat(amount, currency) {
   amount = String(twoDecimals(amount));
-  const digits = amount.length > 8 && amount[1] !== "." ? 0 : 10;
+  const digits = !amount.includes(".") ? 0 : 20;
 
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -39,4 +39,12 @@ function match(value, query) {
   return value.startsWith(query) || value.includes(query);
 }
 
-export { mapErrorTo, clearNotify, numberFormat, match };
+function sort(items, column) {
+  const path = column.substring(0, column.lastIndexOf(" "));
+  const order = column.includes("desc") ? "desc" : "asc";
+  return _.orderBy(items, (el) => (path === "name" ? el[path] : +el[path]), [
+    order,
+  ]);
+}
+
+export { mapErrorTo, clearNotify, numberFormat, match, sort };

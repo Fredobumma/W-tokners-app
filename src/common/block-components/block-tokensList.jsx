@@ -3,18 +3,21 @@ import { getTokens } from "../../services/tokenService";
 import { convert } from "../../services/tokenService";
 import ThemeContext from "../../context/themeContext";
 import { paginate } from "../../utilities/paginate";
-import { match, numberFormat } from "../../utilities/helpers";
+import { match, numberFormat, sort } from "../../utilities/helpers";
 import { SVG } from "../svg";
 
 const TokensList = () => {
-  const [{ currency, pageSize, currentPage, searchQuery, usdRate }, setState] =
-    useState({
-      currency: "usd",
-      pageSize: 10,
-      currentPage: 1,
-      searchQuery: "",
-      usdRate: 1,
-    });
+  const [
+    { searchQuery, currency, usdRate, sortColumn, pageSize, currentPage },
+    setState,
+  ] = useState({
+    searchQuery: "",
+    currency: "usd",
+    usdRate: 1,
+    sortColumn: "marketCap desc",
+    pageSize: 10,
+    currentPage: 1,
+  });
   const [tokens, setTokens] = useState([]);
   const { theme } = useContext(ThemeContext);
   const currencyRef = useRef(null);
@@ -22,7 +25,8 @@ const TokensList = () => {
   const filtered = tokens.filter(
     (t) => match(t.name, searchQuery) || match(t.symbol, searchQuery)
   );
-  const showingTokens = paginate(filtered, currentPage, pageSize);
+  const sorted = sort(filtered, sortColumn);
+  const showingTokens = paginate(sorted, currentPage, pageSize);
   const pageCount = Math.ceil(filtered.length / pageSize);
   const start = showingTokens.length ? (currentPage - 1) * pageSize + 1 : 0;
   const end = (currentPage - 1) * pageSize + showingTokens.length;
@@ -35,11 +39,14 @@ const TokensList = () => {
     }));
   };
 
+  const handleSort = (e) => {
+    setState((prev) => ({ ...prev, sortColumn: e.target.value }));
+  };
+
   const handleCurrencyChange = (e) => {
     e.preventDefault();
-    const currency = currencyRef.current.value;
 
-    setState((prev) => ({ ...prev, currency }));
+    setState((prev) => ({ ...prev, currency: currencyRef.current.value }));
   };
 
   const handlePageChange = (page) => {
@@ -133,30 +140,31 @@ const TokensList = () => {
                 id="sort-by"
                 name="sort-by"
                 className=" appearance-none bg-transparent capitalize flex-1 leading-4 py-1.5 text-xs focus:outline-0"
+                onChange={handleSort}
               >
-                <option className="text-dark" value="market_cap_desc">
-                  market cap desc
+                <option className="text-dark" value="marketCap desc">
+                  Market Cap desc
                 </option>
-                <option className="text-dark" value="market_cap_asc">
-                  market cap asc
+                <option className="text-dark" value="marketCap asc">
+                  Market Cap asc
                 </option>
-                <option className="text-dark" value=" volume_desc">
-                  volume desc
+                <option className="text-dark" value="24hVolume desc">
+                  Volume desc
                 </option>
-                <option className="text-dark" value="volume_asc">
-                  volume asc
+                <option className="text-dark" value="24hVolume asc">
+                  Volume asc
                 </option>
-                <option className="text-dark" value="id_desc">
-                  id desc
+                <option className="text-dark" value="price desc">
+                  Price desc
                 </option>
-                <option className="text-dark" value="id_ascc">
-                  id asc
+                <option className="text-dark" value="price asc">
+                  Price asc
                 </option>
-                <option className="text-dark" value="gecko_desc">
-                  gecko desc
+                <option className="text-dark" value="name desc">
+                  Asset Name desc
                 </option>
-                <option className="text-dark" value="gecko_asc">
-                  gecko asc{" "}
+                <option className="text-dark" value="name asc">
+                  Asset Name asc{" "}
                 </option>
               </select>
               <span className="-ml-5 pointer-events-none">
