@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { getTokens } from "../../services/tokenService";
-import { convert } from "../../services/currencyService";
+import { convert } from "../../services/tokenService";
 import ThemeContext from "../../context/themeContext";
 import { paginate } from "../../utilities/paginate";
 import { match, numberFormat } from "../../utilities/helpers";

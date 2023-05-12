@@ -8,6 +8,7 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
+import axios from "axios";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -48,4 +49,6 @@ const getData = (document, _id) => getDoc(doc(db, document, _id));
 
 const deleteData = (document, _id) => deleteDoc(doc(db, document, _id));
 
-export { auth, getData, setData, deleteData };
+const httpRequest = axios.request;
+
+export { auth, getData, setData, deleteData, httpRequest };
