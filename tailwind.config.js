@@ -40,7 +40,7 @@ module.exports = {
           "linear-gradient(90deg, rgba(22,65,148,1) 0%, rgba(255,209,0,1) 20%, rgba(63,174,108,1) 40%, rgba(22,65,148,1) 60%, rgba(226,6,19,1) 80%)",
         showcase:
           "linear-gradient(0deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 30%)",
-        sprite: "url('/src/common/images/sprite.png')",
+        sprite: "url('/src/common/images/sprite.webp')",
       },
       backgroundSize: {
         "400%": "400% 400%",

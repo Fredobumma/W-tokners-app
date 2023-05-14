@@ -5,7 +5,8 @@ This is a fully operational application with the sole aim of registering user(s)
 TODO:
 No.1 => Implement functionality to save tokens
 No.2 => Implement custom email services
-No.3 => Re-testing and re-deployment.
+No.3 => Documentation and comments
+No.4 => Re-testing and re-deployment.
 
 # Features-map:
 
