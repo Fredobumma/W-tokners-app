@@ -7,7 +7,7 @@ No.1 => Implement functionality to save tokens
 <br/>
 No.2 => Implement custom email services
 <br/>
-No.3 => Documentation and comments
+No.3 => Documentation, comments, code splitting and dynamic rendering
 <br/>
 No.4 => Re-testing and re-deployment.
 

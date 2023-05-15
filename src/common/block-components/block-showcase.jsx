@@ -85,19 +85,9 @@ const Showcase = () => {
           </div>
           <p
             onClick={toggle}
-            className={`${
-              !collapse && "hidden"
-            } cursor-pointer font-bold inline-block mt-5 text-green-600 underline underline-offset-3 laptop:hidden`}
+            className="cursor-pointer font-bold inline-block mt-5 text-green-600 underline underline-offset-3 laptop:hidden"
           >
-            Read More
-          </p>
-          <p
-            onClick={toggle}
-            className={`${
-              collapse && "hidden"
-            } cursor-pointer font-bold inline-block mt-5 text-green-600 underline underline-offset-3 laptop:hidden`}
-          >
-            Hide
+            {(collapse && "Hide") || "Read More"}
           </p>
         </div>
         <picture className="justify-self-end bigTab:justify-self-auto">
