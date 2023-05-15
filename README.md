@@ -20,3 +20,7 @@ Implement Authentication and Authorization, data storage, asynchronous operation
 <h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold">This is a simple web design from figma, built by - (Manfred Obumma).</h2>
 
 --- Sign up and navigate through to get whitelisted.
+
+### Design
+
+https://www.figma.com/file/34Utza397eYI5OAnWRgPoO/Website-Design-%2B-Mobile-(Community)?type=design&node-id=0%3A1&t=entoaeo3Q5uFsFDa-1
