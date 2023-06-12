@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { getJwt } from "../services/authService";
+import AuthContext from "../context/authContext";
 
 const RequireAuth = ({ children }) => {
-  const auth = getJwt();
+  const user = useContext(AuthContext);
 
-  if (!auth)
+  if (!user)
     return (
       <Navigate
         to="/login"

@@ -1,17 +1,9 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
 const SavedTokens = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
-      <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
-          theme ? "bg-aside" : "bg-darkAside"
-        }`}
-      ></div>{" "}
+      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>{" "}
       <div className="mt-70px text-right">
         <button className="cursor-pointer mr-2 hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300">
           <SVG id="reset" />

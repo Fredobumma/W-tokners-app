@@ -1,7 +1,6 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getTokens } from "../../services/tokenService";
 import { convert } from "../../services/tokenService";
-import ThemeContext from "../../context/themeContext";
 import { paginate } from "../../utilities/paginate";
 import { match, numberFormat, sort } from "../../utilities/helpers";
 import { SVG } from "../svg";
@@ -19,17 +18,16 @@ const TokensList = () => {
     currentPage: 1,
   });
   const [tokens, setTokens] = useState([]);
-  const { theme } = useContext(ThemeContext);
   const currencyRef = useRef(null);
 
   const filtered = tokens.filter(
     (t) => match(t.name, searchQuery) || match(t.symbol, searchQuery)
   );
   const sorted = sort(filtered, sortColumn);
-  const showingTokens = paginate(sorted, currentPage, pageSize);
+  const visibleTokens = paginate(sorted, currentPage, pageSize);
   const pageCount = Math.ceil(filtered.length / pageSize);
-  const start = showingTokens.length ? (currentPage - 1) * pageSize + 1 : 0;
-  const end = (currentPage - 1) * pageSize + showingTokens.length;
+  const start = visibleTokens.length ? (currentPage - 1) * pageSize + 1 : 0;
+  const end = (currentPage - 1) * pageSize + visibleTokens.length;
 
   const handleSearch = (e) => {
     setState((prev) => ({
@@ -85,24 +83,14 @@ const TokensList = () => {
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
-      <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
-          theme ? "bg-aside" : "bg-darkAside"
-        }`}
-      ></div>{" "}
+      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>
       <form className="flex flex-col gap-5 px-5 py-5 bigTab:px-10 laptop:flex-row laptop:gap-50px laptop:items-center laptop:justify-between laptop:py-30px laptop:px-30px desktop:gap-24 desktop:px-60px">
-        <div
-          className={`flex border-b-2 items-center py-1 px-2 laptop:w-1/3 border-${
-            theme ? "dark" : "light"
-          }`}
-        >
+        <div className="flex border-b-2 border-dark items-center py-1 px-2 laptop:w-1/3 dark:border-light">
           <input
             type="search"
             id="search-coins"
             placeholder="search here..."
-            className={`bg-transparent font-bold mr-3 outline-0 w-full placeholder:font-normal ${
-              theme ? "text-dark placeholder:text-gray-500" : "text-light"
-            }`}
+            className="bg-transparent font-bold mr-3 outline-none text-dark w-full placeholder:font-normal placeholder:text-gray-500 dark:text-light"
             onChange={handleSearch}
           />
           <button onClick={(e) => e.preventDefault()}>
@@ -118,11 +106,7 @@ const TokensList = () => {
               name="search-currency"
               id="search-currency"
               placeholder={currency}
-              className={`bg-transparent border-b-2 font-bold max-w-[60px] outline-0 pl-1 placeholder:font-normal ${
-                theme
-                  ? "border-dark text-dark placeholder:text-gray-500"
-                  : "border-light text-light"
-              }`}
+              className="bg-transparent border-b-2 border-dark font-bold max-w-[60px] outline-0 pl-1 text-dark placeholder:font-normal placeholder:text-gray-500 dark:border-light dark:text-light"
               maxLength="3"
             />
             <button className="rotate-90" onClick={handleCurrencyChange}>
@@ -131,11 +115,7 @@ const TokensList = () => {
           </div>
           <div className="flex gap-3 order-2 w-full tab:order-none bigTab:max-w-400">
             <label htmlFor="sort-by">Sort by:</label>
-            <span
-              className={`flex flex-1 items-center px-3 rounded-all ${
-                theme ? "bg-gray-200" : "bg-gray-700"
-              }`}
-            >
+            <span className="bg-gray-200 flex flex-1 items-center px-3 rounded-all dark:bg-gray-700">
               <select
                 id="sort-by"
                 name="sort-by"
@@ -202,12 +182,10 @@ const TokensList = () => {
             </tr>
           </thead>
           <tbody>
-            {showingTokens.map((token, i) => (
+            {visibleTokens.map((token, i) => (
               <tr
                 key={i}
-                className={`border-b cursor-pointer ${
-                  theme ? "hover:bg-gray-200" : "hover:bg-gray-700"
-                }`}
+                className="border-b cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700"
               >
                 <td className="p-4 w-4">
                   <SVG id="star" />

@@ -5,14 +5,12 @@ import { SVG } from "../svg";
 
 const Footer = () => {
   const { theme, checked, toggleMode } = useContext(ThemeContext);
+  const date = new Date();
+  const year = date.getFullYear();
 
   return (
     <footer className="py-10 relative bigTab:pt-20 bigTab:pb-50px laptop:pt-52 laptop:pb-70px">
-      <div
-        className={`absolute blur-[100px] h-60 inset-0 w-full -z-10 tab:left-1/3 laptop:right-[60%] ${
-          theme ? "bg-nav laptop:bg-nav-xl" : "bg-darkNav laptop:bg-darkNav-xl"
-        }`}
-      ></div>
+      <div className="absolute bg-nav blur-[100px] h-60 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:right-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
       <ul className="font-bold gap-x-20 hidden mb-120px laptop:flex laptop:justify-center">
         <li className="active:rotate-3 focus:rotate-3 hover:rotate-3">
           <a href="/team" className="outline-0 underline underline-offset-2">
@@ -119,7 +117,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col gap-y-2.5 items-center bigTab:gap-y-4 laptop:items-end">
           <p className="font-bold text-sm">
-            &copy; 2023 Tokners. All rights reserved.
+            &copy; {year} Tokners. All rights reserved.
           </p>
           <p className="flex gap-x-1 items-center text-xs underline underline-offset-2">
             <SVG id="my-logo" />

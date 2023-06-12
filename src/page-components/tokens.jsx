@@ -8,7 +8,7 @@ const Tokens = () => {
     <Fragment>
       <TokensList />
       {/* <SavedTokens /> */}
-      {/* <TokenDetails theme={theme} /> */}
+      {/* <TokenDetails /> */}
     </Fragment>
   );
 };

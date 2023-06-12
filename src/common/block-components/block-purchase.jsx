@@ -11,16 +11,8 @@ const PurchaseGuide = () => {
         How to buy
       </h2>
       <div className="grid gap-y-2.5 justify-items-center mx-auto bigTab:gap-y-5 bigTab:max-w-512 bigTab:justify-items-stretch laptop:gap-x-5 laptop:grid-cols-3 laptop:max-w-none">
-        <div
-          className={`${
-            theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-400 mx-0 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold`}
-        >
-          <p
-            className={`${
-              theme ? "opacity-50" : "opacity-30"
-            } leading-6 mb-5 text-xs bigTab:mb-45px`}
-          >
+        <div className="bg-lightGuideCard h-max max-w-400 mx-0 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold dark:bg-guideCard">
+          <p className="leading-6 mb-5 opacity-50 text-xs bigTab:mb-45px dark:opacity-30">
             01
           </p>
           <p className="font-bold leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
@@ -28,11 +20,7 @@ const PurchaseGuide = () => {
             on the Homepage.
           </p>
         </div>
-        <div
-          className={`${
-            theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-400 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold laptop:mt-60px`}
-        >
+        <div className="bg-lightGuideCard h-max max-w-400 px-purchase py-50px relative rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold laptop:mt-60px dark:bg-guideCard">
           <span className="absolute top-[-16%] h-60 inset-x-0 mx-auto rotate-90 w-60 z-10 bigTab:top-[-20%] bigTab:h-86 bigTab:w-86 laptop:h-60 laptop:left-[-106%] laptop:rotate-0 laptop:top-[23%] laptop:w-60 desktop:h-86 desktop:left-[-105%] desktop:w-86">
             <SVG
               id={theme ? "purchase-icon-1" : "dark-purchase-icon-1"}
@@ -40,11 +28,7 @@ const PurchaseGuide = () => {
               height="100%"
             />
           </span>
-          <p
-            className={`opacity-${
-              theme ? "50" : "30"
-            } leading-6 mb-5 text-xs bigTab:mb-45px`}
-          >
+          <p className="leading-6 mb-5 opacity-50 text-xs bigTab:mb-45px dark:opacity-30">
             02
           </p>
           <p className="font-bold leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">
@@ -59,16 +43,8 @@ const PurchaseGuide = () => {
             />
           </span>
         </div>
-        <div
-          className={`${
-            theme ? "bg-lightGuideCard" : "bg-guideCard"
-          } h-max max-w-400 px-purchase py-50px rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold`}
-        >
-          <p
-            className={`opacity-${
-              theme ? "50" : "30"
-            } leading-6 mb-5 text-xs bigTab:mb-45px`}
-          >
+        <div className="bg-lightGuideCard h-max max-w-400 px-purchase py-50px rounded-all bigTab:max-w-512 bigTab:pb-100px bigTab:pt-30px laptop:font-bold dark:bg-guideCard">
+          <p className="leading-6 mb-5 opacity-50 text-xs bigTab:mb-45px dark:opacity-30">
             03
           </p>
           <p className="font-bold leading-6 text-lg bigTab:max-w-270 bigTab:mx-auto">

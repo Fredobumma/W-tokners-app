@@ -3,15 +3,7 @@ import Input, { DateInput, SecondaryInput } from "../common/input";
 import SelectOptions from "../common/selectOptions";
 
 function FormValidator(obj, setObj, schema, doSubmit) {
-  this.renderInput = (
-    id,
-    name,
-    type,
-    placeholder,
-    autoComplete,
-    autoFocus,
-    maxLength
-  ) => {
+  this.renderInput = (id, name, type, placeholder, autoComplete, maxLength) => {
     return (
       <Input
         id={id}
@@ -21,7 +13,6 @@ function FormValidator(obj, setObj, schema, doSubmit) {
         error={obj.errors[id]}
         placeholder={placeholder}
         autoComplete={autoComplete}
-        autoFocus={autoFocus}
         maxLength={maxLength}
         onChange={handleChange}
       />

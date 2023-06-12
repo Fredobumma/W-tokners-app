@@ -1,13 +1,9 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import pngImage_2x from "../images/services-bg.png";
 import pngImage_1x from "../images/services-bg-1.png";
 import webpImage_2x from "../images/services-bg.webp";
 import webpImage_1x from "../images/services-bg-1.webp";
 
 const Services = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section>
       <div className="grid items-center laptop:grid-cols-2 desktop:h-auto">
@@ -30,11 +26,7 @@ const Services = () => {
             alt="Background"
           />
         </picture>
-        <div
-          className={`h-auto max-h-full overflow-y-auto -mx-5 px-5 py-70px rounded-tr-[150px] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all tab:rounded-tr-[40%] bigTab:-mx-8 bigTab:px-8 bigTab:rounded-tr-[50%] laptop:max-h-[420px] laptop:min-h-[420px] laptop:-mr-16 laptop:pl-120px laptop:rounded-tl-[50%] laptop:rounded-tr-none laptop:scale-y-110 desktop:min-h-auto desktop:pl-170px widerScreen:self-end widerScreen:pb-24 ${
-            theme ? "bg-dark text-white" : "bg-light text-dark"
-          }`}
-        >
+        <div className="bg-dark h-auto max-h-full overflow-y-auto -mx-5 px-5 py-70px rounded-tr-[150px] scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all text-white tab:rounded-tr-[40%] bigTab:-mx-8 bigTab:px-8 bigTab:rounded-tr-[50%] laptop:max-h-[420px] laptop:min-h-[420px] laptop:-mr-16 laptop:pl-120px laptop:rounded-tl-[50%] laptop:rounded-tr-none laptop:scale-y-110 desktop:min-h-auto desktop:pl-170px widerScreen:self-end widerScreen:pb-24 dark:bg-light dark:text-dark">
           <h2 className="font-bold leading-10 mb-30px text-32 tab:text-40 desktop:text-5xl desktop:leading-54">
             What makes us different?
           </h2>

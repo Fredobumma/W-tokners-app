@@ -1,7 +1,7 @@
 import { useSnapCarousel } from "react-snap-carousel";
 import { SVG } from "./svg";
 
-const TeamCarousel = ({ theme, children }) => {
+const TeamCarousel = ({ children }) => {
   const {
     pages,
     activePageIndex,
@@ -60,9 +60,7 @@ const TeamCarousel = ({ theme, children }) => {
         {pages.map((_, i) => (
           <li
             key={i}
-            className={`cursor-pointer inline-block rounded-all ${
-              theme ? "bg-dark border-dark" : "bg-light border-light"
-            } ${
+            className={`bg-dark border-dark cursor-pointer inline-block rounded-all dark:bg-light dark:border-light ${
               i === activePageIndex
                 ? "p-1"
                 : "bg-transparent border-[1px] h-fit p-[1px]"

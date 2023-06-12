@@ -1,8 +1,10 @@
 import _ from "lodash";
 
+const capitalize = (str) => _.capitalize(str);
+
 function mapErrorTo(str) {
   str = str || "An unknown error occurred";
-  return _.capitalize(str.replace("auth/", "").replaceAll("-", " "));
+  return capitalize(str.replace("auth/", "").replaceAll("-", " "));
 }
 
 function clearNotify(obj, setState) {
@@ -47,4 +49,4 @@ function sort(items, column) {
   ]);
 }
 
-export { mapErrorTo, clearNotify, numberFormat, match, sort };
+export { mapErrorTo, clearNotify, numberFormat, match, sort, capitalize };

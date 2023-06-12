@@ -8,24 +8,35 @@ import { SVG } from "../svg";
 import { NavButton } from "./../button";
 
 const Navbar = () => {
-  const { theme, checked, toggleMode } = useContext(ThemeContext);
+  const user = useContext(AuthContext);
+  const { checked, toggleMode } = useContext(ThemeContext);
   const { menu, toggleMenu } = useContext(MenuContext);
-  const { user } = useContext(AuthContext);
+
+  // array   --------
+  // object   ------- const person = {name: "Fuja", age: 25}
+  // function  ------ function person() {}
+  // string    ----- "Fuja" or 'Fuja' or `Fuja`
+  // boolean   ------ true or false
+  // Number   ------- 1,2,3,4,5,6,7,8,9,0 ("1", "2", "3", "4", "5")
+  // null   ----- null
+  // undefined   ---- undefined
+
+  // const person = {
+  //   name: "Fuja",
+  //   age: 25,
+  //   addy: function person() {
+  //     console.log("Fuja");
+  //   },
+  // };
+  // const a = function person() {
+  //   console.log("Fuja");
+  // };
+  // const array = [];
 
   return (
-    <nav
-      className={`fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30px laptop:mx-auto ${
-        theme ? "bg-light" : "bg-dark"
-      }`}
-    >
+    <nav className="bg-light fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30px laptop:mx-auto dark:bg-dark">
       <div className="relative flex items-center justify-between pt-5 laptop:justify-start laptop:pt-2.5 laptop:static">
-        <div
-          className={`absolute blur-[100px] h-86 inset-0 w-full -z-10 tab:left-1/3 laptop:left-[60%] ${
-            theme
-              ? "bg-nav laptop:bg-nav-xl"
-              : "bg-darkNav laptop:bg-darkNav-xl"
-          }`}
-        ></div>
+        <div className="absolute bg-nav blur-[100px] h-86 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:left-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
         <NavLink
           to="/"
           className="outline-0 max-h-[33px] max-w-[207px] mr-30px laptop:m-0"
@@ -36,27 +47,27 @@ const Navbar = () => {
           <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
             <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
               <div
-                className={`h-[2px] w-7 transform transition-all duration-300 origin-left ${
+                className={`bg-dark h-[2px] w-7 transform transition-all duration-300 origin-left dark:bg-white ${
                   menu && "rotate-[42deg]"
-                } ${(theme && "bg-dark") || "bg-white"}`}
+                }`}
               ></div>
               <div
-                className={`h-[2px] w-7 rounded transform transition-all duration-300 ${
-                  menu && "-translate-x-10"
-                } ${(theme && "bg-dark") || "bg-white"}`}
+                className={`bg-dark h-[2px] w-7 transform transition-all duration-300 dark:bg-white ${
+                  menu && "hidden"
+                }`}
               ></div>
               <div
-                className={`h-[2px] w-7 transform transition-all duration-300 origin-left ${
+                className={`bg-dark h-[2px] w-7 transform transition-all duration-300 origin-left dark:bg-white ${
                   menu && "-rotate-[42deg]"
-                } ${(theme && "bg-dark") || "bg-white"}`}
+                }`}
               ></div>
             </div>
           </div>
         </button>
         <div
-          className={`absolute h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
+          className={`absolute bg-light h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 dark:bg-dark ${
             !menu && "left-[200vw]"
-          } ${(theme && "bg-white") || "bg-dark"}`}
+          }`}
         >
           <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30px laptop:inline-flex">
             <li>
@@ -94,18 +105,17 @@ const Navbar = () => {
           </ul>
           {user ? (
             <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
-              <NavLink
+              <NavButton
                 to="/profile"
-                className="flex font-bold gap-2.5 items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
-                rel="noopener noreferrer"
+                extraStyles="flex active:bg-transparent capitalize focus:bg-transparent focus:text-current font-bold gap-2.5 hover:bg-transparent hover:text-current items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
               >
-                UserName
+                {user.name}
                 <SVG id="profile" />
-              </NavLink>
+              </NavButton>
               <NavButton
                 to="/logging-out"
                 label="Log Out"
-                extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
+                extraStyles="border-2 border-secondary px-10 py-3"
               />
             </div>
           ) : (
@@ -113,13 +123,21 @@ const Navbar = () => {
               <NavButton
                 to="/login"
                 label="Sign In"
-                extraStyles="active:bg-secondary bg-transparent py-3 focus:bg-secondary hover:bg-secondary focus:px-10 hover:px-10 transition-all duration-300 laptop:px-2.5 desktop:px-0"
+                extraStyles="py-3 focus:px-10 hover:px-10 laptop:px-2.5 desktop:px-0"
               />
               <NavButton
                 to="/register"
                 label="Sign Up"
-                extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transition-all duration-300"
+                extraStyles="border-2 border-secondary px-10 py-3"
               />
+              {/* {arr.map((item, index) => (
+                <NavButton
+                  key={index}
+                  to={item}
+                  label="Sign In"
+                  // extraStyles="py-3 focus:px-10 hover:px-10 laptop:px-2.5 desktop:px-0"
+                />
+              ))} */}
             </div>
           )}
         </div>

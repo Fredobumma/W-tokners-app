@@ -1,10 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import Joi from "joi-browser";
-import jwtDecode from "jwt-decode";
-import _ from "lodash";
 import { deleteData, getData, setData } from "../../services/httpService";
 import {
-  getJwt,
   loginWithJwt,
   signIn,
   updateEmail,
@@ -12,9 +9,9 @@ import {
   updateUser,
 } from "../../services/authService";
 import logger from "./../../services/logService";
-import ThemeContext from "../../context/themeContext";
+import AuthContext from "../../context/authContext";
 import ValidatorContext from "../../context/validatorContext";
-import { clearNotify, mapErrorTo } from "../../utilities/helpers";
+import { clearNotify, mapErrorTo, capitalize } from "../../utilities/helpers";
 import { SVG } from "../svg";
 import { DateInput, SecondaryInput } from "../input";
 import SelectOptions from "../selectOptions";
@@ -23,8 +20,8 @@ import Button from "../button";
 const documentName = "users";
 
 const UserProfile = () => {
-  const { theme } = useContext(ThemeContext);
   const validator = useContext(ValidatorContext);
+  const userEmail = useContext(AuthContext)?.email;
 
   const [login, setLogin] = useState({
     data: { username: "", email: "", password: "" },
@@ -32,8 +29,6 @@ const UserProfile = () => {
     success: "",
   });
   const [userData, setUserData] = useState({});
-
-  const { email: userEmail } = jwtDecode(getJwt());
 
   const schema = {
     username: Joi.string().min(3).max(30).required().label("Username"),
@@ -149,7 +144,7 @@ const UserProfile = () => {
     const personalInfo = prop.reduce(
       (a, b, i) => ({
         ...a,
-        [b]: _.capitalize(e.target[i].value) || userData.personalInfo?.[b],
+        [b]: capitalize(e.target[i].value) || userData.personalInfo?.[b],
       }),
       {}
     );
@@ -204,20 +199,12 @@ const UserProfile = () => {
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
-      <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
-          theme ? "bg-aside" : "bg-darkAside"
-        }`}
-      ></div>{" "}
+      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>
       <h1 className="font-bold text-28 leading-54 mb-10 mx-5 tab:mb-10 tab:mx-10 tab:text-32 bigTab:mx-60px laptop:mb-60px desktop:mb-20 desktop:text-4xl">
         Profile Settings
       </h1>
       <div className="relative max-w-full">
-        <div
-          className={`relative rounded-all py-60px shadow-lg laptop:py-24 ${
-            theme ? "bg-dark text-light" : "bg-white text-dark"
-          }`}
-        >
+        <div className="bg-dark relative rounded-all py-60px shadow-lg text-light laptop:py-24 dark:bg-white dark:text-dark">
           <div className="mb-10 px-30px tab:px-50px bigTab:px-70px laptop:px-100px">
             <h2 className="font-bold leading-10 text-xl">
               Profile Login Information
@@ -240,11 +227,7 @@ const UserProfile = () => {
                 {errors.username && (
                   <span className="text-red text-xs">{errors.username}</span>
                 )}
-                <span
-                  className={`flex border-b-2 gap-2 items-center mt-2.5 ${
-                    theme ? "border-light" : "border-dark"
-                  }`}
-                >
+                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 border-dark">
                   <label htmlFor="username">
                     <SVG id="username" />
                   </label>
@@ -254,17 +237,16 @@ const UserProfile = () => {
                     "text",
                     "Username",
                     "username",
-                    "on",
                     "20"
                   )}
                 </span>
               </div>
               <Button
                 label="Update"
-                extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
+                extraStyles={
                   (errors.username || data("username")) &&
-                  `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
-                }`}
+                  "cursor-not-allowed opacity-30 dark:opacity-40"
+                }
                 onClick={handleUsernameUpdate}
               />
             </div>
@@ -273,11 +255,7 @@ const UserProfile = () => {
                 {errors.email && (
                   <span className="text-red text-xs">{errors.email}</span>
                 )}
-                <span
-                  className={`flex border-b-2 gap-2 items-center mt-2.5 ${
-                    theme ? "border-light" : "border-dark"
-                  }`}
-                >
+                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 dark:border-dark">
                   <label htmlFor="email">
                     <SVG id="email" />
                   </label>
@@ -287,17 +265,16 @@ const UserProfile = () => {
                     "email",
                     "E-mail address",
                     "email",
-                    "",
                     "40"
                   )}
                 </span>
               </div>
               <Button
                 label="Update"
-                extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
-                  (errors.email || data("email")) &&
-                  `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
-                }`}
+                extraStyles={
+                  (errors.username || data("email")) &&
+                  "cursor-not-allowed opacity-30 dark:opacity-40"
+                }
                 onClick={handleEmailUpdate}
               />
             </div>
@@ -306,11 +283,7 @@ const UserProfile = () => {
                 {errors.password && (
                   <span className="text-red text-xs">{errors.password}</span>
                 )}
-                <span
-                  className={`flex border-b-2 gap-2 items-center mt-2.5 ${
-                    theme ? "border-light" : "border-dark"
-                  }`}
-                >
+                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 dark:border-dark">
                   <label htmlFor="password">
                     <SVG id="password" />
                   </label>
@@ -320,17 +293,16 @@ const UserProfile = () => {
                     "password",
                     "Password",
                     "new-password",
-                    "",
                     "30"
                   )}
                 </span>
               </div>
               <Button
                 label="Update"
-                extraStyles={`active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 ${
-                  (errors.password || data("password")) &&
-                  `cursor-not-allowed ${theme ? "opacity-30" : "opacity-40"}`
-                }`}
+                extraStyles={
+                  (errors.username || data("password")) &&
+                  "cursor-not-allowed opacity-30 dark:opacity-40"
+                }
                 onClick={handlePasswordUpdate}
               />
             </div>
@@ -435,10 +407,7 @@ const UserProfile = () => {
                 maxLength="15"
               />
             </span>
-            <Button
-              label="Save"
-              extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 ml-auto mt-3 px-30px py-3.5 transform-gpu transform transition-all duration-300 w-fit"
-            />
+            <Button label="Save" extraStyles="ml-auto w-fit" />
             {errors.generic && (
               <span className="text-center text-red text-xs">
                 {errors.generic}

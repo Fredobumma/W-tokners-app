@@ -1,21 +1,9 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
 const Objectives = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
-    <aside
-      className={`py-70px laptop:max-w-1600 laptop:-ml-16 laptop:py-0 laptop:w-screen ${
-        theme ? "laptop:bg-dark" : "laptop:bg-light"
-      }`}
-    >
-      <div
-        className={`grid gap-10 tab:justify-center bigTab:gap-20 laptop:gap-12 laptop:grid-cols-4 laptop:h-full laptop:px-16 laptop:py-[200px] laptop:rounded-tr-[25%] laptop:w-full ${
-          theme ? "laptop:bg-light" : "laptop:bg-dark"
-        }`}
-      >
+    <aside className="py-70px laptop:bg-dark laptop:max-w-1600 laptop:-ml-16 laptop:py-0 laptop:w-screen dark:laptop:bg-light">
+      <div className="grid gap-10 tab:justify-center bigTab:gap-20 laptop:bg-light laptop:gap-12 laptop:grid-cols-4 laptop:h-full laptop:px-16 laptop:py-[200px] laptop:rounded-tr-[25%] laptop:w-full dark:laptop:bg-dark">
         <div>
           <span className="flex gap-x-2.5 mb-30px bigTab:mb-50px">
             <span className="flex h-82 items-center justify-center relative w-82">

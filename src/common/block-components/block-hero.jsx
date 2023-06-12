@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import { NavButton } from "../button";
 import pngImage_2x from "../images/hero-img.png";
 import pngImage_1x from "../images/hero-img-1.png";
@@ -7,22 +5,12 @@ import webpImage_2x from "../images/hero-img.webp";
 import webpImage_1x from "../images/hero-img-1.webp";
 
 const Hero = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section className="relative laptop:pb-20 laptop:pt-30">
-      <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
-          theme ? "bg-aside" : "bg-darkAside"
-        }`}
-      ></div>
+      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>
       <div className="grid gap-y-2.5 bigTab:gap-y-5 laptop:gap-x-5 laptop:grid-cols-2">
         <div className="max-w-[600px] my-auto tab:px-30px bigTab:px-50px laptop:px-5">
-          <p
-            className={`bg-clip-text font-bold leading-6 mb-2.5 text-sm text-transparent bigTab:text-base ${
-              theme ? "bg-hero" : "bg-darkHero"
-            }`}
-          >
+          <p className="bg-clip-text bg-hero font-bold leading-6 mb-2.5 text-sm text-transparent bigTab:text-base dark:bg-darkHero">
             At Tokners we are
           </p>
           <h1 className="font-bold text-32 leading-10 tab:text-40 desktop:text-5xl desktop:leading-54">
@@ -37,7 +25,7 @@ const Hero = () => {
           <NavButton
             to="/login"
             label="Learn More"
-            extraStyles="active:scale-105 bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 px-30px py-3.5 drop-shadow-button transform-gpu transform transition-all duration-300"
+            extraStyles="active:scale-105 !bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 px-30px py-3.5 text-white"
           />
         </div>
         <div className="-mt-20 tab:mt-5 laptop:mt-0">

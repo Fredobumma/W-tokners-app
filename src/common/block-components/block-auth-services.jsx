@@ -19,11 +19,7 @@ const Services = () => {
         />
       </span>
       <div>
-        <div
-          className={`max-w-640 mb-5 ml-auto p-8 rounded-all text-center bigTab:px-70px bigTab:py-12 laptop:max-w-800 laptop:mb-10 desktop:max-w-1024 desktop:px-48 desktop:py-24 ${
-            theme ? "bg-dark text-white" : "bg-white text-dark"
-          }`}
-        >
+        <div className="bg-dark max-w-640 mb-5 ml-auto p-8 rounded-all text-center text-white bigTab:px-70px bigTab:py-12 laptop:max-w-800 laptop:mb-10 desktop:max-w-1024 desktop:px-48 desktop:py-24 dark:bg-white dark:text-dark">
           <h3 className="font-bold leading-6 mb-5 text-lg desktop:leading-10 desktop:mb-10 desktop:text-32">
             Proposal regarding Total Supply, ICO and Pricing Total Supply (after
             periodical increase of supply):
@@ -37,11 +33,7 @@ const Services = () => {
             </p>
           </div>
         </div>
-        <div
-          className={`max-w-640 p-8 rounded-all text-center bigTab:px-70px bigTab:py-12 laptop:max-w-800 desktop:max-w-1024 desktop:px-48 desktop:py-24 ${
-            theme ? "bg-dark text-white" : "bg-white text-dark"
-          }`}
-        >
+        <div className="bg-dark max-w-640 p-8 rounded-all text-center text-white bigTab:px-70px bigTab:py-12 laptop:max-w-800 desktop:max-w-1024 desktop:px-48 desktop:py-24 dark:bg-white dark:text-dark">
           <h3 className="font-bold leading-6 mb-[18px] text-lg desktop:leading-10 desktop:mb-30px desktop:text-32">
             Supply at Genesis:
           </h3>

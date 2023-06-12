@@ -9,13 +9,14 @@ import {
   // onAuthStateChanged,
   // signInWithPopup,
 } from "firebase/auth";
+import jwtDecode from "jwt-decode";
 import { auth } from "./httpService";
 
 const tokenKey = "token";
 
 // const provider = new GoogleAuthProvider();
 
-const getJwt = () => localStorage.getItem(tokenKey);
+const getJwt = () => jwtDecode(localStorage.getItem(tokenKey)) || null;
 
 const loginWithJwt = (value) => localStorage.setItem(tokenKey, value);
 

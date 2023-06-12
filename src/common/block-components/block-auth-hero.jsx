@@ -1,20 +1,12 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import pngImage_2x from "../images/wallet-hero-img.png";
 import pngImage_1x from "../images/wallet-hero-img-1.png";
 import webpImage_2x from "../images/wallet-hero-img.webp";
 import webpImage_1x from "../images/wallet-hero-img-1.webp";
 
 const Hero = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section className="relative tab:py-10 laptop:py-20">
-      <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
-          theme ? "bg-aside" : "bg-darkAside"
-        }`}
-      ></div>{" "}
+      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>{" "}
       <div>
         <h3 className="font-bold leading-10 max-w-400 text-32 text-left">
           Tknrs Tokenomics and Token Distribution

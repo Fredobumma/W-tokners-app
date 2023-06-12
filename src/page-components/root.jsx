@@ -1,10 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
-import jwtDecode from "jwt-decode";
 import { Outlet } from "react-router-dom";
 import { getJwt } from "../services/authService";
 import { tracker } from "../services/trackService";
 import useDarkSide from "../hooks/useDarkSide";
-// import useWindowDimensions from "./hooks/useWindowDimensions";
 import ThemeContext from "../context/themeContext";
 import AuthContext from "../context/authContext";
 import MenuContext from "../context/menuContext";
@@ -18,11 +16,11 @@ import Footer from "../common/block-components/block-footer";
 
 const Root = () => {
   const [colorTheme, setTheme] = useDarkSide();
-  const getTheme = colorTheme === "bg-dark";
-  const [darkSide, setDarkSide] = useState(Boolean(colorTheme !== "bg-light"));
+  const [darkSide, setDarkSide] = useState(colorTheme !== "light");
   const [menu, setMenu] = useState(false);
   const [collapseInfo, setCollapseInfo] = useState(true);
-  // const { width } = useWindowDimensions();
+
+  const user = getJwt();
 
   // <===== SWITCH THEME =====>
   const toggleMode = (checked) => {
@@ -45,7 +43,7 @@ const Root = () => {
   useEffect(() => {
     tracker.start();
 
-    const { email } = getJwt() ? jwtDecode(getJwt()) : {};
+    const email = user?.email;
     tracker.setUserID(email);
   }, [window.location.pathname]);
 
@@ -53,12 +51,12 @@ const Root = () => {
     <Fragment>
       <ThemeContext.Provider
         value={{
-          theme: getTheme,
+          theme: darkSide,
           checked: darkSide,
           toggleMode,
         }}
       >
-        <AuthContext.Provider value={{ user: getJwt() }}>
+        <AuthContext.Provider value={user}>
           <MenuContext.Provider value={{ menu, toggleMenu }}>
             <SVGSource />
             <Navbar /> {/* Static Navbar */}

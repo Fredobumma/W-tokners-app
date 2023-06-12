@@ -1,23 +1,11 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import TeamCarousel from "../teamCarousel";
 
 const Executives = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section className="-mr-5 py-10 relative bigTab:-mr-8 tab:py-60px laptop:-mr-16 laptop:pb-0 laptop:pt-20">
-      <div
-        className={`absolute blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] ${
-          theme ? "bg-aside" : "bg-darkAside"
-        }`}
-      ></div>{" "}
-      <TeamCarousel theme={theme}>
-        <li
-          className={`${
-            (theme && "bg-lightTeamCard") || "bg-teamCard"
-          } h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px rounded-all snap-start`}
-        >
+      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>{" "}
+      <TeamCarousel>
+        <li className="bg-lightTeamCard h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px rounded-all snap-start dark:bg-teamCard">
           <span className="block font-bold mb-1.5 ml-5 text-left bigTab:ml-0">
             Brad pie
           </span>
@@ -26,11 +14,7 @@ const Executives = () => {
           </span>
           <span className="bg-sprite bg-no-repeat block brad bg-[-272px_-5px] h-385 w-236 tab:bg-[-5px_-5px] tab:h-420 tab:w-257"></span>
         </li>
-        <li
-          className={`${
-            (theme && "bg-lightTeamCard") || "bg-teamCard"
-          } h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px relative rounded-all snap-start`}
-        >
+        <li className="bg-lightTeamCard h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px relative rounded-all snap-start dark:bg-teamCard">
           <span className="block font-bold mb-1.5 ml-5 text-left bigTab:ml-0">
             Lee Lee
           </span>
@@ -40,11 +24,7 @@ const Executives = () => {
           <span className="bg-sprite bg-no-repeat block lee bg-[-2861px_-5px] h-385 relative w-236 z-20 tab:bg-[-2594px_-5px] tab:h-420 tab:w-257"></span>
           <span className="bg-sprite bg-no-repeat block team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
         </li>
-        <li
-          className={`${
-            (theme && "bg-lightTeamCard") || "bg-teamCard"
-          } h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px rounded-all snap-start`}
-        >
+        <li className="bg-lightTeamCard h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px rounded-all snap-start dark:bg-teamCard">
           <span className="block font-bold mb-1.5 ml-5 text-left bigTab:ml-0">
             Shan khan
           </span>
@@ -53,11 +33,7 @@ const Executives = () => {
           </span>
           <span className="bg-sprite bg-no-repeat block shan bg-[-4047px_-815px] h-385 w-236 tab:bg-[-3780px_-815px] tab:h-420 tab:w-257"></span>
         </li>
-        <li
-          className={`${
-            (theme && "bg-lightTeamCard") || "bg-teamCard"
-          } h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px relative rounded-all snap-start`}
-        >
+        <li className="bg-lightTeamCard h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px relative rounded-all snap-start dark:bg-teamCard">
           <span className="block font-bold mb-1.5 ml-5 text-left bigTab:ml-0">
             Shan Lopez
           </span>
@@ -67,11 +43,7 @@ const Executives = () => {
           <span className="bg-sprite bg-no-repeat block lopez bg-[-272px_-400px] h-385 relative w-236 z-20 tab:bg-[-3128px_-400px] tab:h-420 tab:w-257"></span>
           <span className="bg-sprite bg-no-repeat block team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
         </li>
-        <li
-          className={`${
-            (theme && "bg-lightTeamCard") || "bg-teamCard"
-          } h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px rounded-all snap-start`}
-        >
+        <li className="bg-lightTeamCard h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px rounded-all snap-start dark:bg-teamCard">
           <span className="block font-bold mb-1.5 ml-5 text-left bigTab:ml-0">
             Stephanie O.B
           </span>
@@ -80,11 +52,7 @@ const Executives = () => {
           </span>
           <span className="bg-sprite bg-no-repeat block stephanie bg-[-4157px_-1210px] h-385 w-236 tab:bg-[-4157px_-1605px] tab:h-420 tab:w-257"></span>
         </li>
-        <li
-          className={`${
-            (theme && "bg-lightTeamCard") || "bg-teamCard"
-          } h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px relative rounded-all snap-start`}
-        >
+        <li className="bg-lightTeamCard h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px relative rounded-all snap-start dark:bg-teamCard">
           <span className="block font-bold mb-1.5 ml-5 text-left bigTab:ml-0">
             Lily
           </span>

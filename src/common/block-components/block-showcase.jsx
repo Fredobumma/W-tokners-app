@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { SVG } from "../svg";
-import ThemeContext from "../../context/themeContext";
 import CollapseInfoContext from "../../context/collapseInfoContext";
 import { NavButton } from "../button";
 import pngImage_2x from "../images/showcase-bg.png";
@@ -9,7 +8,6 @@ import webpImage_2x from "../images/showcase-bg.webp";
 import webpImage_1x from "../images/showcase-bg-1.webp";
 
 const Showcase = () => {
-  const { theme } = useContext(ThemeContext);
   const { collapse, toggle } = useContext(CollapseInfoContext);
 
   return (
@@ -23,7 +21,7 @@ const Showcase = () => {
           <p className="opacity-60 relative">
             <span
               className={`absolute block h-full -ml-5 w-screen bigTab:-ml-8 laptop:hidden ${
-                collapse && (theme ? "bg-showcase" : "bg-darkShowcase")
+                collapse && "bg-showcase dark:bg-darkShowcase"
               }`}
             ></span>
             <span className="inline-block font-bold mb-5">
@@ -41,6 +39,7 @@ const Showcase = () => {
             favourite person and watch their investment as is with other crypto
             currency project.
             <span className={`${collapse && "hidden"} laptop:block`}>
+              {" "}
               We are trying to do to this space what investment apps did for the
               "nonexistent retail investors". We are gamefying digital currency,
               bringing in popular faces instead of hard to understand projects
@@ -59,7 +58,7 @@ const Showcase = () => {
               would not find home there. Like Kanye said,
             </p>
             <p className="flex font-bold gap-x-3.5 italic">
-              <span className="leading-6 mt-1 not-italic text-2xl text-yellow">
+              <span className="leading-6 mt-1.5 not-italic text-2xl text-yellow">
                 “
               </span>
               <span className="opacity-60">
@@ -80,7 +79,7 @@ const Showcase = () => {
             <NavButton
               to="login"
               label="Know More"
-              extraStyles="active:bg-secondary bg-transparent border-2 border-secondary focus:bg-secondary hover:bg-secondary px-10 py-3 transform-gpu transform transition-all duration-300"
+              extraStyles="border-2 border-secondary focus:drop-shadow-button hover:drop-shadow-button px-10 py-3"
             />
           </div>
           <p

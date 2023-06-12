@@ -1,18 +1,10 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
 const Objectives = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section className="pb-2.5 pt-50px tab:pb-5 tab:pt-10 bigTab:pb-30px bigTab:pt-60px laptop:pb-0 laptop:pt-100px">
       <div className="flex flex-wrap justify-center gap-2.5 laptop:gap-5">
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -35,11 +27,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -62,11 +50,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -86,11 +70,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -110,11 +90,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -134,11 +110,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -158,11 +130,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -182,11 +150,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
@@ -206,11 +170,7 @@ const Objectives = () => {
             </span>
           </span>
         </span>
-        <span
-          className={`${
-            (theme && "bg-lightGuideCard") || "bg-guideCard"
-          } flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9`}
-        >
+        <span className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard">
           <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
             <span className="h-9 inline-block overflow-hidden relative w-9">
               <span className="absolute top-[11%]">
