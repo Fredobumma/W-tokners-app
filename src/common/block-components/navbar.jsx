@@ -1,16 +1,14 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import ThemeContext from "../../context/themeContext";
-import MenuContext from "../../context/menuContext";
+// import ThemeContext from "../../context/themeContext";
+// import MenuContext from "../../context/menuContext";
 import AuthContext from "../../context/authContext";
 import Switcher from "../switcher";
 import { SVG } from "../svg";
 import { NavButton } from "./../button";
 
-const Navbar = () => {
+const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   const user = useContext(AuthContext);
-  const { checked, toggleMode } = useContext(ThemeContext);
-  const { menu, toggleMenu } = useContext(MenuContext);
 
   // array   --------
   // object   ------- const person = {name: "Fuja", age: 25}
@@ -34,6 +32,8 @@ const Navbar = () => {
   // const array = [];
 
   return (
+    // <ThemeContext>
+    // <MenuContext>
     <nav className="bg-light fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30px laptop:mx-auto dark:bg-dark">
       <div className="relative flex items-center justify-between pt-5 laptop:justify-start laptop:pt-2.5 laptop:static">
         <div className="absolute bg-nav blur-[100px] h-86 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:left-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
@@ -65,7 +65,7 @@ const Navbar = () => {
           </div>
         </button>
         <div
-          className={`absolute h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 ${
+          className={`absolute bg-light h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 dark:bg-dark dark:laptop:bg-transparent ${
             !menu && "left-[200vw]"
           }`}
         >
@@ -104,7 +104,7 @@ const Navbar = () => {
             </li>
           </ul>
           {user ? (
-            <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
+            <div className="flex flex-col gap-2.5 items-center mt-70px mx-auto w-fit laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
               <NavButton
                 to="/profile"
                 extraStyles="flex active:bg-transparent capitalize focus:bg-transparent focus:text-current font-bold gap-2.5 hover:bg-transparent hover:text-current items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
@@ -119,7 +119,7 @@ const Navbar = () => {
               />
             </div>
           ) : (
-            <div className="flex flex-col w-fit gap-2.5 mt-70px mx-auto laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
+            <div className="flex flex-col gap-2.5 items-center mt-70px mx-auto w-fit laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
               <NavButton
                 to="/login"
                 label="Sign In"
@@ -143,6 +143,8 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    // </MenuContext>
+    // </ThemeContext>
   );
 };
 

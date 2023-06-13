@@ -20,7 +20,7 @@ const Hero = () => {
             We are creating social media 3.0 with influencers, celebrities and
             creators being able to launch their own digital currency by simply
             creating a profile with media content posted as Non fungible Tokens
-            that can be owned and traded on the Tknrs network
+            that can be owned and traded on the Tknrs network.
           </p>
           <NavButton
             to="/login"

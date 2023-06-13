@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
+// import ThemeContext from "../../context/themeContext";
 import Switcher from "../switcher";
 import { SVG } from "../svg";
 
-const Footer = () => {
-  const { checked, toggleMode } = useContext(ThemeContext);
+const Footer = ({ checked, toggleMode }) => {
   const date = new Date();
   const year = date.getFullYear();
 
   return (
+    // <ThemeContext>
     <footer className="py-10 relative bigTab:pt-20 bigTab:pb-50px laptop:pt-52 laptop:pb-70px">
       <div className="absolute bg-nav blur-[100px] h-60 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:right-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
       <ul className="font-bold gap-x-20 hidden mb-120px laptop:flex laptop:justify-center">
@@ -106,6 +105,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    // </ThemeContext>
   );
 };
 

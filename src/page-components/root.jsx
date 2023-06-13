@@ -3,9 +3,7 @@ import { Outlet } from "react-router-dom";
 import { getUser } from "../services/authService";
 import { tracker } from "../services/trackService";
 import useDarkSide from "../hooks/useDarkSide";
-import ThemeContext from "../context/themeContext";
 import AuthContext from "../context/authContext";
-import MenuContext from "../context/menuContext";
 import ValidatorContext from "../context/validatorContext";
 import CollapseInfoContext from "../context/collapseInfoContext";
 import FormValidator from "../utilities/formValidator";
@@ -49,31 +47,29 @@ const Root = () => {
 
   return (
     <Fragment>
-      <ThemeContext.Provider
-        value={{
-          theme: darkSide,
-          checked: darkSide,
-          toggleMode,
-        }}
-      >
-        <AuthContext.Provider value={user}>
-          <MenuContext.Provider value={{ menu, toggleMenu }}>
-            <SVGSource />
-            <Navbar /> {/* Static Navbar */}
-            <main className="pt-120px relative">
-              <ValidatorContext.Provider value={FormValidator}>
-                <CollapseInfoContext.Provider
-                  value={{ collapse: collapseInfo, toggle: toggleInfo }}
-                >
-                  <Outlet /> {/*  App Outlet */}
-                </CollapseInfoContext.Provider>
-              </ValidatorContext.Provider>
-              <Footer /> {/* Static Footer */}
-              <MenuBackDrop /> {/* Menu Background */}
-            </main>
-          </MenuContext.Provider>
-        </AuthContext.Provider>
-      </ThemeContext.Provider>
+      <AuthContext.Provider value={user}>
+        <SVGSource />
+        <Navbar
+          menu={menu}
+          checked={darkSide}
+          toggleMenu={toggleMenu}
+          toggleMode={toggleMode}
+        />
+        {/* Static Navbar */}
+        <main className="pt-120px relative">
+          <ValidatorContext.Provider value={FormValidator}>
+            <CollapseInfoContext.Provider
+              value={{ collapse: collapseInfo, toggle: toggleInfo }}
+            >
+              <Outlet /> {/*  App Outlet */}
+            </CollapseInfoContext.Provider>
+          </ValidatorContext.Provider>
+          {/* Static Footer */}
+          <Footer checked={darkSide} toggleMode={toggleMode} />
+          <MenuBackDrop menu={menu} checked={darkSide} />
+          {/* Menu Background */}
+        </main>
+      </AuthContext.Provider>
     </Fragment>
   );
 };
