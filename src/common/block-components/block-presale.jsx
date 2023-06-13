@@ -1,23 +1,14 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import PresaleCarousel from "../presaleCarousel";
 import { SVG } from "../svg";
 
 const Presale = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section className="py-130px relative bigTab:py-150px laptop:pt-[250px] laptop:pb-120px widerScreen:pt-[300px]">
       <span className="absolute h-full inset-0 -ml-5 w-screen -z-20 bigTab:-ml-8 laptop:hidden">
         <SVG id="presale-bg-2" height="100%" width="100%" aspectRatio="none" />
       </span>
-      <span className="hidden inset-0 w-screen -z-20 laptop:absolute laptop:block laptop:-ml-16 laptop:h-[85%] widerScreen:max-w-1600">
-        <SVG
-          id={theme ? "presale-bg" : "darkPresale-bg"}
-          height="100%"
-          width="100%"
-          aspectRatio="none"
-        />
+      <span className="hidden inset-0 text-white w-screen -z-20 laptop:absolute laptop:block laptop:-ml-16 laptop:h-[85%] widerScreen:max-w-1600 dark:text-dark">
+        <SVG id="presale-bg" height="100%" width="100%" aspectRatio="none" />
       </span>
       <h2 className="font-bold leading-10 mb-30px text-32 text-center text-white tab:text-40 desktop:mb-10 desktop:text-5xl desktop:leading-54">
         Presale Details

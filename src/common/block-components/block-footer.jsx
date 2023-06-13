@@ -4,7 +4,7 @@ import Switcher from "../switcher";
 import { SVG } from "../svg";
 
 const Footer = () => {
-  const { theme, checked, toggleMode } = useContext(ThemeContext);
+  const { checked, toggleMode } = useContext(ThemeContext);
   const date = new Date();
   const year = date.getFullYear();
 
@@ -41,78 +41,54 @@ const Footer = () => {
         <a href="/" className="h-[33px] w-[207px] laptop:mb-4">
           <SVG id="namedLogo" height="100%" width="100%" />
         </a>
-        <div className="flex gap-x-2.5 justify-center">
+        <div className="flex gap-x-2.5 justify-center text-dark dark:text-white">
           <a
             href="https://www.twitter.com/fredobumma"
-            className="h-logo w-logo laptop:h-50 laptop:w-50"
+            className="border-2 border-transparent bg-[#0f132066] h-logo rounded-full w-logo laptop:h-50 laptop:w-50 dark:border-[#ffffff0d]"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SVG
-              id={theme ? "darktwitter" : "twitter"}
-              height="100%"
-              width="100%"
-            />
+            <SVG id="twitter" height="100%" width="100%" />
           </a>
           <a
             href="https://t.me/Fredquinnbee"
-            className="h-logo w-logo laptop:h-50 laptop:w-50"
+            className="border-2 border-transparent bg-[#0f132066] h-logo rounded-full w-logo laptop:h-50 laptop:w-50 dark:border-[#ffffff0d]"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SVG
-              id={theme ? "darktelegram" : "telegram"}
-              height="100%"
-              width="100%"
-            />
+            <SVG id="telegram" height="100%" width="100%" />
           </a>
           <a
             href="https://www.instagram.com/fredobumma"
-            className="h-logo w-logo laptop:h-50 laptop:w-50"
+            className="border-2 border-transparent bg-[#0f132066] h-logo rounded-full w-logo laptop:h-50 laptop:w-50 dark:border-[#ffffff0d]"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SVG
-              id={theme ? "darkinstagram" : "instagram"}
-              height="100%"
-              width="100%"
-            />
+            <SVG id="instagram" height="100%" width="100%" />
           </a>
           <a
             href="https://www.medium.com/@fredobumma"
-            className="h-logo w-logo laptop:h-50 laptop:w-50"
+            className="border-2 border-transparent bg-[#0f132066] h-logo rounded-full w-logo laptop:h-50 laptop:w-50 dark:border-[#ffffff0d]"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SVG
-              id={theme ? "darkmedium" : "medium"}
-              height="100%"
-              width="100%"
-            />
+            <SVG id="medium" height="100%" width="100%" />
           </a>
           <a
             href="https://github.com/Fredobumma"
-            className="h-logo w-logo laptop:h-50 laptop:w-50"
+            className="border-2 border-transparent bg-[#0f132066] h-logo rounded-full w-logo laptop:h-50 laptop:w-50 dark:border-[#ffffff0d]"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SVG
-              id={theme ? "darkgithub" : "github"}
-              height="100%"
-              width="100%"
-            />
+            <SVG id="github" height="100%" width="100%" />
           </a>
           <a
             href="https://www.reddit.com/user/FredObumma"
-            className="h-logo w-logo laptop:h-50 laptop:w-50"
+            className="border-2 border-transparent bg-[#0f132066] h-logo rounded-full w-logo laptop:h-50 laptop:w-50 dark:border-[#ffffff0d]"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SVG
-              id={theme ? "darkreddit" : "reddit"}
-              height="100%"
-              width="100%"
-            />
+            <SVG id="reddit" height="100%" width="100%" />
           </a>
         </div>
         <div className="flex flex-col gap-y-2.5 items-center bigTab:gap-y-4 laptop:items-end">

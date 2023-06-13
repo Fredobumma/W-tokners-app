@@ -16,7 +16,9 @@ const tokenKey = "token";
 
 // const provider = new GoogleAuthProvider();
 
-const getJwt = () => jwtDecode(localStorage.getItem(tokenKey)) || null;
+const getJwt = () => localStorage.getItem(tokenKey);
+
+const getUser = () => getJwt() && jwtDecode(getJwt());
 
 const loginWithJwt = (value) => localStorage.setItem(tokenKey, value);
 
@@ -43,7 +45,7 @@ const passwordRecovery = (email) => sendPasswordResetEmail(auth, email);
 // console.log(result.user);
 
 export {
-  getJwt,
+  getUser,
   loginWithJwt,
   logoutJwt,
   signUp,

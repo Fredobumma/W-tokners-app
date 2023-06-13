@@ -227,7 +227,7 @@ const UserProfile = () => {
                 {errors.username && (
                   <span className="text-red text-xs">{errors.username}</span>
                 )}
-                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 border-dark">
+                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 dark:border-dark">
                   <label htmlFor="username">
                     <SVG id="username" />
                   </label>

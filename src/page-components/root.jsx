@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { getJwt } from "../services/authService";
+import { getUser } from "../services/authService";
 import { tracker } from "../services/trackService";
 import useDarkSide from "../hooks/useDarkSide";
 import ThemeContext from "../context/themeContext";
@@ -20,7 +20,7 @@ const Root = () => {
   const [menu, setMenu] = useState(false);
   const [collapseInfo, setCollapseInfo] = useState(true);
 
-  const user = getJwt();
+  const user = getUser();
 
   // <===== SWITCH THEME =====>
   const toggleMode = (checked) => {

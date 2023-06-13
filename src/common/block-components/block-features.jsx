@@ -1,16 +1,12 @@
-import { useContext } from "react";
-import ThemeContext from "../../context/themeContext";
 import { SVG } from "../svg";
 
 const Features = () => {
-  const { theme } = useContext(ThemeContext);
-
   return (
     <section className="pb-60px pt-10 tab:pb-20 tab:pt-150px bigTab:pb-100px bigTab:pt-170px laptop:pb-150px laptop:pt-20">
       <div className="grid gap-y-2.5 bigTab:gap-y-5 laptop:gap-x-5 laptop:grid-cols-2">
         <div className="bg-lightGuideCard h-max max-w-full mx-auto px-purchase pt-30px pb-10 rounded-all tab:px-10 bigTab:max-w-[90%] bigTab:px-50px laptop:max-w-full laptop:px-30px laptop:py-60px desktop:px-50px widerScreen:px-70px dark:bg-guideCard">
-          <span className="inline-block -ml-6 -mb-9 laptop:-mb-5">
-            <SVG id={theme ? "light-creators-crown" : "dark-creators-crown"} />
+          <span className="inline-block -ml-6 -mb-9 text-lightGuideCard laptop:-mb-5 dark:text-guideCard">
+            <SVG id="creators-crown" />
           </span>
           <h3 className="font-bold text-28 leading-54 tab:text-32 desktop:text-4xl">
             For{" "}
@@ -35,8 +31,8 @@ const Features = () => {
           </a>
         </div>
         <div className="bg-lightGuideCard h-max max-w-full mx-auto px-purchase pt-30px pb-10 rounded-all tab:px-10 bigTab:max-w-[90%] bigTab:px-50px laptop:max-w-full laptop:mt-24 laptop:px-30px laptop:py-60px desktop:px-50px widerScreen:px-70px dark:bg-guideCard">
-          <span className="inline-block -ml-6 -mb-9 laptop:-mb-5">
-            <SVG id={theme ? "light-folders-star" : "dark-folders-star"} />
+          <span className="inline-block -ml-6 -mb-9 text-lightGuideCard laptop:-mb-5 dark:text-guideCard">
+            <SVG id="folders-star" />
           </span>
           <h3 className="font-bold text-28 leading-54 tab:text-32 desktop:text-4xl">
             For{" "}
