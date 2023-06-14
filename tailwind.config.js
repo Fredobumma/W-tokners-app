@@ -53,9 +53,7 @@ module.exports = {
         ],
       },
       colors: {
-        creatorsLink: "#22A75D",
         dark: "#0F1320",
-        holdersLink: "#2278D4",
         light: "#fff",
         secondary: "#22A75D",
         red: "#E20613",

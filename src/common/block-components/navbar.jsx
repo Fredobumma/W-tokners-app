@@ -10,6 +10,32 @@ import { NavButton } from "./../button";
 const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   const user = useContext(AuthContext);
 
+  const menuIcon = ["rotate-[42deg]", "hidden", "-rotate-[42deg]"];
+
+  const links = [
+    { path: "/team", content: "Our team" },
+    { path: "/tokens", content: "Tokens" },
+    { path: "/join-whitelist", content: "Join Whitelist" },
+  ];
+
+  const navButton = [
+    {
+      path: "/profile",
+      label: user?.name,
+      isAuth: true,
+      classes:
+        "flex active:bg-transparent capitalize focus:bg-transparent focus:text-current font-bold gap-2.5 hover:bg-transparent hover:text-current items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0",
+      content: <SVG id="profile" />,
+    },
+    { path: "/logging-out", label: "Log Out", isAuth: true },
+    {
+      path: "/login",
+      label: "Sign In",
+      classes: "focus:px-10 hover:px-10 py-3 laptop:px-2.5 desktop:px-0",
+    },
+    { path: "/register", label: "Sign Up" },
+  ];
+
   // array   --------
   // object   ------- const person = {name: "Fuja", age: 25}
   // function  ------ function person() {}
@@ -46,21 +72,14 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
         <button className="group z-[100] laptop:hidden" onClick={toggleMenu}>
           <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
             <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-              <div
-                className={`bg-dark h-[2px] w-7 transform transition-all duration-300 origin-left dark:bg-white ${
-                  menu && "rotate-[42deg]"
-                }`}
-              ></div>
-              <div
-                className={`bg-dark h-[2px] w-7 transform transition-all duration-300 dark:bg-white ${
-                  menu && "hidden"
-                }`}
-              ></div>
-              <div
-                className={`bg-dark h-[2px] w-7 transform transition-all duration-300 origin-left dark:bg-white ${
-                  menu && "-rotate-[42deg]"
-                }`}
-              ></div>
+              {menuIcon.map((icon, index) => (
+                <div
+                  key={index}
+                  className={`bg-dark h-[2px] w-7 transform transition-all duration-300 dark:bg-white ${
+                    icon !== "hidden" && "origin-left"
+                  } ${menu && icon}`}
+                ></div>
+              ))}
             </div>
           </div>
         </button>
@@ -70,76 +89,39 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
           }`}
         >
           <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30px laptop:inline-flex">
-            <li>
-              <NavLink
-                to="/team"
-                className="outline-0 group overflow-hidden relative"
-              >
-                Our team
-                <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/tokens"
-                className="outline-0 group overflow-hidden relative"
-              >
-                Tokens
-                <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/join-whitelist"
-                className="outline-0 group overflow-hidden relative"
-              >
-                Join Whitelist
-                <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-              </NavLink>
-            </li>
+            {links.map(({ path, content }, index) => (
+              <li key={index}>
+                <NavLink
+                  to={path}
+                  className="outline-0 group overflow-hidden relative"
+                >
+                  {content}
+                  <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
+                </NavLink>
+              </li>
+            ))}
             <li>
               <span className="inline-block laptop:ml-3">
                 <Switcher checked={checked} onChange={toggleMode} />
               </span>
             </li>
           </ul>
-          {user ? (
-            <div className="flex flex-col gap-2.5 items-center mt-70px mx-auto w-fit laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
-              <NavButton
-                to="/profile"
-                extraStyles="flex active:bg-transparent capitalize focus:bg-transparent focus:text-current font-bold gap-2.5 hover:bg-transparent hover:text-current items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0"
-              >
-                {user.name}
-                <SVG id="profile" />
-              </NavButton>
-              <NavButton
-                to="/logging-out"
-                label="Log Out"
-                extraStyles="border-2 border-secondary px-10 py-3"
-              />
-            </div>
-          ) : (
-            <div className="flex flex-col gap-2.5 items-center mt-70px mx-auto w-fit laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
-              <NavButton
-                to="/login"
-                label="Sign In"
-                extraStyles="focus:px-10 hover:px-10 py-3 laptop:px-2.5 desktop:px-0"
-              />
-              <NavButton
-                to="/register"
-                label="Sign Up"
-                extraStyles="border-2 border-secondary px-10 py-3"
-              />
-              {/* {arr.map((item, index) => (
+          <div className="flex flex-col gap-2.5 items-center mt-70px mx-auto w-fit laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
+            {navButton
+              .filter((el) => (user ? el.isAuth : !el.isAuth))
+              .map(({ path, label, classes, content }, index) => (
                 <NavButton
                   key={index}
-                  to={item}
-                  label="Sign In"
-                  // extraStyles="py-3 focus:px-10 hover:px-10 laptop:px-2.5 desktop:px-0"
-                />
-              ))} */}
-            </div>
-          )}
+                  to={path}
+                  label={label}
+                  extraStyles={
+                    classes || "border-2 border-secondary px-10 py-3"
+                  }
+                >
+                  {content}
+                </NavButton>
+              ))}
+          </div>
         </div>
       </div>
     </nav>

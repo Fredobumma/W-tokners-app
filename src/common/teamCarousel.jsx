@@ -1,7 +1,7 @@
 import { useSnapCarousel } from "react-snap-carousel";
 import { SVG } from "./svg";
 
-const TeamCarousel = ({ children }) => {
+const TeamCarousel = ({ cards }) => {
   const {
     pages,
     activePageIndex,
@@ -12,6 +12,15 @@ const TeamCarousel = ({ children }) => {
     goTo,
   } = useSnapCarousel();
 
+  const buttons = [
+    { id: "left", navigator: prev, condition: activePageIndex <= 0 },
+    {
+      id: "right",
+      navigator: next,
+      condition: activePageIndex === pages.length - 1,
+    },
+  ];
+
   return (
     <>
       <div className="flex justify-between mb-10">
@@ -19,24 +28,18 @@ const TeamCarousel = ({ children }) => {
           Our Team
         </h1>
         <div className="flex justify-center mr-12 space-x-2" aria-hidden>
-          <button
-            className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
-              activePageIndex <= 0 &&
-              "cursor-not-allowed active:rotate-360 focus:rotate-360 hover:rotate-0 opacity-30"
-            }`}
-            onClick={() => prev()}
-          >
-            <SVG id="left-arrow" />
-          </button>
-          <button
-            className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
-              activePageIndex === pages.length - 1 &&
-              "cursor-not-allowed active:rotate-360 focus:rotate-360 hover:rotate-0 opacity-30"
-            }`}
-            onClick={() => next()}
-          >
-            <SVG id="right-arrow" />
-          </button>
+          {buttons.map(({ id, navigator, condition }, index) => (
+            <button
+              key={index}
+              className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${
+                condition &&
+                "cursor-not-allowed active:rotate-0 focus:rotate-0 hover:rotate-0 opacity-30"
+              }`}
+              onClick={() => navigator()}
+            >
+              <SVG id={`${id}-arrow`} />
+            </button>
+          ))}
         </div>
       </div>
 
@@ -44,16 +47,29 @@ const TeamCarousel = ({ children }) => {
         className="flex gap-2.5 overflow-x-auto pb-5 pr-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded-all snap-mandatory bigTab:pr-8 laptop:pr-16 laptop:gap-5"
         ref={scrollRef}
       >
-        {/*  LIST OF ITEMS TO BE RENDERED
-        {Array.from({ length: 5 }).map((_, i) => (
+        {cards.map(({ name, role, imgClasses }, index) => (
           <li
-            key={i}
-            className={`flex-shrink-0 ${snapPointIndexes.has(i) && snap-start}`}
+            key={index}
+            className={`bg-lightTeamCard h-max min-w-max overflow-hidden pb-0 p-minmax pt-30px rounded-all snap-start dark:bg-teamCard ${
+              !(index % 2) && "relative"
+            }`}
           >
-            <img src="" alt={`Item ${i}`} />
+            <span className="block font-bold mb-1.5 ml-5 text-left bigTab:ml-0">
+              {name}
+            </span>
+            <span className="block mb-50px ml-5 text-left text-sm bigTab:ml-0 bigTab:mb-55px">
+              {role}
+            </span>
+            <span
+              className={`bg-sprite bg-no-repeat block h-385 w-236 tab:h-420 tab:w-257 ${imgClasses} ${
+                !(index % 2) && "relative z-20"
+              }`}
+            ></span>
+            {!(index % 2) && (
+              <span className="bg-sprite bg-no-repeat block team-bg absolute bg-[-350px_-2183px] inset-0 max-h-full max-w-full z-10 bigTab:top-[5px]"></span>
+            )}
           </li>
-        ))} */}
-        {children}
+        ))}
       </ul>
 
       <ol className="flex flex-wrap gap-x-2.5 gap-y-5 items-center justify-center mt-30px laptop:hidden">

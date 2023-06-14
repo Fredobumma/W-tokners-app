@@ -170,7 +170,7 @@ const files = {
       viewBox: [0, 0, 132, 132],
       data: '<g xmlns="http://www.w3.org/2000/svg" filter="url(#filter0_d_7_377)"><path fill="#FFD100" d="M107 51C107 73.6437 88.6437 92 66 92C25 92 25 92 25 51C25 28.3563 43.3563 10 66 10C88.6437 10 107 28.3563 107 51Z"/></g><defs xmlns="http://www.w3.org/2000/svg"><filter id="filter0_d_7_377" width="132" height="132" x="0" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/><feOffset dy="15"/><feGaussianBlur stdDeviation="12.5"/><feColorMatrix values="0 0 0 0 1 0 0 0 0 0.819608 0 0 0 0 0 0 0 0 0.25 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_7_377"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_7_377" result="shape"/></filter></defs>',
     },
-    "folders-star": {
+    "holders-star": {
       width: 120,
       height: 120,
       viewBox: [0, 0, 120, 120],
@@ -247,7 +247,7 @@ const files = {
     "goals-red",
     "goals-yellow",
     "services-bg",
-    "folders-star",
+    "holders-star",
     "creators-crown",
     "namedLogo",
     "left-arrow",

@@ -66,7 +66,7 @@ const Root = () => {
           </ValidatorContext.Provider>
           {/* Static Footer */}
           <Footer checked={darkSide} toggleMode={toggleMode} />
-          <MenuBackDrop menu={menu} checked={darkSide} />
+          <MenuBackDrop menu={menu} toggleMenu={toggleMenu} />
           {/* Menu Background */}
         </main>
       </AuthContext.Provider>
