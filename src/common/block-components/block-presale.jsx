@@ -39,7 +39,7 @@ const Presale = () => {
             Hard cap: <span className="font-bold">10000 BNB</span>
           </p>
         </li>
-        <li className="bg-dark text-white flex flex-col h-max items-center max-w-400 pb-55px pt-70px px-30px snap-start rounded-all widerScreen:max-w-512 widerScreen:pb-88px widerScreen:pt-28 dark:bg-white dark:text-dark">
+        <li className="bg-dark text-white flex flex-col h-max items-center max-w-400 pb-55px pt-70px px-30px snap-start rounded-all desktop:mt-60px widerScreen:max-w-512 widerScreen:pb-88px widerScreen:pt-28 dark:bg-white dark:text-dark">
           <span className="flex h-82 items-center justify-center relative w-82">
             <span className="absolute font-bold text-26 text-dark z-10">
               02

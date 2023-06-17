@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 // import ThemeContext from "../../context/themeContext";
 // import MenuContext from "../../context/menuContext";
 import AuthContext from "../../context/authContext";
+import Logo from "../logo";
 import Switcher from "../switcher";
 import { SVG } from "../svg";
 import { NavButton } from "./../button";
@@ -45,17 +46,29 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   // null   ----- null
   // undefined   ---- undefined
 
-  // const person = {
-  //   name: "Fuja",
-  //   age: 25,
-  //   addy: function person() {
-  //     console.log("Fuja");
-  //   },
-  // };
   // const a = function person() {
   //   console.log("Fuja");
   // };
-  // const array = [];
+
+  // const person = {
+  //   0: "me",
+  //   1: "you",
+  // };
+
+  // for loop ======
+  // for in loop
+  // for of loop
+  // forEach loop
+  // while loop
+  // do while loop
+
+  // let number = 2;
+  // while (number === 2) {
+  //   console.log(person[number]);
+  //   number++;
+  // }
+
+  // person[number] === person[2]
 
   return (
     // <ThemeContext>
@@ -63,12 +76,7 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
     <nav className="bg-light fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30px laptop:mx-auto dark:bg-dark">
       <div className="relative flex items-center justify-between pt-5 laptop:justify-start laptop:pt-2.5 laptop:static">
         <div className="absolute bg-nav blur-[100px] h-86 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:left-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
-        <NavLink
-          to="/"
-          className="outline-0 max-h-[33px] max-w-[207px] mr-30px laptop:m-0"
-        >
-          <SVG id="namedLogo" height="100%" width="100%" />
-        </NavLink>
+        <Logo extraClasses="outline-0 mr-30px laptop:m-0" />
         <button className="group z-[100] laptop:hidden" onClick={toggleMenu}>
           <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
             <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">

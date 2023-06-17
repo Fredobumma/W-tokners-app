@@ -1,27 +1,21 @@
+import pngImg2x from "../images/hero-img.png";
+import pngImg1x from "../images/hero-img-1.png";
+import webpImg2x from "../images/hero-img.webp";
+import webpImg1x from "../images/hero-img-1.webp";
+import HeroHeading from "./../abstract-components/heroHeading";
 import { NavButton } from "../button";
-import pngImage_2x from "../images/hero-img.png";
-import pngImage_1x from "../images/hero-img-1.png";
-import webpImage_2x from "../images/hero-img.webp";
-import webpImage_1x from "../images/hero-img-1.webp";
+import Picture from "../picture";
+import { pictureSource } from "../../utilities/variables";
 
 const Hero = () => {
+  const sources = pictureSource(640, pngImg2x, pngImg1x, webpImg2x, webpImg1x);
+
   return (
     <section className="relative laptop:pb-20 laptop:pt-30">
       <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>
       <div className="grid gap-y-2.5 bigTab:gap-y-5 laptop:gap-x-5 laptop:grid-cols-2">
         <div className="max-w-[600px] my-auto tab:px-30px bigTab:px-50px laptop:px-5">
-          <p className="bg-clip-text bg-hero font-bold leading-6 mb-2.5 text-sm text-transparent bigTab:text-base dark:bg-darkHero">
-            At Tokners we are
-          </p>
-          <h1 className="font-bold text-32 leading-10 tab:text-40 desktop:text-5xl desktop:leading-54">
-            Reimagining social media through the power of the blockchain.
-          </h1>
-          <p className="opacity-60 mb-30px mt-5 text-sm bigTab:text-base laptop:mb-10 laptop:mt-30">
-            We are creating social media 3.0 with influencers, celebrities and
-            creators being able to launch their own digital currency by simply
-            creating a profile with media content posted as Non fungible Tokens
-            that can be owned and traded on the Tknrs network.
-          </p>
+          <HeroHeading />
           <NavButton
             to="/login"
             label="Learn More"
@@ -29,25 +23,12 @@ const Hero = () => {
           />
         </div>
         <div className="-mt-20 tab:mt-5 laptop:mt-0">
-          <picture>
-            <source
-              srcSet={webpImage_2x}
-              media="(min-width: 640px)"
-              type="image/webp"
-            />
-            <source srcSet={webpImage_1x} type="image/webp" />
-            <source
-              srcSet={pngImage_2x}
-              media="(min-width: 640px)"
-              type="image/png"
-            />
-            <source srcSet={pngImage_1x} type="image/png" />
-            <img
-              className="relative object-stretch scale-x-[1.11] w-full -z-10 tab:-ml-100px tab:overflow-y-visible tab:scale-150 laptop:max-h-full laptop:-ml-0 laptop:scale-[1.3]"
-              src={pngImage_2x}
-              alt="Background"
-            />
-          </picture>
+          <Picture
+            sources={sources}
+            src={pngImg2x}
+            imgClasses="relative object-stretch scale-x-[1.11] w-full -z-10 tab:-ml-100px tab:overflow-y-visible tab:scale-150 laptop:max-h-full laptop:-ml-0 laptop:scale-[1.3]"
+            alt="Hero"
+          />
         </div>
       </div>
     </section>

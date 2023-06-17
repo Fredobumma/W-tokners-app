@@ -1,18 +1,14 @@
-import pngImage_2x from "../images/wallet-hero-img.png";
-import pngImage_1x from "../images/wallet-hero-img-1.png";
-import webpImage_2x from "../images/wallet-hero-img.webp";
-import webpImage_1x from "../images/wallet-hero-img-1.webp";
+import pngImg2x from "../images/wallet-hero-img.png";
+import pngImg1x from "../images/wallet-hero-img-1.png";
+import webpImg2x from "../images/wallet-hero-img.webp";
+import webpImg1x from "../images/wallet-hero-img-1.webp";
 import Auth_heroHeading from "../abstract-components/auth-heroHeading";
 import Auth_HeroContent from "../abstract-components/auth-heroContent";
 import Picture from "../picture";
+import { pictureSource } from "../../utilities/variables";
 
 const Hero = () => {
-  const sources = [
-    { image: pngImage_2x, type: "image/png", media: 1024 },
-    { image: webpImage_2x, type: "image/webp", media: 1024 },
-    { image: pngImage_1x, type: "image/png" },
-    { image: webpImage_1x, type: "image/webp" },
-  ];
+  const sources = pictureSource(1024, pngImg2x, pngImg1x, webpImg2x, webpImg1x);
 
   return (
     <section className="relative tab:py-10 laptop:py-20">
@@ -37,9 +33,9 @@ const Hero = () => {
           <div className="laptop:mt-5 desktop:mt-10">
             <Picture
               sources={sources}
-              src={pngImage_2x}
+              src={pngImg2x}
               imgClasses="object-stretch scale-[1.11] w-full tab:scale-125 bigTab:scale-150 desktop:scale-[2]"
-              alt="Background"
+              alt="Hero"
             />
           </div>
         </div>

@@ -49,4 +49,18 @@ function sort(items, column) {
   ]);
 }
 
-export { mapErrorTo, clearNotify, numberFormat, match, sort, capitalize };
+function paginate(items, currentPage, pageSize) {
+  const startNumber = (currentPage - 1) * pageSize;
+
+  return items.slice(startNumber, startNumber + pageSize);
+}
+
+export {
+  mapErrorTo,
+  clearNotify,
+  numberFormat,
+  match,
+  sort,
+  paginate,
+  capitalize,
+};

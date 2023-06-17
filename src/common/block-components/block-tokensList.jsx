@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getTokens } from "../../services/tokenService";
 import { convert } from "../../services/tokenService";
-import { paginate } from "../../utilities/paginate";
-import { match, numberFormat, sort } from "../../utilities/helpers";
+import { numberFormat, match, sort, paginate } from "../../utilities/helpers";
 import { SVG } from "../svg";
 
 const TokensList = () => {
