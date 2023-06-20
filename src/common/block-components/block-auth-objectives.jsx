@@ -3,61 +3,52 @@ import { SVG } from "../svg";
 const Objectives = () => {
   const cards = [
     {
-      id: "green",
+      color: "green",
       year: 1,
-      color: "text-green-600",
       range: "Day 1 - Day 90",
       rate: 10,
       tokens: 900,
     },
     {
-      id: "yellow",
+      color: "yellow",
       year: 1,
-      color: "text-yellow",
       range: "Day 90 - Day 365",
       rate: 5,
       tokens: 1375,
     },
     {
-      id: "blue",
+      color: "blue",
       year: 2,
-      color: "text-blue-600",
       rate: 4,
       tokens: 1460,
     },
     {
-      id: "red",
+      color: "red",
       year: 3,
-      color: "text-red",
       rate: 3,
       tokens: 1095,
     },
     {
-      id: "green",
+      color: "green",
       year: 4,
-      color: "text-green-600",
       rate: 2,
       tokens: 730,
     },
     {
-      id: "yellow",
+      color: "yellow",
       year: 5,
-      color: "text-yellow",
     },
     {
-      id: "blue",
+      color: "blue",
       year: 6,
-      color: "text-blue-600",
     },
     {
-      id: "red",
+      color: "red",
       year: 7,
-      color: "text-red",
     },
     {
-      id: "green",
+      color: "green",
       year: 8,
-      color: "text-green-600",
       tokens: 345,
     },
   ];
@@ -65,7 +56,7 @@ const Objectives = () => {
   return (
     <section className="pb-2.5 pt-50px tab:pb-5 tab:pt-10 bigTab:pb-30px bigTab:pt-60px laptop:pb-0 laptop:pt-100px">
       <div className="flex flex-wrap justify-center gap-2.5 laptop:gap-5">
-        {cards.map(({ id, color, year, range, rate, tokens }, index) => (
+        {cards.map(({ color, year, range, rate, tokens }, index) => (
           <span
             key={index}
             className="bg-lightGuideCard flex-col inline-flex justify-start max-h-max p-5 pr-8 rounded-all max-w-max bigTab:p-6 bigTab:pr-9 dark:bg-guideCard"
@@ -73,11 +64,11 @@ const Objectives = () => {
             <span className="flex gap-x-1 items-center -ml-1.5 tab:gap-x-2">
               <span className="h-9 inline-block overflow-hidden relative w-9">
                 <span className="absolute top-[11%]">
-                  <SVG id={`goals-${id}`} width="100%" height="100%" />
+                  <SVG id={`goals-${color}`} width="100%" height="100%" />
                 </span>
               </span>
               <span
-                className={`font-bold leading-34 text-xs tab:leading-34 tab:text-sm ${color}`}
+                className={`font-bold leading-34 text-xs tab:leading-34 tab:text-sm text-${color} text-${color}-600`}
               >
                 Year {year}
               </span>

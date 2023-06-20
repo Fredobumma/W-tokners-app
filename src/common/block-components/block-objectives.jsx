@@ -1,158 +1,76 @@
 import { SVG } from "../svg";
 
 const Objectives = () => {
+  const quaters = [
+    {
+      color: "green",
+      list: ["Team set-up", "Launch of informational website"],
+    },
+    {
+      color: "blue",
+      list: [
+        "Presale and exchange listings",
+        "Blockchain development and launch",
+        "Launch of our MVP",
+        "Influencer agency partnerships",
+        "Marketing and promotion",
+      ],
+    },
+    {
+      color: "yellow",
+      list: [
+        "Celebrity, Creator and Influencer partnerships",
+        "Expansion of creator communities on our platform",
+        "More Marketing and promotion",
+      ],
+    },
+    {
+      color: "red",
+      list: [
+        "Mainstream partnerships",
+        "500 active creator communities",
+        "2Million active community members",
+        "More marketing and promotion",
+      ],
+    },
+  ];
+
   return (
     <aside className="py-70px laptop:bg-dark laptop:max-w-1600 laptop:-ml-16 laptop:py-0 laptop:w-screen dark:laptop:bg-light">
-      <div className="grid gap-10 tab:justify-center bigTab:gap-20 laptop:bg-light laptop:gap-12 laptop:grid-cols-4 laptop:h-full laptop:px-16 laptop:py-[200px] laptop:rounded-tr-[25%] laptop:w-full dark:laptop:bg-dark">
-        <div>
-          <span className="flex gap-x-2.5 mb-30px bigTab:mb-50px">
-            <span className="flex h-82 items-center justify-center relative w-82">
-              <span className="font-bold text-26 text-dark z-10">Q1</span>
-              <span className="absolute top-[-11%]">
-                <SVG id="goals-green" />
+      <ul className="grid gap-10 tab:justify-center bigTab:gap-20 laptop:bg-light laptop:gap-12 laptop:grid-cols-4 laptop:h-full laptop:px-16 laptop:py-[200px] laptop:rounded-tr-[25%] laptop:w-full dark:laptop:bg-dark">
+        {quaters.map(({ color, list }, index) => (
+          <li key={index}>
+            <span className="flex gap-x-2.5 mb-30px bigTab:mb-50px">
+              <span className="flex h-82 items-center justify-center relative w-82">
+                <span className="font-bold text-26 text-dark z-10">
+                  Q{++index}
+                </span>
+                <span className="absolute top-[-11%]">
+                  <SVG id={`goals-${color}`} />
+                </span>
+              </span>
+              <span className="-mb-[11px] self-end">
+                <span
+                  className={`block h-3 mb-px rounded-xl w-3 bg-${color} bg-${color}-600 `}
+                ></span>
+                <span className="font-bold leading-9 text-lg">2023</span>
               </span>
             </span>
-            <span className="-mb-[11px] self-end">
-              <span className="block bg-green-600 h-3 mb-px rounded-xl w-3"></span>
-              <span className="font-bold leading-9 text-lg">2023</span>
-            </span>
-          </span>
-          <ol className="leading-34 list-inside text-lg">
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-green-600 text-xs">
-                01
-              </span>
-              Team set-up
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-green-600 text-xs">
-                02
-              </span>
-              Launch of informational website
-            </li>
-          </ol>
-        </div>
-        <div>
-          <span className="flex gap-x-2.5 mb-30px bigTab:mb-50px">
-            <span className="flex h-82 items-center justify-center relative w-82">
-              <span className="font-bold text-26 text-dark z-10">Q2</span>
-              <span className="absolute top-[-11%]">
-                <SVG id="goals-blue" />
-              </span>
-            </span>
-            <span className="-mb-[11px] self-end">
-              <span className="block bg-blue-600 h-3 mb-px rounded-xl w-3"></span>
-              <span className="font-bold leading-9 text-lg">2023</span>
-            </span>
-          </span>
-          <ol className="leading-34 list-inside text-lg">
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-blue-600 text-xs">
-                01
-              </span>
-              Presale and exchange listings
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-blue-600 text-xs">
-                02
-              </span>
-              Blockchain development and launch
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-blue-600 text-xs">
-                03
-              </span>
-              Launch of our MVP
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-blue-600 text-xs">
-                04
-              </span>
-              Influencer agency partnerships
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-blue-600 text-xs">
-                05
-              </span>
-              Marketing and promotion
-            </li>
-          </ol>
-        </div>
-        <div>
-          <span className="flex gap-x-2.5 mb-30px bigTab:mb-50px">
-            <span className="flex h-82 items-center justify-center relative w-82">
-              <span className="font-bold text-26 text-dark z-10">Q3</span>
-              <span className="absolute top-[-11%]">
-                <SVG id="goals-yellow" />
-              </span>
-            </span>
-            <span className="-mb-[11px] self-end">
-              <span className="block bg-yellow h-3 mb-px rounded-xl w-3"></span>
-              <span className="font-bold leading-9 text-lg">2023</span>
-            </span>
-          </span>
-          <ol className="leading-34 list-inside text-lg">
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-yellow text-xs">
-                01
-              </span>
-              Celebrity, Creator and Influencer partnerships
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-yellow text-xs">
-                02
-              </span>
-              Expansion of creator communities on our platform
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-yellow text-xs">
-                03
-              </span>
-              More Marketing and promotion
-            </li>
-          </ol>
-        </div>
-        <div>
-          <span className="flex gap-x-2.5 mb-30px bigTab:mb-50px">
-            <span className="flex h-82 items-center justify-center relative w-82">
-              <span className="font-bold text-26 text-dark z-10">Q4</span>
-              <span className="absolute top-[-11%]">
-                <SVG id="goals-red" />
-              </span>
-            </span>
-            <span className="-mb-[11px] self-end">
-              <span className="block bg-red h-3 mb-px rounded-xl w-3"></span>
-              <span className="font-bold leading-9 text-lg">2023</span>
-            </span>
-          </span>
-          <ol className="leading-34 list-inside text-lg">
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-red text-xs">
-                01
-              </span>
-              Mainstream partnerships
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-red text-xs">
-                02
-              </span>
-              500 active creator communities
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-red text-xs">
-                03
-              </span>
-              2Million active community members
-            </li>
-            <li className="flex gap-x-2.5 laptop:gap-x-5">
-              <span className="font-bold font-target leading-34 text-red text-xs">
-                04
-              </span>
-              More marketing and promotion
-            </li>
-          </ol>
-        </div>
-      </div>
+            <ol className="leading-34 list-inside text-lg">
+              {list.map((el, index) => (
+                <li key={index} className="flex gap-x-2.5 laptop:gap-x-5">
+                  <span
+                    className={`font-bold font-target leading-34 text-xs text-${color} text-${color}-600`}
+                  >
+                    0{++index}
+                  </span>
+                  {el}
+                </li>
+              ))}
+            </ol>
+          </li>
+        ))}
+      </ul>
     </aside>
   );
 };

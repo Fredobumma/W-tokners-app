@@ -2,13 +2,17 @@ import { useContext } from "react";
 import { SVG } from "../svg";
 import CollapseInfoContext from "../../context/collapseInfoContext";
 import { NavButton } from "../button";
-import pngImage_2x from "../images/showcase-bg.png";
-import pngImage_1x from "../images/showcase-bg-1.png";
-import webpImage_2x from "../images/showcase-bg.webp";
-import webpImage_1x from "../images/showcase-bg-1.webp";
+import pngImg2x from "../images/showcase-bg.png";
+import pngImg1x from "../images/showcase-bg-1.png";
+import webpImg2x from "../images/showcase-bg.webp";
+import webpImg1x from "../images/showcase-bg-1.webp";
+import { pictureSource } from "../../utilities/variables";
+import Picture from "../picture";
 
 const Showcase = () => {
   const { collapse, toggle } = useContext(CollapseInfoContext);
+
+  const sources = pictureSource(1280, pngImg2x, pngImg1x, webpImg2x, webpImg1x);
 
   return (
     <section className="pb-10 tab:pt-30px tab:pb-60px bigTab:pt-60px bigTab:pb-[80px] laptop:py-0">
@@ -91,25 +95,12 @@ const Showcase = () => {
             {(collapse && "Read More") || "Hide"}
           </p>
         </div>
-        <picture className="justify-self-end bigTab:justify-self-auto">
-          <source
-            srcSet={webpImage_2x}
-            media="(min-width: 1280px)"
-            type="image/webp"
-          />
-          <source srcSet={webpImage_1x} type="image/webp" />
-          <source
-            srcSet={pngImage_2x}
-            media="(min-width: 1280px)"
-            type="image/png"
-          />
-          <source srcSet={pngImage_1x} type="image/png" />
-          <img
-            className="mx-auto"
-            src={pngImage_2x}
-            alt="A woman holding her phone"
-          />
-        </picture>
+        <Picture
+          sources={sources}
+          src={pngImg2x}
+          imgClasses="mx-auto"
+          alt="A woman holding her phone"
+        />
       </div>
     </section>
   );

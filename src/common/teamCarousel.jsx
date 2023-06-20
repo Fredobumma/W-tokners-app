@@ -13,11 +13,11 @@ const TeamCarousel = ({ cards }) => {
   } = useSnapCarousel();
 
   const buttons = [
-    { id: "left", navigator: prev, condition: activePageIndex <= 0 },
+    { id: "left", condition: activePageIndex <= 0, navigator: prev },
     {
       id: "right",
-      navigator: next,
       condition: activePageIndex === pages.length - 1,
+      navigator: next,
     },
   ];
 
@@ -28,7 +28,7 @@ const TeamCarousel = ({ cards }) => {
           Our Team
         </h1>
         <div className="flex justify-center mr-12 space-x-2" aria-hidden>
-          {buttons.map(({ id, navigator, condition }, index) => (
+          {buttons.map(({ id, condition, navigator }, index) => (
             <button
               key={index}
               className={`hidden outline-0 py-2 px-4 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 laptop:block ${

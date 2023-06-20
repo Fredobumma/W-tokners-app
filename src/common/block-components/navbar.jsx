@@ -1,12 +1,11 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
 // import ThemeContext from "../../context/themeContext";
 // import MenuContext from "../../context/menuContext";
 import AuthContext from "../../context/authContext";
 import Logo from "../logo";
-import Switcher from "../switcher";
 import { SVG } from "../svg";
-import { NavButton } from "./../button";
+import MenuButton from "./../menuButton";
+import MenuLinks from "../menuLinks";
 
 const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   const user = useContext(AuthContext);
@@ -77,59 +76,18 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
       <div className="relative flex items-center justify-between pt-5 laptop:justify-start laptop:pt-2.5 laptop:static">
         <div className="absolute bg-nav blur-[100px] h-86 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:left-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
         <Logo extraClasses="outline-0 mr-30px laptop:m-0" />
-        <button className="group z-[100] laptop:hidden" onClick={toggleMenu}>
-          <div className="p-2.5 rounded-full w-fit h-fit transform transition-all bg-trasnparent ring-0 ring-gray-400 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
-            <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
-              {menuIcon.map((icon, index) => (
-                <div
-                  key={index}
-                  className={`bg-dark h-[2px] w-7 transform transition-all duration-300 dark:bg-white ${
-                    icon !== "hidden" && "origin-left"
-                  } ${menu && icon}`}
-                ></div>
-              ))}
-            </div>
-          </div>
-        </button>
+        <MenuButton menu={menu} icon={menuIcon} toggleMenu={toggleMenu} />
         <div
           className={`absolute bg-light h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 dark:bg-dark dark:laptop:bg-transparent ${
             !menu && "left-[200vw]"
           }`}
         >
-          <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30px laptop:inline-flex">
-            {links.map(({ path, content }, index) => (
-              <li key={index}>
-                <NavLink
-                  to={path}
-                  className="outline-0 group overflow-hidden relative"
-                >
-                  {content}
-                  <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-                </NavLink>
-              </li>
-            ))}
-            <li>
-              <span className="inline-block laptop:ml-3">
-                <Switcher checked={checked} onChange={toggleMode} />
-              </span>
-            </li>
-          </ul>
-          <div className="flex flex-col gap-2.5 items-center mt-70px mx-auto w-fit laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
-            {navButton
-              .filter((el) => (user ? el.isAuth : !el.isAuth))
-              .map(({ path, label, classes, content }, index) => (
-                <NavButton
-                  key={index}
-                  to={path}
-                  label={label}
-                  extraStyles={
-                    classes || "border-2 border-secondary px-10 py-3"
-                  }
-                >
-                  {content}
-                </NavButton>
-              ))}
-          </div>
+          <MenuLinks
+            links={links}
+            button={navButton}
+            checked={checked}
+            toggleMode={toggleMode}
+          />
         </div>
       </div>
     </nav>
