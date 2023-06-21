@@ -17,6 +17,7 @@ const LoginForm = () => {
   const [state, setState] = useState({
     data: { email: "", password: "" },
     errors: {},
+    success: "",
   });
 
   const schema = {
@@ -33,6 +34,9 @@ const LoginForm = () => {
       await setData("users", email, { email, password });
       loginWithJwt(user.accessToken);
 
+      obj.success = "Login Success";
+      setState({ ...obj });
+
       window.location = location.state?.from || "/";
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
@@ -47,6 +51,7 @@ const LoginForm = () => {
   const data = Object.values(state.data).filter((el) => el === "").length;
   const error = Object.values(state.errors);
   const checkError = !state.errors.generic && error[0];
+  const { success } = state;
 
   const formFields = [
     { id: "email", placeholder: "E-mail address" },
@@ -74,7 +79,12 @@ const LoginForm = () => {
               onSubmit={form.handleSubmit}
               className="grid gap-30px px-30px tab:px-50px bigTab:px-70px laptop:px-100px"
             >
-              <FormContent error={error} fields={formFields} form={form} />
+              <FormContent
+                form={form}
+                fields={formFields}
+                success={success}
+                error={error}
+              />
               <div>
                 <Button
                   label="Submit"

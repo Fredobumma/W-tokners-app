@@ -1,10 +1,15 @@
 import { SVG } from "./svg";
 
-const FormContent = ({ error, fields, form }) => {
+const FormContent = ({ form, fields, success, error }) => {
   return (
     <>
       {error[0] && (
         <span className="text-center text-red text-xs">{error[0]}</span>
+      )}
+      {success && (
+        <span className="font-bold text-center text-green-600 text-xs">
+          {success}
+        </span>
       )}
       {fields.map(({ id, type, placeholder, autocomplete }, index) => (
         <span
