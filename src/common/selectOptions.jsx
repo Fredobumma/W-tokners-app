@@ -1,4 +1,4 @@
-const SelectOptions = ({ label, id, autoComplete, ...rest }) => {
+const SelectOptions = ({ label, id, autoComplete, country, ...rest }) => {
   const options = Object.values(rest);
 
   return (
@@ -9,9 +9,9 @@ const SelectOptions = ({ label, id, autoComplete, ...rest }) => {
         autoComplete={autoComplete}
         className="bg-transparent border-b-2  border-light h-10 px-2 text-sm w-full tab:w-3/4 dark:border-dark"
       >
-        {options.map(({ value, content }, i) => (
+        {options.map((value, i) => (
           <option value={value} key={i} className="text-dark">
-            {content || value}
+            {i ? value : country || "--Please choose an option--"}
           </option>
         ))}
       </select>

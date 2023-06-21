@@ -1,89 +1,53 @@
-import { useEffect, useRef, useState } from "react";
-import { getTokens } from "../../services/tokenService";
-import { convert } from "../../services/tokenService";
-import { numberFormat, match, sort, paginate } from "../../utilities/helpers";
+import { useContext } from "react";
+import TokensContext from "../../context/tokensContext";
 import { SVG } from "../svg";
+import { numberFormat } from "../../utilities/helpers";
 
 const TokensList = () => {
-  const [
-    { searchQuery, currency, usdRate, sortColumn, pageSize, currentPage },
-    setState,
-  ] = useState({
-    searchQuery: "",
-    currency: "usd",
-    usdRate: 1,
-    sortColumn: "marketCap desc",
-    pageSize: 10,
-    currentPage: 1,
-  });
-  const [tokens, setTokens] = useState([]);
-  const currencyRef = useRef(null);
+  const {
+    state: { usdRate, currency, currentPage, error },
+    keyProps: { currencyRef, visibleTokens, filtered, pageCount, start, end },
+    handlerMethods: {
+      handleSearch,
+      handleSort,
+      handleCurrencyChange,
+      handlePageChange,
+      handleReset,
+    },
+  } = useContext(TokensContext);
 
-  const filtered = tokens.filter(
-    (t) => match(t.name, searchQuery) || match(t.symbol, searchQuery)
-  );
-  const sorted = sort(filtered, sortColumn);
-  const visibleTokens = paginate(sorted, currentPage, pageSize);
-  const pageCount = Math.ceil(filtered.length / pageSize);
-  const start = visibleTokens.length ? (currentPage - 1) * pageSize + 1 : 0;
-  const end = (currentPage - 1) * pageSize + visibleTokens.length;
+  const sortValues = [
+    { content: "Market Cap desc", value: "marketCap desc" },
+    { content: "Market Cap asc", value: "marketCap asc" },
+    { content: "Volume desc", value: "24hVolume desc" },
+    { content: "Volume asc", value: "24hVolume asc" },
+    { content: "Price desc", value: "price desc" },
+    { content: "Price asc", value: "price asc" },
+    { content: "Asset Name desc", value: "name desc" },
+    { content: "Asset Name asc", value: "name asc" },
+  ];
 
-  const handleSearch = (e) => {
-    setState((prev) => ({
-      ...prev,
-      currentPage: 1,
-      searchQuery: e.target.value,
-    }));
-  };
+  const tableHeadings = [
+    <SVG key="0" id="star" />,
+    "Asset",
+    "Name",
+    "Price",
+    "24h Volume",
+    "Market Cap",
+  ];
 
-  const handleSort = (e) => {
-    setState((prev) => ({ ...prev, sortColumn: e.target.value }));
-  };
+  const tableData = ["name", "price", "24hVolume", "marketCap"];
 
-  const handleCurrencyChange = (e) => {
-    e.preventDefault();
-
-    setState((prev) => ({ ...prev, currency: currencyRef.current.value }));
-  };
-
-  const handlePageChange = (page) => {
-    if (page > pageCount || page < 1) return;
-
-    setState((prev) => ({ ...prev, currentPage: page }));
-  };
-
-  useEffect(() => {
-    const tokensData = async () => {
-      try {
-        const { data } = await getTokens();
-        const usdRate = await convert(currency);
-        const tokens = data?.data.coins;
-
-        setTokens([...tokens]);
-        setState((prev) => ({ ...prev, usdRate }));
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    // const tokenData = async () => {
-    //   try {
-    //     const data = await getToken("Qwsogvtv82FCd");
-    //     const tokens = data?.data.coins;
-    //     setTokens([...tokens]);
-    //   } catch (error) {
-    //     console.error(error.message);
-    //   }
-    // };
-
-    tokensData();
-    // tokenData();
-  }, [currency]);
+  const buttons = [
+    { id: "left", condition: currentPage <= 1, dir: -1 },
+    { id: "right", condition: currentPage >= pageCount, dir: 1 },
+  ];
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
       <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>
       <form className="flex flex-col gap-5 px-5 py-5 bigTab:px-10 laptop:flex-row laptop:gap-50px laptop:items-center laptop:justify-between laptop:py-30px laptop:px-30px desktop:gap-24 desktop:px-60px">
+        {error && <span className="text-center text-red text-xs">{error}</span>}
         <div className="flex border-b-2 border-dark items-center py-1 px-2 laptop:w-1/3 dark:border-light">
           <input
             type="search"
@@ -121,37 +85,21 @@ const TokensList = () => {
                 className=" appearance-none bg-transparent capitalize flex-1 leading-4 py-1.5 text-xs focus:outline-0"
                 onChange={handleSort}
               >
-                <option className="text-dark" value="marketCap desc">
-                  Market Cap desc
-                </option>
-                <option className="text-dark" value="marketCap asc">
-                  Market Cap asc
-                </option>
-                <option className="text-dark" value="24hVolume desc">
-                  Volume desc
-                </option>
-                <option className="text-dark" value="24hVolume asc">
-                  Volume asc
-                </option>
-                <option className="text-dark" value="price desc">
-                  Price desc
-                </option>
-                <option className="text-dark" value="price asc">
-                  Price asc
-                </option>
-                <option className="text-dark" value="name desc">
-                  Asset Name desc
-                </option>
-                <option className="text-dark" value="name asc">
-                  Asset Name asc{" "}
-                </option>
+                {sortValues.map(({ content, value }, index) => (
+                  <option key={index} className="text-dark" value={value}>
+                    {content}
+                  </option>
+                ))}
               </select>
               <span className="-ml-5 pointer-events-none">
                 <SVG id="select-icon" />
               </span>
             </span>
           </div>
-          <button className="mr-2 hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300">
+          <button
+            onClick={handleReset}
+            className="mr-2 hover:scale-110 laptop:mr-0 transform-gpu transform transition-all duration-300"
+          >
             <SVG id="reset" />
           </button>
         </div>
@@ -160,24 +108,15 @@ const TokensList = () => {
         <table className="text-left text-sm w-full">
           <thead className="text-xs uppercase">
             <tr className="border-b">
-              <th scope="col" className="p-4">
-                <SVG id="star" />
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Asset
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Name
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Price
-              </th>
-              <th scope="col" className="px-6 py-3">
-                24h Volume
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Market Cap
-              </th>
+              {tableHeadings.map((thead, index) => (
+                <th
+                  key={index}
+                  scope="col"
+                  className={index ? "px-6 py-3" : "p-4"}
+                >
+                  {thead}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -196,18 +135,17 @@ const TokensList = () => {
                 >
                   {token.symbol}
                 </th>
-                <td style={{ color: token.color }} className="px-6 py-4">
-                  {token.name}
-                </td>
-                <td className="px-6 py-4">
-                  {numberFormat(token.price * usdRate, currency)}
-                </td>
-                <td className="px-6 py-4">
-                  {numberFormat(token["24hVolume"] * usdRate, currency)}
-                </td>
-                <td className="px-6 py-4">
-                  {numberFormat(token.marketCap * usdRate, currency)}
-                </td>
+                {tableData.map((data, index) => (
+                  <td
+                    key={index}
+                    style={{ color: data === "name" && token.color }}
+                    className="px-6 py-4"
+                  >
+                    {data === "name"
+                      ? token[data]
+                      : numberFormat(token[data] * usdRate, currency)}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>
@@ -224,22 +162,17 @@ const TokensList = () => {
             of <span className="font-bold">{filtered.length}</span>
           </span>
           <div className="flex gap-30px pr-3" aria-hidden>
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              className={`box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 ${
-                currentPage <= 1 && "cursor-not-allowed opacity-30"
-              }`}
-            >
-              <SVG id="left-arrow" width="100%" height="100%" />
-            </button>
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              className={`box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 ${
-                currentPage >= pageCount && "cursor-not-allowed opacity-30"
-              }`}
-            >
-              <SVG id="right-arrow" width="100%" height="100%" />
-            </button>
+            {buttons.map(({ id, condition, dir }, index) => (
+              <button
+                key={index}
+                onClick={() => handlePageChange(currentPage + dir)}
+                className={`box-content h-10 w-10 active:rotate-360 focus:rotate-360 hover:rotate-360 transform-gpu transform transition-all duration-300 ${
+                  condition && "cursor-not-allowed opacity-30"
+                }`}
+              >
+                <SVG id={`${id}-arrow`} width="100%" height="100%" />
+              </button>
+            ))}
           </div>
         </nav>
       </div>

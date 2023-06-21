@@ -11,11 +11,11 @@ import {
 import logger from "./../../services/logService";
 import AuthContext from "../../context/authContext";
 import ValidatorContext from "../../context/validatorContext";
-import { clearNotify, mapErrorTo, capitalize } from "../../utilities/helpers";
-import { SVG } from "../svg";
-import { DateInput, SecondaryInput } from "../input";
+import { AuthForm, PersonalForm } from "../profileForm";
+import { DateInput } from "../input";
 import SelectOptions from "../selectOptions";
-import Button from "../button";
+import { clearNotify, mapErrorTo, capitalize } from "../../utilities/helpers";
+import Heading from "./../abstract-components/profileHeading";
 
 const documentName = "users";
 
@@ -36,6 +36,18 @@ const UserProfile = () => {
     password: Joi.string().min(8).max(40).required().label("Password"),
   };
 
+  const formObj = () => {
+    const form = new validator(login, setLogin, schema);
+    const { success } = login;
+    const errors = Object.entries(login.errors)
+      .filter((el) => !el[1].includes("is not allowed to be empty"))
+      .reduce((a, b) => ({ ...a, [b[0]]: b[1] }), {});
+
+    const data = (prop) => login.data[prop] === "";
+
+    return { form, success, errors, data };
+  };
+
   const handleUsernameUpdate = async (e) => {
     e.preventDefault();
     const obj = { ...login };
@@ -54,16 +66,13 @@ const UserProfile = () => {
 
       obj.success = `Updated your "Username" sucessfully`;
       obj.data.username = "";
-      setLogin({ ...obj });
-
-      clearNotify(obj, setLogin);
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
-      setLogin({ ...obj });
       logger.log(error);
-
-      clearNotify(obj, setLogin);
     }
+
+    setLogin({ ...obj });
+    clearNotify(obj, setLogin);
   };
 
   const handleEmailUpdate = async (e) => {
@@ -86,16 +95,13 @@ const UserProfile = () => {
 
       obj.success = `Updated your "E-mail Address" successfully`;
       obj.data.email = "";
-      setLogin({ ...obj });
-
-      clearNotify(obj, setLogin);
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
-      setLogin({ ...obj });
       logger.log(error);
-
-      clearNotify(obj, setLogin);
     }
+
+    setLogin({ ...obj });
+    clearNotify(obj, setLogin);
   };
 
   const handlePasswordUpdate = async (e) => {
@@ -116,16 +122,13 @@ const UserProfile = () => {
 
       obj.success = `Updated your "Password" successfully`;
       obj.data.password = "";
-      setLogin({ ...obj });
-
-      clearNotify(obj, setLogin);
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
-      setLogin({ ...obj });
       logger.log(error);
-
-      clearNotify(obj, setLogin);
     }
+
+    setLogin({ ...obj });
+    clearNotify(obj, setLogin);
   };
 
   const handlePersonalData = async (e) => {
@@ -187,15 +190,117 @@ const UserProfile = () => {
     }
   }, [getUserData]);
 
-  const form = new validator(login, setLogin, schema);
-  const errors = Object.entries(login.errors)
-    .filter((el) => !el[1].includes("is not allowed to be empty"))
-    .reduce((a, b) => ({ ...a, [b[0]]: b[1] }), {});
-  const data = (prop) => login.data[prop] === "";
-  const { success } = login;
-
   const { fullName, dob, country, street, city, state, zipCode } =
     userData.personalInfo || {};
+  const { form, success, errors, data } = formObj();
+
+  const date = new Date();
+  const year = date.getFullYear();
+
+  const countryValues = [
+    "",
+    "United States",
+    "United Kingdom",
+    "Canada",
+    "China",
+    "Australia",
+    "Argentina",
+  ];
+
+  const authFields = [
+    {
+      id: "username",
+      placeholder: "Username",
+      type: "text",
+      maxLength: "20",
+      handler: handleUsernameUpdate,
+    },
+    {
+      id: "email",
+      placeholder: "E-mail address",
+      maxLength: "40",
+      handler: handleEmailUpdate,
+    },
+    {
+      id: "password",
+      placeholder: "Password",
+      autoComplete: "new-password",
+      maxLength: "30",
+      handler: handlePasswordUpdate,
+    },
+  ];
+
+  const personalFields = [
+    {
+      label: "Full Name",
+      autoComplete: "name",
+      id: "fullname",
+      name: "fullname",
+      type: "text",
+      placeholder: fullName || "Firstname Lastname",
+      minLength: "4",
+      maxLength: "30",
+    },
+    {
+      Component: (props) => <DateInput {...props} />,
+      label: "Date of Birth",
+      autoComplete: "bday",
+      id: "date",
+      name: "date",
+      type: "text",
+      placeholder: dob || "mm/dd/yyyy",
+      min: "1900-01-01",
+      max: `${year - 7}-01-01`,
+    },
+    {
+      Component: (props) => <SelectOptions {...props} />,
+      label: "Country",
+      id: "country",
+      autoComplete: "country-name",
+      country,
+      ...countryValues,
+    },
+    {
+      label: "Street Address",
+      autoComplete: "street-address",
+      id: "street",
+      name: "street",
+      type: "text",
+      placeholder: street || "Enter your street address",
+      minLength: "5",
+      maxLength: "100",
+    },
+    {
+      label: "City",
+      autoComplete: "on",
+      id: "city",
+      name: "city",
+      type: "text",
+      placeholder: city || "Enter your city",
+      minLength: "3",
+      maxLength: "30",
+    },
+    {
+      label: "State / Province",
+      autoComplete: "on",
+      id: "state",
+      name: "state",
+      type: "text",
+      placeholder: state || "Enter your state / province",
+      minLength: "3",
+      maxLength: "30",
+    },
+    {
+      label: "ZIP / Postal Code",
+      autoComplete: "postal-code",
+      id: "zipcode",
+      name: "zipcode",
+      type: "number",
+      placeholder: zipCode || "000000",
+      minLength: "4",
+      maxLength: "15",
+    },
+  ];
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
@@ -206,219 +311,30 @@ const UserProfile = () => {
       <div className="relative max-w-full">
         <div className="bg-dark relative rounded-all py-60px shadow-lg text-light laptop:py-24 dark:bg-white dark:text-dark">
           <div className="mb-10 px-30px tab:px-50px bigTab:px-70px laptop:px-100px">
-            <h2 className="font-bold leading-10 text-xl">
-              Profile Login Information
-            </h2>
-            <p className="text-sm">Update your login information.</p>
+            <Heading
+              sectionHeader="Profile Login Information"
+              text="Update your login information."
+            />
           </div>
-          <form className="border-b grid gap-30px pb-10 px-30px tab:pb-60px tab:px-50px bigTab:px-70px laptop:pb-20 laptop:px-100px">
-            {errors.generic && (
-              <span className="text-center text-red text-xs">
-                {errors.generic}
-              </span>
-            )}
-            {success && (
-              <span className="font-bold text-center text-green-600 text-xs">
-                {success}
-              </span>
-            )}
-            <div className="tab:flex tab:items-end tab:justify-around">
-              <div className="tab:w-3/5">
-                {errors.username && (
-                  <span className="text-red text-xs">{errors.username}</span>
-                )}
-                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 dark:border-dark">
-                  <label htmlFor="username">
-                    <SVG id="username" />
-                  </label>
-                  {form.renderInput(
-                    "username",
-                    "username",
-                    "text",
-                    "Username",
-                    "username",
-                    "20"
-                  )}
-                </span>
-              </div>
-              <Button
-                label="Update"
-                extraStyles={
-                  (errors.username || data("username")) &&
-                  "cursor-not-allowed opacity-30 dark:opacity-40"
-                }
-                onClick={handleUsernameUpdate}
-              />
-            </div>
-            <div className="tab:flex tab:items-end tab:justify-around">
-              <div className="tab:w-3/5">
-                {errors.email && (
-                  <span className="text-red text-xs">{errors.email}</span>
-                )}
-                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 dark:border-dark">
-                  <label htmlFor="email">
-                    <SVG id="email" />
-                  </label>
-                  {form.renderInput(
-                    "email",
-                    "email",
-                    "email",
-                    "E-mail address",
-                    "email",
-                    "40"
-                  )}
-                </span>
-              </div>
-              <Button
-                label="Update"
-                extraStyles={
-                  (errors.username || data("email")) &&
-                  "cursor-not-allowed opacity-30 dark:opacity-40"
-                }
-                onClick={handleEmailUpdate}
-              />
-            </div>
-            <div className="tab:flex tab:items-end tab:justify-around">
-              <div className="tab:w-3/5">
-                {errors.password && (
-                  <span className="text-red text-xs">{errors.password}</span>
-                )}
-                <span className="flex border-b-2 border-light gap-2 items-center mt-2.5 dark:border-dark">
-                  <label htmlFor="password">
-                    <SVG id="password" />
-                  </label>
-                  {form.renderInput(
-                    "password",
-                    "password",
-                    "password",
-                    "Password",
-                    "new-password",
-                    "30"
-                  )}
-                </span>
-              </div>
-              <Button
-                label="Update"
-                extraStyles={
-                  (errors.username || data("password")) &&
-                  "cursor-not-allowed opacity-30 dark:opacity-40"
-                }
-                onClick={handlePasswordUpdate}
-              />
-            </div>
-          </form>
+          <AuthForm
+            form={form}
+            success={success}
+            errors={errors}
+            inputs={authFields}
+            validateData={data}
+          />
           <div className="mb-10 mt-60px px-30px tab:px-50px bigTab:px-70px laptop:mt-24 laptop:px-100px">
-            <h2 className="font-bold leading-10 text-xl">
-              Profile Personal Information - Optional
-            </h2>
-            <p className="text-sm">Tell us more about yourself.</p>
+            <Heading
+              sectionHeader="Profile Personal Information - Optional"
+              text="Tell us more about yourself."
+            />
           </div>
-          <form
-            onSubmit={handlePersonalData}
-            className="border-b grid gap-30px pb-10 px-30px tab:px-70px bigTab:px-24 laptop:pb-60px laptop:px-150px desktop:px-170px"
-          >
-            <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <SecondaryInput
-                label="Full Name"
-                autoComplete="name"
-                id="fullname"
-                name="fullname"
-                type="text"
-                placeholder={fullName || "Firstname Lastname"}
-                minLength="4"
-                maxLength="30"
-              />
-            </span>
-            <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <DateInput
-                label="Date of Birth"
-                autoComplete="bday"
-                id="date"
-                name="date"
-                type="text"
-                placeholder={dob || "mm/dd/yyyy"}
-                min=""
-                max=""
-                // TODO:
-              />
-            </span>
-            <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <SelectOptions
-                label="Country"
-                id="country"
-                autoComplete="country-name"
-                option1={{
-                  value: "",
-                  content: country || "--Please choose an option--",
-                }}
-                option2={{ value: "United States" }}
-                option3={{ value: "United Kingdom" }}
-                option4={{ value: "Canada" }}
-                option5={{ value: "China" }}
-                option6={{ value: "Australia" }}
-                option7={{ value: "Argentina" }}
-              />
-            </span>
-            <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <SecondaryInput
-                label="Street Address"
-                autoComplete="street-address"
-                id="street"
-                name="street"
-                type="text"
-                placeholder={street || "Enter your street address"}
-                minLength="5"
-                maxLength="100"
-              />
-            </span>
-            <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <SecondaryInput
-                label="City"
-                autoComplete="on"
-                id="city"
-                name="city"
-                type="text"
-                placeholder={city || "Enter your city"}
-                minLength="3"
-                maxLength="30"
-              />
-            </span>
-            <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <SecondaryInput
-                label="State / Province"
-                autoComplete="on"
-                id="state"
-                name="state"
-                type="text"
-                placeholder={state || "Enter your state / province"}
-                minLength="3"
-                maxLength="30"
-              />
-            </span>
-            <span className="flex flex-col tab:flex-row tab:items-center tab:justify-between">
-              <SecondaryInput
-                label="ZIP / Postal Code"
-                autoComplete="postal-code"
-                id="zipcode"
-                name="zipcode"
-                type="number"
-                placeholder={zipCode || "000000"}
-                minLength="4"
-                maxLength="15"
-              />
-            </span>
-            <Button label="Save" extraStyles="ml-auto w-fit" />
-            {errors.generic && (
-              <span className="text-center text-red text-xs">
-                {errors.generic}
-              </span>
-            )}
-            {success && (
-              <span className="font-bold text-center text-green-600 text-xs">
-                {success}
-              </span>
-            )}
-          </form>
+          <PersonalForm
+            success={success}
+            errors={errors}
+            inputs={personalFields}
+            handler={handlePersonalData}
+          />
         </div>
       </div>
     </section>

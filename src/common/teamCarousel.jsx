@@ -1,5 +1,7 @@
-import { useSnapCarousel } from "react-snap-carousel";
+import { useContext } from "react";
+import CarouselContext from "../context/carouselContext";
 import { SVG } from "./svg";
+import ScrollIndicator from "./scrollIndicator";
 
 const TeamCarousel = ({ cards }) => {
   const {
@@ -10,7 +12,7 @@ const TeamCarousel = ({ cards }) => {
     next,
     prev,
     goTo,
-  } = useSnapCarousel();
+  } = useContext(CarouselContext);
 
   const buttons = [
     { id: "left", condition: activePageIndex <= 0, navigator: prev },
@@ -72,19 +74,12 @@ const TeamCarousel = ({ cards }) => {
         ))}
       </ul>
 
-      <ol className="flex flex-wrap gap-x-2.5 gap-y-5 items-center justify-center mt-30px laptop:hidden">
-        {pages.map((_, i) => (
-          <li
-            key={i}
-            className={`bg-dark border-dark cursor-pointer inline-block rounded-all dark:bg-light dark:border-light ${
-              i === activePageIndex
-                ? "p-1"
-                : "bg-transparent border-[1px] h-fit p-[1px]"
-            }`}
-            onClick={() => goTo(i)}
-          ></li>
-        ))}
-      </ol>
+      <ScrollIndicator
+        pages={pages}
+        active={activePageIndex}
+        classes="bg-dark border-dark dark:bg-light dark:border-light"
+        goTo={goTo}
+      />
     </>
   );
 };

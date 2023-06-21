@@ -36,39 +36,6 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
     { path: "/register", label: "Sign Up" },
   ];
 
-  // array   --------
-  // object   ------- const person = {name: "Fuja", age: 25}
-  // function  ------ function person() {}
-  // string    ----- "Fuja" or 'Fuja' or `Fuja`
-  // boolean   ------ true or false
-  // Number   ------- 1,2,3,4,5,6,7,8,9,0 ("1", "2", "3", "4", "5")
-  // null   ----- null
-  // undefined   ---- undefined
-
-  // const a = function person() {
-  //   console.log("Fuja");
-  // };
-
-  // const person = {
-  //   0: "me",
-  //   1: "you",
-  // };
-
-  // for loop ======
-  // for in loop
-  // for of loop
-  // forEach loop
-  // while loop
-  // do while loop
-
-  // let number = 2;
-  // while (number === 2) {
-  //   console.log(person[number]);
-  //   number++;
-  // }
-
-  // person[number] === person[2]
-
   return (
     // <ThemeContext>
     // <MenuContext>
@@ -81,6 +48,7 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
           className={`absolute bg-light h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 dark:bg-dark dark:laptop:bg-transparent ${
             !menu && "left-[200vw]"
           }`}
+          onClick={toggleMenu}
         >
           <MenuLinks
             links={links}

@@ -1,11 +1,17 @@
-import { SVG } from "./svg";
+import { useContext } from "react";
+import FormContext from "../context/formContext";
 import { NavButton } from "./button";
+import { SVG } from "./svg";
 
-const FormGuide = ({ text1, text2, path, name }) => {
+const FormGuide = () => {
+  const {
+    guide: { text1, text2, path, name },
+  } = useContext(FormContext);
+
   return (
     <div className="bg-lightGuideCard px-8 py-12 rounded-all self-end text-center w-full z-10 laptop:mr-10 laptop:-mt-120px laptop:order-2 laptop:w-5/12 desktop:mr-50px dark:bg-guideCard">
       <span className="inline-block mx-auto">
-        <SVG id="logo" />
+        <SVG id="namedLogo" />
       </span>
       <p className="font-bold text-sm leading-4 mb-60px mt-5 bigTab:text-base bigTab:leading-5 desktop:text-xl desktop:leading-7">
         {text1}.

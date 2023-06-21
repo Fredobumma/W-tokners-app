@@ -1,3 +1,4 @@
+import Carousel from "../carousel";
 import PresaleCarousel from "../presaleCarousel";
 import { SVG } from "../svg";
 
@@ -40,7 +41,9 @@ const Presale = () => {
       <h2 className="font-bold leading-10 mb-30px text-32 text-center text-white tab:text-40 desktop:mb-10 desktop:text-5xl desktop:leading-54">
         Presale Details
       </h2>
-      <PresaleCarousel cards={cards} />
+      <Carousel>
+        <PresaleCarousel cards={cards} />
+      </Carousel>
     </section>
   );
 };

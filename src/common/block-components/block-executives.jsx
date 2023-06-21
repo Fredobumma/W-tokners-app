@@ -1,3 +1,4 @@
+import Carousel from "../carousel";
 import TeamCarousel from "../teamCarousel";
 
 const Executives = () => {
@@ -38,7 +39,9 @@ const Executives = () => {
   return (
     <section className="-mr-5 py-10 relative bigTab:-mr-8 tab:py-60px laptop:-mr-16 laptop:pb-0 laptop:pt-20">
       <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>{" "}
-      <TeamCarousel cards={cards} />
+      <Carousel>
+        <TeamCarousel cards={cards} />
+      </Carousel>
     </section>
   );
 };
