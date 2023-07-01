@@ -37,7 +37,7 @@ const TokensList = () => {
   ];
 
   const tableHeadings = [
-    <SVG key="0" id="star" />,
+    "",
     "Asset",
     "Name",
     "Price",
@@ -125,7 +125,7 @@ const TokensList = () => {
                   scope="col"
                   className={index ? "px-6 py-3" : "p-4"}
                 >
-                  {thead}
+                  {index ? thead : <SVG id="star" />}
                 </th>
               ))}
             </tr>
