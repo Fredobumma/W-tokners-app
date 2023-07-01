@@ -16,6 +16,7 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
     { path: "/team", content: "Our team" },
     { path: "/tokens", content: "Tokens" },
     { path: "/join-whitelist", content: "Join Whitelist" },
+    { path: "/recover-password", content: "Recover Password", guest: true },
   ];
 
   const navButton = [

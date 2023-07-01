@@ -9,18 +9,20 @@ const MenuLinks = ({ links, button, checked, toggleMode }) => {
 
   return (
     <>
-      <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-30px laptop:inline-flex">
-        {links.map(({ path, content }, index) => (
-          <li key={index}>
-            <NavLink
-              to={path}
-              className="outline-0 group overflow-hidden relative"
-            >
-              {content}
-              <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
-            </NavLink>
-          </li>
-        ))}
+      <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-4 laptop:inline-flex desktop:gap-30px">
+        {links
+          .filter((el) => (user ? !el.guest : el))
+          .map(({ path, content }, index) => (
+            <li key={index}>
+              <NavLink
+                to={path}
+                className="outline-0 group overflow-hidden relative"
+              >
+                {content}
+                <span className="absolute bg-secondary h-0.5 inset-0 top-[110%] transition-all duration-300 ease-out w-0 group-active:w-full group-focus:w-full group-hover:w-full"></span>
+              </NavLink>
+            </li>
+          ))}
         <li>
           <span className="inline-block laptop:ml-3">
             <Switcher checked={checked} onChange={toggleMode} />
