@@ -2,7 +2,6 @@
   "name": "w-tokners-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://w-tokners.web.app/",
   "dependencies": {
     "@openreplay/tracker": "^6.0.2",
     "@sentry/react": "^7.50.0",

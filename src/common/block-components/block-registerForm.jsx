@@ -6,7 +6,9 @@ import logger from "../../services/logService";
 import ValidatorContext from "../../context/validatorContext";
 import FormContext from "../../context/formContext";
 import FormPage from "../formPage";
+import Loader from "./loader";
 import { clearNotify, mapErrorTo } from "../../utilities/helpers";
+import { getFormData } from "../../utilities/getVariables";
 
 const RegisterForm = () => {
   const validator = useContext(ValidatorContext);
@@ -16,6 +18,7 @@ const RegisterForm = () => {
     errors: {},
     success: "",
   });
+  const [loader, setLoader] = useState(false);
 
   const schema = {
     username: Joi.string().min(3).max(20).required().label("Username"),
@@ -24,6 +27,7 @@ const RegisterForm = () => {
   };
 
   const doSubmit = async () => {
+    setLoader(true);
     const obj = { ...state };
     const { username, email, password } = obj.data;
 
@@ -40,15 +44,18 @@ const RegisterForm = () => {
       logger.log(error);
     }
 
+    setLoader(false);
     setState({ ...obj });
     clearNotify(obj, setState);
   };
 
-  const form = new validator(state, setState, schema, doSubmit);
-  const data = Object.values(state.data).filter((el) => el === "").length;
-  const error = Object.values(state.errors);
-  const checkError = !state.errors.generic && error[0];
-  const { success } = state;
+  const { form, data, error, checkError, success } = getFormData(
+    state,
+    schema,
+    validator,
+    doSubmit,
+    setState
+  );
 
   const fields = [
     { id: "username", placeholder: "Username", type: "text", maxLength: "20" },
@@ -73,6 +80,7 @@ const RegisterForm = () => {
         body: { form, fields, success, error, checkError, data },
       }}
     >
+      {loader && <Loader />}
       <FormPage />
     </FormContext.Provider>
   );

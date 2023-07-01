@@ -1,26 +1,15 @@
 "use-client";
 
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-import RequireAuth from "./common/auth";
 import Root from "./page-components/root";
 import ErrorPage from "./page-components/errorPage";
-import HomePage from "./page-components/homePage";
-import Team from "./page-components/team";
-import Tokens from "./page-components/tokens";
-import JoinWhitelist from "./page-components/joinWhitelist";
-import Register from "./page-components/register";
-import Login from "./page-components/login";
-import Profile from "./page-components/profile";
-import RecoverPassword from "./page-components/recoverPassword";
-import SavedTokens from "./common/block-components/block-savedTokens";
-import TokenDetails from "./common/block-components/block-token-details";
-import LogOut from "./page-components/logOut";
+import Loader from "./common/block-components/loader";
 import NotFound from "./page-components/notFound";
 
 function App() {
@@ -32,47 +21,109 @@ function App() {
       children: [
         {
           path: "/",
-          element: <HomePage />,
+          async lazy() {
+            const Home = await import("./page-components/homePage");
+            return { Component: Home.default };
+          },
         },
-        { path: "/team", element: <Team /> },
+        {
+          path: "/team",
+          async lazy() {
+            const Team = await import("./page-components/team");
+            return { Component: Team.default };
+          },
+        },
         {
           path: "/tokens",
           children: [
             {
               index: true,
-              element: <Tokens />,
+              async lazy() {
+                const Tokens = await import("./page-components/tokens");
+                return { Component: Tokens.default };
+              },
             },
             {
               path: "saved",
-              element: <SavedTokens />,
-              children: [{ path: ":tokenId", element: <TokenDetails /> }],
+              async lazy() {
+                const SavedTokens = await import(
+                  "./common/block-components/block-savedTokens"
+                );
+                return { Component: SavedTokens.default };
+              },
+              children: [
+                {
+                  path: ":tokenId",
+                  async lazy() {
+                    const TokenDetails = await import(
+                      "./common/block-components/block-token-details"
+                    );
+                    return { Component: TokenDetails.default };
+                  },
+                },
+              ],
             },
-            { path: ":tokenId", element: <TokenDetails /> },
+            {
+              path: ":tokenId",
+              async lazy() {
+                const TokenDetails = await import(
+                  "./common/block-components/block-token-details"
+                );
+                return { Component: TokenDetails.default };
+              },
+            },
           ],
         },
         {
-          path: "/join-whitelist",
-          element: (
-            <RequireAuth>
-              <JoinWhitelist />
-            </RequireAuth>
-          ),
+          path: "/register",
+          async lazy() {
+            const Register = await import("./page-components/register");
+            return { Component: Register.default };
+          },
         },
-        { path: "/register", element: <Register /> },
-        { path: "/login", element: <Login /> },
         {
-          path: "/profile",
-          element: (
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          ),
+          path: "/login",
+          async lazy() {
+            const Login = await import("./page-components/login");
+            return { Component: Login.default };
+          },
         },
         {
           path: "/recover-password",
-          element: <RecoverPassword />,
+          async lazy() {
+            const RecoverPassword = await import(
+              "./page-components/recoverPassword"
+            );
+            return { Component: RecoverPassword.default };
+          },
         },
-        { path: "/logging-out", element: <LogOut /> },
+        {
+          path: "/join-whitelist",
+          async lazy() {
+            const JoinWhitelist = await import(
+              "./page-components/joinWhitelist"
+            );
+            return {
+              Component: JoinWhitelist.default,
+            };
+          },
+        },
+        {
+          path: "/profile",
+          async lazy() {
+            const Profile = await import("./page-components/profile");
+            return {
+              Component: Profile.default,
+            };
+          },
+        },
+        {
+          path: "/logging-out",
+          async lazy() {
+            const LogOut = await import("./page-components/logOut");
+            return { Component: LogOut.default };
+          },
+        },
         { path: "/not-found", element: <NotFound /> },
         { path: "*", element: <Navigate to="/not-found" /> },
       ],
@@ -83,7 +134,9 @@ function App() {
     <Fragment>
       {/* // <===== ERROR BOUNDARY WITH FALLBACK MESSAGE =====> */}
       <ErrorBoundary fallback={<ErrorPage />}>
-        <RouterProvider router={router} />
+        <Suspense fallback={<Loader />}>
+          <RouterProvider router={router} />
+        </Suspense>
       </ErrorBoundary>
     </Fragment>
   );

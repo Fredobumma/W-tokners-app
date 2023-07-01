@@ -5,7 +5,7 @@ import webpImg1x from "../images/wallet-hero-img-1.webp";
 import Auth_heroHeading from "../abstract-components/auth-heroHeading";
 import Auth_HeroContent from "../abstract-components/auth-heroContent";
 import Picture from "../picture";
-import { pictureSource } from "../../utilities/variables";
+import { pictureSource } from "../../utilities/getVariables";
 
 const Hero = () => {
   const sources = pictureSource(1024, pngImg2x, pngImg1x, webpImg2x, webpImg1x);

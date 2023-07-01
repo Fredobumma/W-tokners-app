@@ -2,9 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { convert, getTokens } from "../services/tokenService";
 import logger from "../services/logService";
 import TokensContext from "./../context/tokensContext";
+import Loader from "../common/block-components/loader";
 import TokensList from "../common/block-components/block-tokensList";
-// import SavedTokens from "../common/block-components/block-savedTokens";
-// import TokenDetails from "./../common/block-components/block-token-details";
 import { mapErrorTo, match, paginate, sort } from "../utilities/helpers";
 
 const Tokens = () => {
@@ -29,7 +28,11 @@ const Tokens = () => {
     error: "",
   });
   const [tokens, setTokens] = useState([]);
+  const [loader, setLoader] = useState(true);
+
+  const searchRef = useRef(null);
   const currencyRef = useRef(null);
+  const sortRef = useRef(null);
 
   const filtered = tokens.filter(
     (t) => match(t.name, searchQuery) || match(t.symbol, searchQuery)
@@ -70,6 +73,10 @@ const Tokens = () => {
     const currency = "usd",
       searchQuery = "",
       sortColumn = "marketCap desc";
+    const inputs = [searchRef, currencyRef, sortRef];
+    inputs.forEach(
+      (el, i) => (el.current.value = i === 2 ? "marketCap desc" : "")
+    );
 
     setState((prev) => ({ ...prev, searchQuery, currency, sortColumn }));
   };
@@ -90,6 +97,8 @@ const Tokens = () => {
         setTimeout(() => setState((prev) => ({ ...prev, error: "" })), 3000);
         clearTimeout();
       }
+
+      setLoader(false);
     };
 
     tokensData();
@@ -100,7 +109,9 @@ const Tokens = () => {
       value={{
         state: { usdRate, currency, currentPage, error },
         keyProps: {
+          searchRef,
           currencyRef,
+          sortRef,
           visibleTokens,
           filtered,
           pageCount,
@@ -116,9 +127,8 @@ const Tokens = () => {
         },
       }}
     >
+      {loader && <Loader />}
       <TokensList />
-      {/* <SavedTokens /> */}
-      {/* <TokenDetails /> */}
     </TokensContext.Provider>
   );
 };

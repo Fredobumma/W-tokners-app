@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+import RequireAuth from "../common/auth";
 import UserProfile from "./../common/block-components/block-userProfile";
 
 const Profile = () => {
   return (
-    <Fragment>
+    <RequireAuth>
       <UserProfile />
-    </Fragment>
+    </RequireAuth>
   );
 };
 

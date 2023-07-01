@@ -1,7 +1,12 @@
-import { Fragment } from "react";
-import Hero from "../common/block-components/block-auth-hero";
-import Objectives from "../common/block-components/block-auth-objectives";
-import Services from "../common/block-components/block-auth-services";
+import { Fragment, lazy } from "react";
+
+const Hero = lazy(() => import("../common/block-components/block-auth-hero"));
+const Objectives = lazy(() =>
+  import("../common/block-components/block-auth-objectives")
+);
+const Services = lazy(() =>
+  import("../common/block-components/block-auth-services")
+);
 
 const UsersHomePage = () => {
   return (

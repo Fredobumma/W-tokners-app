@@ -11,11 +11,12 @@ import {
 import logger from "./../../services/logService";
 import AuthContext from "../../context/authContext";
 import ValidatorContext from "../../context/validatorContext";
+import Loader from "./loader";
 import { AuthForm, PersonalForm } from "../profileForm";
 import { DateInput } from "../input";
 import SelectOptions from "../selectOptions";
-import { clearNotify, mapErrorTo, capitalize } from "../../utilities/helpers";
 import Heading from "./../abstract-components/profileHeading";
+import { clearNotify, mapErrorTo, capitalize } from "../../utilities/helpers";
 
 const documentName = "users";
 
@@ -29,6 +30,7 @@ const UserProfile = () => {
     success: "",
   });
   const [userData, setUserData] = useState({});
+  const [loader, setLoader] = useState(false);
 
   const schema = {
     username: Joi.string().min(3).max(30).required().label("Username"),
@@ -50,6 +52,8 @@ const UserProfile = () => {
 
   const handleUsernameUpdate = async (e) => {
     e.preventDefault();
+    setLoader(true);
+
     const obj = { ...login };
     const { username } = obj.data;
 
@@ -71,12 +75,15 @@ const UserProfile = () => {
       logger.log(error);
     }
 
+    setLoader(false);
     setLogin({ ...obj });
     clearNotify(obj, setLogin);
   };
 
   const handleEmailUpdate = async (e) => {
     e.preventDefault();
+    setLoader(true);
+
     const obj = { ...login };
     const userObj = { ...userData };
     const { email } = obj.data;
@@ -100,12 +107,15 @@ const UserProfile = () => {
       logger.log(error);
     }
 
+    setLoader(false);
     setLogin({ ...obj });
     clearNotify(obj, setLogin);
   };
 
   const handlePasswordUpdate = async (e) => {
     e.preventDefault();
+    setLoader(true);
+
     const obj = { ...login };
     const { password: newPassword } = obj.data;
 
@@ -127,12 +137,14 @@ const UserProfile = () => {
       logger.log(error);
     }
 
+    setLoader(false);
     setLogin({ ...obj });
     clearNotify(obj, setLogin);
   };
 
   const handlePersonalData = async (e) => {
     e.preventDefault();
+    setLoader(true);
 
     const obj = { ...login };
     const prop = [
@@ -161,11 +173,12 @@ const UserProfile = () => {
       setUserData({ ...userData, personalInfo });
     } catch (error) {
       obj.errors.generic = mapErrorTo(error.code);
-      setLogin({ ...obj });
       logger.log(error);
 
+      setLogin({ ...obj });
       clearNotify(obj, setLogin);
     }
+    setLoader(false);
   };
 
   const getUserData = useCallback(async () => {
@@ -174,6 +187,8 @@ const UserProfile = () => {
   }, [userEmail]);
 
   useEffect(() => {
+    setLoader(true);
+
     const obj = { ...login };
     try {
       const data = async () => {
@@ -188,6 +203,7 @@ const UserProfile = () => {
 
       clearNotify(obj, setLogin);
     }
+    setLoader(false);
   }, [getUserData]);
 
   const { fullName, dob, country, street, city, state, zipCode } =
@@ -304,6 +320,7 @@ const UserProfile = () => {
 
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
+      {loader && <Loader />}
       <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>
       <h1 className="font-bold text-28 leading-54 mb-10 mx-5 tab:mb-10 tab:mx-10 tab:text-32 bigTab:mx-60px laptop:mb-60px desktop:mb-20 desktop:text-4xl">
         Profile Settings

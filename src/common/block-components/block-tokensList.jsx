@@ -6,7 +6,16 @@ import { numberFormat } from "../../utilities/helpers";
 const TokensList = () => {
   const {
     state: { usdRate, currency, currentPage, error },
-    keyProps: { currencyRef, visibleTokens, filtered, pageCount, start, end },
+    keyProps: {
+      searchRef,
+      currencyRef,
+      sortRef,
+      visibleTokens,
+      filtered,
+      pageCount,
+      start,
+      end,
+    },
     handlerMethods: {
       handleSearch,
       handleSort,
@@ -50,6 +59,7 @@ const TokensList = () => {
         {error && <span className="text-center text-red text-xs">{error}</span>}
         <div className="flex border-b-2 border-dark items-center py-1 px-2 laptop:w-1/3 dark:border-light">
           <input
+            ref={searchRef}
             type="search"
             id="search-coins"
             placeholder="search here..."
@@ -80,6 +90,7 @@ const TokensList = () => {
             <label htmlFor="sort-by">Sort by:</label>
             <span className="bg-gray-200 flex flex-1 items-center px-3 rounded-all dark:bg-gray-700">
               <select
+                ref={sortRef}
                 id="sort-by"
                 name="sort-by"
                 className=" appearance-none bg-transparent capitalize flex-1 leading-4 py-1.5 text-xs focus:outline-0"

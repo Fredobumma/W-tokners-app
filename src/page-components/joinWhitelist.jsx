@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+import RequireAuth from "../common/auth";
 import WhitelistForm from "../common/block-components/block-whitelistForm";
 
 const JoinWhitelist = () => {
   return (
-    <Fragment>
+    <RequireAuth>
       <WhitelistForm />
-    </Fragment>
+    </RequireAuth>
   );
 };
 

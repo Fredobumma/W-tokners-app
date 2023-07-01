@@ -2,8 +2,8 @@
   font-family: "Century Gothic";
   src: url("services/fontService/GOTHIC.ttf");
   src: url("services/fontService/GOTHIC.ttf") format("truetype"),
-    url("services/fontService/GOTHIC.woff") format("woff"),
     url("services/fontService/GOTHICB.ttf") format("truetype"),
+    url("services/fontService/GOTHIC.woff") format("woff"),
     url("services/fontService/GOTHICB.woff") format("woff");
 }
 

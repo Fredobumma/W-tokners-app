@@ -1,11 +1,22 @@
-import { Fragment } from "react";
-import Hero from "../common/block-components/block-hero";
-import Features from "../common/block-components/block-features";
-import Services from "../common/block-components/block-services";
-import Objectives from "../common/block-components/block-objectives";
-import Showcase from "../common/block-components/block-showcase";
-import Presale from "../common/block-components/block-presale";
-import PurchaseGuide from "../common/block-components/block-purchase";
+import { Fragment, lazy } from "react";
+
+const Hero = lazy(() => import("../common/block-components/block-hero"));
+const Features = lazy(() =>
+  import("../common/block-components/block-features")
+);
+const Services = lazy(() =>
+  import("../common/block-components/block-services")
+);
+const Objectives = lazy(() =>
+  import("../common/block-components/block-objectives")
+);
+const Showcase = lazy(() =>
+  import("../common/block-components/block-showcase")
+);
+const Presale = lazy(() => import("../common/block-components/block-presale"));
+const PurchaseGuide = lazy(() =>
+  import("../common/block-components/block-purchase")
+);
 
 const GuestHomePage = () => {
   return (

@@ -4,7 +4,7 @@ import webpImg2x from "../images/services-bg.webp";
 import webpImg1x from "../images/services-bg-1.webp";
 import ServicesContent from "./../abstract-components/servicesContent";
 import Picture from "../picture";
-import { pictureSource } from "../../utilities/variables";
+import { pictureSource } from "../../utilities/getVariables";
 
 const Services = () => {
   const sources = pictureSource(768, pngImg2x, pngImg1x, webpImg2x, webpImg1x);

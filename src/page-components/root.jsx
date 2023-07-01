@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, lazy, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { getUser } from "../services/authService";
 import { tracker } from "../services/trackService";
@@ -8,9 +8,12 @@ import ValidatorContext from "../context/validatorContext";
 import CollapseInfoContext from "../context/collapseInfoContext";
 import FormValidator from "../utilities/formValidator";
 import { SVGSource } from "../common/svg";
-import Navbar from "../common/block-components/navbar";
-import MenuBackDrop from "../common/block-components/menuBackDrop";
-import Footer from "../common/block-components/block-footer";
+
+const Navbar = lazy(() => import("./../common/block-components/navbar"));
+const MenuBackDrop = lazy(() =>
+  import("../common/block-components/menuBackDrop")
+);
+const Footer = lazy(() => import("./../common/block-components/block-footer"));
 
 const Root = () => {
   const [colorTheme, setTheme] = useDarkSide();

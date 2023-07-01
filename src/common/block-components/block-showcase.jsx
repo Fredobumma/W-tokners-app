@@ -7,7 +7,7 @@ import pngImg1x from "../images/showcase-bg-1.png";
 import webpImg2x from "../images/showcase-bg.webp";
 import webpImg1x from "../images/showcase-bg-1.webp";
 import Collapsible from "../abstract-components/collapsible";
-import { pictureSource } from "../../utilities/variables";
+import { pictureSource } from "../../utilities/getVariables";
 import Picture from "../picture";
 import ShowcaseContent from "./../abstract-components/showcaseContent";
 

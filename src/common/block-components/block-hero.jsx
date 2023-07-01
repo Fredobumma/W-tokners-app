@@ -5,7 +5,7 @@ import webpImg1x from "../images/hero-img-1.webp";
 import HeroHeading from "./../abstract-components/heroHeading";
 import { NavButton } from "../button";
 import Picture from "../picture";
-import { pictureSource } from "../../utilities/variables";
+import { pictureSource } from "../../utilities/getVariables";
 
 const Hero = () => {
   const sources = pictureSource(640, pngImg2x, pngImg1x, webpImg2x, webpImg1x);

@@ -7,7 +7,9 @@ import AuthContext from "../../context/authContext";
 import ValidatorContext from "../../context/validatorContext";
 import FormContext from "../../context/formContext";
 import FormPage from "../formPage";
+import Loader from "./loader";
 import { clearNotify, mapErrorTo } from "../../utilities/helpers";
+import { getFormData } from "../../utilities/getVariables";
 
 const documentName = "users";
 
@@ -21,24 +23,31 @@ const WhitelistForm = () => {
     errors: {},
     success: "",
   });
+  const [loader, setLoader] = useState(false);
 
   const schema = {
     email: Joi.string().email().min(5).max(40).required().label("E-mail"),
   };
 
   const doSubmit = async (e) => {
+    setLoader(true);
     const obj = { ...state };
     const { value } = e.target[0];
 
     if (value !== userEmail) {
+      setLoader(false);
+
       obj.errors.email = "Input currently signed in E-mail";
-      return setState({ ...obj });
+      setState({ ...obj });
+      return clearNotify(obj, setState);
     }
 
     try {
       const dataObj = await getData(documentName, userEmail);
 
       if (dataObj.exists() && dataObj.data().whitelisted) {
+        setLoader(false);
+
         obj.errors.generic = "Already whitelisted";
         return setState({ ...obj });
       }
@@ -53,15 +62,18 @@ const WhitelistForm = () => {
       logger.log(error);
     }
 
+    setLoader(false);
     setState({ ...obj });
     clearNotify(obj, setState);
   };
 
-  const form = new validator(state, setState, schema, doSubmit);
-  const data = Object.values(state.data).filter((el) => el === "").length;
-  const error = Object.values(state.errors);
-  const checkError = !state.errors.generic && error[0];
-  const { success } = state;
+  const { form, data, error, checkError, success } = getFormData(
+    state,
+    schema,
+    validator,
+    doSubmit,
+    setState
+  );
 
   const fields = [
     { id: "email", placeholder: "E-mail address", maxLength: "40" },
@@ -79,6 +91,7 @@ const WhitelistForm = () => {
         body: { form, fields, success, error, checkError, data },
       }}
     >
+      {loader && <Loader />}
       <FormPage />
     </FormContext.Provider>
   );
