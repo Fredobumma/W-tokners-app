@@ -1,15 +1,16 @@
-import { useContext } from "react";
-import { SVG } from "../svg";
+import { lazy, useContext } from "react";
 import CollapseInfoContext from "../../context/collapseInfoContext";
-import { NavButton } from "../button";
 import pngImg2x from "../images/showcase-bg.png";
 import pngImg1x from "../images/showcase-bg-1.png";
 import webpImg2x from "../images/showcase-bg.webp";
 import webpImg1x from "../images/showcase-bg-1.webp";
+import { NavButton } from "../button";
 import Collapsible from "../abstract-components/collapsible";
-import { pictureSource } from "../../utilities/getVariables";
-import Picture from "../picture";
 import ShowcaseContent from "./../abstract-components/showcaseContent";
+import { pictureSource } from "../../utilities/getVariables";
+
+const Picture = lazy(() => import("../picture"));
+const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
 
 const Showcase = () => {
   const { collapse, toggle } = useContext(CollapseInfoContext);

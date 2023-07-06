@@ -51,27 +51,27 @@ function App() {
                 );
                 return { Component: SavedTokens.default };
               },
-              children: [
-                {
-                  path: ":tokenId",
-                  async lazy() {
-                    const TokenDetails = await import(
-                      "./common/block-components/block-token-details"
-                    );
-                    return { Component: TokenDetails.default };
-                  },
-                },
-              ],
+              // children: [
+              //   {
+              //     path: ":tokenId",
+              //     async lazy() {
+              //       const TokenDetails = await import(
+              //         "./common/block-components/block-token-details"
+              //       );
+              //       return { Component: TokenDetails.default };
+              //     },
+              //   },
+              // ],
             },
-            {
-              path: ":tokenId",
-              async lazy() {
-                const TokenDetails = await import(
-                  "./common/block-components/block-token-details"
-                );
-                return { Component: TokenDetails.default };
-              },
-            },
+            // {
+            //   path: ":tokenId",
+            //   async lazy() {
+            //     const TokenDetails = await import(
+            //       "./common/block-components/block-token-details"
+            //     );
+            //     return { Component: TokenDetails.default };
+            //   },
+            // },
           ],
         },
         {

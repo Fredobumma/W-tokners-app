@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
-import Joi from "joi-browser";
+import { lazy, useContext, useState } from "react";
+import Joi from "./../services/validatorService";
 import { passwordRecovery } from "../services/authService";
 import logger from "../services/logService";
 import ValidatorContext from "../context/validatorContext";
 import FormContext from "../context/formContext";
-import FormPage from "../common/formPage";
 import Loader from "../common/block-components/loader";
 import { clearNotify, mapErrorTo } from "../utilities/helpers";
 import { getFormData } from "../utilities/getVariables";
+
+const FormPage = lazy(() => import("../common/formPage"));
 
 const RecoverPassword = () => {
   const validator = useContext(ValidatorContext);

@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
+import { lazy, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Joi from "joi-browser";
+import Joi from "./../../services/validatorService";
 import { getData, setData } from "../../services/httpService";
 import logger from "./../../services/logService";
 import AuthContext from "../../context/authContext";
 import ValidatorContext from "../../context/validatorContext";
 import FormContext from "../../context/formContext";
-import FormPage from "../formPage";
 import Loader from "./loader";
 import { clearNotify, mapErrorTo } from "../../utilities/helpers";
 import { getFormData } from "../../utilities/getVariables";
+
+const FormPage = lazy(() => import("./../formPage"));
 
 const documentName = "users";
 

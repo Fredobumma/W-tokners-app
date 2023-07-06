@@ -7,7 +7,10 @@ import AuthContext from "../context/authContext";
 import ValidatorContext from "../context/validatorContext";
 import CollapseInfoContext from "../context/collapseInfoContext";
 import FormValidator from "../utilities/formValidator";
-import { SVGSource } from "../common/svg";
+
+const SVGSource = lazy(async () => ({
+  default: (await import("../common/svg")).SVGSource,
+}));
 
 const Navbar = lazy(() => import("./../common/block-components/navbar"));
 const MenuBackDrop = lazy(() =>

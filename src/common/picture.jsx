@@ -9,7 +9,14 @@ const Picture = ({ sources, imgClasses, src, alt }) => {
           type={type}
         />
       ))}
-      <img className={imgClasses} src={src} alt={alt} />
+      <img
+        className={imgClasses}
+        src={src}
+        alt={alt}
+        loading="lazy"
+        height="100%"
+        width="100%"
+      />
     </picture>
   );
 };

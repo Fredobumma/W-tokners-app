@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
+import { lazy, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Joi from "joi-browser";
+import Joi from "../../services/validatorService";
 import { setData } from "../../services/httpService";
 import { loginWithJwt, signIn } from "../../services/authService";
 import logger from "./../../services/logService";
 import ValidatorContext from "../../context/validatorContext";
 import FormContext from "./../../context/formContext";
-import FormPage from "../formPage";
 import Loader from "./loader";
 import { clearNotify, mapErrorTo } from "../../utilities/helpers";
 import { getFormData } from "../../utilities/getVariables";
+
+const FormPage = lazy(() => import("../formPage"));
 
 const LoginForm = () => {
   const location = useLocation();

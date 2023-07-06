@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, useEffect, useRef, useState } from "react";
 import { convert, getTokens } from "../services/tokenService";
 import logger from "../services/logService";
 import TokensContext from "./../context/tokensContext";
 import Loader from "../common/block-components/loader";
-import TokensList from "../common/block-components/block-tokensList";
 import { mapErrorTo, match, paginate, sort } from "../utilities/helpers";
+
+const TokensList = lazy(() =>
+  import("./../common/block-components/block-tokensList")
+);
 
 const Tokens = () => {
   const [

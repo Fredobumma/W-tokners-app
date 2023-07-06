@@ -1,11 +1,10 @@
-import { useContext } from "react";
-// import ThemeContext from "../../context/themeContext";
-// import MenuContext from "../../context/menuContext";
+import { lazy, useContext } from "react";
 import AuthContext from "../../context/authContext";
-import Logo from "../logo";
-import { SVG } from "../svg";
 import MenuButton from "./../menuButton";
 import MenuLinks from "../menuLinks";
+
+const Logo = lazy(() => import("../logo"));
+const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
 
 const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   const user = useContext(AuthContext);
@@ -38,15 +37,13 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   ];
 
   return (
-    // <ThemeContext>
-    // <MenuContext>
     <nav className="bg-light fixed inset-x-0 max-w-1600 pb-5 px-5 w-full z-[80] tab:px-30px laptop:mx-auto dark:bg-dark">
       <div className="relative flex items-center justify-between pt-5 laptop:justify-start laptop:pt-2.5 laptop:static">
         <div className="absolute bg-nav blur-[100px] h-86 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:left-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
         <Logo extraClasses="outline-0 mr-30px laptop:m-0" />
         <MenuButton menu={menu} icon={menuIcon} toggleMenu={toggleMenu} />
         <div
-          className={`absolute bg-light h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all duration-300 w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 dark:bg-dark dark:laptop:bg-transparent ${
+          className={`absolute bg-light h-[101vh] inset-0 left-[30vw] pr-5 -mt-2.5 pt-[16vh] text-center transform transition-all w-[70vw] z-[90] laptop:bg-transparent laptop:flex laptop:h-auto laptop:items-center laptop:justify-between laptop:ml-50px laptop:mt-3.5 laptop:p-0 laptop:static laptop:text-justify laptop:w-full desktop:ml-20 dark:bg-dark dark:laptop:bg-transparent ${
             !menu && "left-[200vw]"
           }`}
           onClick={toggleMenu}
@@ -60,8 +57,6 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
         </div>
       </div>
     </nav>
-    // </MenuContext>
-    // </ThemeContext>
   );
 };
 

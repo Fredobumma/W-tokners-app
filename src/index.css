@@ -1,4 +1,5 @@
 @font-face {
+  font-display: swap;
   font-family: "Century Gothic";
   src: url("services/fontService/GOTHIC.ttf");
   src: url("services/fontService/GOTHIC.ttf") format("truetype"),
@@ -8,6 +9,7 @@
 }
 
 @font-face {
+  font-display: swap;
   font-family: "Azo Sans";
   src: url("services/fontService/AzoSansBold.ttf");
   src: url("services/fontService/AzoSansBold.ttf") format("truetype"),

@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import Joi from "joi-browser";
+import Joi from "./../../services/validatorService";
 import { deleteData, getData, setData } from "../../services/httpService";
 import {
   loginWithJwt,

@@ -1,4 +1,4 @@
-import Joi from "joi-browser";
+import Joi from "./../services/validatorService";
 import Input, { DateInput, SecondaryInput } from "../common/input";
 import SelectOptions from "../common/selectOptions";
 

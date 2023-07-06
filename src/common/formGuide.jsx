@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { lazy, useContext } from "react";
 import FormContext from "../context/formContext";
 import { NavButton } from "./button";
-import { SVG } from "./svg";
+
+const SVG = lazy(async () => ({ default: (await import("./svg")).SVG }));
 
 const FormGuide = () => {
   const {

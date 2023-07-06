@@ -1,5 +1,7 @@
-import Carousel from "../carousel";
-import TeamCarousel from "../teamCarousel";
+import { lazy } from "react";
+
+const Carousel = lazy(() => import("../carousel"));
+const TeamCarousel = lazy(() => import("../teamCarousel"));
 
 const Executives = () => {
   const cards = [

@@ -1,4 +1,8 @@
-import { SVG } from "../common/svg";
+import { lazy } from "react";
+
+const SVG = lazy(async () => ({
+  default: (await import("../common/svg")).SVG,
+}));
 
 const NotFound = () => {
   return (

@@ -1,11 +1,13 @@
+import { lazy } from "react";
 import pngImg2x from "../images/hero-img.png";
 import pngImg1x from "../images/hero-img-1.png";
 import webpImg2x from "../images/hero-img.webp";
 import webpImg1x from "../images/hero-img-1.webp";
-import HeroHeading from "./../abstract-components/heroHeading";
 import { NavButton } from "../button";
-import Picture from "../picture";
+import HeroHeading from "./../abstract-components/heroHeading";
 import { pictureSource } from "../../utilities/getVariables";
+
+const Picture = lazy(() => import("../picture"));
 
 const Hero = () => {
   const sources = pictureSource(640, pngImg2x, pngImg1x, webpImg2x, webpImg1x);

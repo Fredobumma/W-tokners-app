@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { lazy, useContext } from "react";
 import CarouselContext from "../context/carouselContext";
-import { SVG } from "./svg";
 import ScrollIndicator from "./scrollIndicator";
+
+const SVG = lazy(async () => ({ default: (await import("./svg")).SVG }));
 
 const TeamCarousel = ({ cards }) => {
   const {

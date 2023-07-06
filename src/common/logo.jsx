@@ -1,5 +1,7 @@
+import { lazy } from "react";
 import { NavLink } from "react-router-dom";
-import { SVG } from "./svg";
+
+const SVG = lazy(async () => ({ default: (await import("./svg")).SVG }));
 
 const Logo = ({ extraClasses, ...rest }) => {
   return (
