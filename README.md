@@ -5,7 +5,7 @@ This is a fully operational application with the sole aim of registering user(s)
 TODO:
 No.1 => Implement functionality to save tokens
 <br/>
-No.2 => Implement custom email services and phone number authentication
+No.2 => Implement custom email services and google, phone number authentication
 <br/>
 No.3 => Documentation, comments
 <br/>
