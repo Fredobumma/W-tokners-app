@@ -4,14 +4,14 @@ import AuthContext from "./../context/authContext";
 import Switcher from "./switcher";
 import { NavButton } from "./button";
 
-const MenuLinks = ({ links, button, checked, toggleMode }) => {
+const MenuLinks = ({ links, buttons, checked, toggleMode }) => {
   const user = useContext(AuthContext);
 
   return (
     <>
       <ul className="flex flex-col font-bold gap-10 text-sm laptop:flex-row laptop:gap-4 laptop:inline-flex desktop:gap-30px">
         {links
-          .filter((el) => (user ? !el.guest : el))
+          .filter((el) => (user ? !el.isAuth : el))
           .map(({ path, content }, index) => (
             <li key={index}>
               <NavLink
@@ -30,7 +30,7 @@ const MenuLinks = ({ links, button, checked, toggleMode }) => {
         </li>
       </ul>
       <div className="flex flex-col gap-2.5 items-center mt-70px mx-auto w-fit laptop:flex-row laptop:gap-2.5 laptop:m-0 laptop:-mt-[5px] desktop:gap-30px">
-        {button
+        {buttons
           .filter((el) => (user ? el.isAuth : !el.isAuth))
           .map(({ path, label, classes, content }, index) => (
             <NavButton

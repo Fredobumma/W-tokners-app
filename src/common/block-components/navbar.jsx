@@ -9,16 +9,19 @@ const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
 const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   const user = useContext(AuthContext);
 
+  // === Harmburger-Menu Encapsulated Data
   const menuIcon = ["rotate-[42deg]", "hidden", "-rotate-[42deg]"];
 
+  //  === Navlinks Encapsulated Data
   const links = [
     { path: "/team", content: "Our team" },
     { path: "/tokens", content: "Tokens" },
     { path: "/join-whitelist", content: "Join Whitelist" },
-    { path: "/recover-password", content: "Recover Password", guest: true },
+    { path: "/recover-password", content: "Recover Password", isAuth: true },
   ];
 
-  const navButton = [
+  // === Navbuttons Encapsulated Data
+  const navButtons = [
     {
       path: "/profile",
       label: user?.name,
@@ -50,7 +53,7 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
         >
           <MenuLinks
             links={links}
-            button={navButton}
+            buttons={navButtons}
             checked={checked}
             toggleMode={toggleMode}
           />

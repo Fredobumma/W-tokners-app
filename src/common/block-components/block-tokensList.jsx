@@ -5,6 +5,7 @@ import { numberFormat } from "../../utilities/helpers";
 const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
 
 const TokensList = () => {
+  // === Destructuring Context
   const {
     state: { usdRate, currency, currentPage, error },
     keyProps: {
@@ -17,7 +18,7 @@ const TokensList = () => {
       start,
       end,
     },
-    handlerMethods: {
+    handlers: {
       handleSearch,
       handleSort,
       handleCurrencyChange,
@@ -26,6 +27,7 @@ const TokensList = () => {
     },
   } = useContext(TokensContext);
 
+  // === Sorting Encapsulated Data
   const sortValues = [
     { content: "Market Cap desc", value: "marketCap desc" },
     { content: "Market Cap asc", value: "marketCap asc" },
@@ -37,6 +39,7 @@ const TokensList = () => {
     { content: "Asset Name asc", value: "name asc" },
   ];
 
+  // === Table Headings Encapsulated Data
   const tableHeadings = [
     "",
     "Asset",
@@ -46,8 +49,10 @@ const TokensList = () => {
     "Market Cap",
   ];
 
+  // === Table body Encapsulated Data
   const tableData = ["name", "price", "24hVolume", "marketCap"];
 
+  // === Navigators Encapsulated Data
   const buttons = [
     { id: "left", condition: currentPage <= 1, dir: -1 },
     { id: "right", condition: currentPage >= pageCount, dir: 1 },

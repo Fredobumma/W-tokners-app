@@ -1,4 +1,4 @@
-import { lazy, useEffect, useRef, useState } from "react";
+import { lazy, useCallback, useEffect, useRef, useState } from "react";
 import { convert, getTokens } from "../services/tokenService";
 import logger from "../services/logService";
 import TokensContext from "./../context/tokensContext";
@@ -10,6 +10,7 @@ const TokensList = lazy(() =>
 );
 
 const Tokens = () => {
+  // === Page State
   const [
     {
       searchQuery,
@@ -33,10 +34,12 @@ const Tokens = () => {
   const [tokens, setTokens] = useState([]);
   const [loader, setLoader] = useState(true);
 
+  // === Element References
   const searchRef = useRef(null);
   const currencyRef = useRef(null);
   const sortRef = useRef(null);
 
+  // === List Algorithm and Operations
   const filtered = tokens.filter(
     (t) => match(t.name, searchQuery) || match(t.symbol, searchQuery)
   );
@@ -46,6 +49,8 @@ const Tokens = () => {
   const start = (currentPage - 1) * (pageSize + 1);
   const end = (currentPage - 1) * pageSize + visibleTokens.length;
 
+  //  === Handlers
+  // search
   const handleSearch = (e) => {
     setState((prev) => ({
       ...prev,
@@ -54,22 +59,26 @@ const Tokens = () => {
     }));
   };
 
+  //  sort
   const handleSort = (e) => {
     setState((prev) => ({ ...prev, sortColumn: e.target.value }));
   };
 
+  // change currency
   const handleCurrencyChange = (e) => {
     e.preventDefault();
 
     setState((prev) => ({ ...prev, currency: currencyRef.current.value }));
   };
 
+  // change tokens list
   const handlePageChange = (page) => {
     if (page > pageCount || page < 1) return;
 
     setState((prev) => ({ ...prev, currentPage: page }));
   };
 
+  // reset currency, sort and search operations
   const handleReset = (e) => {
     e.preventDefault();
 
@@ -84,11 +93,18 @@ const Tokens = () => {
     setState((prev) => ({ ...prev, searchQuery, currency, sortColumn }));
   };
 
+  //  === Consuming API data
+  const getTokensData = useCallback(async () => {
+    const { data } = await getTokens();
+    const usdRate = await convert(currency);
+
+    return { data, usdRate };
+  }, [currency]);
+
   useEffect(() => {
     const tokensData = async () => {
       try {
-        const { data } = await getTokens();
-        const usdRate = await convert(currency);
+        const { data, usdRate } = await getTokensData();
         const tokens = data?.data.coins;
 
         setTokens([...tokens]);
@@ -105,7 +121,7 @@ const Tokens = () => {
     };
 
     tokensData();
-  }, [currency]);
+  }, [getTokensData]);
 
   return (
     <TokensContext.Provider
@@ -121,7 +137,7 @@ const Tokens = () => {
           start,
           end,
         },
-        handlerMethods: {
+        handlers: {
           handleSearch,
           handleSort,
           handleCurrencyChange,
