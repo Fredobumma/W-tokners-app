@@ -1,18 +1,11 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import Loader from "./../common/block-components/loader";
-
-const SVG = lazy(async () => ({
-  default: (await import("../common/svg")).SVG,
-}));
-const SVGSource = lazy(async () => ({
-  default: (await import("../common/svg")).SVGSource,
-}));
+import SVG from "../common/assets/svgs/allSvg";
 
 const ErrorPage = () => {
   return (
     <Suspense fallback={<Loader />}>
       <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
-        <SVGSource />
         <div className="border-t h-[50vh] max-w-1024 mt-5 mx-auto pb-5 pt-5 rounded-all shadow-xl text-center">
           <div className="flex flex-col justify-center h-full">
             <div className="mx-auto relative w-fit">

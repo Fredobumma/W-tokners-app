@@ -3,8 +3,7 @@
 import { lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import TradeViewChart from "react-crypto-chart";
-
-const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
+import SVG from "../assets/svgs/allSvg";
 
 const TokenDetails = () => {
   return (

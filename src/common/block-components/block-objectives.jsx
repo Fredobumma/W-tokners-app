@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
+const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
 
 const Objectives = () => {
   const quaters = [

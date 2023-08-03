@@ -1,8 +1,8 @@
 import { lazy } from "react";
-import pngImg2x from "../images/wallet-hero-img.png";
-import pngImg1x from "../images/wallet-hero-img-1.png";
-import webpImg2x from "../images/wallet-hero-img.webp";
-import webpImg1x from "../images/wallet-hero-img-1.webp";
+import pngImg2x from "../assets/wallet-hero-img.png";
+import pngImg1x from "../assets/wallet-hero-img-1.png";
+import webpImg2x from "../assets/wallet-hero-img.webp";
+import webpImg1x from "../assets/wallet-hero-img-1.webp";
 import Auth_heroHeading from "../abstract-components/auth-heroHeading";
 import Auth_HeroContent from "../abstract-components/auth-heroContent";
 import { pictureSource } from "../../utilities/getVariables";

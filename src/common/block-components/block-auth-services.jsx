@@ -1,7 +1,5 @@
-import { lazy } from "react";
+import SVG from "../assets/svgs/allSvg";
 import Auth_ServicesContent from "../abstract-components/auth-servicesContent";
-
-const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
 
 const Services = () => {
   const cards = [

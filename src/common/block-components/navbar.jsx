@@ -1,10 +1,10 @@
 import { lazy, useContext } from "react";
 import AuthContext from "../../context/authContext";
+import SVG from "../assets/svgs/allSvg";
 import MenuButton from "./../menuButton";
 import MenuLinks from "../menuLinks";
 
 const Logo = lazy(() => import("../logo"));
-const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
 
 const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   const user = useContext(AuthContext);

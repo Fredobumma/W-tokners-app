@@ -8,10 +8,6 @@ import ValidatorContext from "../context/validatorContext";
 import CollapseInfoContext from "../context/collapseInfoContext";
 import FormValidator from "../utilities/formValidator";
 
-const SVGSource = lazy(async () => ({
-  default: (await import("../common/svg")).SVGSource,
-}));
-
 const Navbar = lazy(() => import("./../common/block-components/navbar"));
 const MenuBackDrop = lazy(() =>
   import("../common/block-components/menuBackDrop")
@@ -54,7 +50,6 @@ const Root = () => {
   return (
     <Fragment>
       <AuthContext.Provider value={user}>
-        <SVGSource />
         <Navbar
           menu={menu}
           checked={darkSide}

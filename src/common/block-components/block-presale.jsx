@@ -2,7 +2,7 @@ import { lazy } from "react";
 import Carousel from "../carousel";
 import PresaleCarousel from "../presaleCarousel";
 
-const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
+const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
 
 const Presale = () => {
   const cards = [

@@ -132,7 +132,7 @@ function App() {
 
   return (
     <Fragment>
-      {/* // <===== ERROR BOUNDARY WITH FALLBACK MESSAGE =====> */}
+      {/* <===== ERROR BOUNDARY WITH FALLBACK MESSAGE =====> */}
       <ErrorBoundary fallback={<ErrorPage />}>
         <Suspense fallback={<Loader />}>
           <RouterProvider router={router} />

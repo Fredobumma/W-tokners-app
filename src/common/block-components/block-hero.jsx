@@ -1,8 +1,8 @@
 import { lazy } from "react";
-import pngImg2x from "../images/hero-img.png";
-import pngImg1x from "../images/hero-img-1.png";
-import webpImg2x from "../images/hero-img.webp";
-import webpImg1x from "../images/hero-img-1.webp";
+import pngImg2x from "../assets/hero-img.png";
+import pngImg1x from "../assets/hero-img-1.png";
+import webpImg2x from "../assets/hero-img.webp";
+import webpImg1x from "../assets/hero-img-1.webp";
 import { NavButton } from "../button";
 import HeroHeading from "./../abstract-components/heroHeading";
 import { pictureSource } from "../../utilities/getVariables";

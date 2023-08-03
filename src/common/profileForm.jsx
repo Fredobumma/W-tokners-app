@@ -1,8 +1,6 @@
-import { lazy } from "react";
+import SVG from "./assets/svgs/allSvg";
 import { SecondaryInput } from "./input";
 import Button from "./button";
-
-const SVG = lazy(async () => ({ default: (await import("./svg")).SVG }));
 
 const AuthForm = ({ form, success, errors, inputs, validateData }) => {
   return (

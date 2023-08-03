@@ -1,7 +1,6 @@
-import { lazy, useContext } from "react";
+import { useContext } from "react";
 import FormContext from "../context/formContext";
-
-const SVG = lazy(async () => ({ default: (await import("./svg")).SVG }));
+import SVG from "./assets/svgs/allSvg";
 
 const FormBody = () => {
   const {

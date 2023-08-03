@@ -1,8 +1,7 @@
-import { lazy, useContext } from "react";
+import { useContext } from "react";
 import TokensContext from "../../context/tokensContext";
+import SVG from "../assets/svgs/allSvg";
 import { numberFormat } from "../../utilities/helpers";
-
-const SVG = lazy(async () => ({ default: (await import("../svg")).SVG }));
 
 const TokensList = () => {
   // === Destructuring Context

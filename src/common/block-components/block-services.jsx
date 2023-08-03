@@ -1,8 +1,8 @@
 import { lazy } from "react";
-import pngImg2x from "../images/services-bg.png";
-import pngImg1x from "../images/services-bg-1.png";
-import webpImg2x from "../images/services-bg.webp";
-import webpImg1x from "../images/services-bg-1.webp";
+import pngImg2x from "../assets/services-bg.png";
+import pngImg1x from "../assets/services-bg-1.png";
+import webpImg2x from "../assets/services-bg.webp";
+import webpImg1x from "../assets/services-bg-1.webp";
 import ServicesContent from "./../abstract-components/servicesContent";
 import { pictureSource } from "../../utilities/getVariables";
 

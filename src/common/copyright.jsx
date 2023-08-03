@@ -1,6 +1,4 @@
-import { lazy } from "react";
-
-const SVG = lazy(async () => ({ default: (await import("./svg")).SVG }));
+import SVG from "./assets/svgs/allSvg";
 
 const Copyright = ({ year }) => {
   return (
