@@ -7,9 +7,11 @@ import Auth_heroHeading from "../abstract-components/auth-heroHeading";
 import Auth_HeroContent from "../abstract-components/auth-heroContent";
 import { pictureSource } from "../../utilities/getVariables";
 
+// === Picture Element
 const Picture = lazy(() => import("../picture"));
 
 const Hero = () => {
+  // === Rendering all picture sources
   const sources = pictureSource(1024, pngImg2x, pngImg1x, webpImg2x, webpImg1x);
 
   return (

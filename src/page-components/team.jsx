@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import Loader from "../common/block-components/loader";
+import LazyLoader from "./../common/block-components/lazyLoader";
 
 const Executives = lazy(() =>
   import("./../common/block-components/block-executives")
@@ -7,7 +7,7 @@ const Executives = lazy(() =>
 
 const Team = () => {
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<LazyLoader />}>
       <Executives />
     </Suspense>
   );

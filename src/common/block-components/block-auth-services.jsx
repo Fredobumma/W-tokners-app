@@ -2,6 +2,7 @@ import SVG from "../assets/svgs/allSvg";
 import Auth_ServicesContent from "../abstract-components/auth-servicesContent";
 
 const Services = () => {
+  // === Cards Details
   const cards = [
     {
       containerClasses: "mb-5 ml-auto laptop:mb-10",

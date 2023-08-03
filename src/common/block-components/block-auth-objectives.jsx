@@ -1,6 +1,7 @@
 import SVG from "../assets/svgs/allSvg";
 
 const Objectives = () => {
+  // === Cards Details
   const cards = [
     {
       color: "green",

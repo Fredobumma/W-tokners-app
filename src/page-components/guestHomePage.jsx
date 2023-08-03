@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import LazyLoader from "./../common/block-components/lazyLoader";
 
 const Hero = lazy(() => import("../common/block-components/block-hero"));
@@ -20,13 +20,21 @@ const PurchaseGuide = lazy(() =>
 );
 
 const GuestHomePage = () => {
+  // === Page State
+  const [collapse, setCollapse] = useState(true);
+
+  // === Toggle Read More in Guest Homepage
+  const toggleInfo = () => {
+    setCollapse(!collapse);
+  };
+
   return (
     <Suspense fallback={<LazyLoader />}>
       <Hero />
       <Features />
       <Services />
       <Objectives />
-      <Showcase />
+      <Showcase collapse={collapse} toggle={toggleInfo} />
       <Presale />
       <PurchaseGuide />
     </Suspense>

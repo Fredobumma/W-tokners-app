@@ -6,9 +6,11 @@ import webpImg1x from "../assets/services-bg-1.webp";
 import ServicesContent from "./../abstract-components/servicesContent";
 import { pictureSource } from "../../utilities/getVariables";
 
+// === Picture Element
 const Picture = lazy(() => import("../picture"));
 
 const Services = () => {
+  // === Rendering all picture sources
   const sources = pictureSource(768, pngImg2x, pngImg1x, webpImg2x, webpImg1x);
 
   return (

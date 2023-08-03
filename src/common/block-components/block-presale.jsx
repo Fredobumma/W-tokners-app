@@ -5,6 +5,7 @@ import PresaleCarousel from "../presaleCarousel";
 const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
 
 const Presale = () => {
+  // === Cards Details
   const cards = [
     {
       number: "One",

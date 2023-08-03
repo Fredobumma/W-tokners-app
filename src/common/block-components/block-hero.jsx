@@ -7,9 +7,11 @@ import { NavButton } from "../button";
 import HeroHeading from "./../abstract-components/heroHeading";
 import { pictureSource } from "../../utilities/getVariables";
 
+// === Picture Element
 const Picture = lazy(() => import("../picture"));
 
 const Hero = () => {
+  // === Rendering all picture sources
   const sources = pictureSource(640, pngImg2x, pngImg1x, webpImg2x, webpImg1x);
 
   return (

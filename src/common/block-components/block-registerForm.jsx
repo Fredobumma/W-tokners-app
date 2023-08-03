@@ -16,8 +16,10 @@ import { clearNotify, mapErrorTo } from "../../utilities/helpers";
 import { getFormData } from "../../utilities/getVariables";
 
 const RegisterForm = () => {
+  // === Page Context
   const validator = useContext(ValidatorContext);
 
+  // === Page State
   const [state, setState] = useState({
     data: { username: "", email: "", password: "" },
     errors: {},
@@ -25,12 +27,15 @@ const RegisterForm = () => {
   });
   const [loader, setLoader] = useState(false);
 
+  // === Schema Validator
   const schema = {
     username: Joi.string().min(3).max(20).required().label("Username"),
     email: Joi.string().email().min(5).max(40).required().label("E-mail"),
     password: Joi.string().min(8).max(30).required().label("Password"),
   };
 
+  // === Handler
+  // handling user registration
   const doSubmit = async () => {
     setLoader(true);
     const obj = { ...state };
@@ -58,6 +63,7 @@ const RegisterForm = () => {
     clearNotify(obj, setState);
   };
 
+  // ===  Extracting and Destructuring form data
   const { form, data, error, checkError, success } = getFormData(
     state,
     schema,
@@ -66,6 +72,7 @@ const RegisterForm = () => {
     setState
   );
 
+  // === Authentication Data Details
   const fields = [
     { id: "username", placeholder: "Username", type: "text", maxLength: "20" },
     { id: "email", placeholder: "E-mail address", maxLength: "40" },

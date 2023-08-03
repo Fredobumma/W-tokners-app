@@ -12,9 +12,11 @@ import { clearNotify, mapErrorTo } from "../../utilities/helpers";
 import { getFormData } from "../../utilities/getVariables";
 
 const LoginForm = () => {
+  // === Page Context and Location
   const location = useLocation();
   const validator = useContext(ValidatorContext);
 
+  // === Page State
   const [state, setState] = useState({
     data: { email: "", password: "" },
     errors: {},
@@ -22,11 +24,14 @@ const LoginForm = () => {
   });
   const [loader, setLoader] = useState(false);
 
+  // === Schema Validator
   const schema = {
     email: Joi.string().email().min(5).max(40).required().label("E-mail"),
     password: Joi.string().min(8).max(30).required().label("Password"),
   };
 
+  // === Handler
+  // handling user login
   const doSubmit = async () => {
     setLoader(true);
     const obj = { ...state };
@@ -49,6 +54,7 @@ const LoginForm = () => {
     clearNotify(obj, setState);
   };
 
+  // ===  Extracting and Destructuring form data
   const { form, data, error, checkError, success } = getFormData(
     state,
     schema,
@@ -57,6 +63,7 @@ const LoginForm = () => {
     setState
   );
 
+  // === Authentication Data Details
   const fields = [
     { id: "email", placeholder: "E-mail address", maxLength: "40" },
     {

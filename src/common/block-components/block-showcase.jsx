@@ -1,5 +1,4 @@
-import { lazy, useContext } from "react";
-import CollapseInfoContext from "../../context/collapseInfoContext";
+import { lazy } from "react";
 import pngImg2x from "../assets/showcase-bg.png";
 import pngImg1x from "../assets/showcase-bg-1.png";
 import webpImg2x from "../assets/showcase-bg.webp";
@@ -12,9 +11,8 @@ import { pictureSource } from "../../utilities/getVariables";
 
 const Picture = lazy(() => import("../picture"));
 
-const Showcase = () => {
-  const { collapse, toggle } = useContext(CollapseInfoContext);
-
+const Showcase = ({ collapse, toggle }) => {
+  // === Rendering all picture sources
   const sources = pictureSource(1280, pngImg2x, pngImg1x, webpImg2x, webpImg1x);
 
   return (

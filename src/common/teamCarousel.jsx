@@ -14,6 +14,7 @@ const TeamCarousel = ({ cards }) => {
     goTo,
   } = useContext(CarouselContext);
 
+  // === Buttons Details
   const buttons = [
     { id: "left", condition: activePageIndex <= 0, navigator: prev },
     {

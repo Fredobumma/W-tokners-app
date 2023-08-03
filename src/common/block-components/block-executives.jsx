@@ -2,6 +2,7 @@ import Carousel from "../carousel";
 import TeamCarousel from "../teamCarousel";
 
 const Executives = () => {
+  // === Cards Details
   const cards = [
     {
       name: "Brad pie",

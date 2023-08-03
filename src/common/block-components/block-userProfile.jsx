@@ -21,7 +21,7 @@ const UserProfile = () => {
   const { fullName, dob, country, street, city, state, zipCode } =
     userData.personalInfo || {};
 
-  // === Date Input Algorithm and Operations
+  // === Date Input Algorithm and Logic
   const date = new Date();
   const year = date.getFullYear();
 

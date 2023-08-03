@@ -3,6 +3,7 @@ import { lazy } from "react";
 const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
 
 const Objectives = () => {
+  // === Quater List Details
   const quaters = [
     {
       color: "green",

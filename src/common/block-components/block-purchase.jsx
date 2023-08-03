@@ -3,6 +3,7 @@ import { lazy } from "react";
 const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
 
 const PurchaseGuide = () => {
+  // === Cards Details
   const cards = [
     `First Connect your Metamask or TrustWallet to the "Connect Wallet" on the Homepage.`,
     "Then send minimum of 0.1 BNB or maximum of 10 BNB to the Presale wallet.",

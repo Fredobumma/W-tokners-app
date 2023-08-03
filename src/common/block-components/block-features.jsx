@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
 
 const Features = () => {
+  // === Cards Details
   const cards = [
     {
       name: "Creators",

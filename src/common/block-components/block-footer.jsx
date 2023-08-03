@@ -4,12 +4,14 @@ import SocialAccounts from "../socialAccounts";
 import Copyright from "./../copyright";
 
 const Footer = ({ checked, toggleMode }) => {
+  // === Footer Links
   const links = [
     { path: "/team", content: "OUR TEAM" },
     { path: "/tokens", content: "TOKENS" },
     { path: "/join-whitelist", content: "JOIN WHITELIST" },
   ];
 
+  // === Social Media Logos
   const logos = [
     { id: "twitter", url: "https://www.twitter.com/fredobumma" },
     { id: "telegram", url: "https://t.me/Fredquinnbee" },
@@ -19,6 +21,7 @@ const Footer = ({ checked, toggleMode }) => {
     { id: "reddit", url: "https://www.reddit.com/user/FredObumma" },
   ];
 
+  // === Copyright Date Algorithm and Logic
   const date = new Date();
   const year = date.getFullYear();
 

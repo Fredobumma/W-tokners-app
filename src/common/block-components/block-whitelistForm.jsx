@@ -15,10 +15,12 @@ const FormPage = lazy(() => import("./../formPage"));
 const documentName = "users";
 
 const WhitelistForm = () => {
+  // === Page Context and Location
   const location = useLocation();
   const validator = useContext(ValidatorContext);
   const userEmail = useContext(AuthContext)?.email;
 
+  // === Page State
   const [state, setState] = useState({
     data: { email: "" },
     errors: {},
@@ -26,10 +28,13 @@ const WhitelistForm = () => {
   });
   const [loader, setLoader] = useState(false);
 
+  // === Schema Validator
   const schema = {
     email: Joi.string().email().min(5).max(40).required().label("E-mail"),
   };
 
+  // === Handler
+  // handling user whitelisting
   const doSubmit = async (e) => {
     setLoader(true);
     const obj = { ...state };
@@ -68,6 +73,7 @@ const WhitelistForm = () => {
     clearNotify(obj, setState);
   };
 
+  // ===  Extracting and Destructuring form data
   const { form, data, error, checkError, success } = getFormData(
     state,
     schema,
@@ -76,6 +82,7 @@ const WhitelistForm = () => {
     setState
   );
 
+  // === Whitelisting Data Details
   const fields = [
     { id: "email", placeholder: "E-mail address", maxLength: "40" },
   ];
