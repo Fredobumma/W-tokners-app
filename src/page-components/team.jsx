@@ -1,4 +1,5 @@
-import { Fragment, lazy } from "react";
+import { lazy, Suspense } from "react";
+import Loader from "../common/block-components/loader";
 
 const Executives = lazy(() =>
   import("./../common/block-components/block-executives")
@@ -6,9 +7,9 @@ const Executives = lazy(() =>
 
 const Team = () => {
   return (
-    <Fragment>
+    <Suspense fallback={<Loader />}>
       <Executives />
-    </Fragment>
+    </Suspense>
   );
 };
 

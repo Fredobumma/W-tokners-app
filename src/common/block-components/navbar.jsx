@@ -1,5 +1,4 @@
-import { lazy, useContext } from "react";
-import AuthContext from "../../context/authContext";
+import { lazy } from "react";
 import SVG from "../assets/svgs/allSvg";
 import MenuButton from "./../menuButton";
 import MenuLinks from "../menuLinks";
@@ -7,8 +6,6 @@ import MenuLinks from "../menuLinks";
 const Logo = lazy(() => import("../logo"));
 
 const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
-  const user = useContext(AuthContext);
-
   // === Harmburger-Menu Encapsulated Data
   const menuIcon = ["rotate-[42deg]", "hidden", "-rotate-[42deg]"];
 
@@ -24,7 +21,6 @@ const Navbar = ({ checked, menu, toggleMenu, toggleMode }) => {
   const navButtons = [
     {
       path: "/profile",
-      label: user?.name,
       isAuth: true,
       classes:
         "flex active:bg-transparent capitalize focus:bg-transparent focus:text-current font-bold gap-2.5 hover:bg-transparent hover:text-current items-center justify-center py-3 text-sm laptop:px-2.5 desktop:px-0",

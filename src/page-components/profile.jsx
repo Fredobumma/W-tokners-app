@@ -31,7 +31,7 @@ const Profile = () => {
     success: "",
   });
   const [userData, setUserData] = useState({});
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(true);
 
   // === Schema Validator
   const schema = {
@@ -172,7 +172,7 @@ const Profile = () => {
       {}
     );
 
-    if (Object.values(personalInfo).every((el) => !el)) return;
+    if (Object.values(personalInfo).every((el) => !el)) return setLoader(false);
 
     try {
       await setData(documentName, userEmail, { personalInfo });
@@ -196,8 +196,6 @@ const Profile = () => {
   }, [userEmail]);
 
   useEffect(() => {
-    setLoader(true);
-
     const obj = { ...login };
     try {
       const data = async () => {

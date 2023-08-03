@@ -1,4 +1,4 @@
-import { lazy, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Joi from "../../services/validatorService";
 import { setData } from "../../services/httpService";
@@ -7,10 +7,9 @@ import logger from "./../../services/logService";
 import ValidatorContext from "../../context/validatorContext";
 import FormContext from "./../../context/formContext";
 import Loader from "./loader";
+import FormPage from "../formPage";
 import { clearNotify, mapErrorTo } from "../../utilities/helpers";
 import { getFormData } from "../../utilities/getVariables";
-
-const FormPage = lazy(() => import("../formPage"));
 
 const LoginForm = () => {
   const location = useLocation();

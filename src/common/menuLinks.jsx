@@ -36,7 +36,7 @@ const MenuLinks = ({ links, buttons, checked, toggleMode }) => {
             <NavButton
               key={index}
               to={path}
-              label={label}
+              label={label || user?.name}
               extraStyles={classes || "border-2 border-secondary px-10 py-3"}
             >
               {content}

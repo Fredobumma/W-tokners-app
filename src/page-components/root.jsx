@@ -1,4 +1,4 @@
-import { Fragment, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { getUser } from "../services/authService";
 import { tracker } from "../services/trackService";
@@ -6,12 +6,11 @@ import useDarkSide from "../hooks/useDarkSide";
 import AuthContext from "../context/authContext";
 import ValidatorContext from "../context/validatorContext";
 import CollapseInfoContext from "../context/collapseInfoContext";
+import Loader from "./../common/block-components/loader";
+import MenuBackDrop from "../common/block-components/menuBackDrop";
 import FormValidator from "../utilities/formValidator";
 
 const Navbar = lazy(() => import("./../common/block-components/navbar"));
-const MenuBackDrop = lazy(() =>
-  import("../common/block-components/menuBackDrop")
-);
 const Footer = lazy(() => import("./../common/block-components/block-footer"));
 
 const Root = () => {
@@ -48,7 +47,7 @@ const Root = () => {
   }, [window.location.pathname]);
 
   return (
-    <Fragment>
+    <Suspense fallback={<Loader />}>
       <AuthContext.Provider value={user}>
         <Navbar
           menu={menu}
@@ -71,7 +70,7 @@ const Root = () => {
           {/* Menu Background */}
         </main>
       </AuthContext.Provider>
-    </Fragment>
+    </Suspense>
   );
 };
 

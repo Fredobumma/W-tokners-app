@@ -1,15 +1,19 @@
-import { lazy, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Joi from "../../services/validatorService";
 import { setData } from "../../services/httpService";
-import { loginWithJwt, signUp, updateUser } from "../../services/authService";
+import {
+  loginWithJwt,
+  signIn,
+  signUp,
+  updateUser,
+} from "../../services/authService";
 import logger from "../../services/logService";
 import ValidatorContext from "../../context/validatorContext";
 import FormContext from "../../context/formContext";
 import Loader from "./loader";
+import FormPage from "../formPage";
 import { clearNotify, mapErrorTo } from "../../utilities/helpers";
 import { getFormData } from "../../utilities/getVariables";
-
-const FormPage = lazy(() => import("../formPage"));
 
 const RegisterForm = () => {
   const validator = useContext(ValidatorContext);
@@ -35,8 +39,12 @@ const RegisterForm = () => {
     try {
       const { user } = await signUp(email, password);
       await updateUser(user, { displayName: username });
+      const {
+        user: { accessToken },
+      } = await signIn(email, password);
       await setData("users", email, { username, email, password });
-      loginWithJwt(user.accessToken);
+
+      loginWithJwt(accessToken);
 
       obj.success = "Login Success";
       window.location = "/";

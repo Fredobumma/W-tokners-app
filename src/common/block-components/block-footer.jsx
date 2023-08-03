@@ -1,4 +1,3 @@
-// import ThemeContext from "../../context/themeContext";
 import Logo from "../logo";
 import FooterLinks from "../footerLinks";
 import SocialAccounts from "../socialAccounts";
@@ -24,7 +23,6 @@ const Footer = ({ checked, toggleMode }) => {
   const year = date.getFullYear();
 
   return (
-    // <ThemeContext>
     <footer className="py-10 relative bigTab:pt-20 bigTab:pb-50px laptop:pt-52 laptop:pb-70px">
       <div className="absolute bg-nav blur-[100px] h-60 inset-0 w-full -z-10 tab:left-1/3 laptop:bg-nav-xl laptop:right-[60%] dark:bg-darkNav dark:laptop:bg-darkNav-xl"></div>
       <FooterLinks links={links} checked={checked} toggleMode={toggleMode} />
@@ -34,7 +32,6 @@ const Footer = ({ checked, toggleMode }) => {
         <Copyright year={year} />
       </div>
     </footer>
-    // </ThemeContext>
   );
 };
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import TradeViewChart from "react-crypto-chart";
 import SVG from "../assets/svgs/allSvg";

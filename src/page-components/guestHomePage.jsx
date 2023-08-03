@@ -1,4 +1,5 @@
-import { Fragment, lazy } from "react";
+import { Suspense, lazy } from "react";
+import LazyLoader from "./../common/block-components/lazyLoader";
 
 const Hero = lazy(() => import("../common/block-components/block-hero"));
 const Features = lazy(() =>
@@ -20,7 +21,7 @@ const PurchaseGuide = lazy(() =>
 
 const GuestHomePage = () => {
   return (
-    <Fragment>
+    <Suspense fallback={<LazyLoader />}>
       <Hero />
       <Features />
       <Services />
@@ -28,7 +29,7 @@ const GuestHomePage = () => {
       <Showcase />
       <Presale />
       <PurchaseGuide />
-    </Fragment>
+    </Suspense>
   );
 };
 

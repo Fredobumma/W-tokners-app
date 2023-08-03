@@ -1,4 +1,4 @@
-import { lazy, useContext, useState } from "react";
+import { Suspense, lazy, useContext, useState } from "react";
 import Joi from "./../services/validatorService";
 import { passwordRecovery } from "../services/authService";
 import logger from "../services/logService";
@@ -56,20 +56,23 @@ const RecoverPassword = () => {
   ];
 
   return (
-    <FormContext.Provider
-      value={{
-        guide: {
-          text1: "In case you lost your password, Recover using your email...",
-          text2: "Go back and login ?",
-          path: "/login",
-          name: "Login",
-        },
-        body: { form, fields, success, error, checkError, data },
-      }}
-    >
-      {loader && <Loader />}
-      <FormPage />
-    </FormContext.Provider>
+    <Suspense fallback={<Loader />}>
+      <FormContext.Provider
+        value={{
+          guide: {
+            text1:
+              "In case you lost your password, Recover using your email...",
+            text2: "Go back and login ?",
+            path: "/login",
+            name: "Login",
+          },
+          body: { form, fields, success, error, checkError, data },
+        }}
+      >
+        {loader && <Loader />}
+        <FormPage />
+      </FormContext.Provider>
+    </Suspense>
   );
 };
 

@@ -8,7 +8,6 @@ function SVGSource({ files, id }) {
           .filter((el) => el === id)
           .reduce((defs, fileId, fileIndex) => {
             const file = files.byId[fileId];
-            console.log(file);
             return defs.concat(
               <g
                 key={fileIndex}

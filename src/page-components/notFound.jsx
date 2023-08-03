@@ -3,7 +3,7 @@ import SVG from "../common/assets/svgs/404svg";
 const NotFound = () => {
   return (
     <section className="py-10 relative tab:py-60px laptop:pb-0 laptop:pt-20">
-      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] bg-darkAside"></div>
+      <div className="absolute bg-aside blur-[100px] h-full rotate-[15deg] w-full -z-20 tab:left-1/3 laptop:left-[60%] dark:bg-darkAside"></div>
       <div className="border-t h-[50vh] max-w-1024 mt-5 mx-auto pb-5 pt-5 rounded-all shadow-xl text-center">
         <div className="flex flex-col justify-center h-full">
           <div className="mx-auto relative w-fit">
