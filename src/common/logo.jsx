@@ -4,6 +4,7 @@ import SVG from "./assets/svgs/allSvg";
 const Logo = ({ extraClasses, ...rest }) => {
   return (
     <NavLink
+      aria-label="Logo"
       to="/"
       className={`max-h-[33px] max-w-[207px] ${extraClasses}`}
       {...rest}

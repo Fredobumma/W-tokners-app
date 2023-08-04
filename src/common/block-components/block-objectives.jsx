@@ -1,6 +1,4 @@
-import { lazy } from "react";
-
-const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
+import SVG from "../assets/svgs/allSvg";
 
 const Objectives = () => {
   // === Quater List Details

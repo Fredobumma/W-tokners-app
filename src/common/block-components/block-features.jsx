@@ -1,7 +1,5 @@
-import { lazy } from "react";
 import { Link } from "react-router-dom";
-
-const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
+import SVG from "../assets/svgs/allSvg";
 
 const Features = () => {
   // === Cards Details

@@ -1,8 +1,6 @@
-import { lazy } from "react";
+import SVG from "../assets/svgs/allSvg";
 import Carousel from "../carousel";
 import PresaleCarousel from "../presaleCarousel";
-
-const SVG = lazy(() => import("../assets/svgs/guestPageSvg"));
 
 const Presale = () => {
   // === Cards Details

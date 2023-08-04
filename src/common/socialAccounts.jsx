@@ -6,6 +6,7 @@ const SocialAccounts = ({ logos }) => {
     <div className="flex gap-x-2.5 justify-center text-dark dark:text-white">
       {logos.map(({ id, url }, index) => (
         <Link
+          aria-label={id}
           key={index}
           to={url}
           className="border-2 border-transparent bg-[#0f132066] h-logo rounded-full w-logo laptop:h-50 laptop:w-50 dark:border-[#ffffff0d]"

@@ -1,8 +1,7 @@
-import { lazy, useContext } from "react";
+import { useContext } from "react";
 import CarouselContext from "../context/carouselContext";
+import SVG from "./assets/svgs/allSvg";
 import ScrollIndicator from "./scrollIndicator";
-
-const SVG = lazy(() => import("./assets/svgs/guestPageSvg"));
 
 const PresaleCarousel = ({ cards }) => {
   const { pages, activePageIndex, scrollRef, goTo } =
