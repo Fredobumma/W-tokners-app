@@ -1,6 +1,7 @@
 {
   "env": {
     "browser": true,
+    "node": true,
     "es2021": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
@@ -13,6 +14,7 @@
   "rules": {
     "semi": 0,
     "no-unused-vars": "warn",
+    "no-mixed-spaces-and-tabs": 0,
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": 0,

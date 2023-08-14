@@ -1,12 +1,19 @@
+import { Suspense, lazy } from "react";
 import RequireAuth from "../common/auth";
-import WhitelistForm from "../common/block-components/block-whitelistForm";
+import LazyLoader from "../common/block-components/lazyLoader";
+
+const WhitelistForm = lazy(() =>
+	import("../common/block-components/block-whitelistForm")
+);
 
 const JoinWhitelist = () => {
-  return (
-    <RequireAuth>
-      <WhitelistForm />
-    </RequireAuth>
-  );
+	return (
+		<Suspense fallback={<LazyLoader />}>
+			<RequireAuth>
+				<WhitelistForm />
+			</RequireAuth>
+		</Suspense>
+	);
 };
 
 export default JoinWhitelist;

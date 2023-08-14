@@ -1,12 +1,16 @@
-import { Fragment } from "react";
-import LoginForm from "../common/block-components/block-loginForm";
+import { Suspense, lazy } from "react";
+import LazyLoader from "../common/block-components/lazyLoader";
+
+const LoginForm = lazy(() =>
+	import("../common/block-components/block-loginForm")
+);
 
 const Login = () => {
-  return (
-    <Fragment>
-      <LoginForm />
-    </Fragment>
-  );
+	return (
+		<Suspense fallback={<LazyLoader />}>
+			<LoginForm />
+		</Suspense>
+	);
 };
 
 export default Login;

@@ -1,19 +1,16 @@
 @font-face {
-  font-display: swap;
-  font-family: "Century Gothic";
-  src: url("services/fontService/GOTHIC.ttf");
-  src: url("services/fontService/GOTHIC.ttf") format("truetype"),
-    url("services/fontService/GOTHICB.ttf") format("truetype"),
-    url("services/fontService/GOTHIC.woff") format("woff"),
-    url("services/fontService/GOTHICB.woff") format("woff");
+	font-display: swap;
+	font-family: "Century Gothic";
+	src: url("services/fontService/GOTHIC.woff");
+	src: url("services/fontService/GOTHIC.woff") format("woff"),
+		url("services/fontService/GOTHICB.woff") format("woff");
 }
 
 @font-face {
-  font-display: swap;
-  font-family: "Azo Sans";
-  src: url("services/fontService/AzoSansBold.ttf");
-  src: url("services/fontService/AzoSansBold.ttf") format("truetype"),
-    url("services/fontService/AzoSansBold.woff") format("woff");
+	font-display: swap;
+	font-family: "Azo Sans";
+	src: url("services/fontService/AzoSansBold.woff");
+	src: url("services/fontService/AzoSansBold.woff") format("woff");
 }
 
 @import "tailwindcss/base";
@@ -21,32 +18,32 @@
 @import "tailwindcss/utilities";
 
 body {
-  font-family: "Century Gothic", sans-serif;
-  max-width: 1600px;
-  overflow-x: hidden;
-  padding: 0 20px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: "Century Gothic", sans-serif;
+	max-width: 1600px;
+	overflow-x: hidden;
+	padding: 0 20px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 @media screen and (min-width: 768px) {
-  body {
-    padding: 0 32px;
-  }
+	body {
+		padding: 0 32px;
+	}
 }
 
 @media screen and (min-width: 1024px) {
-  html {
-    overflow-x: hidden;
-    overflow-y: scroll !important;
-  }
+	html {
+		overflow-x: hidden;
+		overflow-y: scroll !important;
+	}
 
-  body {
-    padding: 0 64px;
-  }
+	body {
+		padding: 0 64px;
+	}
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }

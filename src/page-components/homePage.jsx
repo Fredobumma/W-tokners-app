@@ -1,12 +1,13 @@
-import { useContext } from "react";
+import { lazy, useContext } from "react";
 import AuthContext from "../context/authContext";
-import UsersHomePage from "./usersHomePage";
-import GuestHomePage from "./guestHomePage";
+
+const UsersHomePage = lazy(() => import("./usersHomePage"));
+const GuestHomePage = lazy(() => import("./guestHomePage"));
 
 const HomePage = () => {
-  const user = useContext(AuthContext);
+	const user = useContext(AuthContext);
 
-  return user ? <UsersHomePage /> : <GuestHomePage />;
+	return user ? <UsersHomePage /> : <GuestHomePage />;
 };
 
 export default HomePage;

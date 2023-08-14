@@ -1,12 +1,16 @@
-import { Fragment } from "react";
-import RegisterForm from "../common/block-components/block-registerForm";
+import { Suspense, lazy } from "react";
+import LazyLoader from "../common/block-components/lazyLoader";
+
+const RegisterForm = lazy(() =>
+	import("../common/block-components/block-registerForm")
+);
 
 const Register = () => {
-  return (
-    <Fragment>
-      <RegisterForm />
-    </Fragment>
-  );
+	return (
+		<Suspense fallback={<LazyLoader />}>
+			<RegisterForm />
+		</Suspense>
+	);
 };
 
 export default Register;
