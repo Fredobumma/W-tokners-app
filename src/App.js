@@ -11,6 +11,7 @@ import Root from "./page-components/root";
 import ErrorPage from "./page-components/errorPage";
 import Loader from "./common/block-components/loader";
 import NotFound from "./page-components/notFound";
+import "animate.css";
 
 function App() {
 	// <===== ROUTING IMPLEMENTATION =====>

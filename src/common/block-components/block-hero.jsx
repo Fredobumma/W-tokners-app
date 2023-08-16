@@ -25,7 +25,7 @@ const Hero = () => {
 						extraStyles="active:scale-105 !bg-secondary drop-shadow-button focus:scale-105 hover:scale-105 px-30px py-3.5 text-white"
 					/>
 				</div>
-				<div className="-mt-20 tab:mt-5 laptop:mt-0">
+				<div className="animate__animated animate__fadeInRight -mt-20 tab:mt-5 laptop:mt-0">
 					<Picture
 						sources={sources}
 						src={webpImg2x}
